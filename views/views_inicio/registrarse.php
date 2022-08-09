@@ -168,33 +168,33 @@
 
         <div class="row justify-content-center">
             <div class="col-6">
-                <form action="">
+                <form action="../scripts/guardarUsuario.php" method="POST">
                     <!--Seccion1-->
                     <div class="border border-secondary rounded-2    contenedores_form">
                         <h5>Informacion Personal</h5>
                         <!--Nombre-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="text" id="nombre" placeholder="Nombre">
+                            <input class="form-control  conf_labels" type="text" id="nombre" placeholder="Nombre" name="nombre">
                             <label class="form-label"  for="nombre">Nombre</label>
                         </div>
                         <!--Apellido Paterno-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="text" id="a_p" placeholder="Apellido Paterno">
+                            <input class="form-control  conf_labels" type="text" id="a_p" placeholder="Apellido Paterno" name="appaterno">
                             <label class="form-label" for="a_p">Apellido Paterno</label>
                         </div>
                         <!--Apellido Materno-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="text" id="a_m" placeholder="Apellido Materno">
+                            <input class="form-control  conf_labels" type="text" id="a_m" placeholder="Apellido Materno" name="apmaterno">
                             <label class="form-label" for="a_m">Apellido Materno</label>
                         </div>
                         <!--Correo Electronico-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="email" id="correo" placeholder="Correo Electronico">
+                            <input class="form-control  conf_labels" type="email" id="correo" placeholder="Correo Electronico" name="correo">
                             <label class="form-label" for="correo">Correo Electronico</label>
                         </div>
                         <!--Numero de Telefono-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Numero de Telefono">
+                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Numero de Telefono" name="tel">
                             <label class="form-label" for="telefono">Numero de Telefono</label>
                         </div>
                     </div>
@@ -204,13 +204,13 @@
                         <h5>Direccion</h5>
                         <!--Direccion-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="text" id="direccion" placeholder="Direccion">
+                            <input class="form-control  conf_labels" type="text" id="direccion" placeholder="Direccion" name="dir">
                             <label class="form-label" for="direccion">Direccion</label>
                         </div>
     
                         <!--Codigo Postal-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="text" id="cp" placeholder="Codigo Postal" style="max-width: 200px;">
+                            <input class="form-control  conf_labels" type="text" id="cp" placeholder="Codigo Postal" style="max-width: 200px;" name="codpst">
                             <label class="form-label" for="cp">Codigo Postal</label>
                         </div>
                     </div>
@@ -220,14 +220,14 @@
                         <h5>Contraseña</h5>
                         <!--Contraseña-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="password" id="contra" placeholder="Contraseña">
+                            <input class="form-control  conf_labels" type="password" id="contra" placeholder="Contraseña" name="pass">
                             <label class="form-label" for="contra">Contraseña</label>
                             <div id="ayuda_email" class="form-text">La contraseña debe tener al menos 8 digitos.</div>
                         </div>
     
                         <!--Repetir Contraseña-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="password" id="rcontra" placeholder="Repetir Contraseña">
+                            <input class="form-control  conf_labels" type="password" id="rcontra" placeholder="Repetir Contraseña" name="pass">
                             <label class="form-label" for="rcontra">Repetir Contraseña</label>
                         </div> 
                     </div>
@@ -235,7 +235,7 @@
                     <!--Boton-->
                     <div class="row justify-content-center">
                         <div class="col-6 row">
-                            <button class="btn  boton_cc">
+                            <button class="btn  boton_cc" type="submit">
                                 <b>Crear Cuenta</b>
                             </button>
                         </div>
