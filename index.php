@@ -30,7 +30,7 @@
                     <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar productos">
 
                     <!--Boton Buscar-->
-                    <button class="btn border-0 border-start  b-buscar" type="button" id="button-addon1">Buscar</button>
+                    <button class="btn border-0 border-start  b-buscar" type="button" id="button-addon1">BUSCAR</button>
                 </div>
             </div>
 
