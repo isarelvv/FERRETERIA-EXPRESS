@@ -92,7 +92,7 @@
                             <a class="btn   boton-a-bb" type="button" href="index.php">
                                 <div class="organizar">
                                     <img src="svg/casa-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Inicio</b></p>
+                                    <p class="texto-botones-bb"><b>INICIO</b></p>
                                 </div>
                             </a>
                         </li>
