@@ -39,7 +39,7 @@
                 <!--Boton Iniciar Sesion-->
                 <button class="btn  boton-login" type="button" data-bs-toggle="modal" data-bs-target="#iniciar-sesion">
                     <img src="svg/perfil-b.svg" alt="" class="icono_boton">
-                    <p class="texto-boton-login-no-iniciado text-start"><b>INICIAR SESION o Registrarse</b></p>
+                    <p class="texto-boton-login-no-iniciado text-start"><b>iniciar sesion o Registrarse</b></p>
                 </button>
       
                 <!--Modal Iniciar Sesion-->
