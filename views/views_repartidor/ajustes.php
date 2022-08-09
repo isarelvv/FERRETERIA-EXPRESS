@@ -18,6 +18,7 @@
   </symbol>
 </svg>
 <body>
+  
 <main class="d-flex flex-nowrap">
   <div class="d-flex flex-column flex-shrink-0 p-4 text-bg-dark" style="width: 400px;">
       <h1 class="" align=center>REPARTIDOR</h1>

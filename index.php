@@ -8,8 +8,8 @@ session_start();
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/mi_css/header.css">
     <link rel="stylesheet" href="css/mi_css/inicio.css">
-    <link rel="stylesheet" href="css/mi_css/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="css/mi_css/footer.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
     <title>Ferreteria y Materiales Express</title>
@@ -42,7 +42,7 @@ session_start();
                 <!--Boton Iniciar Sesion-->
                 <button class="btn  boton-login" type="button" data-bs-toggle="modal" data-bs-target="#iniciar-sesion">
                     <img src="svg/perfil-b.svg" alt="" class="icono_boton">
-                    <p class="texto-boton-login-no-iniciado text-start"><b>iniciar sesion o Registrarse</b></p>
+                    <p class="texto-boton-login-no-iniciado text-start"><b>Iniciar sesion o Registrarse</b></p>
                 </button>
       
                 <!--Modal Iniciar Sesion-->
