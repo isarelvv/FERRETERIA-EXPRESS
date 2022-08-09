@@ -1,3 +1,4 @@
+session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +15,8 @@
     <title>Ferreteria y Materiales Express</title>
 </head>
 <body>
+    session_start();
+    
     <!--Header-->
     <header class="row justify-content-center">
         <!--Parte Arriba Header-->
@@ -51,20 +54,20 @@
                         </div>
 
                         <div class="modal-body  m_c_i">
-                        <form action="">
+                        <form action="../FERRETERIA-EXPRESS/views/scripts/VerificarLogin.php" method="POST">
                             <div class="label">
                                 <label for="correo" class="form-label"><b>Correo Electronico</b></label>
-                                <input type="email" id="correo" class="form-control     in_m_i">
+                                <input type="email" id="correo" class="form-control     in_m_i" name="usuario">
                             </div>
 
                             <div class="label">
                                 <label for="contraseña" class="form-label"><b>Contraseña</b></label>
-                                <input type="password" id="contraseña" class="form-control  in_m_i">
+                                <input type="password" id="contraseña" class="form-control  in_m_i" name="password">
                                 <a href="" class="link_modal_i">¿Olvidaste tu contraseña?</a>
                             </div>
 
                             <div class="text-center     label">
-                                <button class="btn  boton_i_s">Iniciar Sesion</button>
+                                <button class="btn  boton_i_s" type="submit">Iniciar Sesion</button>
                             </div>
 
                             <div class="row text-center     label p_c_c">
