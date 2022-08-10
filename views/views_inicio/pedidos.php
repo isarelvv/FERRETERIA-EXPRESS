@@ -170,63 +170,90 @@ session_start();
 
             <div class="col   barras_mensaje"><hr></div>
         </div>
+        <?php
+        use MyApp\query\select;
+        require_once("../../vendor/autoload.php");
+
+        $busqueda=new select();
+
+      //  $cadena="";
+       // $pedidos_espera=$busqueda->seleccionar($cadena);
+
+
+        ?>
 
         <!--Pedidos-->
+         <!--
         <div class="border border-secondary  contenedor_pedidos_entregados">
+           
             <div class="row border border-dark  producto_carrito">
                 <div class="col-1">
                     <img src="../../svg/facebook.svg" alt="" class="imagen_producto">
                 </div>
 
                 <div class="col-10  info_producto">
+-->
                     <!--Numero de Pedido-->
+                    <!--
                     <div class="n_p">
                         <p><b>Pedido N.° 123-456-7890</b></p>
                     </div>
 
                     <div class="row">
+-->
                         <!--Precio Total-->
+                        <!--
                         <div class="col-2">
                             <label for="total" class="l_p"><b>Total</b></label>
                             <input type="text" class="form-control  i_p" id="total" placeholder="$759.00" disabled="disabled">
                         </div>
-
+-->
                         <!--Fecha de Pedido-->
+                        <!--
                         <div class="col-3">
                             <label for="f_p" class="l_p"><b>Fecha de Pedido</b></label>
                             <input type="text" class="form-control  i_p" id="f_p" placeholder="31 de julio de 2022" disabled="disabled">
                         </div>
-
+-->
                         <!--Direccion de Entrega-->
+                        <!--
                         <div class="col-5">
                             <label for="d_e" class="l_p"><b>Direccion de Entrega</b></label>
                             <input type="text" class="form-control  i_p" id="d_e" placeholder="Calle Laguneros 160 Fracc. El Tajito" disabled="disabled">
                         </div>
-
+-->
                         <!--Detalles del Pedido-->
+                        <!--
                         <div class="col-2 text-end   d_p">
                             <a href="" data-bs-toggle="modal" data-bs-target="#modal_detalles_pedido">Detalles del Pedido</a>
                         </div>
-                          
+-->
                           <!--Modal Detalles del Pedido-->
+                          <!--
                           <div class="modal modal-lg fade" id="modal_detalles_pedido" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                               <div class="modal-content">
+-->
                                 <!--Header Modal-->
+                                <!--
                                 <div class="modal-header    header_detalles">
                                   <h5 class="modal-title" id="exampleModalLabel">Detalles del Pedido</h5>
                                   <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-
+-->
                                 <!--Info Modal-->
+                                <!--
                                 <div class="modal-body">
                                     <div class="row border border-secondary     productos">
+-->
                                         <!--Imagen-->
+                                        <!--
                                         <div class="col-1">
                                             <img src="../../svg/facebook.svg" alt="" class="imagen_productos">
                                         </div>
-                
+-->
                                         <!--Info Producto Carrito-->
+                                        <!--
                                         <div class="col  info_producto_carrito">
                                             <div class="row justify-content-between">
                                                 <div class="col-9   nombre_producto">
@@ -259,8 +286,11 @@ session_start();
                     </div>
                 </div>
             </div>
+
         </div>
+-->
     </div>
+
 
     <!--Pedidos Completados-->
     <div class="container   pedidos_entregados">
