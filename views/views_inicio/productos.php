@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -238,12 +241,14 @@
             </div>
 
             <!--Productos-->
-           
+            
             <div class="col-10 row" >
+            
                 <?php
                  $cadena= "CALL PRODUCTOS();";
                  if ($_POST) 
                  {
+                    $filtros_de_busqueda ="";
                     extract($_POST);     
                     if (isset($categorias)) 
                     {
@@ -298,14 +303,16 @@
                 $tabla=$seleccionar->seleccionar($cadena);
                 foreach($tabla as $datos)
                 {
+                  
                     ?>
-                    
                     <div class="col  " style="max-width: 250px; height:475px ">
+                    <form action="" method="POST">
                     <img src="<?php echo $datos->FOTO ?>" alt="<?php echo $datos->FOTO ?>" class="imagenes_productos">
                     <div class="categoria_producto">
                         <b><?php echo $datos->CATEGORIA ?></b>
                     </div>
                     <div class="nombre_producto" style="height:80px ">
+                    <input type="hidden" name="nombre" value="<?php echo $datos->PRODUCTO?>">
                     <?php echo $datos->PRODUCTO ?>
                     </div>
                     <div class="informacion_producto">
@@ -323,14 +330,24 @@
                         echo "PRODUCTOS NO DISPONIBLE";
                     }
                     ?>
+                       </form>
                     </div>
                     <div class="precio_producto">
+                        <form action="" method="POST">
+                    <input type="hidden" name="precio" value="<?php echo $datos->PRECIO?>">
                         <b><?php echo "PRECIO:$".$datos->PRECIO ?></b>
+                        </form>
+                    </div>
+                    <form action="" method="POST">
+                    <div class="input-group">
+                        <input type="hidden" name="cantidad" value="cantidad">
+                        <span class="input-group-text   barra_cantidad">Cantidad</span>
+                        <input type="number" class="form-control    barra_cantidad" aria-label="Username" placeholder="" name="cantidad" min="1" max="100" required>
                     </div>
                     <div >
                         <?php
                     if ($datos->CANTIDAD!=0) {
-                        echo "<button class='btn  agregar_carrito'>
+                        echo "<button class='btn  agregar_carrito' type='submit' name='agregar' value='guardar'>
                         <b>Agregar al Carrito</b>
                     </button>";
                     }
@@ -341,12 +358,9 @@
                     </button>";
                     }
                     ?>
-                        
+                      </form>
                     </div>
-                </div>  
-
-               
-                
+                </div>   
                     <?php
                 }
                 foreach($tabla as $datos)
@@ -374,11 +388,13 @@
 
                                 <!--Nombre del Producto-->
                                 <div class="nombre_producto_modal">
+                                
                                     <b><?php echo $datos->PRODUCTO ?></b>
                                 </div>
 
                                 <!--Precio del Producto-->
                                 <div class="precio_producto_modal">
+                                    
                                     Precio: <?php echo "$".$datos->PRECIO ?>
                                 </div>
 
@@ -407,6 +423,29 @@
                     <?php
                 }
                     ?>
+
+<?php
+        if(isset($_POST["agregar"])){
+
+        $producto=$_POST["nombre"];
+        $cantidad=$_POST["cantidad"];
+        $precio=$_POST["precio"];
+        $total_c=0;
+        if(isset($_SESSION["carrito"])){
+            foreach($_SESSION["carrito"] as $indice =>$arrreglo){
+                if($producto==$indice){
+                $total_c=intval($arrreglo["cantidad"]);
+                }
+            }
+        }
+
+$_SESSION["carrito"][$producto]["cantidad"]=$total_c+$cantidad;
+$_SESSION["carrito"][$producto]["precio"]=$precio;
+
+echo "<script>alert('Producto $producto agregado al carrito');</script>";
+}
+
+?>
 
         <!--Paginacion-->
         <div></div>

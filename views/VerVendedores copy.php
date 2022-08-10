@@ -8,36 +8,34 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <h1 align="center">Clientes</h1>
+<div class="container">
+        <h1 align="center">Vendedores</h1>
         <?php
         use MyApp\query\select;
         require_once("../vendor/autoload.php");
 
         $query=new Select();
-        $cadena="SELECT * FROM cliente";
+        $cadena="SELECT NOMBRE, APELLIDOS, CORREO,TELEFONO, SEXO, FOTO FROM vendedores;";
         $tabla =$query ->seleccionar($cadena);
 
         echo "<table class='table table-hover'>
         <thead class='table-dark'>
         <tr>
-        <th>id_cliente</th><th>Nombre</th><th>APaterno</th><th>AMaterno</th>
-        <th>Direccion</th><th>Telefono</th><th>Correo</th><th>Departamento</th>
+        <th>Nombre</th><th>Apellidos</th><th>Correo</th><th>Telefono</th>
+        <th>Sexo</th><th>Foto</th>
         </tr>
         </thead>
         </tbody>";
 
-        foreach($tabla as $registro)
+        foreach($tabla as $vendedores)
         {
             echo "<tr>";
-            echo "<td> $registro->id_cliente </td>";
-            echo "<td> $registro->nombre </td>";
-            echo "<td> $registro->ap_paterno </td>";
-            echo "<td> $registro->ap_materno </td>";
-            echo "<td> $registro->direccion </td>";
-            echo "<td> $registro->telefono </td>";
-            echo "<td> $registro->mail </td>";
-            echo "<td> $registro->departamento </td>";
+            echo "<td> $vendedores->NOMBRE </td>";
+            echo "<td> $vendedores->APELLIDOS </td>";
+            echo "<td> $vendedores->CORREO </td>";
+            echo "<td> $vendedores->TELEFONO </td>";
+            echo "<td> $vendedores->SEXO </td>";
+            echo "<td><img src=".substr($vendedores->FOTO,3)." width='100px'></td>";
             echo "</tr>";
         }
 

@@ -1,4 +1,3 @@
-session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +14,6 @@ session_start();
     <title>Ferreteria y Materiales Express</title>
 </head>
 <body>
-    session_start();
     
     <!--Header-->
     <header class="row justify-content-center">
@@ -38,13 +36,35 @@ session_start();
             </div>
 
             <!--Login-->
-            <div class="col-2">
-                <!--Boton Iniciar Sesion-->
-                <button class="btn  boton-login" type="button" data-bs-toggle="modal" data-bs-target="#iniciar-sesion">
-                    <img src="svg/perfil-b.svg" alt="" class="icono_boton">
-                    <p class="texto-boton-login-no-iniciado text-start"><b>Iniciar sesion o Registrarse</b></p>
-                </button>
-      
+            <!--Boton Iniciar Sesion-->
+            <?php 
+            session_start();
+
+            if(isset($_SESSION["usuario"]))
+            {
+                if ($_SESSION["SESION"]==300)
+                {
+                    header("Location: views/VerClientes copy.php");
+                }
+                echo "<div class='col-2'>
+                <button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
+                    <img src='svg/perfil-b.svg' alt='' class='icono_boton'>
+                    <p class='texto-boton-login-no-iniciado text-start'><b>Bienvenido ".$_SESSION["usuario"]."</b></p>
+                </button>";
+                
+                
+            }
+            else
+            {
+                echo "<div class='col-2'>
+                <button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
+                    <img src='svg/perfil-b.svg' alt='' class='icono_boton'>
+                    <p class='texto-boton-login-no-iniciado text-start'><b>Iniciar Sesion o Registrarse</b></p>
+                </button>";
+            }
+
+            ?>
+          
                 <!--Modal Iniciar Sesion-->
                 <div class="modal modal-sm" id="iniciar-sesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -54,7 +74,7 @@ session_start();
                         </div>
 
                         <div class="modal-body  m_c_i">
-                        <form action="../FERRETERIA-EXPRESS/views/scripts/VerificarLogin.php" method="POST">
+                        <form action="views/scripts/VerificarLogin.php" method="POST">
                             <div class="label">
                                 <label for="correo" class="form-label"><b>Correo Electronico</b></label>
                                 <input type="email" id="correo" class="form-control     in_m_i" name="usuario">
@@ -74,7 +94,7 @@ session_start();
                                 <b>¿Aún no tienes cuenta?</b>
 
                                 <!--Link Crear Cuenta-->
-                                <a href="../html/registrarse.html" class="link_modal_i">Registrate aqui</a>
+                                <a href="views/views_inicio/registrarse.php" class="link_modal_i">Registrate aqui</a>
 
                             </div>
                         </form>
