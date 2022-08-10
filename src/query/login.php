@@ -46,6 +46,7 @@ class Login
             }
             if ($login>0)
             {
+
                 session_start();
                 $_SESSION["usuario"] = $usuario;
                 $_SESSION["SESION"]=$login;

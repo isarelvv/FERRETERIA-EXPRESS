@@ -16,8 +16,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
     <title>Ferreteria y Materiales Express</title>
 </head>
-<body>
-    
+<body>    
     <!--Header-->
     <header class="row justify-content-center">
         <!--Parte Arriba Header-->
@@ -42,27 +41,24 @@ session_start();
             <!--Boton Iniciar Sesion-->
             <?php 
             if(isset($_SESSION["usuario"]))
-            {    
+            {
                 echo "<div class='col-2'>
-                <button class='btn  boton-login' type='button' >
-                    <img src='svg/perfil-b.svg' alt='' class='icono_boton'>       
-                    <p class='texto-boton-login-no-iniciado text-start'><b>Bienvenido ".$_SESSION["usuario"]."</b>
-                    <a href='views/views_inicio/registarse.php'></a></p>
+                <button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
+                    <img src='svg/perfil-b.svg' alt='' class='icono_boton'>
+                    <p class='texto-boton-login-no-iniciado text-start'><b>".$_SESSION["usuario"]."</b></p>
                 </button>";
-                
-                
             }
             else
             {
                 echo "<div class='col-2'>
                 <button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
                     <img src='svg/perfil-b.svg' alt='' class='icono_boton'>
-                    <p class='texto-boton-login-no-iniciado text-start'><b>Iniciar Sesion o Registrarse</b></p>
+                    <p class='texto-boton-login-no-iniciado text-start'><b>Iniciar Sesion</b></p>
                 </button>";
             }
 
             ?>
-          
+      
                 <!--Modal Iniciar Sesion-->
                 <div class="modal modal-sm" id="iniciar-sesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
