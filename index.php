@@ -1,3 +1,6 @@
+<?php
+             session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,23 +32,20 @@
                 <div class="input-group mb-3 border border-1 border-dark rounded rounded-3  buscar">
                     <!--Barra-->
                     <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar productos">
-
                     <!--Boton Buscar-->
                     <button class="btn border-0 border-start  b-buscar" type="button" id="button-addon1">Buscar</button>
                 </div>
             </div>
 
+
             <!--Login-->
             <!--Boton Iniciar Sesion-->
             <?php 
-            session_start();
+       
 
             if(isset($_SESSION["usuario"]))
             {
-                if ($_SESSION["SESION"]==300)
-                {
-                    header("Location: views/VerClientes copy.php");
-                }
+        
                 echo "<div class='col-2'>
                 <button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
                     <img src='svg/perfil-b.svg' alt='' class='icono_boton'>
@@ -106,11 +106,12 @@
         </div>
 
         <!--Parte Abajo Header-->
+          
         <div class="border-bottom border-dark">
             <div class="row justify-content-center  barra">
                 <!--Inicio-Productos-Servicios-->
                 <div class="col-8">
-                    <ul class="nav justify-content-center">
+                    <ul class="nav justify-content-center">           
                         <li class="nav-item     boton-bb">
                             <a class="btn   boton-a-bb" type="button" href="index.php">
                                 <div class="organizar">
@@ -135,18 +136,35 @@
                                 </div>
                             </a>
                         </li>
-
-                        <li class="nav-item     boton-bb">
-                            <a class="btn   boton-a-bb" href="views/views_inicio/carrito.php">
-                                <div class="organizar">
-                                    <img src="svg/carrito-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Carrito</b></p>
+                            <?php
+               
+                            if (!isset($_SESSION["usuario"]))
+                            {
+                            echo
+                        "<li class='nav-item disabled    boton-bb'>
+                            <a class='btn   boton-a-bb' data-bs-toggle='modal data-bs-target='#iniciar-sesion'>
+                                <div class='organizar'>
+                                    <img src='svg/carrito-b.svg' class='icono'>
+                                    <p class='texto-botones-bb'><b>Carrito</b></p>
                                 </div>
                             </a>
-                        </li>
+                        </li>";
+                            }
+                            else
+                            {
+                                echo "<li class='nav-item    boton-bb'>
+                                <a class='btn   boton-a-bb' href='views/views_inicio/carrito.php'>
+                                    <div class='organizar'>
+                                        <img src='svg/carrito-b.svg' class='icono'>
+                                        <p class='texto-botones-bb'><b>Carrito</b></p>
+                                    </div>
+                                </a>
+                            </li>";
+                            }
+                        ?>
 
                         <li class="nav-item     boton-bb">
-                            <a class="btn   boton-a-bb" href="pedidos">
+                            <a class="btn   boton-a-bb" href="views/views_inicio/pedidos.php">
                                 <div class="organizar">
                                     <img src="svg/bolsa-b.svg" class="icono">
                                     <p class="texto-botones-bb"><b>Mis Pedidos</b></p>
