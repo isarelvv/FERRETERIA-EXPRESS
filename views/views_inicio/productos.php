@@ -37,15 +37,28 @@ session_start();
             
             <!--Barra de Busqueda-->
             <div class="col-6 text-center">
+                <form action="productos.php" method="POST">
                 <div class="input-group mb-3 border border-1 border-dark rounded rounded-3  buscar">
                     <!--Barra-->
-                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar productos">
+                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar productos" name="buscar" >
 
                     <!--Boton Buscar-->
-                    <button class="btn border-0 border-start  b-buscar" type="button" id="button-addon1">Buscar</button>
+                    <button class="btn border-0 border-start  b-buscar" type="submit" id="button-addon1">Buscar</button>
+                    </form>
                 </div>
             </div>
-
+            <?php
+            if(isset($_POST['buscar']))
+            {
+                $buscar = $_POST['buscar'];
+                $tabla = new select();
+                $cons = "SELECT PRODUCTOS.CODIGO, PRODUCTOS.NOMBRE AS PRODUCTO, CATEGORIAS.NOMBRE AS CATEGORIA, PRODUCTOS.PRECIO_VENTA AS PRECIO, 
+                PRODUCTOS.FOTO AS FOTO, PRODUCTOS.DESCRIPCION AS DESCRIPCION, PRODUCTOS.CANTIDAD_REAL AS CANTIDAD FROM PRODUCTOS 
+                INNER JOIN CATEGORIAS ON CATEGORIAS.ID_CATEGORIA = PRODUCTOS.CATEGORIA WHERE PRODUCTOS.NOMBRE LIKE '%$buscar%'";
+                $tabla->seleccionar($cons);
+            }
+            ?>
+            
             <!--Login-->
             <div class="col-2">
                 <!--Boton Iniciar Sesion-->
@@ -147,6 +160,7 @@ session_start();
             </div>
         </div>
     </header>
+   
 
     <!--Contenedor Productos-->
     <div class="container">
@@ -312,7 +326,7 @@ session_start();
                         <b><?php echo $datos->CATEGORIA ?></b>
                     </div>
                     <div class="nombre_producto" style="height:80px ">
-                    <input type="hidden" name="nombre" value="<?php echo $datos->PRODUCTO?>">
+                    <input type="hidden" name="nombre" value="fijo">
                     <?php echo $datos->PRODUCTO ?>
                     </div>
                     <div class="informacion_producto">
@@ -340,7 +354,7 @@ session_start();
                     </div>
                     <form action="" method="POST">
                     <div class="input-group">
-                        <input type="hidden" name="cantidad" value="cantidad">
+                        <input type="hidden" name="cantidad" value="10">
                         <span class="input-group-text   barra_cantidad">Cantidad</span>
                         <input type="number" class="form-control    barra_cantidad" aria-label="Username" placeholder="" name="cantidad" min="1" max="100" required>
                     </div>
@@ -425,7 +439,8 @@ session_start();
                     ?>
 
 <?php
-        if(isset($_POST["agregar"])){
+        if(isset($_POST["agregar"]))
+        {
 
         $producto=$_POST["nombre"];
         $cantidad=$_POST["cantidad"];

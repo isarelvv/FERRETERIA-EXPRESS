@@ -21,7 +21,7 @@ class Login
 
             while($renglon =$consulta->fetch(PDO::FETCH_ASSOC))
             {
-                if ($password==$renglon['contraseña'])
+                if (password_verify($password,$renglon['contraseña']))
                 {
                    $login=1;
 
@@ -63,7 +63,7 @@ class Login
                 echo "<div class='alert alert-success-'>";
                 echo "<h2 align='center'> usuario o password incorrecto <h2>";
                 echo "</div>";
-                header ("refresh:2; ../../Login.php");
+                header ("refresh:2; ../../index.php");
             }
         }
         catch (PDOException $e)
