@@ -106,7 +106,7 @@
                 <div class="col-8">
                     <ul class="nav justify-content-center">
                         <li class="nav-item     boton-bb">
-                            <a class="btn   boton-a-bb" type="button" href="../html/inicio.html">
+                            <a class="btn   boton-a-bb" type="button" href="../../index.php">
                                 <div class="organizar">
                                     <img src="../../svg/casa-b.svg" class="icono">
                                     <p class="texto-botones-bb"><b>Inicio</b></p>
@@ -174,27 +174,27 @@
                         <h5>Informacion Personal</h5>
                         <!--Nombre-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="text" id="nombre" placeholder="Nombre" name="nombre">
+                            <input class="form-control  conf_labels" type="text" id="nombre" placeholder="Nombre" name="nombre" required> 
                             <label class="form-label"  for="nombre">Nombre</label>
                         </div>
                         <!--Apellido Paterno-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="text" id="a_p" placeholder="Apellido Paterno" name="appaterno">
+                            <input class="form-control  conf_labels" type="text" id="a_p" placeholder="Apellido Paterno" name="appaterno" required>
                             <label class="form-label" for="a_p">Apellido Paterno</label>
                         </div>
                         <!--Apellido Materno-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="text" id="a_m" placeholder="Apellido Materno" name="apmaterno">
+                            <input class="form-control  conf_labels" type="text" id="a_m" placeholder="Apellido Materno" name="apmaterno" required>
                             <label class="form-label" for="a_m">Apellido Materno</label>
                         </div>
                         <!--Correo Electronico-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="email" id="correo" placeholder="Correo Electronico" name="correo">
+                            <input class="form-control  conf_labels" type="email" id="correo" placeholder="Correo Electronico" name="correo" required>
                             <label class="form-label" for="correo">Correo Electronico</label>
                         </div>
                         <!--Numero de Telefono-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Numero de Telefono" name="tel">
+                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Numero de Telefono" name="tel" required>
                             <label class="form-label" for="telefono">Numero de Telefono</label>
                         </div>
                     </div>
@@ -204,13 +204,13 @@
                         <h5>Direccion</h5>
                         <!--Direccion-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="text" id="direccion" placeholder="Direccion" name="dir">
+                            <input class="form-control  conf_labels" type="text" id="direccion" placeholder="Direccion" name="dir" required>
                             <label class="form-label" for="direccion">Direccion</label>
                         </div>
     
                         <!--Codigo Postal-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="text" id="cp" placeholder="Codigo Postal" style="max-width: 200px;" name="codpst">
+                            <input class="form-control  conf_labels" type="text" id="cp" placeholder="Codigo Postal" style="max-width: 200px;" name="codpst" required>
                             <label class="form-label" for="cp">Codigo Postal</label>
                         </div>
                     </div>
@@ -220,14 +220,14 @@
                         <h5>Contraseña</h5>
                         <!--Contraseña-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="password" id="contra" placeholder="Contraseña" name="pass">
+                            <input class="form-control  conf_labels" type="password" id="contra" placeholder="Contraseña" name="pass" required>
                             <label class="form-label" for="contra">Contraseña</label>
                             <div id="ayuda_email" class="form-text">La contraseña debe tener al menos 8 digitos.</div>
                         </div>
     
                         <!--Repetir Contraseña-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="password" id="rcontra" placeholder="Repetir Contraseña" name="pass">
+                            <input class="form-control  conf_labels" type="password" id="rcontra" placeholder="Repetir Contraseña" name="pass" required>
                             <label class="form-label" for="rcontra">Repetir Contraseña</label>
                         </div> 
                     </div>

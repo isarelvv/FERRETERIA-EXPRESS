@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +17,12 @@
     <title>Mis Pedidos - Ferreteria y Materiales Express</title>
 </head>
 <body>
+    <?php
+    if(isset($_SESSION['usuario']))
+    {
+    
+    
+   ?>
     <!--Header-->
     <header class="row justify-content-center">
         <!--Parte Arriba Header-->
@@ -37,10 +46,23 @@
             <!--Login-->
             <div class="col-2">
                 <!--Boton Iniciar Sesion-->
-                <button class="btn  boton-login" type="button" data-bs-toggle="modal" data-bs-target="#iniciar-sesion">
-                    <img src="../../svg/perfil-b.svg" alt="" class="icono_boton">
-                    <p class="texto-boton-login-no-iniciado text-start"><b>Iniciar Sesion o Registrarse</b></p>
-                </button>
+                <?php
+                if(isset($_SESSION['usuario']))
+                {
+                    echo " <button class='btn  boton-login' type='button'  data-bs-target='#iniciar-sesion'>
+                    <img src='../../svg/perfil-b.svg' alt='' class='icono_boton'>
+                    <p class='texto-boton-login-no-iniciado text-start'><b>Bienvenido ". $_SESSION['usuario']."</b></p>
+                </button>";
+                }
+                else
+                {
+                    echo " <button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
+                    <img src='../../svg/perfil-b.svg' alt='' class='icono_boton'>
+                    <p class='texto-boton-login-no-iniciado text-start'><b>Iniciar Sesion o Registrarse</b></p>
+                </button>";
+                }
+                ?>
+               
       
                 <!--Modal Iniciar Sesion-->
                 <div class="modal modal-sm" id="iniciar-sesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -384,6 +406,13 @@
         </div>
     </footer>
 </body>
+<?php
+}
+else
+{
+    header("Location: ../../index.php");
+}
+?>
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/bootstrap.bundle.js"></script>
 </html>

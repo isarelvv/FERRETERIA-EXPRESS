@@ -16,22 +16,39 @@ class Login
             $cc = new Database("save","root","");
             $objetoPDO = $cc->getPDO();
 
-            $query ="SELECT * FROM LOGIN  WHERE CORREO='$usuario';";
+            $query ="SELECT usuarios.KEY as SESION, usuarios.TIPO as TIPO, login.ID_LOGIN, login.correo, login.contraseña as contraseña FROM usuarios join login on usuarios.KEY=login.TIPO_USUARIO where login.correo='$usuario'";
             $consulta = $objetoPDO->query($query);
 
             while($renglon = $consulta->fetch(PDO::FETCH_ASSOC))
             {
-                if (password_verify($password,$renglon['CONTRASEÑA']))
+                if (password_verify($password,$renglon['contraseña']))
                 {
-                   $login++;
+                   $login=1;
+
+                   if ($renglon['SESION'] == 300 )
+                   {
+                       $login=300;
+                   }
+                   else if ($renglon['SESION'] == 301)
+                   {
+                       $login=301;
+                   }
+                   else if ($renglon['SESION']== 302)
+                   {
+                       $login=302;
+                   }
+                   else if ($renglon['SESION']== 303)
+                   {
+                       $login=303;
+                   }
+
                 }
             }
             if ($login>0)
             {
-                
-        
                 session_start();
                 $_SESSION["usuario"] = $usuario;
+                $_SESSION["SESION"]=$login;
                 echo "<div class='alert alert-success-'>";
                 echo "<h2 align='center'> Bienvenido".$_SESSION["usuario"]."<h2>";
                 echo "</div>";
@@ -41,11 +58,11 @@ class Login
             else 
             {
                 $_SESSION["usuario"] = $usuario;
-                $TIPO["TIPO"] = $login;
+                $_SESSION["SESION"]=$login;
                 echo "<div class='alert alert-success-'>";
                 echo "<h2 align='center'> usuario o password incorrecto <h2>";
                 echo "</div>";
-                
+                header ("refresh:2; ../../index.php");
             }
         }
         catch (PDOException $e)

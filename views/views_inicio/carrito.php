@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+$total = 0;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +19,16 @@
     <title>Carrito - Ferreteria y Materiales Express</title>
 </head>
 <body>
+<?php
+if(isset($_SESSION['usuario']))
+{
+
+}
+else
+{
+    header("Location: ../../index.php");
+}
+?>
     <!--Header-->
     <header class="row justify-content-center">
         <!--Parte Arriba Header-->
@@ -36,11 +51,24 @@
 
             <!--Login-->
             <div class="col-2">
+                <?php
+                    if(isset($_SESSION['usuario']))
+                    {
+                        echo "<button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
+                        <img src='../../svg/perfil-b.svg' alt='' class='icono_boton'>
+                        <p class='texto-boton-login-no-iniciado text-start'><b>Bienvenido ". $_SESSION['usuario']."</b></p>
+                    </button>";
+                    }
+                    else
+                    {
+                        echo "<button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
+                        <img src='../../svg/perfil-b.svg' alt='' class='icono_boton'>
+                        <p class='texto-boton-login-no-iniciado text-start'><b>Iniciar Sesion o Registrarse</b></p>
+                    </button>";
+                    }
+                ?>
                 <!--Boton Iniciar Sesion-->
-                <button class="btn  boton-login" type="button" data-bs-toggle="modal" data-bs-target="#iniciar-sesion">
-                    <img src="../../svg/perfil-b.svg" alt="" class="icono_boton">
-                    <p class="texto-boton-login-no-iniciado text-start"><b>Iniciar Sesion o Registrarse</b></p>
-                </button>
+                
       
                 <!--Modal Iniciar Sesion-->
                 <div class="modal modal-sm" id="iniciar-sesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -157,32 +185,44 @@
                         <div class="text-center border-bottom border-secondary  cuadro_header">
                             <b>Detalles del Pedido</b>
                         </div>
-    
-                        <!--Productos-->
-                        <div class="row border border-secondary     productos">
-                            <!--Imagen-->
-                            <div class="col-1">
-                                <img src="../../svg/facebook.svg" alt="" class="imagen_productos">
-                            </div>
-    
-                            <!--Info Producto Carrito-->
-                            <div class="col  info_producto_carrito">
-                                <div class="row justify-content-between">
-                                    <div class="col-9   nombre_producto">
-                                        <b>$PRODUCTO</b>
-                                    </div>
-                                    <div class="col-3 text-end  precio_total">
-                                        <b>$PRECIO</b>
-                                    </div>
+                        <?php
+                        if(isset($_SESSION['carrito']))
+                        {
+                            foreach($_SESSION['carrito'] as $indice->$arreglo)
+                            {
+                            echo"<!--Productos-->
+                            <div class='row border border-secondary     productos'>
+                                <!--Imagen-->
+                                <div class='col-1'>
+                                    <img src='../../svg/facebook.svg' alt='' class='imagen_productos'>
+                                </div>
+        
+                                <!--Info Producto Carrito-->
+                                <div class='col  info_producto_carrito'>
+                                    <div class='row justify-content-between'>
+                                        <div class='col-9   nombre_producto'>
+                                            <b>$indice</b>
+                                        </div>";
+                        ?>
+                        <?php
+                        $total += $arreglo["cantidad"] * $arreglo["precio"];
+                        foreach($arreglo as $key => $value)
+                        ?>
+                        <div class='col-3 text-end  precio_total'>
+                            <b>  CANTIDAD: 
+                        <?php
+                         {
+                        ?>  
+                            <?php echo $arreglo['cantidad']?><br>PRECIO: $
+                            <?php echo $arreglo['precio']?></b>
+                        </div>
+                            <?php
+                        }
+                         ?>
                                 </div>
     
                                 <div class="row     barra_baja">
                                     <div class="col-4">
-                                        <div class="input-group">
-                                            <span class="input-group-text   barra_cantidad">Cantidad</span>
-                                            <input type="number" class="form-control    barra_cantidad" aria-label="Username" placeholder="$cantidad">
-                                            <span class="input-group-text   barra_cantidad">$unidad</span>
-                                        </div>
                                     </div>
     
                                     <div class="col row">
@@ -191,7 +231,7 @@
                                         </div>
     
                                         <div class="col-4   d_p">
-                                            <a href="">Eliminar del carrito</a>
+                                        <?php echo "<a href='carrito.php?item=$indice'>Eliminar Producto</a>"; ?>
                                         </div>
                                           
                                         <!--Modal Informacion de Productos-->
@@ -239,6 +279,29 @@
                                 </div>
                             </div>
                         </div>
+
+                        <?php
+                        }
+                        }
+                        else
+                        {
+                            echo "<div class='row text-center'>
+
+                        <div class='col   barras_mensaje'><hr></div>
+                        </div>
+
+                        <div class='text-center'>
+                        <div><img src='../../svg/carrito-n.svg' alt='' class='lupa'></div>
+                        <div class='mensaje_no_encontrado'><b>No hay productos en su carrito</b></div>
+                        </div>";
+                        }
+                        if(isset($_REQUEST["item"]))
+                        {
+                            $producto = $_REQUEST["item"];
+                            unset($_SESSION["carrito"][$producto]);
+
+                        }
+                        ?>
                     </div>
                 </div>
     
@@ -324,7 +387,7 @@
                                 <b>Precio Total del Pedido:</b>
                             </div>
                             <div class="col  opciones_resumen_dos">
-                                <p>$TOTAL</p>
+                                <p><?php echo "$" . $total ?></p>
                             </div>
                         </div>
                     </div>

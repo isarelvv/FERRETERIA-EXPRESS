@@ -1,6 +1,5 @@
 <?php
 session_start();
-$nombreuser = $_SESSION['usuario'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +17,7 @@ $nombreuser = $_SESSION['usuario'];
     <title>Ferreteria y Materiales Express</title>
 </head>
 <body>
+    
     <!--Header-->
     <header class="row justify-content-center">
         <!--Parte Arriba Header-->
@@ -32,35 +32,37 @@ $nombreuser = $_SESSION['usuario'];
                 <div class="input-group mb-3 border border-1 border-dark rounded rounded-3  buscar">
                     <!--Barra-->
                     <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar productos">
-
                     <!--Boton Buscar-->
                     <button class="btn border-0 border-start  b-buscar" type="button" id="button-addon1">Buscar</button>
                 </div>
             </div>
+    
 
             <!--Login-->
-            <div class="col-2">
-                <!--Boton Iniciar Sesion-->
-                <?php 
-                if(isset($_SESSION['usuario']))
-                {
-                    echo "<button class='btn  boton-login' type='button'>
-                    <img src='svg/perfil-b.svg' alt='' class='icono_boton'>
-                    <p class='texto-boton-login-no-iniciado text-start'><b>Bienvenido $nombreuser</b></p>
+            <!--Boton Iniciar Sesion-->
+            <?php 
+            if(isset($_SESSION["usuario"]))
+            {    
+                echo "<div class='col-2'>
+                <button class='btn  boton-login' type='button' >
+                    <img src='svg/perfil-b.svg' alt='' class='icono_boton'>       
+                    <p class='texto-boton-login-no-iniciado text-start'><b>Bienvenido ".$_SESSION["usuario"]."</b>
+                    <a href='views/views_inicio/registarse.php'></a></p>
                 </button>";
-                }
-                else
-                {
-                    
                 
-                ?>
-                <button class="btn  boton-login" type="button" data-bs-toggle="modal" data-bs-target="#iniciar-sesion">
-                    <img src="svg/perfil-b.svg" alt="" class="icono_boton">
-                    <p class="texto-boton-login-no-iniciado text-start"><b>Iniciar sesion o Registrarse</b></p>
-                </button>
-                <?php
-                }
-                ?>
+                
+            }
+            else
+            {
+                echo "<div class='col-2'>
+                <button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
+                    <img src='svg/perfil-b.svg' alt='' class='icono_boton'>
+                    <p class='texto-boton-login-no-iniciado text-start'><b>Iniciar Sesion o Registrarse</b></p>
+                </button>";
+            }
+
+            ?>
+          
                 <!--Modal Iniciar Sesion-->
                 <div class="modal modal-sm" id="iniciar-sesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -102,11 +104,12 @@ $nombreuser = $_SESSION['usuario'];
         </div>
 
         <!--Parte Abajo Header-->
+          
         <div class="border-bottom border-dark">
             <div class="row justify-content-center  barra">
                 <!--Inicio-Productos-Servicios-->
                 <div class="col-8">
-                    <ul class="nav justify-content-center">
+                    <ul class="nav justify-content-center">           
                         <li class="nav-item     boton-bb">
                             <a class="btn   boton-a-bb" type="button" href="index.php">
                                 <div class="organizar">
@@ -131,24 +134,58 @@ $nombreuser = $_SESSION['usuario'];
                                 </div>
                             </a>
                         </li>
-
-                        <li class="nav-item     boton-bb">
-                            <a class="btn   boton-a-bb" href="views/views_inicio/carrito.php">
-                                <div class="organizar">
-                                    <img src="svg/carrito-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Carrito</b></p>
+                            <?php
+               
+                            if (!isset($_SESSION["usuario"]))
+                            {
+                            echo
+                        "<li class='nav-item disabled    boton-bb'>
+                            <a class='btn   boton-a-bb' data-bs-toggle='modal data-bs-target='#iniciar-sesion'>
+                                <div class='organizar'>
+                                    <img src='svg/carrito-b.svg' class='icono'>
+                                    <p class='texto-botones-bb'><b>Carrito</b></p>
                                 </div>
                             </a>
-                        </li>
+                        </li>";
+                            }
+                            else
+                            {
+                                echo "<li class='nav-item    boton-bb'>
+                                <a class='btn   boton-a-bb' href='views/views_inicio/carrito.php'>
+                                    <div class='organizar'>
+                                        <img src='svg/carrito-b.svg' class='icono'>
+                                        <p class='texto-botones-bb'><b>Carrito</b></p>
+                                    </div>
+                                </a>
+                            </li>";
+                            }
+                        ?>
+                        <?php
+                        if(!isset($_SESSION['usuario']))
 
-                        <li class="nav-item     boton-bb">
-                            <a class="btn   boton-a-bb" href="pedidos">
-                                <div class="organizar">
-                                    <img src="svg/bolsa-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Mis Pedidos</b></p>
+                        {
+                         echo "<li class='nav-item    boton-bb disabled '>
+                         <a class='btn   boton-a-bb' href='views/views_inicio/pedidos.php'>
+                             <div class='organizar'>
+                                 <img src='svg/bolsa-b.svg' class='icono'>
+                                 <p class='texto-botones-bb'><b>Mis Pedidos</b></p>
+                             </div>
+                         </a>
+                     </li> ";
+                        }
+                        else
+                        {
+                            echo "<li class='nav-item     boton-bb'>
+                            <a class='btn   boton-a-bb' href='views/views_inicio/pedidos.php'>
+                                <div class='organizar'>
+                                    <img src='svg/bolsa-b.svg' class='icono'>
+                                    <p class='texto-botones-bb'><b>Mis Pedidos</b></p>
                                 </div>
                             </a>
-                        </li>  
+                        </li> ";
+                        }
+                        ?>
+                        
                     </ul>
                 </div>
             </div>
