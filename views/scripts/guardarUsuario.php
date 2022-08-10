@@ -27,7 +27,7 @@
     $insert2->ejecutar($cadena2);
     $insert->ejecutar($cadena);
     echo "<div class='alert alert-success'>Usuario Registrado</div>";
-    header("refresh:3; ../../index.php");
+  //  header("refresh:3; ../../index.php");
 
     ?>
 
