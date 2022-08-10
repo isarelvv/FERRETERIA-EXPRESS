@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-
 $total = 0;
 ?>
 <!DOCTYPE html>
@@ -208,20 +206,20 @@ else
                         <?php
                         $total += $indice["cantidad"] * $indice["precio"];
                         foreach($indice as $key => $value)
-                        {
-                        ?>
+                        ?>     
                         <div class='col-3 text-end  precio_total'>
-                            <b>  CANTIDAD: 
+                            <b>  CANTIDAD:
                         <?php
-                         
+                        {
                         ?>  
                             <?php echo $indice['cantidad']?><br>PRECIO: $
                             <?php echo $indice['precio']?></b>
                         </div>
                             <?php
                         }
+                    
                          ?>
-                                </div>
+                    </div>
     
                                 <div class="row     barra_baja">
                                     <div class="col-4">
@@ -233,7 +231,7 @@ else
                                         </div>
     
                                         <div class="col-4   d_p">
-                                        <?php echo "<a href='carrito.php?item=".$indice["nombre"].">Eliminar Producto</a>"; ?>
+                                        <a href="<?php echo 'carrito.php?item='.$indice['nombre'].'' ?>">Eliminar Producto</a>
                                         </div>
                                           
                                         <!--Modal Informacion de Productos-->
