@@ -47,7 +47,7 @@ session_start();
                 <button class='btn  boton-login' type='button' >
                     <img src='svg/perfil-b.svg' alt='' class='icono_boton'>       
                     <p class='texto-boton-login-no-iniciado text-start'><b>Bienvenido ".$_SESSION["usuario"]."</b>
-                    <a href='views/views_inicio/registarse.php'></a></p>
+                    <a href='views/views_inicio/registrarse.php'></a></p>
                 </button>";
                 
                 

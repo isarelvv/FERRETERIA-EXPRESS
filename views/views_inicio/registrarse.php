@@ -227,7 +227,7 @@
     
                         <!--Repetir Contraseña-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="password" id="rcontra" placeholder="Repetir Contraseña" name="pass" required>
+                            <input class="form-control  conf_labels" type="password" id="rcontra" placeholder="Repetir Contraseña" name="pass1" required>
                             <label class="form-label" for="rcontra">Repetir Contraseña</label>
                         </div> 
                     </div>

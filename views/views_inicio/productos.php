@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -378,9 +377,19 @@ session_start();
                     <div >
                         <?php
                     if ($datos->CANTIDAD!=0) {
+                        if(isset($_SESSION['usuario']))
+                        {
                         echo "<button class='btn  agregar_carrito' type='submit' name='agregar' value='guardar'>
                         <b>Agregar al Carrito</b>
-                    </button>";
+                        </button>";
+                        }
+                        else
+                        {
+                            echo "<button class='btn  agregar_carrito' type='button' >
+                            <b>Agregar al Carrito</b>
+                            </button>";
+                        }
+                        
                     }
                     else
                     {
