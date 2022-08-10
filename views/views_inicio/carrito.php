@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 $total = 0;
 ?>
 <!DOCTYPE html>
@@ -188,7 +189,7 @@ else
                         <?php
                         if(isset($_SESSION['carrito']))
                         {
-                            foreach($_SESSION['carrito'] as $indice->$arreglo)
+                            foreach($_SESSION['carrito'] as $indice)
                             {
                             echo"<!--Productos-->
                             <div class='row border border-secondary     productos'>
@@ -201,20 +202,21 @@ else
                                 <div class='col  info_producto_carrito'>
                                     <div class='row justify-content-between'>
                                         <div class='col-9   nombre_producto'>
-                                            <b>$indice</b>
+                                            <b>".$indice["nombre"]."</b>
                                         </div>";
                         ?>
                         <?php
-                        $total += $arreglo["cantidad"] * $arreglo["precio"];
-                        foreach($arreglo as $key => $value)
+                        $total += $indice["cantidad"] * $indice["precio"];
+                        foreach($indice as $key => $value)
+                        {
                         ?>
                         <div class='col-3 text-end  precio_total'>
                             <b>  CANTIDAD: 
                         <?php
-                         {
+                         
                         ?>  
-                            <?php echo $arreglo['cantidad']?><br>PRECIO: $
-                            <?php echo $arreglo['precio']?></b>
+                            <?php echo $indice['cantidad']?><br>PRECIO: $
+                            <?php echo $indice['precio']?></b>
                         </div>
                             <?php
                         }
@@ -231,7 +233,7 @@ else
                                         </div>
     
                                         <div class="col-4   d_p">
-                                        <?php echo "<a href='carrito.php?item=$indice'>Eliminar Producto</a>"; ?>
+                                        <?php echo "<a href='carrito.php?item=".$indice["nombre"].">Eliminar Producto</a>"; ?>
                                         </div>
                                           
                                         <!--Modal Informacion de Productos-->

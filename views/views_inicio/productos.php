@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -342,7 +343,7 @@ session_start();
                         <b><?php echo $datos->CATEGORIA ?></b>
                     </div>
                     <div class="nombre_producto" style="height:80px ">
-                    <input type="hidden" name="nombre" value="fijo">
+                    <input type="hidden" name="nombre" value="<?php echo $datos->PRODUCTO ?>">
                     <?php echo $datos->PRODUCTO ?>
                     </div>
                     <div class="informacion_producto">
@@ -360,15 +361,15 @@ session_start();
                         echo "PRODUCTOS NO DISPONIBLE";
                     }
                     ?>
-                       </form>
+                       
                     </div>
                     <div class="precio_producto">
-                        <form action="" method="POST">
+    
                     <input type="hidden" name="precio" value="<?php echo $datos->PRECIO?>">
                         <b><?php echo "PRECIO:$".$datos->PRECIO ?></b>
-                        </form>
+                     
                     </div>
-                    <form action="" method="POST">
+           
                     <div class="input-group">
                         <input type="hidden" name="cantidad" value="10">
                         <span class="input-group-text   barra_cantidad">Cantidad</span>
@@ -437,11 +438,7 @@ session_start();
                             </div>
 
                             <!--Footer Modal-->
-                            <div class="modal-footer">
-                                <button class="btn  agregar_carrito">
-                                    <b>Agregar al Carrito</b>
-                                </button>
-                            </div>
+                           
                         </div>
                         </div>
                     </div>
@@ -455,26 +452,31 @@ session_start();
                     ?>
 
 <?php
+    
         if(isset($_POST["agregar"]))
         {
 
-        $producto=$_POST["nombre"];
+      $producto=$_POST["nombre"];
         $cantidad=$_POST["cantidad"];
         $precio=$_POST["precio"];
+
+        echo $producto,$cantidad,$precio;
         $total_c=0;
         if(isset($_SESSION["carrito"])){
-            foreach($_SESSION["carrito"] as $indice =>$arrreglo){
-                if($producto==$indice){
-                $total_c=intval($arrreglo["cantidad"]);
+          foreach($_SESSION["carrito"] as $indice =>$arrreglo){
+               if($producto==$indice){
+               $total_c=intval($arrreglo["cantidad"]);
                 }
             }
-        }
+      }
 
 $_SESSION["carrito"][$producto]["cantidad"]=$total_c+$cantidad;
 $_SESSION["carrito"][$producto]["precio"]=$precio;
+$_SESSION["carrito"][$producto]["nombre"]=$producto;
+
 
 echo "<script>alert('Producto $producto agregado al carrito');</script>";
-}
+    }
 
 ?>
 
