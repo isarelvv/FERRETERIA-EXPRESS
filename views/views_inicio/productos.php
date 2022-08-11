@@ -359,7 +359,7 @@ session_start();
                     }
                     else
                     {
-                        echo "<div class='mt-3 text-danger'>";
+                        echo "<div class='mt-2 text-danger'>";
                         echo "PRODUCTOS NO DISPONIBLE";
                     }
                     ?>
@@ -449,8 +449,6 @@ session_start();
                                 <?php echo $datos->DESCRIPCION ?>
                                 </div>
                             </div>
-
-                            <!--Footer Modal-->
                            
                         </div>
                         </div>

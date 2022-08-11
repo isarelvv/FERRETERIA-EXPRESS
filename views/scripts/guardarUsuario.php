@@ -19,7 +19,7 @@
     $searchlogin = new select();
     $insert = new ejecutar();
     $insert2 = new ejecutar();
-
+    
     extract($_POST);
 
     $contraseñahash = password_hash($pass, PASSWORD_DEFAULT);

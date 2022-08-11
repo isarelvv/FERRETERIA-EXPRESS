@@ -42,12 +42,13 @@ session_start();
             <?php 
             if(isset($_SESSION["usuario"]))
             {    
-                echo "<div class='col-2'>
-                <button class='btn  boton-login' type='button' >
+                echo "<div class='col-2' texto-boton-login>
+                <a href='views/views_inicio/cuenta.php' class='link_cuenta' style='color: white'>
+                <button class='btn  boton-login' type='button'>
                     <img src='svg/perfil-b.svg' alt='' class='icono_boton'>       
                     <p class='texto-boton-login-no-iniciado text-start'><b>Bienvenido ".$_SESSION["usuario"]."</b>
-                    <a href='views/views_inicio/registrarse.php'></a></p>
-                </button>";
+                    </a></p>
+                </button> </div>";
                 
                 
             }
@@ -100,7 +101,7 @@ session_start();
                     </div> 
                 </div>
             </div>
-        </div>
+       
 
         <!--Parte Abajo Header-->
           

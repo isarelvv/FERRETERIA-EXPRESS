@@ -308,6 +308,7 @@ else
                         {
                             $producto = $_REQUEST["item"];
                             unset($_SESSION["carrito"][$producto]);
+                            header("Location:carrito.php");
                             if($_SESSION["carrito"]==NULL)
                             {
                                 echo "<div class='row text-center'>
@@ -332,8 +333,35 @@ else
                         <div class="text-center border-bottom border-secondary  cuadro_header">
                             <b>Metodo de Entrega</b>
                         </div>
-    
+
+                        <form action=''>
                         <div class="row">
+                                
+                        <?php
+                        if($total<500)
+                        {
+                            echo "<div class='col-12 border-start'>
+                            <div class='form-check  opciones_check_dos'>
+                                <input class='form-check-input' type='radio' name='metodo_entrega' id='tienda' checked>
+                                <label class='form-check-label' for=tienda'>
+                                    Recoger en tienda
+                                </label>
+                            </div>
+                        </div>
+                       ";
+                        }
+                        else
+                        {
+                            ?>
+                            <div class="col-6 border-start">
+                                <div class="form-check  opciones_check_dos">
+                                    <input class="form-check-input" type="radio" name="metodo_entrega" id="tienda" checked>
+                                    <label class="form-check-labe" for="tienda">
+                                        Recoger en tienda
+                                    </label>
+                                </div>
+                            </div>
+                        
                             <div class="col-6 border-end">
                                 <div class="form-check  opciones_check">
                                     <input class="form-check-input" type="radio" name="metodo_entrega" id="domicilio" data-bs-toggle="collapse" data-bs-target="#envios" aria-expanded="false" aria-controls="collapseExample">
@@ -342,48 +370,16 @@ else
                                     </label>
                                 </div>
                             </div>
-    
-                            <div class="col-6 border-start">
-                                <div class="form-check  opciones_check_dos">
-                                    <input class="form-check-input" type="radio" name="metodo_entrega" id="tienda" checked>
-                                    <label class="form-check-label" for="tienda">
-                                        Recoger en tienda
-                                    </label>
-                                </div>
-                            </div>
-    
-                            <div class="collapse" id="envios">
-                                <form action="">
-                                    <div class="border-top  opciones_envios">
-                                        <div class="opciones">
-                                            <input class="form-check-input" type="radio" name="lugar_envio" id="registro" checked>
-                                            <label class="form-check-label" for="registro">Enviar a la direccion registrada</label>
-                                        </div>
-
-                                        <div>
-                                            <input class="form-check-input" type="radio" name="lugar_envio" id="nueva_dire">
-                                            <label class="form-check-label" for="nueva_dire">Enviar a otra direccion</label>
-                                            <form action="">
-                                                <div class="contenedores_form">
-                                                    <!--Direccion-->
-                                                    <div class="form-floating">
-                                                        <input class="form-control  conf_labels" type="text" id="direccion" placeholder="Direccion">
-                                                        <label class="col-form-label-sm" for="direccion">Direccion</label>
-                                                    </div>
-                                
-                                                    <!--Codigo Postal-->
-                                                    <div class="form-floating">
-                                                        <input class="form-control  conf_labels" type="text" id="cp" placeholder="Codigo Postal" style="max-width: 200px;">
-                                                        <label class="col-form-label-sm" for="cp">Codigo Postal</label>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                            </form>
                         </div>
-                    </div>
+                        <?php
+                        }
+                        ?>
+                            
+    
+                            
+                        </div>
+              
     
                     <!--Fecha de Entrega-->
                     <div class="border border-secondary     cuadros_detalles fondo_compra">
