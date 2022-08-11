@@ -65,9 +65,7 @@ else
                         <p class='texto-boton-login-no-iniciado text-start'><b>Iniciar Sesion o Registrarse</b></p>
                     </button>";
                     }
-                ?>
-                <!--Boton Iniciar Sesion-->
-                
+                ?>                
       
                 <!--Modal Iniciar Sesion-->
                 <div class="modal modal-sm" id="iniciar-sesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -193,7 +191,7 @@ else
                             <div class='row border border-secondary     productos'>
                                 <!--Imagen-->
                                 <div class='col-1'>
-                                    <img src='../../svg/facebook.svg' alt='' class='imagen_productos'>
+                                    <img src=' ".$indice['foto']."' alt='' class='imagen_productos'>
                                 </div>
         
                                 <!--Info Producto Carrito-->
@@ -217,7 +215,8 @@ else
                         </div>
                             <?php
                         }
-                    
+
+
                          ?>
                     </div>
     
@@ -247,29 +246,29 @@ else
                                                     <div class="modal-body">
                                                         <!--Imagen Producto-->
                                                         <div class="text-center">
-                                                            <img src="../../svg/facebook.svg" alt="" class="imagen_producto_modal">
+                                                            <img src="<?php echo $indice['foto']?>" alt="" class="imagen_producto_modal">
                                                         </div>
     
                                                         <!--Categoria del Producto-->
                                                         <div class="categoria_producto_modal">
-                                                            <b>Seguridad</b>
+                                                            <b><?php echo $indice['categoria'] ?></b>
                                                         </div>
     
                                                         <!--Nombre del Producto-->
                                                         <div class="nombre_producto_modal">
-                                                            <b>LENTES DE SEGURIDAD TRANPARENTES DE SOBREPONER *TRUPER* MODELO 14308</b>
+                                                            <b><?php echo $indice['nombre'] ?></b>
                                                         </div>
     
                                                         <!--Precio del Producto-->
                                                         <div class="precio_producto_modal">
-                                                            Precio: $49
+                                                            Precio: $<?php echo $indice['precio'] ?>
                                                         </div>
     
                                                         <hr>
     
                                                         <!--Descripcion del Producto-->
                                                         <div class="descripcion_producto_modal">
-                                                            Descripcion
+                                                            Descripcion: <?php echo $indice['descripcion'] ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -278,10 +277,16 @@ else
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
+                        <a href="carrito.php?vaciar=true" class="offset-10 col-3">Vaciar Carrito</a>
 
                         <?php
+                        
                         }
+                        ?>
+                        
+                        <?php
                         }
                         else
                         {
@@ -295,11 +300,26 @@ else
                         <div class='mensaje_no_encontrado'><b>No hay productos en su carrito</b></div>
                         </div>";
                         }
+                        if(isset($_REQUEST['vaciar']))
+                        {
+                            unset($_SESSION["carrito"]);
+                        }
                         if(isset($_REQUEST["item"]))
                         {
                             $producto = $_REQUEST["item"];
                             unset($_SESSION["carrito"][$producto]);
+                            if($_SESSION["carrito"]==NULL)
+                            {
+                                echo "<div class='row text-center'>
 
+                                <div class='col   barras_mensaje'><hr></div>
+                                </div>
+        
+                                <div class='text-center'>
+                                <div><img src='../../svg/carrito-n.svg' alt='' class='lupa'></div>
+                                <div class='mensaje_no_encontrado'><b>No hay productos en su carrito</b></div>
+                                </div>";
+                            }
                         }
                         ?>
                     </div>

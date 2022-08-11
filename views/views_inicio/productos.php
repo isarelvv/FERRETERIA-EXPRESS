@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -190,7 +191,7 @@ session_start();
 
             <!--Cantidad de Productos y Filtros-->
             <div class="row col-10">
-                <div class="col-4   titulos"><b>Productos: (30 resultados)</b></div>
+                <div class="col-4   titulos"><b>Productos:</b></div>
                 <div class="col-2   titulos"><b>Ordenar por:</b></div>
                 <div class="col-3">
                     <form action="" method="POST">
@@ -337,8 +338,10 @@ session_start();
                     ?>
                     <div class="col  " style="max-width: 250px; height:475px ">
                     <form action="" method="POST">
+                    <input type="hidden" name="foto" value="<?php echo $datos->FOTO ?>">
                     <img src="<?php echo $datos->FOTO ?>" alt="<?php echo $datos->FOTO ?>" class="imagenes_productos">
                     <div class="categoria_producto">
+                        <input type="hidden" name="categoria" value="<?php $datos->CATEGORIA?>">
                         <b><?php echo $datos->CATEGORIA ?></b>
                     </div>
                     <div class="nombre_producto" style="height:80px ">
@@ -370,7 +373,7 @@ session_start();
                     </div>
            
                     <div class="input-group">
-                        <input type="hidden" name="cantidad" value="10">
+                        <input type="hidden" name="cantidad" value="1">
                         <span class="input-group-text   barra_cantidad">Cantidad</span>
                         <input type="number" class="form-control    barra_cantidad" aria-label="Username" placeholder="" name="cantidad" min="1" max="100" required>
                     </div>
@@ -442,6 +445,7 @@ session_start();
 
                                 <!--Descripcion del Producto-->
                                 <div class="descripcion_producto_modal">
+                                    <input type="hidden" name="descripcion" value="<?php echo $datos->DESCRIPCION?>">
                                 <?php echo $datos->DESCRIPCION ?>
                                 </div>
                             </div>
@@ -468,8 +472,7 @@ session_start();
       $producto=$_POST["nombre"];
         $cantidad=$_POST["cantidad"];
         $precio=$_POST["precio"];
-
-        echo $producto,$cantidad,$precio;
+        $foto = $_POST["foto"];
         $total_c=0;
         if(isset($_SESSION["carrito"])){
           foreach($_SESSION["carrito"] as $indice =>$arrreglo){
@@ -482,6 +485,7 @@ session_start();
 $_SESSION["carrito"][$producto]["cantidad"]=$total_c+$cantidad;
 $_SESSION["carrito"][$producto]["precio"]=$precio;
 $_SESSION["carrito"][$producto]["nombre"]=$producto;
+$_SESSION["carrito"][$producto]["foto"] = $foto;
 
 
 echo "<script>alert('Producto $producto agregado al carrito');</script>";
