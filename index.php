@@ -21,19 +21,7 @@ session_start();
 <?php
 if(isset($_SESSION['usuario']))
 {
-    
-    switch ($_SESSION['SESION']) {
-        case 300:
-         header("Location: index.php");
-       break;
-       case 301:
-           header("Location: views/verVendedores.php");
-           break;
-       case 302:
-         header("Location: views/views_repartidor/repartidores_inicio.html");
-        break;
-     }    
-    
+
 }
 
 ?>
@@ -78,7 +66,7 @@ if(isset($_SESSION['usuario']))
                 <button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
                     <img src='svg/perfil-b.svg' alt='' class='icono_boton'>
                     <p class='texto-boton-login-no-iniciado text-start'><b>Iniciar Sesion o Registrarse</b></p>
-                </button>";
+                </button></div>";
             }
 
             ?>
