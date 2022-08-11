@@ -18,6 +18,25 @@ session_start();
 </head>
 <body>
     
+<?php
+if(isset($_SESSION['usuario']))
+{
+    
+    switch ($_SESSION['SESION']) {
+        case 300:
+         header("Location: index.php");
+       break;
+       case 301:
+           header("Location: views/verVendedores.php");
+           break;
+       case 302:
+         header("Location: views/views_repartidor/repartidores_inicio.html");
+        break;
+     }    
+    
+}
+
+?>
     <!--Header-->
     <header class="row justify-content-center">
         <!--Parte Arriba Header-->
