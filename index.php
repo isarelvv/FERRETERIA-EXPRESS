@@ -17,7 +17,6 @@ session_start();
     <title>Ferreteria y Materiales Express</title>
 </head>
 <body>
-    
     <!--Header-->
     <header class="row justify-content-center">
         <!--Parte Arriba Header-->
