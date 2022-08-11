@@ -17,6 +17,14 @@ session_start();
     <title>Ferreteria y Materiales Express</title>
 </head>
 <body>
+    
+<?php
+if(isset($_SESSION['usuario']))
+{
+
+}
+
+?>
     <!--Header-->
     <header class="row justify-content-center">
         <!--Parte Arriba Header-->
@@ -58,7 +66,7 @@ session_start();
                 <button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
                     <img src='svg/perfil-b.svg' alt='' class='icono_boton'>
                     <p class='texto-boton-login-no-iniciado text-start'><b>Iniciar Sesion o Registrarse</b></p>
-                </button>";
+                </button></div>";
             }
 
             ?>

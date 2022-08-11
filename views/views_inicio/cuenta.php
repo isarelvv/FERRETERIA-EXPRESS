@@ -25,7 +25,6 @@ if(!isset($_SESSION['usuario']))
 else
 {
 
-
 ?>    
 
 
@@ -190,31 +189,29 @@ else
             <div class="col-5 border border-dark rounded rounded-3    cont_form">
                 <div class="label_form">
                     <label for="nombre" class="form-label   texto_label"><b>Nombre</b></label>
-                    <fieldset disabled="disabled">
-                        <input type="text" id="nombre" class="form-control" placeholder="Edeh">
+                    <fieldset >
+                        <input type="text" id="nombre" class="form-control" placeholder="Nombre" value=" <?php echo $_SESSION['CLIENTE'] ;?>">
                     </fieldset>
                 </div>
 
                 <div class="label_form">
                     <label for="apellido_paterno" class="form-label     texto_label"><b>Apellido Paterno</b></label>
-                    <fieldset disabled="disabled">
-                        <input type="text" id="apellido_paterno" class="form-control" placeholder="Meza">
+                    <fieldset>
+                        <input type="text" id="apellido_paterno" class="form-control" placeholder="Apellido Paterno" value="<?php echo $_SESSION['AP'] ; ?>">
                     </fieldset>
                 </div>
 
                 <div class="label_form">
                     <label for="apellido_materno" class="form-label     texto_label"><b>Apellido Materno</b></label>
                     <fieldset disabled="disabled">
-                        <input type="text" id="apellido_materno" class="form-control" placeholder="Reyes">
+                        <input type="text" id="apellido_materno" class="form-control" placeholder="Apellido Materno" value="<?php echo $_SESSION['AM'] ?>">
                     </fieldset>
                 </div>
-
-                <hr>
 
                 <div class="label_form">
                     <label for="email" class="form-label    texto_label"><b>Correo Electronico</b></label>
                     <fieldset disabled="disabled">
-                        <input type="text" id="email" class="form-control" placeholder="tilinlover17@gmail.com">
+                        <input type="text" id="email" class="form-control" placeholder="Correo" value="<?php echo $_SESSION['usuario']?>">
                     </fieldset>
                 </div>
             </div>
@@ -254,13 +251,13 @@ else
                 
                 <div class="label_form">
                     <label for="direccion" class="form-label     texto_label"><b>Direccion</b></label>
-                    <input type="text" id="direccion" class="form-control">
+                    <input type="text" id="direccion" class="form-control" value="<?php echo $_SESSION['DIR'] ?>">
                 </div>
 
                 <div class="row justify-content-between">
                     <div class="col-5    label_form">
                         <label for="c_p" class="form-label     texto_label"><b>Codigo Postal</b></label>
-                        <input type="text" id="c_p" class="form-control">
+                        <input type="text" id="c_p" class="form-control" value="<?php echo $_SESSION['CP'] ?>">
                     </div>
     
                     <div class="text-end col-5    boton_guardar_dos">
@@ -276,7 +273,7 @@ else
                 <div class="border border-dark rounded rounded-3 row    cont_form">
                     <div class="col-6   label_form">
                         <label for="c_p" class="form-label     texto_label"><b>Numero de Telefono</b></label>
-                        <input type="tel" id="c_p" class="form-control">
+                        <input type="tel" id="c_p" class="form-control" value="<?php echo $_SESSION['TEL'] ?>">
                     </div>
 
                     <div class="text-end col-5    boton_guardar_dos">

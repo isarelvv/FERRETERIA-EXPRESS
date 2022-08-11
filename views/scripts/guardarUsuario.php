@@ -29,14 +29,9 @@
     $result = $searchlogin->seleccionar($llave);
     foreach ($result as $key)
     {
-      $key->ID_LOGIN;
-    
-    
+    $IDCLIENTE = $key->ID_LOGIN;
     $cadena = "INSERT INTO clientes (nombre,ap_paterno,ap_materno,telefono,direccion,cp,correo,login) VALUES
-    ('$nombre','$appaterno','$apmaterno','$tel','$dir','$codpst','$correo','$key->ID_LOGIN')";
-    
-    
-    
+    ('$nombre','$appaterno','$apmaterno','$tel','$dir','$codpst','$correo','$IDCLIENTE')";
     $insert->ejecutar($cadena);
     }
     echo "<div class='alert alert-success'>Usuario Registrado</div>";
