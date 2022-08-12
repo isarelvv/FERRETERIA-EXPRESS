@@ -26,7 +26,7 @@
                 <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/inicio.php">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link    items " aria-current="page" href="../../views/views_administrador/reportespedidos.php">Reportes</a>
+                <a class="nav-link    items active" aria-current="page" href="../../views/views_administrador/reportes.php">Reportes</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link    items " href="../../views/views_administrador/altasproductos.php">Altas</a>
@@ -35,7 +35,7 @@
                 <a class="nav-link    items" href="../../views/views_administrador/inventario.php">Inventarios</a>
               </li> 
               <li class="nav-item">
-                <a class="nav-link    items " href="../../views/views_administrador/ventas.php">Ventas</a>
+                <a class="nav-link    items" href="../../views/views_administrador/ventas.php">Ventas</a>
               </li>
             </ul>
 
@@ -55,11 +55,15 @@
             </div>
           </div>
       </nav>
-        <div class="col-8">
-
+        <div class="col-8 container">
+        <div class="btn-group container pt-5 " role="group" aria-label="Basic outlined example">
+                <a href="reportesvendedores.php" class="btn btn-outline-danger " aria-current="page">LISTA DE VENDEDORES</a>
+                <a href="reporterepartidores.php" class="btn btn-danger active">LISTA DE REPARTIDORS</a>
+                <a href="reportespedidos.php" class="btn btn-outline-danger">PEDIDOS</a>
+            </div>
         </div>
     </div>
-    
+
 </body>
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/bootstrap.bundle.js"></script>

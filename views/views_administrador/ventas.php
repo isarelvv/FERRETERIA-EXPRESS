@@ -26,7 +26,7 @@
                 <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/inicio.php">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link    items " aria-current="page" href="../../views/views_administrador/reportes.php">Reportes</a>
+                <a class="nav-link    items " aria-current="page" href="../../views/views_administrador/reportespedidos.php">Reportes</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link    items " href="../../views/views_administrador/altasproductos.php">Altas</a>
@@ -54,9 +54,39 @@
               </div>
             </div>
           </div>
-      </nav>
-        <div class="col-8">
-
+        </nav>
+        <div class="col-8 container">
+            <h2>HISTORIAL DE VENTAS</h2>
+            <form action="" method="post">
+                <div class="container  border">
+                    FORLUMARIO DE FILTRADOp
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </form>
+            <div class="container border mt-3">
+                <div class="row border">
+                    <div class="col-3"><img src="" alt="hoal"></div>
+                    <div class="col-7">
+                        <div class="row border-bottom">
+                            <div class="col-4">NUMERO DE VENTA</div>
+                            <div class="col-4">CLINTE</div>
+                            <div class="col-4">REPARTIDOR</div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-6">NOMBRE PRODUCTO</div>
+                            <div class="col-6">CANTIDAD</div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <span>TOTAL</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     

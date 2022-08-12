@@ -55,8 +55,12 @@
             </div>
           </div>
       </nav>
-        <div class="col-8">
-
+        <div class="col-8 container">
+        <div class="btn-group container pt-5 " role="group" aria-label="Basic outlined example">
+                <a href="reportesvendedores.php" class="btn btn-outline-danger " aria-current="page">LISTA DE VENDEDORES</a>
+                <a href="reporterepartidores.php" class="btn btn-outline-danger">LISTA DE REPARTIDORS</a>
+                <a href="reportepedidos.php" class="btn btn-danger active">PEDIDOS</a>
+            </div>
         </div>
     </div>
 
