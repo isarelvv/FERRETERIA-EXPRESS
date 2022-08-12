@@ -349,6 +349,7 @@ session_start();
                     <?php echo $datos->PRODUCTO ?>
                     </div>
                     <div class="informacion_producto">
+                        <input type="hidden" name="id" value="<?php echo $datos->CODIGO ?>">
                         <a href="..." data-bs-toggle="modal" data-bs-target="<?php echo "#HOLA".$datos->CODIGO ?>">Ver informacion detallada</a>
                     </div>
                     
@@ -471,6 +472,7 @@ session_start();
         $cantidad=$_POST["cantidad"];
         $precio=$_POST["precio"];
         $foto = $_POST["foto"];
+        $cod = $_POST["id"];
         $total_c=0;
         if(isset($_SESSION["carrito"])){
           foreach($_SESSION["carrito"] as $indice =>$arrreglo){
@@ -480,10 +482,11 @@ session_start();
             }
       }
 
-$_SESSION["carrito"][$producto]["cantidad"]=$total_c+$cantidad;
-$_SESSION["carrito"][$producto]["precio"]=$precio;
-$_SESSION["carrito"][$producto]["nombre"]=$producto;
+$_SESSION["carrito"][$producto]["cantidad"] = $total_c+$cantidad;
+$_SESSION["carrito"][$producto]["precio"] = $precio;
+$_SESSION["carrito"][$producto]["nombre"] = $producto;
 $_SESSION["carrito"][$producto]["foto"] = $foto;
+$_SESSION["carrito"][$producto]["id"] = $cod;
 
 
 echo "<script>alert('Producto $producto agregado al carrito');</script>";

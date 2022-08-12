@@ -76,7 +76,6 @@ else
                         </div>
 
                         <div class="modal-body  m_c_i">
-                        <form action="">
                             <div class="label">
                                 <label for="correo" class="form-label"><b>Correo Electronico</b></label>
                                 <input type="email" id="correo" class="form-control     in_m_i">
@@ -99,7 +98,6 @@ else
                                 <a href="registrarse.php" class="link_modal_i">Registrate aqui</a>
 
                             </div>
-                        </form>
                         </div>
                     </div>
                     </div> 
@@ -164,6 +162,7 @@ else
     <!--Carrito de Compras-->
     <div class="container">
         <!--Mensaje-->
+        <form action='../scripts/compra.php' method="POST">
         <div class="row text-center">
             <div class="col   barras_mensaje"><hr></div>
 
@@ -174,7 +173,6 @@ else
             <div class="col   barras_mensaje"><hr></div>
         </div>
 
-        <form action="">
             <div class="row border border-secondary contenedor_carrito">
                 <!--Detalles del Pedido-->
                 <div class="col-8">
@@ -323,6 +321,7 @@ else
                             }
                         }
                         ?>
+                         </form>
                     </div>
                 </div>
     
@@ -334,7 +333,7 @@ else
                             <b>Metodo de Entrega</b>
                         </div>
 
-                        <form action=''>
+                        
                         <div class="row">
                                 
                         <?php
@@ -355,7 +354,7 @@ else
                             ?>
                             <div class="col-6 border-start">
                                 <div class="form-check  opciones_check_dos">
-                                    <input class="form-check-input" type="radio" name="metodo_entrega" id="tienda" checked>
+                                    <input class="form-check-input" type="radio" name="metodo_entrega" id="tienda" value="Mostrador" checked>
                                     <label class="form-check-labe" for="tienda">
                                         Recoger en tienda
                                     </label>
@@ -364,13 +363,12 @@ else
                         
                             <div class="col-6 border-end">
                                 <div class="form-check  opciones_check">
-                                    <input class="form-check-input" type="radio" name="metodo_entrega" id="domicilio" data-bs-toggle="collapse" data-bs-target="#envios" aria-expanded="false" aria-controls="collapseExample">
+                                    <input class="form-check-input" type="radio" name="metodo_entrega" id="domicilio" value="Domicilio">
                                     <label class="form-check-label" for="domicilio">
                                       Enviar a domicilio
                                     </label>
                                 </div>
                             </div>
-                            </form>
                         </div>
                         <?php
                         }
@@ -411,16 +409,21 @@ else
                     <!--Boton Proceder al Pago-->
                     <div class="row">
                         <div class="text-center row     row_boton">
-                            <button class="btn  texto_boton_pago">
+                            <button class="btn  texto_boton_pago" type="submit">
                                 Proceder al Pago
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
-
+   
+        <?php
+        echo "<pre>";
+        echo var_dump($_SESSION['carrito']);
+        echo "</pre>";
+        ?>
     <!--Footer-->
     <footer>
         <div class="row">
