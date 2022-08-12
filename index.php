@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +13,12 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
     <title>Ferreteria y Materiales Express</title>
 </head>
-<body>    
+<body>   
+
+<?php
+session_start();
+?>
+    
     <!--Header-->
     <header class="row justify-content-center">
         <!--Parte Arriba Header-->
@@ -53,7 +55,7 @@ session_start();
                 echo "<div class='col-2'>
                 <button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
                     <img src='svg/perfil-b.svg' alt='' class='icono_boton'>
-                    <p class='texto-boton-login-no-iniciado text-start'><b>Iniciar Sesion</b></p>
+                    <p class='texto-boton-login-no-iniciado text-start'><b>Iniciar Sesion o Registrarse</b></p>
                 </button>";
             }
 
@@ -98,7 +100,7 @@ session_start();
                 </div>
             </div>
         </div>
-
+            
         <!--Parte Abajo Header-->
           
         <div class="border-bottom border-dark">
@@ -136,7 +138,8 @@ session_start();
                             {
                             echo
                         "<li class='nav-item disabled    boton-bb'>
-                            <a class='btn   boton-a-bb' data-bs-toggle='modal data-bs-target='#iniciar-sesion'>
+                            <a class='btn   boton-a-bb'
+                            class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
                                 <div class='organizar'>
                                     <img src='svg/carrito-b.svg' class='icono'>
                                     <p class='texto-botones-bb'><b>Carrito</b></p>

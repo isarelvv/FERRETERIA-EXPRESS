@@ -50,20 +50,20 @@ class Login
                 session_start();
                 $_SESSION["usuario"] = $usuario;
                 $_SESSION["SESION"]=$login;
-                echo "<div class='alert alert-success-'>";
-                echo "<h2 align='center'> Bienvenido".$_SESSION["usuario"]."<h2>";
+                echo "<div class='alert-success'>";
+                echo "<h2 align='center'> Bienvenido ".$_SESSION["usuario"]."<h2>";
                 echo "</div>";
-                header("Location: ../../index.php");
+                header("refresh:3; ../../index.php");
             }
             
             else 
             {
                 $_SESSION["usuario"] = $usuario;
                 $_SESSION["SESION"]=$login;
-                echo "<div class='alert alert-success-'>";
+                echo "<div class='alert-danger'>";
                 echo "<h2 align='center'> usuario o password incorrecto <h2>";
                 echo "</div>";
-                header ("refresh:2; ../../index.php");
+                header ("refresh:3; ../../index.php");
             }
         }
         catch (PDOException $e)

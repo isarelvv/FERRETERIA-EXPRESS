@@ -112,7 +112,7 @@ session_start();
                                 <b>¿Aún no tienes cuenta?</b>
 
                                 <!--Link Crear Cuenta-->
-                                <a href="../html/registrarse.html" class="link_modal_i">Registrate aqui</a>
+                                <a href="registrarse.php" class="link_modal_i">Registrate aqui</a>
 
                             </div>
                         </form>

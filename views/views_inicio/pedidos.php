@@ -171,10 +171,6 @@ session_start();
             <div class="col   barras_mensaje"><hr></div>
         </div>
         <?php
-        use MyApp\query\select;
-        require_once("../../vendor/autoload.php");
-
-        $busqueda=new select();
 
       //  $cadena="";
        // $pedidos_espera=$busqueda->seleccionar($cadena);

@@ -20,7 +20,7 @@
         <div class="row justify-content-center border-bottom border-1 border-dark border-opacity-25     barra_arriba">
             <!--Logo Express-->
             <div class="col-2 text-end">
-                <object data="../svg/logo-r.svg" class="text-end border border-dark   logo"></object>
+                <object data="../../svg/logo-r.svg" class="text-end border border-dark   logo"></object>
             </div>
             
             <!--Barra de Busqueda-->
@@ -220,19 +220,18 @@
                         <h5>Contraseña</h5>
                         <!--Contraseña-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="password" id="contra" placeholder="Contraseña" name="pass" required>
+                            <input class="form-control  conf_labels" type="password" id="contra" placeholder="Contraseña" name="pass" required maxlength="30" minlength="8">
                             <label class="form-label" for="contra">Contraseña</label>
                             <div id="ayuda_email" class="form-text">La contraseña debe tener al menos 8 digitos.</div>
                         </div>
     
                         <!--Repetir Contraseña-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="password" id="rcontra" placeholder="Repetir Contraseña" name="pass" required>
+                            <input class="form-control  conf_labels" type="password" id="rcontra" placeholder="Repetir Contraseña" name="pass1" required maxlength="30" minlength="8">
                             <label class="form-label" for="rcontra">Repetir Contraseña</label>
                         </div> 
                     </div>
-    
-                    <!--Boton-->
+                        <!--Boton-->
                     <div class="row justify-content-center">
                         <div class="col-6 row">
                             <button class="btn  boton_cc" type="submit">
@@ -240,6 +239,7 @@
                             </button>
                         </div>
                     </div>
+                    <!--Boton-->
                 </form>
             </div>
         </div>

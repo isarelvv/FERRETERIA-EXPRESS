@@ -14,26 +14,23 @@
     require_once("../../vendor/autoload.php");
 
     $insert = new ejecutar();
-    $insert2 = new ejecutar();
 
     extract($_POST);
-    if ($_POST["pass"]==$_POST["pass1"] )
+    $user=$_POST["correo"];
+    $TIPO=$_POST["TIPO"];
+    if ($_POST["pass"]==$_POST["pass1"])
     {
 
     $contraseñahash = password_hash($pass, PASSWORD_DEFAULT);
-    $cadena2 = "INSERT INTO login (correo,contraseña,tipo_usuario) VALUES ('$correo','$contraseñahash',303)";
+    $cadena = "INSERT INTO login (CORREO,CONTRASEÑA,TIPO_USUARIO) VALUES ('$user','$contraseñahash','$TIPO')";
   
-    $cadena = "INSERT INTO clientes (nombre,ap_paterno,ap_materno,telefono,direccion,cp,correo) VALUES
-    ('$nombre','$appaterno','$apmaterno','$tel','$dir','$codpst','$correo')";
-
-    
-
-    $insert2->ejecutar($cadena2);
     $insert->ejecutar($cadena);
     echo "<div class='alert alert-success'>Usuario Registrado</div>";
     header("refresh:3; ../../index.php");
     }
+
     else 
+
     {
         echo "<div class='alert alert-danger'>Las contraseñas no coinciden</div>";
         header("refresh:2; ../views_inicio/registrarse.php");
