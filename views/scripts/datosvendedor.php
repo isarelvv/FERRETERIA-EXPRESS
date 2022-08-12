@@ -21,6 +21,7 @@
         $_SESSION['VENDCORREO'] = $infovendedor->CORREO;
         $_SESSION['VENDTELEFONO'] = $infovendedor->TELEFONO;
     }
+    header("Location: ../views_vendedor/vInicio.html");
 
     ?>
 </body>
