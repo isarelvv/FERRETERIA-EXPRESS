@@ -183,6 +183,27 @@ else
                             <b>Detalles del Pedido</b>
                         </div>
                         <?php
+                        if(isset($_REQUEST['vaciar']))
+                        {
+                            unset($_SESSION["carrito"]);
+                        }
+                        if(isset($_REQUEST["item"]))
+                        {
+                            $producto = $_REQUEST["item"];
+                            unset($_SESSION["carrito"][$producto]);
+                            if($_SESSION["carrito"]==NULL)
+                            {
+                                echo "<div class='row text-center'>
+
+                                <div class='col   barras_mensaje'><hr></div>
+                                </div>
+        
+                                <div class='text-center'>
+                                <div><img src='../../svg/carrito-n.svg' alt='' class='lupa'></div>
+                                <div class='mensaje_no_encontrado'><b>No hay productos en su carrito</b></div>
+                                </div>";
+                            }
+                        }   
                         if(isset($_SESSION['carrito']))
                         {
                             foreach($_SESSION['carrito'] as $indice)
@@ -300,28 +321,7 @@ else
                         <div class='mensaje_no_encontrado'><b>No hay productos en su carrito</b></div>
                         </div>";
                         }
-                        if(isset($_REQUEST['vaciar']))
-                        {
-                            unset($_SESSION["carrito"]);
-                        }
-                        if(isset($_REQUEST["item"]))
-                        {
-                            $producto = $_REQUEST["item"];
-                            unset($_SESSION["carrito"][$producto]);
-                            header("Location:carrito.php");
-                            if($_SESSION["carrito"]==NULL)
-                            {
-                                echo "<div class='row text-center'>
-
-                                <div class='col   barras_mensaje'><hr></div>
-                                </div>
-        
-                                <div class='text-center'>
-                                <div><img src='../../svg/carrito-n.svg' alt='' class='lupa'></div>
-                                <div class='mensaje_no_encontrado'><b>No hay productos en su carrito</b></div>
-                                </div>";
-                            }
-                        }
+                        
                         ?>
                     </div>
                 </div>
