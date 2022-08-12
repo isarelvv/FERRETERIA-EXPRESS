@@ -1,3 +1,7 @@
+<?php
+session_start();
+$total = 0;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +18,16 @@
     <title>Carrito - Ferreteria y Materiales Express</title>
 </head>
 <body>
+<?php
+if(isset($_SESSION['usuario']))
+{
+
+}
+else
+{
+    header("Location: ../../index.php");
+}
+?>
     <!--Header-->
     <header class="row justify-content-center">
         <!--Parte Arriba Header-->
@@ -36,11 +50,22 @@
 
             <!--Login-->
             <div class="col-2">
-                <!--Boton Iniciar Sesion-->
-                <button class="btn  boton-login" type="button" data-bs-toggle="modal" data-bs-target="#iniciar-sesion">
-                    <img src="../../svg/perfil-b.svg" alt="" class="icono_boton">
-                    <p class="texto-boton-login-no-iniciado text-start"><b>Iniciar Sesion o Registrarse</b></p>
-                </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                    {
+                        echo "<button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
+                        <img src='../../svg/perfil-b.svg' alt='' class='icono_boton'>
+                        <p class='texto-boton-login-no-iniciado text-start'><b>Bienvenido ". $_SESSION['usuario']."</b></p>
+                    </button>";
+                    }
+                    else
+                    {
+                        echo "<button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
+                        <img src='../../svg/perfil-b.svg' alt='' class='icono_boton'>
+                        <p class='texto-boton-login-no-iniciado text-start'><b>Iniciar Sesion o Registrarse</b></p>
+                    </button>";
+                    }
+                ?>                
       
                 <!--Modal Iniciar Sesion-->
                 <div class="modal modal-sm" id="iniciar-sesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -157,32 +182,46 @@
                         <div class="text-center border-bottom border-secondary  cuadro_header">
                             <b>Detalles del Pedido</b>
                         </div>
-    
-                        <!--Productos-->
-                        <div class="row border border-secondary     productos">
-                            <!--Imagen-->
-                            <div class="col-1">
-                                <img src="../../svg/facebook.svg" alt="" class="imagen_productos">
-                            </div>
-    
-                            <!--Info Producto Carrito-->
-                            <div class="col  info_producto_carrito">
-                                <div class="row justify-content-between">
-                                    <div class="col-9   nombre_producto">
-                                        <b>$PRODUCTO</b>
-                                    </div>
-                                    <div class="col-3 text-end  precio_total">
-                                        <b>$PRECIO</b>
-                                    </div>
+                        <?php
+                        if(isset($_SESSION['carrito']))
+                        {
+                            foreach($_SESSION['carrito'] as $indice)
+                            {
+                            echo"<!--Productos-->
+                            <div class='row border border-secondary     productos'>
+                                <!--Imagen-->
+                                <div class='col-1'>
+                                    <img src=' ".$indice['foto']."' alt='' class='imagen_productos'>
                                 </div>
+        
+                                <!--Info Producto Carrito-->
+                                <div class='col  info_producto_carrito'>
+                                    <div class='row justify-content-between'>
+                                        <div class='col-9   nombre_producto'>
+                                            <b>".$indice["nombre"]."</b>
+                                        </div>";
+                        ?>
+                        <?php
+                        $total += $indice["cantidad"] * $indice["precio"];
+                        foreach($indice as $key => $value)
+                        ?>     
+                        <div class='col-3 text-end  precio_total'>
+                            <b>  CANTIDAD:
+                        <?php
+                        {
+                        ?>  
+                            <?php echo $indice['cantidad']?><br>PRECIO: $
+                            <?php echo $indice['precio']?></b>
+                        </div>
+                            <?php
+                        }
+
+
+                         ?>
+                    </div>
     
                                 <div class="row     barra_baja">
                                     <div class="col-4">
-                                        <div class="input-group">
-                                            <span class="input-group-text   barra_cantidad">Cantidad</span>
-                                            <input type="number" class="form-control    barra_cantidad" aria-label="Username" placeholder="$cantidad">
-                                            <span class="input-group-text   barra_cantidad">$unidad</span>
-                                        </div>
                                     </div>
     
                                     <div class="col row">
@@ -191,7 +230,7 @@
                                         </div>
     
                                         <div class="col-4   d_p">
-                                            <a href="">Eliminar del carrito</a>
+                                        <a href="<?php echo 'carrito.php?item='.$indice['nombre'].'' ?>">Eliminar Producto</a>
                                         </div>
                                           
                                         <!--Modal Informacion de Productos-->
@@ -207,29 +246,29 @@
                                                     <div class="modal-body">
                                                         <!--Imagen Producto-->
                                                         <div class="text-center">
-                                                            <img src="../../svg/facebook.svg" alt="" class="imagen_producto_modal">
+                                                            <img src="<?php echo $indice['foto']?>" alt="" class="imagen_producto_modal">
                                                         </div>
     
                                                         <!--Categoria del Producto-->
                                                         <div class="categoria_producto_modal">
-                                                            <b>Seguridad</b>
+                                                            <b><?php echo $indice['categoria'] ?></b>
                                                         </div>
     
                                                         <!--Nombre del Producto-->
                                                         <div class="nombre_producto_modal">
-                                                            <b>LENTES DE SEGURIDAD TRANPARENTES DE SOBREPONER *TRUPER* MODELO 14308</b>
+                                                            <b><?php echo $indice['nombre'] ?></b>
                                                         </div>
     
                                                         <!--Precio del Producto-->
                                                         <div class="precio_producto_modal">
-                                                            Precio: $49
+                                                            Precio: $<?php echo $indice['precio'] ?>
                                                         </div>
     
                                                         <hr>
     
                                                         <!--Descripcion del Producto-->
                                                         <div class="descripcion_producto_modal">
-                                                            Descripcion
+                                                            Descripcion: <?php echo $indice['descripcion'] ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -238,7 +277,52 @@
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
+                        <a href="carrito.php?vaciar=true" class="offset-10 col-3">Vaciar Carrito</a>
+
+                        <?php
+                        
+                        }
+                        ?>
+                        
+                        <?php
+                        }
+                        else
+                        {
+                            echo "<div class='row text-center'>
+
+                        <div class='col   barras_mensaje'><hr></div>
+                        </div>
+
+                        <div class='text-center'>
+                        <div><img src='../../svg/carrito-n.svg' alt='' class='lupa'></div>
+                        <div class='mensaje_no_encontrado'><b>No hay productos en su carrito</b></div>
+                        </div>";
+                        }
+                        if(isset($_REQUEST['vaciar']))
+                        {
+                            unset($_SESSION["carrito"]);
+                        }
+                        if(isset($_REQUEST["item"]))
+                        {
+                            $producto = $_REQUEST["item"];
+                            unset($_SESSION["carrito"][$producto]);
+                            header("Location:carrito.php");
+                            if($_SESSION["carrito"]==NULL)
+                            {
+                                echo "<div class='row text-center'>
+
+                                <div class='col   barras_mensaje'><hr></div>
+                                </div>
+        
+                                <div class='text-center'>
+                                <div><img src='../../svg/carrito-n.svg' alt='' class='lupa'></div>
+                                <div class='mensaje_no_encontrado'><b>No hay productos en su carrito</b></div>
+                                </div>";
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
     
@@ -249,8 +333,35 @@
                         <div class="text-center border-bottom border-secondary  cuadro_header">
                             <b>Metodo de Entrega</b>
                         </div>
-    
+
+                        <form action=''>
                         <div class="row">
+                                
+                        <?php
+                        if($total<500)
+                        {
+                            echo "<div class='col-12 border-start'>
+                            <div class='form-check  opciones_check_dos'>
+                                <input class='form-check-input' type='radio' name='metodo_entrega' id='tienda' checked>
+                                <label class='form-check-label' for=tienda'>
+                                    Recoger en tienda
+                                </label>
+                            </div>
+                        </div>
+                       ";
+                        }
+                        else
+                        {
+                            ?>
+                            <div class="col-6 border-start">
+                                <div class="form-check  opciones_check_dos">
+                                    <input class="form-check-input" type="radio" name="metodo_entrega" id="tienda" checked>
+                                    <label class="form-check-labe" for="tienda">
+                                        Recoger en tienda
+                                    </label>
+                                </div>
+                            </div>
+                        
                             <div class="col-6 border-end">
                                 <div class="form-check  opciones_check">
                                     <input class="form-check-input" type="radio" name="metodo_entrega" id="domicilio" data-bs-toggle="collapse" data-bs-target="#envios" aria-expanded="false" aria-controls="collapseExample">
@@ -259,48 +370,16 @@
                                     </label>
                                 </div>
                             </div>
-    
-                            <div class="col-6 border-start">
-                                <div class="form-check  opciones_check_dos">
-                                    <input class="form-check-input" type="radio" name="metodo_entrega" id="tienda" checked>
-                                    <label class="form-check-label" for="tienda">
-                                        Recoger en tienda
-                                    </label>
-                                </div>
-                            </div>
-    
-                            <div class="collapse" id="envios">
-                                <form action="">
-                                    <div class="border-top  opciones_envios">
-                                        <div class="opciones">
-                                            <input class="form-check-input" type="radio" name="lugar_envio" id="registro" checked>
-                                            <label class="form-check-label" for="registro">Enviar a la direccion registrada</label>
-                                        </div>
-
-                                        <div>
-                                            <input class="form-check-input" type="radio" name="lugar_envio" id="nueva_dire">
-                                            <label class="form-check-label" for="nueva_dire">Enviar a otra direccion</label>
-                                            <form action="">
-                                                <div class="contenedores_form">
-                                                    <!--Direccion-->
-                                                    <div class="form-floating">
-                                                        <input class="form-control  conf_labels" type="text" id="direccion" placeholder="Direccion">
-                                                        <label class="col-form-label-sm" for="direccion">Direccion</label>
-                                                    </div>
-                                
-                                                    <!--Codigo Postal-->
-                                                    <div class="form-floating">
-                                                        <input class="form-control  conf_labels" type="text" id="cp" placeholder="Codigo Postal" style="max-width: 200px;">
-                                                        <label class="col-form-label-sm" for="cp">Codigo Postal</label>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                            </form>
                         </div>
-                    </div>
+                        <?php
+                        }
+                        ?>
+                            
+    
+                            
+                        </div>
+              
     
                     <!--Fecha de Entrega-->
                     <div class="border border-secondary     cuadros_detalles fondo_compra">
@@ -324,7 +403,7 @@
                                 <b>Precio Total del Pedido:</b>
                             </div>
                             <div class="col  opciones_resumen_dos">
-                                <p>$TOTAL</p>
+                                <p><?php echo "$" . $total ?></p>
                             </div>
                         </div>
                     </div>

@@ -17,7 +17,7 @@
         $usuarios =new login();
         extract($_POST);
 
-        $usuarios->verificaLogin("$usuario","$password");
+        $usuarios->verificaLogin("$usuario","$contraseña");
 
         ?>
     </div>

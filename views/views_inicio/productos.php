@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,22 +38,51 @@
             
             <!--Barra de Busqueda-->
             <div class="col-6 text-center">
+                <form action="productos.php" method="POST">
                 <div class="input-group mb-3 border border-1 border-dark rounded rounded-3  buscar">
                     <!--Barra-->
-                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar productos">
+                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar productos" name="buscar" >
 
                     <!--Boton Buscar-->
-                    <button class="btn border-0 border-start  b-buscar" type="button" id="button-addon1">Buscar</button>
+                    <button class="btn border-0 border-start  b-buscar" type="submit" id="button-addon1">Buscar</button>
+                    </form>
                 </div>
             </div>
-
+            <?php
+            if(isset($_POST['buscar']))
+            {
+                $buscar = $_POST['buscar'];
+                $tabla = new select();
+                $cons = "SELECT PRODUCTOS.CODIGO, PRODUCTOS.NOMBRE AS PRODUCTO, CATEGORIAS.NOMBRE AS CATEGORIA, PRODUCTOS.PRECIO_VENTA AS PRECIO, 
+                PRODUCTOS.FOTO AS FOTO, PRODUCTOS.DESCRIPCION AS DESCRIPCION, PRODUCTOS.CANTIDAD_REAL AS CANTIDAD FROM PRODUCTOS 
+                INNER JOIN CATEGORIAS ON CATEGORIAS.ID_CATEGORIA = PRODUCTOS.CATEGORIA WHERE PRODUCTOS.NOMBRE LIKE '%$buscar%'";
+                $tabla->seleccionar($cons);
+            }
+            ?>
+            
             <!--Login-->
             <div class="col-2">
                 <!--Boton Iniciar Sesion-->
-                <button class="btn  boton-login" type="button" data-bs-toggle="modal" data-bs-target="#iniciar-sesion">
-                    <img src="../../svg/perfil-b.svg" alt="" class="icono_boton">
-                    <p class="texto-boton-login-no-iniciado text-start"><b>Iniciar Sesion o Registrarse</b></p>
-                </button>
+                <?php 
+            if(isset($_SESSION["usuario"]))
+            {    
+                echo "<button class='btn  boton-login' type='button' >
+                    <img src='../../svg/perfil-b.svg' alt='' class='icono_boton'>       
+                    <p class='texto-boton-login-no-iniciado text-start'><b>Bienvenido ".$_SESSION["usuario"]."</b>
+                    <a href='views/views_inicio/registarse.php'></a></p>
+                </button>";
+                
+                
+            }
+            else
+            {
+                echo "<button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
+                    <img src='../../svg/perfil-b.svg' alt='' class='icono_boton'>
+                    <p class='texto-boton-login-no-iniciado text-start'><b>Iniciar Sesion o Registrarse</b></p>
+                </button>";
+            }
+
+            ?>
       
                 <!--Modal Iniciar Sesion-->
                 <div class="modal modal-sm" id="iniciar-sesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -144,6 +177,7 @@
             </div>
         </div>
     </header>
+   
 
     <!--Contenedor Productos-->
     <div class="container">
@@ -157,7 +191,7 @@
 
             <!--Cantidad de Productos y Filtros-->
             <div class="row col-10">
-                <div class="col-4   titulos"><b>Productos: (30 resultados)</b></div>
+                <div class="col-4   titulos"><b>Productos:</b></div>
                 <div class="col-2   titulos"><b>Ordenar por:</b></div>
                 <div class="col-3">
                     <form action="" method="POST">
@@ -238,12 +272,14 @@
             </div>
 
             <!--Productos-->
-           
+            
             <div class="col-10 row" >
+            
                 <?php
                  $cadena= "CALL PRODUCTOS();";
                  if ($_POST) 
                  {
+                    $filtros_de_busqueda ="";
                     extract($_POST);     
                     if (isset($categorias)) 
                     {
@@ -298,14 +334,18 @@
                 $tabla=$seleccionar->seleccionar($cadena);
                 foreach($tabla as $datos)
                 {
+                  
                     ?>
-                    
                     <div class="col  " style="max-width: 250px; height:475px ">
+                    <form action="" method="POST">
+                    <input type="hidden" name="foto" value="<?php echo $datos->FOTO ?>">
                     <img src="<?php echo $datos->FOTO ?>" alt="<?php echo $datos->FOTO ?>" class="imagenes_productos">
                     <div class="categoria_producto">
+                        <input type="hidden" name="categoria" value="<?php $datos->CATEGORIA?>">
                         <b><?php echo $datos->CATEGORIA ?></b>
                     </div>
                     <div class="nombre_producto" style="height:80px ">
+                    <input type="hidden" name="nombre" value="<?php echo $datos->PRODUCTO ?>">
                     <?php echo $datos->PRODUCTO ?>
                     </div>
                     <div class="informacion_producto">
@@ -319,20 +359,40 @@
                     }
                     else
                     {
-                        echo "<div class='mt-3 text-danger'>";
+                        echo "<div class='mt-2 text-danger'>";
                         echo "PRODUCTOS NO DISPONIBLE";
                     }
                     ?>
+                       
                     </div>
                     <div class="precio_producto">
+    
+                    <input type="hidden" name="precio" value="<?php echo $datos->PRECIO?>">
                         <b><?php echo "PRECIO:$".$datos->PRECIO ?></b>
+                     
+                    </div>
+           
+                    <div class="input-group">
+                        <input type="hidden" name="cantidad" value="1">
+                        <span class="input-group-text   barra_cantidad">Cantidad</span>
+                        <input type="number" class="form-control    barra_cantidad" aria-label="Username" placeholder="" name="cantidad" min="1" max="100" required>
                     </div>
                     <div >
                         <?php
                     if ($datos->CANTIDAD!=0) {
-                        echo "<button class='btn  agregar_carrito'>
+                        if(isset($_SESSION['usuario']))
+                        {
+                        echo "<button class='btn  agregar_carrito' type='submit' name='agregar' value='guardar'>
                         <b>Agregar al Carrito</b>
-                    </button>";
+                        </button>";
+                        }
+                        else
+                        {
+                            echo "<button class='btn  agregar_carrito' type='button' >
+                            <b>Agregar al Carrito</b>
+                            </button>";
+                        }
+                        
                     }
                     else
                     {
@@ -341,12 +401,9 @@
                     </button>";
                     }
                     ?>
-                        
+                      </form>
                     </div>
-                </div>  
-
-               
-                
+                </div>   
                     <?php
                 }
                 foreach($tabla as $datos)
@@ -374,11 +431,13 @@
 
                                 <!--Nombre del Producto-->
                                 <div class="nombre_producto_modal">
+                                
                                     <b><?php echo $datos->PRODUCTO ?></b>
                                 </div>
 
                                 <!--Precio del Producto-->
                                 <div class="precio_producto_modal">
+                                    
                                     Precio: <?php echo "$".$datos->PRECIO ?>
                                 </div>
 
@@ -386,16 +445,11 @@
 
                                 <!--Descripcion del Producto-->
                                 <div class="descripcion_producto_modal">
+                                    <input type="hidden" name="descripcion" value="<?php echo $datos->DESCRIPCION?>">
                                 <?php echo $datos->DESCRIPCION ?>
                                 </div>
                             </div>
-
-                            <!--Footer Modal-->
-                            <div class="modal-footer">
-                                <button class="btn  agregar_carrito">
-                                    <b>Agregar al Carrito</b>
-                                </button>
-                            </div>
+                           
                         </div>
                         </div>
                     </div>
@@ -407,6 +461,35 @@
                     <?php
                 }
                     ?>
+
+<?php
+    
+        if(isset($_POST["agregar"]))
+        {
+
+      $producto=$_POST["nombre"];
+        $cantidad=$_POST["cantidad"];
+        $precio=$_POST["precio"];
+        $foto = $_POST["foto"];
+        $total_c=0;
+        if(isset($_SESSION["carrito"])){
+          foreach($_SESSION["carrito"] as $indice =>$arrreglo){
+               if($producto==$indice){
+               $total_c=intval($arrreglo["cantidad"]);
+                }
+            }
+      }
+
+$_SESSION["carrito"][$producto]["cantidad"]=$total_c+$cantidad;
+$_SESSION["carrito"][$producto]["precio"]=$precio;
+$_SESSION["carrito"][$producto]["nombre"]=$producto;
+$_SESSION["carrito"][$producto]["foto"] = $foto;
+
+
+echo "<script>alert('Producto $producto agregado al carrito');</script>";
+    }
+
+?>
 
         <!--Paginacion-->
         <div></div>
