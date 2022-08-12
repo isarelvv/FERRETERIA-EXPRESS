@@ -26,7 +26,7 @@
                 <a class="nav-link    items " aria-current="page" href="../../views/views_administrador/inicio.php">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/reportes.php">Reportes</a>
+                <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/reportespedidos.php">Reportes</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link    items active" href="../../views/views_administrador/altasproductos.php">Altas</a>
