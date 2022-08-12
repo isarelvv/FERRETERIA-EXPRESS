@@ -5,30 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/mi_css/repartidor_historial.css">
+    <link rel="stylesheet" href="../../css/mi_css/rHistorial.css">
     <title>Pedidos - Repartidores</title>
 </head>
 <body>
     <div class="row">
         <!--Barra-->
         <nav class="col-2">
-            <div class="container navbar d-flex flex-column">
-                <div class="navbar-brand    items">Repartidores</div>
-                <hr>
+            <div class="container d-flex flex-column">
+                <!--Repartidores-->
+                <div class="text-center titulo">Repartidores</div>
+                <div class="text-center">
+                    <img src="../../svg/facebook.svg" alt="" class="border border-2 rounded-circle foto_perfil">
+                </div>
+
+                <hr class="text-white">
+
+                <!--Botones paginas-->
                 <ul class="nav nav-pills row text-center justify-content-center">
                     <li class="nav-item">
-                      <a class="nav-link    items" aria-current="page" href="../../views/views_repartidor/repartidores_inicio.html">Inicio</a>
+                        <a class="nav-link    items" aria-current="page" href="../../views/views_repartidor/rInicio.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link    items" href="../../views/views_repartidor/repartidores_pedidos.html">Pedidos</a>
+                        <a class="nav-link    items" href="../../views/views_repartidor/rPedidos.html">Pedidos</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link active    items" href="../../views/views_repartidor/repartidores_historial.html">Historial</a>
+                        <a class="nav-link active    items" href="../../views/views_repartidor/rHistorial.html">Historial</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link  items" href="../../views/views_repartidor/repartidores_conf.html">Configuracion</a>
-                    </li>
-                  </ul>
+                </ul>
+
+                <hr class="text-white">
+
+                <!--Configuracion-->
+                <div class="text-center">
+                    <div class="dropdown dropdown-center">
+                        <a class="nav-item dropdown-toggle link_drop" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configuracion</a>
+                    
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li style="margin-bottom: 10px;"><a class="dropdown-item" href="../views_repartidor/rAjustes.html">Ajustes</a></li>
+                            <li><hr class="sep_hr"></li>
+                            <li style="margin-top: 10px;"><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </nav>
 
@@ -48,7 +67,7 @@
 
                 <div class="cuadros">
                     <!--Pedidos-Proximos-->
-                    <div class="row justify-content-between justify-content-xxl-evenly     cuadros_pedidos">
+                    <div class="row justify-content-evenly     cuadros_pedidos">
                         <!--Pedidos-->
                         <div class="col-4 border border-secondary rounded-2 text-center  info_pedidos">
                             <div class="num_pedido"><b>Pedido N.° #123-456-7890</b></div>

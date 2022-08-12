@@ -1,17 +1,21 @@
 nav
 {
     background-color: #272D33;
-    min-height: 100px;
+    min-height: 900px;
 }
 
-.nav-pills
+.titulo
 {
-    margin-left: 0px;
+    font-size: 22pt;
+    color: #fff;
+    margin-top: 10px;
 }
 
-.iconos_nav
+.foto_perfil
 {
-    max-width: 30px;
+    max-width: 120px;
+    max-height: 120px;
+    margin-top: 10px;
 }
 
 .items
@@ -19,6 +23,18 @@ nav
     color: #fff;
     font-size: 14pt;
     margin-bottom: 10px;
+}
+
+.link_drop
+{
+    color: #fff;
+    text-decoration: none;
+}
+
+.sep_hr
+{
+    margin-top: 0%;
+    margin-bottom: 0%;
 }
 
 .mensaje
