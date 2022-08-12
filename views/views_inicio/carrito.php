@@ -334,7 +334,7 @@ else
                             <b>Metodo de Entrega</b>
                         </div>
 
-                        <form action=''>
+                        <form action='compraCarrito.php' method="POST">
                         <div class="row">
                                 
                         <?php
