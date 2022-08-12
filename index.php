@@ -23,9 +23,18 @@ session_start();
 <?php
 if(isset($_SESSION['usuario']))
 {
-
+    switch ($_SESSION['SESION']) 
+    {
+        case 300:
+            header("Location: views/views_administrador/inicio.php");
+            break;   
+        case 301: 
+            header("Location: views/views_vendedor/vInicio.html");
+            break;
+            case 302:
+                header("Location: views/views_repartidor/rInicio.html");
+    }
 }
-
 ?>
     <!--Header-->
     <header class="row justify-content-center">

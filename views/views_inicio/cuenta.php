@@ -280,7 +280,7 @@ else
                         <button class="btn    texto_boton_guardar">
                             <b>Guardar Cambios</b>
                         </button>
-                    </div>
+                    </div> 
                 </div>
 
                 <!--Botones-->

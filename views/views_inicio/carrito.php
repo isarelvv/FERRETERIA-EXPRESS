@@ -76,8 +76,8 @@ else
                         </div>
 
                         <div class="modal-body  m_c_i">
-                        <form action="">
                             <div class="label">
+                                <form action="">
                                 <label for="correo" class="form-label"><b>Correo Electronico</b></label>
                                 <input type="email" id="correo" class="form-control     in_m_i">
                             </div>
@@ -251,7 +251,7 @@ else
                                         </div>
     
                                         <div class="col-4   d_p">
-                                        <a href="<?php echo 'carrito.php?item='.$indice['nombre'].'' ?>">Eliminar Producto</a>
+                                        <a href="carrito.php?item=<?php echo $indice['id'] ?>">Eliminar Producto</a>
                                         </div>
                                           
                                         <!--Modal Informacion de Productos-->
@@ -420,6 +420,11 @@ else
             </div>
         </form>
     </div>
+    <?php 
+    echo "<pre>";
+    echo var_dump($indice['id']);
+    echo "</pre>";
+    ?>
 
     <!--Footer-->
     <footer>
