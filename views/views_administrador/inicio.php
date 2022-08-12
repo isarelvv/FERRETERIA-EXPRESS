@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/mi_css/rHistorial.css">
-    <title>ADMINISTRADOR</title>
+    <title>ADMINISTRADOR | INICIO </title>
 </head>
 <body>
     <div class="row">
     <nav class="col-2">
           <div class="container d-flex flex-column">
             <!--Repartidores-->
-            <div class="text-center titulo">ADMINISTRADOR</div>
+            <div class="text-center titulo">BIENVENIDO $NOMBRE</div>
             <div class="text-center">
               <img src="../../svg/facebook.svg" alt="" class="border border-2 rounded-circle foto_perfil">
             </div>
@@ -23,13 +23,19 @@
             <!--Botones paginas-->
             <ul class="nav nav-pills row text-center justify-content-center">
               <li class="nav-item">
-                <a class="nav-link    items" aria-current="page" href="../../views/views_repartidor/rInicio.html">Inicio</a>
+                <a class="nav-link    items active" aria-current="page" href="../../views/views_administrador/inicio.php">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link    items" href="../../views/views_repartidor/rPedidos.html">Altas</a>
+                <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/reportes.php">Reportes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link    items" href="../../views/views_repartidor/rHistorial.html">Historial</a>
+                <a class="nav-link    items" href="../../views/views_administrador/altasproductos.php">Altas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link    items" href="../../views/views_administrador/inentario.php">Inventarios</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link    items" href="../../views/views_administrador/ventas">Ventas</a>
               </li>
             </ul>
 
@@ -41,7 +47,7 @@
                 <a class="nav-item dropdown-toggle link_drop" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configuracion</a>
               
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li style="margin-bottom: 10px;"><a class="dropdown-item" href="../views_repartidor/rAjustes.html">Ajustes</a></li>
+                  <li style="margin-bottom: 10px;"><a class="dropdown-item" href="configuracion.php">Ajustes</a></li>
                   <li><hr class="sep_hr"></li>
                   <li style="margin-top: 10px;"><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
                 </ul>
@@ -54,22 +60,22 @@
             <div class="border mb-5">
                 <h1 class="text-center p-3">INGRESOS GENERADOS</h1>
                     <div class="row m-2 p-3">
-                        <span class="col-6">DIARIO --------------------------------------------------------------</span>
+                        <span class="col-6">DIARIO --------------------------------------------------</span>
                         <span class="col-3">CANTIDAD BRUTA</span>
                         <span class="col-3">CANTIDAD CAPITAL</span>
                     </div>  
                     <div class="row m-2 p-3">
-                        <span class="col-6">SEMANAL -----------------------------------------------------------</span>
+                        <span class="col-6">SEMANAL -----------------------------------------------</span>
                         <span class="col-3">CANTIDAD BRUTA</span>
                         <span class="col-3">CANTIDAD CAPITAL</span>
                     </div>                     
                     <div class="row m-2 p-3">
-                        <span class="col-6">MENSUAL -----------------------------------------------------------</span>
+                        <span class="col-6">MENSUAL -----------------------------------------------</span>
                         <span class="col-3">CANTIDAD BRUTA</span>
                         <span class="col-3">CANTIDAD CAPITAL</span>
                     </div>
                     <div class="row m-2 p-3">
-                        <span class="col-6">ANUAL ---------------------------------------------------------------</span>
+                        <span class="col-6">ANUAL ---------------------------------------------------</span>
                         <span class="col-3">CANTIDAD BRUTA</span>
                         <span class="col-3">CANTIDAD CAPITAL</span>
                     </div>
@@ -105,4 +111,6 @@
         </div>
     </div>
 </body>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrap.bundle.js"></script>
 </html>

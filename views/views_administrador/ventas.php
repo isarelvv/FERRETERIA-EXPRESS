@@ -26,7 +26,7 @@
                 <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/inicio.php">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link    items active" aria-current="page" href="../../views/views_administrador/reportes.php">Reportes</a>
+                <a class="nav-link    items " aria-current="page" href="../../views/views_administrador/reportes.php">Reportes</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link    items " href="../../views/views_administrador/altasproductos.php">Altas</a>
@@ -35,7 +35,7 @@
                 <a class="nav-link    items" href="../../views/views_administrador/inventario.php">Inventarios</a>
               </li> 
               <li class="nav-item">
-                <a class="nav-link    items" href="../../views/views_administrador/ventas.php">Ventas</a>
+                <a class="nav-link    items active" href="../../views/views_administrador/ventas.php">Ventas</a>
               </li>
             </ul>
 
@@ -59,7 +59,7 @@
 
         </div>
     </div>
-
+    
 </body>
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/bootstrap.bundle.js"></script>

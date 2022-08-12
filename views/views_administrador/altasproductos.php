@@ -13,7 +13,7 @@
     <nav class="col-2">
           <div class="container d-flex flex-column">
             <!--Repartidores-->
-            <div class="text-center titulo">Repartidores</div>
+            <div class="text-center titulo">BIENVENIDO $NOMBRE</div>
             <div class="text-center">
               <img src="../../svg/facebook.svg" alt="" class="border border-2 rounded-circle foto_perfil">
             </div>
@@ -23,13 +23,19 @@
             <!--Botones paginas-->
             <ul class="nav nav-pills row text-center justify-content-center">
               <li class="nav-item">
-                <a class="nav-link    items" aria-current="page" href="../../views/views_repartidor/rInicio.html">Inicio</a>
+                <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/inicio.php">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link    items" href="../../views/views_repartidor/rPedidos.html">Pedidos</a>
+                <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/reportes.php">Reportes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link    items" href="../../views/views_repartidor/rHistorial.html">Historial</a>
+                <a class="nav-link    items active" href="../../views/views_administrador/altasproductos.php">Altas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link    items" href="../../views/views_administrador/inventario.php">Inventarios</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link    items" href="../../views/views_administrador/ventas.php">Ventas</a>
               </li>
             </ul>
 
@@ -41,7 +47,7 @@
                 <a class="nav-item dropdown-toggle link_drop" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configuracion</a>
               
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li style="margin-bottom: 10px;"><a class="dropdown-item" href="../views_repartidor/rAjustes.html">Ajustes</a></li>
+                  <li style="margin-bottom: 10px;"><a class="dropdown-item" href="configuracion.php">Ajustes</a></li>
                   <li><hr class="sep_hr"></li>
                   <li style="margin-top: 10px;"><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
                 </ul>
@@ -125,4 +131,6 @@
     </div>
     
 </body>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrap.bundle.js"></script>
 </html>
