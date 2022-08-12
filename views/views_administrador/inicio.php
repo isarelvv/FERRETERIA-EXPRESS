@@ -5,11 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/mi_css/rHistorial.css">
     <title>ADMINISTRADOR</title>
 </head>
 <body>
     <div class="row">
-        <div class=" col-2"></div>
+    <nav class="col-2">
+          <div class="container d-flex flex-column">
+            <!--Repartidores-->
+            <div class="text-center titulo">ADMINISTRADOR</div>
+            <div class="text-center">
+              <img src="../../svg/facebook.svg" alt="" class="border border-2 rounded-circle foto_perfil">
+            </div>
+
+            <hr class="text-white">
+
+            <!--Botones paginas-->
+            <ul class="nav nav-pills row text-center justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link    items" aria-current="page" href="../../views/views_repartidor/rInicio.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link    items" href="../../views/views_repartidor/rPedidos.html">Altas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link    items" href="../../views/views_repartidor/rHistorial.html">Historial</a>
+              </li>
+            </ul>
+
+            <hr class="text-white">
+
+            <!--Configuracion-->
+            <div class="text-center">
+              <div class="dropdown dropdown-center">
+                <a class="nav-item dropdown-toggle link_drop" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configuracion</a>
+              
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li style="margin-bottom: 10px;"><a class="dropdown-item" href="../views_repartidor/rAjustes.html">Ajustes</a></li>
+                  <li><hr class="sep_hr"></li>
+                  <li style="margin-top: 10px;"><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+      </nav>
+
         <div class= " col-8 container">
             <div class="border mb-5">
                 <h1 class="text-center p-3">INGRESOS GENERADOS</h1>
