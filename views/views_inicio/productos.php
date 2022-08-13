@@ -30,13 +30,13 @@ session_start();
     switch ($_SESSION['SESION']) 
     {
         case 300:
-            header("Location: views/views_administrador/inicio.php");
+            header("Location: ../views_administrador/inicio.php");
             break;   
         case 301: 
-            header("Location: views/views_vendedor/vInicio.html");
+            header("Location: ../views_vendedor/vInicio.html");
             break;
         case 302:
-                header("Location: views/views_repartidor/rInicio.html");
+                header("Location: ../views_repartidor/rInicio.html");
             break;
     }
     }

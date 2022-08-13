@@ -14,16 +14,12 @@
     use MyApp\query\select;
     require_once("../../vendor/autoload.php");
 
-    if($_POST['pass']==$_POST['pass1'])
+    extract($_POST);
+    if ($_POST["pass"]==$_POST["pass1"] )
     {
     $searchlogin = new select();
     $insert = new ejecutar();
     $insert2 = new ejecutar();
-    
-    extract($_POST);
-    if ($_POST["pass"]==$_POST["pass1"] )
-    {
-
     $contraseñahash = password_hash($pass, PASSWORD_DEFAULT);
     $cadena2 = "INSERT INTO login (correo,contraseña,tipo_usuario) VALUES ('$correo','$contraseñahash',303)";
     $insert2->ejecutar($cadena2);
@@ -39,7 +35,7 @@
     echo "<div class='alert alert-success'>Usuario Registrado</div>";
     header("refresh:2; ../../index.php");
     
-  }
+     }
     else
     {
       echo "<div class='alert alert-danger'>Las contraseñas no coinciden</div>";

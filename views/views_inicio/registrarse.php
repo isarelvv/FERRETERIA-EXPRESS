@@ -25,16 +25,13 @@ session_start();
     switch ($_SESSION['SESION']) 
     {
         case 300:
-            header("Location: views/views_administrador/inicio.php");
+            header("Location: ../views_administrador/inicio.php");
             break;   
         case 301: 
-            header("Location: views/views_vendedor/vInicio.html");
+            header("Location: ../views_vendedor/vInicio.php");
             break;
         case 302:
-                header("Location: views/views_repartidor/rInicio.html");
-            break;
-        case 303;
-        header("Location: ../../index.php");
+                header("Location: ../views_repartidor/rInicio.php");
             break;
     }
     }
@@ -247,13 +244,13 @@ session_start();
                         <!--Contraseña-->
                         <div class="form-floating">
                             <input class="form-control  conf_labels" type="password" id="contra" placeholder="Contraseña" name="pass" required maxlength="30" minlength="8">
-                            <label class="form-label" for="contra">Contraseña</label>
+                            <label class="form-label" for="contra" maxlength="30" minlength="8" >Contraseña</label>
                             <div id="ayuda_email" class="form-text">La contraseña debe tener al menos 8 digitos.</div>
                         </div>
     
                         <!--Repetir Contraseña-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="password" id="rcontra" placeholder="Repetir Contraseña" name="pass1" required>
+                            <input class="form-control  conf_labels" type="password" id="rcontra" placeholder="Repetir Contraseña" name="pass1" required maxlength="30" minlength="8">
                             <label class="form-label" for="rcontra">Repetir Contraseña</label>
                         </div> 
                     </div>

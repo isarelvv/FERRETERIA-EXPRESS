@@ -13,7 +13,7 @@ class Login
         try 
         {
             $login = 0;
-            $cc = new Database("save","root","");
+            $cc = new Database("save","root","admin");
             $objetoPDO = $cc->getPDO();
             $query ="SELECT usuarios.KEY as SESION, usuarios.TIPO as TIPO,login.ID_LOGIN, login.correo as correo, login.contraseña as contraseña FROM usuarios join login on usuarios.KEY=login.TIPO_USUARIO where login.correo='$usuario'";
             $consulta = $objetoPDO->query($query);
@@ -40,6 +40,9 @@ class Login
                    else if ($renglon['SESION']== 302)
                    {
                        $login=302;
+                       session_start();
+                       $_SESSION['ID'] = $renglon['ID_LOGIN'];    
+                       header("Location: ../scripts/datosrepartidor.php");
                    }
                    else if ($renglon['SESION']== 303)
                    {
