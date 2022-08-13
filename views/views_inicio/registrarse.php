@@ -246,7 +246,7 @@ session_start();
                         <h5>Contraseña</h5>
                         <!--Contraseña-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="password" id="contra" placeholder="Contraseña" name="pass" required>
+                            <input class="form-control  conf_labels" type="password" id="contra" placeholder="Contraseña" name="pass" required maxlength="30" minlength="8">
                             <label class="form-label" for="contra">Contraseña</label>
                             <div id="ayuda_email" class="form-text">La contraseña debe tener al menos 8 digitos.</div>
                         </div>
@@ -257,8 +257,7 @@ session_start();
                             <label class="form-label" for="rcontra">Repetir Contraseña</label>
                         </div> 
                     </div>
-    
-                    <!--Boton-->
+                        <!--Boton-->
                     <div class="row justify-content-center">
                         <div class="col-6 row">
                             <button class="btn  boton_cc" type="submit">
@@ -266,6 +265,7 @@ session_start();
                             </button>
                         </div>
                     </div>
+                    <!--Boton-->
                 </form>
             </div>
         </div>

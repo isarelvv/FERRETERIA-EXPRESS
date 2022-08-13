@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en ">
 <head>
@@ -17,7 +14,11 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
     <title>Ferreteria y Materiales Express</title>
 </head>
-<body>
+<body>   
+
+<?php
+session_start();
+?>
     
 <?php
 if(isset($_SESSION['usuario']))
@@ -84,7 +85,7 @@ if(isset($_SESSION['usuario']))
             }
 
             ?>
-          
+      
                 <!--Modal Iniciar Sesion-->
                 <div class="modal modal-sm" id="iniciar-sesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -161,7 +162,8 @@ if(isset($_SESSION['usuario']))
                             {
                             echo
                         "<li class='nav-item disabled    boton-bb'>
-                            <a class='btn   boton-a-bb' data-bs-toggle='modal data-bs-target='#iniciar-sesion'>
+                            <a class='btn   boton-a-bb'
+                            class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
                                 <div class='organizar'>
                                     <img src='svg/carrito-b.svg' class='icono'>
                                     <p class='texto-botones-bb'><b>Carrito</b></p>

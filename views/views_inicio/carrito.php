@@ -94,12 +94,12 @@ else
                             <div class="label">
                                 <form action="">
                                 <label for="correo" class="form-label"><b>Correo Electronico</b></label>
-                                <input type="email" id="correo" class="form-control     in_m_i">
+                                <input type="email" id="correo" class="form-control     in_m_i" name="usuario">
                             </div>
 
                             <div class="label">
                                 <label for="contraseña" class="form-label"><b>Contraseña</b></label>
-                                <input type="password" id="contraseña" class="form-control  in_m_i">
+                                <input type="password" id="contraseña" class="form-control  in_m_i" name="contraseña">
                                 <a href="" class="link_modal_i">¿Olvidaste tu contraseña?</a>
                             </div>
 

@@ -52,6 +52,7 @@ class Login
                 }
             if ($login>0)
             {
+
                 session_start();
                 $_SESSION["usuario"] = $usuario;
                 $_SESSION["SESION"]=$login;
@@ -62,7 +63,7 @@ class Login
                 echo "<div class='alert alert-success'>";
                 echo "<h2 align='center'> usuario o password incorrecto <h2>";
                 echo "</div>";
-                header ("refresh:2; ../../index.php");
+                header ("refresh:3; ../../index.php");
             }
         }
         }
