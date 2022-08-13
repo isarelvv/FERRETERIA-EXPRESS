@@ -1,26 +1,40 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../mi_css/header.css">
-    <link rel="stylesheet" href="../mi_css/cuenta.css">
-    <link rel="stylesheet" href="../mi_css/footer.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/mi_css/header.css">
+    <link rel="stylesheet" href="../../css/mi_css/cuenta.css">
+    <link rel="stylesheet" href="../../css/mi_css/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
     <title>Mi Cuenta - Ferreteria y Materiales Express</title>
 </head>
 <body>
+<?php
+if(!isset($_SESSION['usuario']))
+{
+    header("Location: ../../index.php");
+}
+else
+{
+
+?>    
+
+
     <!--Header-->
     <header class="row justify-content-center">
         <!--Parte Arriba Header-->
         <div class="row justify-content-center border-bottom border-1 border-dark border-opacity-25     barra_arriba">
             <!--Logo Express-->
             <div class="col-2 text-end">
-                <object data="../svg/logo-r.svg" class="text-end border border-dark   logo"></object>
+                <object data="../../svg/logo-r.svg" class="text-end border border-dark   logo"></object>
             </div>
             
             <!--Barra de Busqueda-->
@@ -37,13 +51,32 @@
             <!--Login-->
             <div class="col-2">
                 <!--Boton Iniciar Sesion-->
-                <button class="btn  boton-login" type="button" data-bs-toggle="modal" data-bs-target="#iniciar-sesion">
-                    <img src="../svg/perfil-b.svg" alt="" class="icono_boton">
-                    <p class="texto-boton-login-no-iniciado text-start"><b>Iniciar Sesion o Registrarse</b></p>
-                </button>
+                <?php 
+            if(isset($_SESSION["usuario"]))
+            {    
+                echo "<div class='col-2' texto-boton-login>
+                <a href='cuenta.php' class='link_cuenta' style='color: white'>
+                <button class='btn  boton-login' type='button'>
+                    <img src='../../svg/perfil-b.svg' alt='' class='icono_boton'>       
+                    <p class='texto-boton-login-no-iniciado text-start'><b>Bienvenido ".$_SESSION["usuario"]."</b>
+                    </p>
+                </button></a> </div>";
+                
+                
+            }
+            else
+            {
+                echo "<div class='col-2'>
+                <button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
+                    <img src='svg/perfil-b.svg' alt='' class='icono_boton'>
+                    <p class='texto-boton-login-no-iniciado text-start'><b>Iniciar Sesion o Registrarse</b></p>
+                </button> </div>";
+            }
+
+            ?>
       
                 <!--Modal Iniciar Sesion-->
-                <div class="modal modal-sm" id="iniciar-sesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal modal-sm" id="iniciar-sesion" tabindex="-1" aria-labelledby="" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header justify-content-center border-bottom border-dark     m_h_i">
@@ -89,43 +122,43 @@
                 <div class="col-8">
                     <ul class="nav justify-content-center">
                         <li class="nav-item     boton-bb">
-                            <a class="btn   boton-a-bb" type="button" href="../html/inicio.html">
+                            <a class="btn   boton-a-bb" type="button" href="../../index.php">
                                 <div class="organizar">
-                                    <img src="../svg/casa-b.svg" class="icono">
+                                    <img src="../../svg/casa-b.svg" class="icono">
                                     <p class="texto-botones-bb"><b>Inicio</b></p>
                                 </div>
                             </a>
                         </li>
                         <li class="nav-item     boton-bb">
-                            <a class="btn   boton-a-bb" href="../html/productos.html">
+                            <a class="btn   boton-a-bb" href="productos.php">
                                 <div class="organizar">
-                                    <img src="../svg/caja-b.svg" class="icono">
+                                    <img src="../../svg/caja-b.svg" class="icono">
                                     <p class="texto-botones-bb"><b>Productos</b></p>
                                 </div>
                             </a>
                         </li>
                         <li class="nav-item     boton-bb">
-                            <a class="btn   boton-a-bb" href="../html/servicios.html">
+                            <a class="btn   boton-a-bb" href="servicios.php">
                                 <div class="organizar">
-                                    <img src="../svg/servicios-b.svg" class="icono">
+                                    <img src="../../svg/servicios-b.svg" class="icono">
                                     <p class="texto-botones-bb"><b>Servicios</b></p>
                                 </div>
                             </a>
                         </li>
 
                         <li class="nav-item     boton-bb">
-                            <a class="btn   boton-a-bb" href="../html/carrito.html">
+                            <a class="btn   boton-a-bb" href="carrito.php">
                                 <div class="organizar">
-                                    <img src="../svg/carrito-b.svg" class="icono">
+                                    <img src="../../svg/carrito-b.svg" class="icono">
                                     <p class="texto-botones-bb"><b>Carrito</b></p>
                                 </div>
                             </a>
                         </li>
 
                         <li class="nav-item     boton-bb">
-                            <a class="btn   boton-a-bb" href="../html/pedidos.html">
+                            <a class="btn   boton-a-bb" href="pedidos.php">
                                 <div class="organizar">
-                                    <img src="../svg/bolsa-b.svg" class="icono">
+                                    <img src="../../svg/bolsa-b.svg" class="icono">
                                     <p class="texto-botones-bb"><b>Mis Pedidos</b></p>
                                 </div>
                             </a>
@@ -156,31 +189,29 @@
             <div class="col-5 border border-dark rounded rounded-3    cont_form">
                 <div class="label_form">
                     <label for="nombre" class="form-label   texto_label"><b>Nombre</b></label>
-                    <fieldset disabled="disabled">
-                        <input type="text" id="nombre" class="form-control" placeholder="Edeh">
+                    <fieldset >
+                        <input type="text" id="nombre" class="form-control" placeholder="Nombre" value=" <?php echo $_SESSION['CLIENTE'] ;?>">
                     </fieldset>
                 </div>
 
                 <div class="label_form">
                     <label for="apellido_paterno" class="form-label     texto_label"><b>Apellido Paterno</b></label>
-                    <fieldset disabled="disabled">
-                        <input type="text" id="apellido_paterno" class="form-control" placeholder="Meza">
+                    <fieldset>
+                        <input type="text" id="apellido_paterno" class="form-control" placeholder="Apellido Paterno" value="<?php echo $_SESSION['AP'] ; ?>">
                     </fieldset>
                 </div>
 
                 <div class="label_form">
                     <label for="apellido_materno" class="form-label     texto_label"><b>Apellido Materno</b></label>
                     <fieldset disabled="disabled">
-                        <input type="text" id="apellido_materno" class="form-control" placeholder="Reyes">
+                        <input type="text" id="apellido_materno" class="form-control" placeholder="Apellido Materno" value="<?php echo $_SESSION['AM'] ?>">
                     </fieldset>
                 </div>
-
-                <hr>
 
                 <div class="label_form">
                     <label for="email" class="form-label    texto_label"><b>Correo Electronico</b></label>
                     <fieldset disabled="disabled">
-                        <input type="text" id="email" class="form-control" placeholder="tilinlover17@gmail.com">
+                        <input type="text" id="email" class="form-control" placeholder="Correo" value="<?php echo $_SESSION['usuario']?>">
                     </fieldset>
                 </div>
             </div>
@@ -220,13 +251,13 @@
                 
                 <div class="label_form">
                     <label for="direccion" class="form-label     texto_label"><b>Direccion</b></label>
-                    <input type="text" id="direccion" class="form-control">
+                    <input type="text" id="direccion" class="form-control" value="<?php echo $_SESSION['DIR'] ?>">
                 </div>
 
                 <div class="row justify-content-between">
                     <div class="col-5    label_form">
                         <label for="c_p" class="form-label     texto_label"><b>Codigo Postal</b></label>
-                        <input type="text" id="c_p" class="form-control">
+                        <input type="text" id="c_p" class="form-control" value="<?php echo $_SESSION['CP'] ?>">
                     </div>
     
                     <div class="text-end col-5    boton_guardar_dos">
@@ -242,14 +273,14 @@
                 <div class="border border-dark rounded rounded-3 row    cont_form">
                     <div class="col-6   label_form">
                         <label for="c_p" class="form-label     texto_label"><b>Numero de Telefono</b></label>
-                        <input type="tel" id="c_p" class="form-control">
+                        <input type="tel" id="c_p" class="form-control" value="<?php echo $_SESSION['TEL'] ?>">
                     </div>
 
                     <div class="text-end col-5    boton_guardar_dos">
                         <button class="btn    texto_boton_guardar">
                             <b>Guardar Cambios</b>
                         </button>
-                    </div>
+                    </div> 
                 </div>
 
                 <!--Botones-->
@@ -262,7 +293,9 @@
 
                     <div class="text-center col-5    boton_guardar_dos">
                         <button class="btn    texto_boton_guardar">
+                            <a href="../scripts/cerrarSesion.php">
                             <b>Cerrar Sesion</b>
+                            </a>
                         </button>
                     </div>
                 </div>
@@ -309,6 +342,9 @@
     </footer>
     
 </body>
+<?php
+}
+?>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/bootstrap.bundle.js"></script>
 </html>

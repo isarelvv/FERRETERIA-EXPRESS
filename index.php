@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en ">
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,23 @@
 session_start();
 ?>
     
+<?php
+if(isset($_SESSION['usuario']))
+{
+    switch ($_SESSION['SESION']) 
+    {
+        case 300:
+            header("Location: views/views_administrador/inicio.php");
+            break;   
+        case 301: 
+            header("Location: views/views_vendedor/vInicio.html");
+            break;
+        case 302:
+                header("Location: views/views_repartidor/rInicio.html");
+            break;
+    }
+}
+?>
     <!--Header-->
     <header class="row justify-content-center">
         <!--Parte Arriba Header-->
@@ -43,12 +61,16 @@ session_start();
             <!--Boton Iniciar Sesion-->
             <?php 
             if(isset($_SESSION["usuario"]))
-            {
-                echo "<div class='col-2'>
-                <button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
-                    <img src='svg/perfil-b.svg' alt='' class='icono_boton'>
-                    <p class='texto-boton-login-no-iniciado text-start'><b>".$_SESSION["usuario"]."</b></p>
-                </button>";
+            {    
+                echo "<div class='col-2' texto-boton-login>
+                <a href='views/views_inicio/cuenta.php' class='link_cuenta' style='color: white'>
+                <button class='btn  boton-login' type='button'>
+                    <img src='svg/perfil-b.svg' alt='' class='icono_boton'>       
+                    <p class='texto-boton-login-no-iniciado text-start'><b>Bienvenido ".$_SESSION["usuario"]."</b>
+                    </a></p>
+                </button> </div>";
+                
+                
             }
             else
             {
@@ -56,7 +78,7 @@ session_start();
                 <button class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
                     <img src='svg/perfil-b.svg' alt='' class='icono_boton'>
                     <p class='texto-boton-login-no-iniciado text-start'><b>Iniciar Sesion o Registrarse</b></p>
-                </button>";
+                </button></div>";
             }
 
             ?>
@@ -79,7 +101,6 @@ session_start();
                             <div class="label">
                                 <label for="contraseña" class="form-label"><b>Contraseña</b></label>
                                 <input type="password" id="contraseña" class="form-control  in_m_i" name="contraseña">
-                                <a href="" class="link_modal_i">¿Olvidaste tu contraseña?</a>
                             </div>
 
                             <div class="text-center     label">
@@ -99,8 +120,8 @@ session_start();
                     </div> 
                 </div>
             </div>
-        </div>
-            
+       
+
         <!--Parte Abajo Header-->
           
         <div class="border-bottom border-dark">

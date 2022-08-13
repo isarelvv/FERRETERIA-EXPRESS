@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $total = 0;
 ?>
 <!DOCTYPE html>
@@ -66,9 +65,7 @@ else
                         <p class='texto-boton-login-no-iniciado text-start'><b>Iniciar Sesion o Registrarse</b></p>
                     </button>";
                     }
-                ?>
-                <!--Boton Iniciar Sesion-->
-                
+                ?>                
       
                 <!--Modal Iniciar Sesion-->
                 <div class="modal modal-sm" id="iniciar-sesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -79,8 +76,8 @@ else
                         </div>
 
                         <div class="modal-body  m_c_i">
-                        <form action="../scripts/VerificarLogin.php" method="POST">
                             <div class="label">
+                                <form action="">
                                 <label for="correo" class="form-label"><b>Correo Electronico</b></label>
                                 <input type="email" id="correo" class="form-control     in_m_i" name="usuario">
                             </div>
@@ -102,7 +99,6 @@ else
                                 <a href="registrarse.php" class="link_modal_i">Registrate aqui</a>
 
                             </div>
-                        </form>
                         </div>
                     </div>
                     </div> 
@@ -167,6 +163,7 @@ else
     <!--Carrito de Compras-->
     <div class="container">
         <!--Mensaje-->
+        <form action='../scripts/compra.php' method="POST">
         <div class="row text-center">
             <div class="col   barras_mensaje"><hr></div>
 
@@ -177,7 +174,6 @@ else
             <div class="col   barras_mensaje"><hr></div>
         </div>
 
-        <form action="">
             <div class="row border border-secondary contenedor_carrito">
                 <!--Detalles del Pedido-->
                 <div class="col-8">
@@ -186,40 +182,63 @@ else
                             <b>Detalles del Pedido</b>
                         </div>
                         <?php
+                        if(isset($_REQUEST['vaciar']))
+                        {
+                            unset($_SESSION["carrito"]);
+                        }
+                        if(isset($_REQUEST["item"]))
+                        {
+                            $producto = $_REQUEST["item"];
+                            unset($_SESSION["carrito"][$producto]);
+                            if($_SESSION["carrito"]==NULL)
+                            {
+                                echo "<div class='row text-center'>
+
+                                <div class='col   barras_mensaje'><hr></div>
+                                </div>
+        
+                                <div class='text-center'>
+                                <div><img src='../../svg/carrito-n.svg' alt='' class='lupa'></div>
+                                <div class='mensaje_no_encontrado'><b>No hay productos en su carrito</b></div>
+                                </div>";
+                            }
+                        }   
                         if(isset($_SESSION['carrito']))
                         {
-                            foreach($_SESSION['carrito'] as $indice->$arreglo)
+                            foreach($_SESSION['carrito'] as $indice)
                             {
                             echo"<!--Productos-->
                             <div class='row border border-secondary     productos'>
                                 <!--Imagen-->
                                 <div class='col-1'>
-                                    <img src='../../svg/facebook.svg' alt='' class='imagen_productos'>
+                                    <img src=' ".$indice['foto']."' alt='' class='imagen_productos'>
                                 </div>
         
                                 <!--Info Producto Carrito-->
                                 <div class='col  info_producto_carrito'>
                                     <div class='row justify-content-between'>
                                         <div class='col-9   nombre_producto'>
-                                            <b>$indice</b>
+                                            <b>".$indice["nombre"]."</b>
                                         </div>";
                         ?>
                         <?php
-                        $total += $arreglo["cantidad"] * $arreglo["precio"];
-                        foreach($arreglo as $key => $value)
-                        ?>
+                        $total += $indice["cantidad"] * $indice["precio"];
+                        foreach($indice as $key => $value)
+                        ?>     
                         <div class='col-3 text-end  precio_total'>
-                            <b>  CANTIDAD: 
+                            <b>  CANTIDAD:
                         <?php
-                         {
+                        {
                         ?>  
-                            <?php echo $arreglo['cantidad']?><br>PRECIO: $
-                            <?php echo $arreglo['precio']?></b>
+                            <?php echo $indice['cantidad']?><br>PRECIO: $
+                            <?php echo $indice['precio']?></b>
                         </div>
                             <?php
                         }
+
+
                          ?>
-                                </div>
+                    </div>
     
                                 <div class="row     barra_baja">
                                     <div class="col-4">
@@ -231,7 +250,7 @@ else
                                         </div>
     
                                         <div class="col-4   d_p">
-                                        <?php echo "<a href='carrito.php?item=$indice'>Eliminar Producto</a>"; ?>
+                                        <a href="carrito.php?item=<?php echo $indice['id'] ?>">Eliminar Producto</a>
                                         </div>
                                           
                                         <!--Modal Informacion de Productos-->
@@ -247,29 +266,29 @@ else
                                                     <div class="modal-body">
                                                         <!--Imagen Producto-->
                                                         <div class="text-center">
-                                                            <img src="../../svg/facebook.svg" alt="" class="imagen_producto_modal">
+                                                            <img src="<?php echo $indice['foto']?>" alt="" class="imagen_producto_modal">
                                                         </div>
     
                                                         <!--Categoria del Producto-->
                                                         <div class="categoria_producto_modal">
-                                                            <b>Seguridad</b>
+                                                            <b><?php echo $indice['categoria'] ?></b>
                                                         </div>
     
                                                         <!--Nombre del Producto-->
                                                         <div class="nombre_producto_modal">
-                                                            <b>LENTES DE SEGURIDAD TRANPARENTES DE SOBREPONER *TRUPER* MODELO 14308</b>
+                                                            <b><?php echo $indice['nombre'] ?></b>
                                                         </div>
     
                                                         <!--Precio del Producto-->
                                                         <div class="precio_producto_modal">
-                                                            Precio: $49
+                                                            Precio: $<?php echo $indice['precio'] ?>
                                                         </div>
     
                                                         <hr>
     
                                                         <!--Descripcion del Producto-->
                                                         <div class="descripcion_producto_modal">
-                                                            Descripcion
+                                                            Descripcion: <?php echo $indice['descripcion'] ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -278,10 +297,16 @@ else
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
+                        <a href="carrito.php?vaciar=true" class="offset-10 col-3">Vaciar Carrito</a>
 
                         <?php
+                        
                         }
+                        ?>
+                        
+                        <?php
                         }
                         else
                         {
@@ -295,13 +320,9 @@ else
                         <div class='mensaje_no_encontrado'><b>No hay productos en su carrito</b></div>
                         </div>";
                         }
-                        if(isset($_REQUEST["item"]))
-                        {
-                            $producto = $_REQUEST["item"];
-                            unset($_SESSION["carrito"][$producto]);
-
-                        }
+                        
                         ?>
+                         </form>
                     </div>
                 </div>
     
@@ -312,58 +333,52 @@ else
                         <div class="text-center border-bottom border-secondary  cuadro_header">
                             <b>Metodo de Entrega</b>
                         </div>
-    
+
+                        <form action='compraCarrito.php' method="POST">
                         <div class="row">
+                                
+                        <?php
+                        if($total<500)
+                        {
+                            echo "<div class='col-12 border-start'>
+                            <div class='form-check  opciones_check_dos'>
+                                <input class='form-check-input' type='radio' name='metodo_entrega' id='tienda' checked>
+                                <label class='form-check-label' for=tienda'>
+                                    Recoger en tienda
+                                </label>
+                            </div>
+                        </div>
+                       ";
+                        }
+                        else
+                        {
+                            ?>
+                            <div class="col-6 border-start">
+                                <div class="form-check  opciones_check_dos">
+                                    <input class="form-check-input" type="radio" name="metodo_entrega" id="tienda" value="Mostrador" checked>
+                                    <label class="form-check-labe" for="tienda">
+                                        Recoger en tienda
+                                    </label>
+                                </div>
+                            </div>
+                        
                             <div class="col-6 border-end">
                                 <div class="form-check  opciones_check">
-                                    <input class="form-check-input" type="radio" name="metodo_entrega" id="domicilio" data-bs-toggle="collapse" data-bs-target="#envios" aria-expanded="false" aria-controls="collapseExample">
+                                    <input class="form-check-input" type="radio" name="metodo_entrega" id="domicilio" value="Domicilio">
                                     <label class="form-check-label" for="domicilio">
                                       Enviar a domicilio
                                     </label>
                                 </div>
                             </div>
-    
-                            <div class="col-6 border-start">
-                                <div class="form-check  opciones_check_dos">
-                                    <input class="form-check-input" type="radio" name="metodo_entrega" id="tienda" checked>
-                                    <label class="form-check-label" for="tienda">
-                                        Recoger en tienda
-                                    </label>
-                                </div>
-                            </div>
-    
-                            <div class="collapse" id="envios">
-                                <form action="">
-                                    <div class="border-top  opciones_envios">
-                                        <div class="opciones">
-                                            <input class="form-check-input" type="radio" name="lugar_envio" id="registro" checked>
-                                            <label class="form-check-label" for="registro">Enviar a la direccion registrada</label>
-                                        </div>
-
-                                        <div>
-                                            <input class="form-check-input" type="radio" name="lugar_envio" id="nueva_dire">
-                                            <label class="form-check-label" for="nueva_dire">Enviar a otra direccion</label>
-                                            <form action="">
-                                                <div class="contenedores_form">
-                                                    <!--Direccion-->
-                                                    <div class="form-floating">
-                                                        <input class="form-control  conf_labels" type="text" id="direccion" placeholder="Direccion">
-                                                        <label class="col-form-label-sm" for="direccion">Direccion</label>
-                                                    </div>
-                                
-                                                    <!--Codigo Postal-->
-                                                    <div class="form-floating">
-                                                        <input class="form-control  conf_labels" type="text" id="cp" placeholder="Codigo Postal" style="max-width: 200px;">
-                                                        <label class="col-form-label-sm" for="cp">Codigo Postal</label>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
                         </div>
-                    </div>
+                        <?php
+                        }
+                        ?>
+                            
+    
+                            
+                        </div>
+              
     
                     <!--Fecha de Entrega-->
                     <div class="border border-secondary     cuadros_detalles fondo_compra">
@@ -395,15 +410,20 @@ else
                     <!--Boton Proceder al Pago-->
                     <div class="row">
                         <div class="text-center row     row_boton">
-                            <button class="btn  texto_boton_pago">
+                            <button class="btn  texto_boton_pago" type="submit">
                                 Proceder al Pago
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
+    <?php 
+    echo "<pre>";
+    echo var_dump($indice['id']);
+    echo "</pre>";
+    ?>
 
     <!--Footer-->
     <footer>
