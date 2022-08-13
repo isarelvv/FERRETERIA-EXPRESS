@@ -43,9 +43,7 @@
       echo "<div class='alert alert-danger'>Las contraseñas no coinciden</div>";
       header("refresh:3; ../views_inicio/registrarse.php");
     }
-
     ?>
-
     </div>
 </body>
 </html>

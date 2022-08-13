@@ -13,7 +13,7 @@ class ejecutar
         {
             $con = new Database("save", "root", "");
             $objetoPDO = $con->getPDO();
-            $objetoPDO ->query($qry);
+            $objetoPDO->query($qry);
             $con->desconectarDB();
         }
         catch(PDOException $e)

@@ -77,6 +77,7 @@ else
 
                         <div class="modal-body  m_c_i">
                             <div class="label">
+                                <form action="">
                                 <label for="correo" class="form-label"><b>Correo Electronico</b></label>
                                 <input type="email" id="correo" class="form-control     in_m_i">
                             </div>
@@ -181,6 +182,27 @@ else
                             <b>Detalles del Pedido</b>
                         </div>
                         <?php
+                        if(isset($_REQUEST['vaciar']))
+                        {
+                            unset($_SESSION["carrito"]);
+                        }
+                        if(isset($_REQUEST["item"]))
+                        {
+                            $producto = $_REQUEST["item"];
+                            unset($_SESSION["carrito"][$producto]);
+                            if($_SESSION["carrito"]==NULL)
+                            {
+                                echo "<div class='row text-center'>
+
+                                <div class='col   barras_mensaje'><hr></div>
+                                </div>
+        
+                                <div class='text-center'>
+                                <div><img src='../../svg/carrito-n.svg' alt='' class='lupa'></div>
+                                <div class='mensaje_no_encontrado'><b>No hay productos en su carrito</b></div>
+                                </div>";
+                            }
+                        }   
                         if(isset($_SESSION['carrito']))
                         {
                             foreach($_SESSION['carrito'] as $indice)
@@ -228,7 +250,7 @@ else
                                         </div>
     
                                         <div class="col-4   d_p">
-                                        <a href="<?php echo 'carrito.php?item='.$indice['nombre'].'' ?>">Eliminar Producto</a>
+                                        <a href="carrito.php?item=<?php echo $indice['id'] ?>">Eliminar Producto</a>
                                         </div>
                                           
                                         <!--Modal Informacion de Productos-->
@@ -298,28 +320,7 @@ else
                         <div class='mensaje_no_encontrado'><b>No hay productos en su carrito</b></div>
                         </div>";
                         }
-                        if(isset($_REQUEST['vaciar']))
-                        {
-                            unset($_SESSION["carrito"]);
-                        }
-                        if(isset($_REQUEST["item"]))
-                        {
-                            $producto = $_REQUEST["item"];
-                            unset($_SESSION["carrito"][$producto]);
-                            header("Location:carrito.php");
-                            if($_SESSION["carrito"]==NULL)
-                            {
-                                echo "<div class='row text-center'>
-
-                                <div class='col   barras_mensaje'><hr></div>
-                                </div>
-        
-                                <div class='text-center'>
-                                <div><img src='../../svg/carrito-n.svg' alt='' class='lupa'></div>
-                                <div class='mensaje_no_encontrado'><b>No hay productos en su carrito</b></div>
-                                </div>";
-                            }
-                        }
+                        
                         ?>
                          </form>
                     </div>
@@ -333,7 +334,7 @@ else
                             <b>Metodo de Entrega</b>
                         </div>
 
-                        
+                        <form action='compraCarrito.php' method="POST">
                         <div class="row">
                                 
                         <?php
@@ -418,12 +419,12 @@ else
             </div>
         
     </div>
-   
-        <?php
-        echo "<pre>";
-        echo var_dump($_SESSION['carrito']);
-        echo "</pre>";
-        ?>
+    <?php 
+    echo "<pre>";
+    echo var_dump($indice['id']);
+    echo "</pre>";
+    ?>
+
     <!--Footer-->
     <footer>
         <div class="row">
