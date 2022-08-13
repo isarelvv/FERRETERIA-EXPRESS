@@ -18,12 +18,28 @@ session_start();
     <title>Productos - Ferreteria y Materiales Express</title>
 </head>
 <body>
+    
     <?php
     use MyApp\query\select;
     require_once("../../vendor/autoload.php");
 
 
     $seleccionar= new select();
+    if(isset($_SESSION['SESION']))
+    {
+    switch ($_SESSION['SESION']) 
+    {
+        case 300:
+            header("Location: views/views_administrador/inicio.php");
+            break;   
+        case 301: 
+            header("Location: views/views_vendedor/vInicio.html");
+            break;
+        case 302:
+                header("Location: views/views_repartidor/rInicio.html");
+            break;
+    }
+    }
 
     ?>
     
@@ -51,12 +67,13 @@ session_start();
             <?php
             if(isset($_POST['buscar']))
             {
-                $buscar = $_POST['buscar'];
-                $tabla = new select();
-                $cons = "SELECT PRODUCTOS.CODIGO, PRODUCTOS.NOMBRE AS PRODUCTO, CATEGORIAS.NOMBRE AS CATEGORIA, PRODUCTOS.PRECIO_VENTA AS PRECIO, 
-                PRODUCTOS.FOTO AS FOTO, PRODUCTOS.DESCRIPCION AS DESCRIPCION, PRODUCTOS.CANTIDAD_REAL AS CANTIDAD FROM PRODUCTOS 
+                extract($_POST);
+                $barra = new select();
+                $consulta = "SELECT PRODUCTOS.CODIGO, PRODUCTOS.NOMBRE AS PRODUCTO, CATEGORIAS.NOMBRE AS CATEGORIA, 
+                PRODUCTOS.PRECIO_VENTA AS PRECIO, PRODUCTOS.FOTO AS FOTO, PRODUCTOS.DESCRIPCION AS DESCRIPCION,
+                PRODUCTOS.CANTIDAD_REAL AS CANTIDAD FROM PRODUCTOS
                 INNER JOIN CATEGORIAS ON CATEGORIAS.ID_CATEGORIA = PRODUCTOS.CATEGORIA WHERE PRODUCTOS.NOMBRE LIKE '%$buscar%'";
-                $tabla->seleccionar($cons);
+                $resultado = $barra->seleccionar($consulta);
             }
             ?>
             
@@ -66,13 +83,13 @@ session_start();
                 <?php 
             if(isset($_SESSION["usuario"]))
             {    
-                echo "<button class='btn  boton-login' type='button' >
+                echo "<div class='col-2' texto-boton-login>
+                <a href='cuenta.php' class='link_cuenta' style='color: white'>
+                <button class='btn  boton-login' type='button'>
                     <img src='../../svg/perfil-b.svg' alt='' class='icono_boton'>       
                     <p class='texto-boton-login-no-iniciado text-start'><b>Bienvenido ".$_SESSION["usuario"]."</b>
-                    <a href='views/views_inicio/registarse.php'></a></p>
-                </button>";
-                
-                
+                    </a></p>
+                </button> </div>";
             }
             else
             {
@@ -332,6 +349,87 @@ session_start();
                  }
                 
                 $tabla=$seleccionar->seleccionar($cadena);
+
+                if(isset($_POST['buscar']))
+                {
+                    foreach($resultado as $datos)
+                {
+                  
+                    ?>
+                    <div class="col  " style="max-width: 250px; height:475px ">
+                    <form action="" method="POST">
+                    <input type="hidden" name="foto" value="<?php echo $datos->FOTO ?>">
+                    <img src="<?php echo $datos->FOTO ?>" alt="<?php echo $datos->FOTO ?>" class="imagenes_productos">
+                    <div class="categoria_producto">
+                        <input type="hidden" name="categoria" value="<?php $datos->CATEGORIA?>">
+                        <b><?php echo $datos->CATEGORIA ?></b>
+                    </div>
+                    <div class="nombre_producto" style="height:80px ">
+                    <input type="hidden" name="nombre" value="<?php echo $datos->PRODUCTO ?>">
+                    <?php echo $datos->PRODUCTO ?>
+                    </div>
+                    <div class="informacion_producto">
+                    <input type="hidden" name="cod" value="<?php echo $datos->CODIGO ?>">
+                        <a href="..." data-bs-toggle="modal" data-bs-target="<?php echo "#HOLA".$datos->CODIGO ?>">Ver informacion detallada</a>
+                    </div>
+                    
+                    <?php
+                    if ($datos->CANTIDAD!=0) {
+                        echo "<div class='unidades_producto'>";
+                        echo "PRODUCTOS DISPONIBLES";
+                    }
+                    else
+                    {
+                        echo "<div class='mt-2 text-danger'>";
+                        echo "PRODUCTOS NO DISPONIBLE";
+                    }
+                    ?>
+                       
+                    </div>
+                    <div class="precio_producto">
+    
+                    <input type="hidden" name="precio" value="<?php echo $datos->PRECIO?>">
+                        <b><?php echo "PRECIO:$".$datos->PRECIO ?></b>
+                     
+                    </div>
+           
+                    <div class="input-group">
+                        <input type="hidden" name="cantidad" value="1">
+                        <span class="input-group-text   barra_cantidad">Cantidad</span>
+                        <input type="number" class="form-control    barra_cantidad" aria-label="Username" placeholder="" name="cantidad" min="1" max="100" required>
+                    </div>
+                    <div >
+                        <?php
+                    if ($datos->CANTIDAD!=0) {
+                        if(isset($_SESSION['usuario']))
+                        {
+                        echo "<button class='btn  agregar_carrito' type='submit' name='agregar' value='guardar'>
+                        <b>Agregar al Carrito</b>
+                        </button>";
+                        }
+                        else
+                        {
+                            echo "<button class='btn  agregar_carrito' type='button' disabled>
+                            <b>Agregar al Carrito</b>
+                            </button>";
+                        }
+                        
+                    }
+                    else
+                    {
+                        echo "<button class='btn  agregar_carrito' disabled>
+                        <b>Agregar al Carrito</b>
+                    </button>";
+                    }
+                    ?>
+                    </div>
+                </div>
+                </form>   
+                    <?php
+                }
+                }
+                else
+                {
                 foreach($tabla as $datos)
                 {
                   
@@ -389,7 +487,7 @@ session_start();
                         }
                         else
                         {
-                            echo "<button class='btn  agregar_carrito' type='button' >
+                            echo "<button class='btn  agregar_carrito' type='button' disabled>
                             <b>Agregar al Carrito</b>
                             </button>";
                         }
@@ -406,6 +504,7 @@ session_start();
                 </div>
                 </form>   
                     <?php
+                }
                 }
                 foreach($tabla as $datos)
                 {

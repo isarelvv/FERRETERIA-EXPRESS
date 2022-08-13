@@ -39,13 +39,14 @@ else
             
             <!--Barra de Busqueda-->
             <div class="col-6 text-center">
+                <form action="productos.php" method="POST">
                 <div class="input-group mb-3 border border-1 border-dark rounded rounded-3  buscar">
                     <!--Barra-->
-                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar productos">
-
+                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar productos" name="buscar">
                     <!--Boton Buscar-->
-                    <button class="btn border-0 border-start  b-buscar" type="button" id="button-addon1">Buscar</button>
+                    <button class="btn border-0 border-start  b-buscar" type="submit" id="button-addon1">Buscar</button>
                 </div>
+                </form>
             </div>
 
             <!--Login-->
@@ -61,8 +62,6 @@ else
                     <p class='texto-boton-login-no-iniciado text-start'><b>Bienvenido ".$_SESSION["usuario"]."</b>
                     </p>
                 </button></a> </div>";
-                
-                
             }
             else
             {
@@ -293,7 +292,7 @@ else
 
                     <div class="text-center col-5    boton_guardar_dos">
                         <button class="btn    texto_boton_guardar">
-                            <a href="../scripts/cerrarSesion.php">
+                            <a href="../scripts/cerrarSesion.php" style="text-decoration:solid;" class="texto_boton_guardar">
                             <b>Cerrar Sesion</b>
                             </a>
                         </button>

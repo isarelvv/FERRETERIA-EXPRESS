@@ -17,6 +17,24 @@ session_start();
     <title>Servicios - Ferreteria y Materiales Express</title>
 </head>
 <body>
+    <?php
+        if(isset($_SESSION['SESION']))
+
+        {
+        switch ($_SESSION['SESION']) 
+        {
+            case 300:
+                header("Location: views/views_administrador/inicio.php");
+                break;   
+            case 301: 
+                header("Location: views/views_vendedor/vInicio.html");
+                break;
+            case 302:
+                    header("Location: views/views_repartidor/rInicio.html");
+                break;
+        }
+        }
+    ?>
     <!--Header-->
     <header class="row justify-content-center">
         <!--Parte Arriba Header-->
@@ -28,13 +46,14 @@ session_start();
             
             <!--Barra de Busqueda-->
             <div class="col-6 text-center">
+                <form action="productos.php" method="POST">
                 <div class="input-group mb-3 border border-1 border-dark rounded rounded-3  buscar">
                     <!--Barra-->
-                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar productos">
-
+                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar productos" name="buscar">
                     <!--Boton Buscar-->
-                    <button class="btn border-0 border-start  b-buscar" type="button" id="button-addon1">Buscar</button>
+                    <button class="btn border-0 border-start  b-buscar" type="submit" id="button-addon1">Buscar</button>
                 </div>
+                </form>
             </div>
 
             <!--Login-->
@@ -43,13 +62,13 @@ session_start();
                 <?php 
             if(isset($_SESSION["usuario"]))
             {    
-                echo "<button class='btn  boton-login' type='button' >
+                echo "<div class='col-2' texto-boton-login>
+                <a href='cuenta.php' class='link_cuenta' style='color: white'>
+                <button class='btn  boton-login' type='button'>
                     <img src='../../svg/perfil-b.svg' alt='' class='icono_boton'>       
                     <p class='texto-boton-login-no-iniciado text-start'><b>Bienvenido ".$_SESSION["usuario"]."</b>
-                    <a href='views/views_inicio/registarse.php'></a></p>
-                </button>";
-                
-                
+                    </a></p>
+                </button> </div>";
             }
             else
             {

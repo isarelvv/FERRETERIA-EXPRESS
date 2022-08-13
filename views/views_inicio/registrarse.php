@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,24 +18,46 @@
     <title>Crear Cuenta - Ferreteria y Materiales Express</title>
 </head>
 <body>
+    <?php
+    if(isset($_SESSION['SESION']))
+
+    {
+    switch ($_SESSION['SESION']) 
+    {
+        case 300:
+            header("Location: views/views_administrador/inicio.php");
+            break;   
+        case 301: 
+            header("Location: views/views_vendedor/vInicio.html");
+            break;
+        case 302:
+                header("Location: views/views_repartidor/rInicio.html");
+            break;
+        case 303;
+        header("Location: ../../index.php");
+            break;
+    }
+    }
+    ?>
     <!--Header-->
     <header class="row justify-content-center">
         <!--Parte Arriba Header-->
         <div class="row justify-content-center border-bottom border-1 border-dark border-opacity-25     barra_arriba">
             <!--Logo Express-->
             <div class="col-2 text-end">
-                <object data="../svg/logo-r.svg" class="text-end border border-dark   logo"></object>
+                <object data="../../svg/logo-r.svg" class="text-end border border-dark   logo"></object>
             </div>
             
             <!--Barra de Busqueda-->
             <div class="col-6 text-center">
+                <form action="productos.php" method="POST">
                 <div class="input-group mb-3 border border-1 border-dark rounded rounded-3  buscar">
                     <!--Barra-->
-                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar productos">
-
+                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar productos" name="buscar">
                     <!--Boton Buscar-->
-                    <button class="btn border-0 border-start  b-buscar" type="button" id="button-addon1">Buscar</button>
+                    <button class="btn border-0 border-start  b-buscar" type="submit" id="button-addon1">Buscar</button>
                 </div>
+                </form>
             </div>
 
             <!--Login-->
