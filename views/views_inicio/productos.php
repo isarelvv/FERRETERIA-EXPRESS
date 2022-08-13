@@ -482,9 +482,9 @@ session_start();
             }
       }
 
-$_SESSION["carrito"][$producto]["cantidad"]=$total_c+$cantidad;
-$_SESSION["carrito"][$producto]["precio"]=$precio;
-$_SESSION["carrito"][$producto]["nombre"]=$producto;
+$_SESSION["carrito"][$producto]["cantidad"] = $total_c+$cantidad;
+$_SESSION["carrito"][$producto]["precio"] = $precio;
+$_SESSION["carrito"][$producto]["nombre"] = $producto;
 $_SESSION["carrito"][$producto]["foto"] = $foto;
 $_SESSION["carrito"][$producto]["id"] = $id;
 
