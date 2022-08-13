@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/mi_css/vHistorial.css">
-    <title>Inicio - Repartidor</title>
+    <title>Historial de Ventas - Repartidor</title>
 </head>
 <body>
     <div class="row">
@@ -112,25 +112,25 @@
 
                 <div class="border  info_venta">
                     <div class="contenedor_tabla">
-                      <table class="table">
+                      <table class="table table-bordered">
                         <thead>
                           <tr class="table-dark">
-                            <th class="border" scope="col">Clave Venta</th>
-                            <th class="border" scope="col">Cliente</th>
-                            <th class="border" scope="col">Vendedor</th>
-                            <th class="border" scope="col">Fecha de Venta</th>
-                            <th class="border" scope="col">Monto</th>
-                            <th class="border" scope="col">Detalles</th>
+                            <th scope="col">Clave Venta</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Vendedor</th>
+                            <th scope="col">Fecha de Venta</th>
+                            <th scope="col">Monto</th>
+                            <th scope="col">Detalles</th>
                           </tr>
 
                           <tr>
-                            <td class="border">#123-456</td>
-                            <td class="border">#Edeh Gerardo Meza Reyes</td>
-                            <td class="border">#Luis Angel Zapata Zuñiga</td>
-                            <td class="border">#12/08/2022</td>
-                            <td class="border">#$1000.00</td>
+                            <td>#123-456</td>
+                            <td>#Edeh Gerardo Meza Reyes</td>
+                            <td>#Luis Angel Zapata Zuñiga</td>
+                            <td>#12/08/2022</td>
+                            <td>#$1000.00</td>
                             <td>
-                              <a data-bs-toggle="collapse" href="#detalles_producto" aria-expanded="false" aria-controls="detalles_producto">
+                              <a href="#detalles_producto" data-bs-toggle="collapse" aria-expanded="false" aria-controls="detalles_producto">
                                 Mas Detalles
                               </a>
                             </td>
@@ -138,7 +138,7 @@
                         </thead>
                       </table>
 
-                      <div class="collapse" id="detalles_producto">
+                      <div id="detalles_producto" class="collapse">
                         <div class="card">
                           <div class="card-body">
                             Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
@@ -154,6 +154,6 @@
         </main>
     </div>
 </body>
-<script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/bootstrap.bundle.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
 </html>

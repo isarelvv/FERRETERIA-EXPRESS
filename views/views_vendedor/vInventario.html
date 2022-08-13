@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/mi_css/vInventario.css">
-    <title>Inicio - Repartidor</title>
+    <title>Inventario - Repartidor</title>
 </head>
 <body>
     <div class="row">
@@ -55,6 +55,76 @@
         <!--Info Pedidos-->
         <main class="col-10 border">
             <div class="container   contenedor">
+              <div class="titulo_contenedor"><b>Inventario</b></div>
+
+              <form action="">
+                <div class="filtros_contenedor"><b>Filtros de Busqueda</b></div>
+
+                <!--Selects-->
+                <div class="row">
+                  <!--Ordenar-->
+                  <div class="col-5">
+                    <select name="filtros_de_busqueda" class="form-select form-select-sm     select_filtros" aria-label="Default select example">
+                      <option value="1">Todos los productos</option>
+                      <option value="2">Ordenar de la A a la Z</option>
+                      <option value="3">Ordenar de la Z a la A</option>
+                      <option value="4">De Mayor a Menor Cantidad</option>
+                      <option value="5">De Menor a Mayor Cantidad</option>
+                    </select>
+                  </div>
+
+                  <!--Categorias-->
+                  <div class="col-5">
+                    <select name="filtros_de_busqueda" class="form-select form-select-sm     select_filtros" aria-label="Default select example">
+                      <option value="1">Todas las Categorias</option>
+                      <option value="2">Herramientas</option>
+                      <option value="3">Union</option>
+                      <option value="4">Medicion</option>
+                      <option value="5">Construccion</option>
+                      <option value="6">Tuberias</option>
+                      <option value="7">Alumbrado</option>
+                      <option value="8">Proteccion</option>
+                      <option value="9">Limpieza</option>
+                      <option value="10">Pintura</option>
+                      <option value="11">Componentes Diversos</option>
+                    </select>
+                  </div>
+
+                  <!--Boton-->
+                  <div class="col-2 row">
+                    <button class="btn btn-sm   boton_buscar" type="button">
+                      Filtrar Resultados
+                    </button>
+                  </div>
+                </div>
+              </form>
+
+              <hr>
+
+              <!--Tabla Inventario-->
+              <table class="table table-bordered">
+                <thead>
+                  <tr class="table-dark">
+                    <th scope="col">Foto</th>
+                    <th scope="col">Nombre del Producto</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Canitidad</th>
+                    <th scope="col">Faltantes</th>
+                    <th scope="col">Precio</th>
+                  </tr>
+
+                  <tr style="vertical-align: middle;">
+                    <td class="text-center" style="padding: 0%;">
+                      <img src="../../svg/facebook.svg" alt="" style="max-width: 60px;">
+                    </td>
+                    <td>#LENTES DE SEGURIDAD TRANPARENTES DE SOBREPONER *TRUPER* MODELO 14308</td>
+                    <td>#Seguridad</td>
+                    <td class="text-center">#12</td>
+                    <td class="text-center">#20</td>
+                    <td class="text-center">#$49</td>
+                  </tr>
+                </thead>
+              </table>
             </div>
         </main>
     </div>

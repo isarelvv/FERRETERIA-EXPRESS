@@ -36,3 +36,38 @@ nav
     margin-top: 0%;
     margin-bottom: 0%;
 }
+
+
+
+/*Contenedor*/
+.container
+{
+    margin-top: 20px;
+}
+
+.titulo_contenedor
+{
+    font-size: 24pt;
+    margin-bottom: 10px;
+    color: #0254EB;
+}
+
+.filtros_contenedor
+{
+    font-size: 18pt;
+    margin-bottom: 5px;
+}
+
+.boton_buscar
+{
+    border-color: #0254EB;
+    background-color: #0254EB;
+    color: #fff;
+}
+
+.boton_buscar:hover
+{
+    border-color: #010059;
+    background-color: #010059;
+    color: #fff;
+}
