@@ -30,7 +30,7 @@ session_start();
                 header("Location: views/views_vendedor/vInicio.html");
                 break;
             case 302:
-                    header("Location: views/views_repartidor/rInicio.html");
+                    header("Location: ../views_repartidor/rInicio.php");
                 break;
         }
         }

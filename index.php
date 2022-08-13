@@ -29,10 +29,10 @@ if(isset($_SESSION['usuario']))
             header("Location: views/views_administrador/inicio.php");
             break;   
         case 301: 
-            header("Location: views/views_vendedor/vInicio.html");
+            header("Location: views/views_vendedor/vInicio.php");
             break;
         case 302:
-            header("Location: views/views_repartidor/rInicio.html");
+            header("Location: views/views_repartidor/rInicio.php");
             break;
     }
 }
