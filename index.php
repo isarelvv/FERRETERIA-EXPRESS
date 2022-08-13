@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="en ">
@@ -23,9 +22,19 @@ session_start();
 <?php
 if(isset($_SESSION['usuario']))
 {
-
+    switch ($_SESSION['SESION']) 
+    {
+        case 300:
+            header("Location: views/views_administrador/inicio.php");
+            break;   
+        case 301: 
+            header("Location: views/views_vendedor/vInicio.html");
+            break;
+        case 302:
+                header("Location: views/views_repartidor/rInicio.html");
+            break;
+    }
 }
-
 ?>
     <!--Header-->
     <header class="row justify-content-center">
@@ -91,7 +100,6 @@ if(isset($_SESSION['usuario']))
                             <div class="label">
                                 <label for="contraseña" class="form-label"><b>Contraseña</b></label>
                                 <input type="password" id="contraseña" class="form-control  in_m_i" name="contraseña">
-                                <a href="" class="link_modal_i">¿Olvidaste tu contraseña?</a>
                             </div>
 
                             <div class="text-center     label">

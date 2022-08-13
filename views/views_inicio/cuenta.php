@@ -76,7 +76,7 @@ else
             ?>
       
                 <!--Modal Iniciar Sesion-->
-                <div class="modal modal-sm" id="iniciar-sesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal modal-sm" id="iniciar-sesion" tabindex="-1" aria-labelledby="" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header justify-content-center border-bottom border-dark     m_h_i">
@@ -280,7 +280,7 @@ else
                         <button class="btn    texto_boton_guardar">
                             <b>Guardar Cambios</b>
                         </button>
-                    </div>
+                    </div> 
                 </div>
 
                 <!--Botones-->
@@ -293,7 +293,9 @@ else
 
                     <div class="text-center col-5    boton_guardar_dos">
                         <button class="btn    texto_boton_guardar">
+                            <a href="../scripts/cerrarSesion.php">
                             <b>Cerrar Sesion</b>
+                            </a>
                         </button>
                     </div>
                 </div>
