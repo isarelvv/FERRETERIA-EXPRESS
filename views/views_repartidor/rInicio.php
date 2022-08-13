@@ -25,13 +25,13 @@
               <!--Botones paginas-->
               <ul class="nav nav-pills row text-center justify-content-center">
                 <li class="nav-item">
-                  <a class="nav-link active    items" aria-current="page" href="../../views/views_repartidor/rInicio.html">Inicio</a>
+                  <a class="nav-link active    items" aria-current="page" href="../../views/views_repartidor/rInicio.php">Inicio</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link    items" href="../../views/views_repartidor/rPedidos.html">Pedidos</a>
+                  <a class="nav-link    items" href="../../views/views_repartidor/rPedidos.php">Pedidos</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link    items" href="../../views/views_repartidor/rHistorial.html">Historial</a>
+                  <a class="nav-link    items" href="../../views/views_repartidor/rHistorial.php">Historial</a>
                 </li>
               </ul>
 
@@ -43,7 +43,7 @@
                   <a class="nav-item dropdown-toggle link_drop" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configuracion</a>
                 
                   <ul class="dropdown-menu dropdown-menu-dark">
-                    <li style="margin-bottom: 10px;"><a class="dropdown-item" href="../views_repartidor/rAjustes.html">Ajustes</a></li>
+                    <li style="margin-bottom: 10px;"><a class="dropdown-item" href="../views_repartidor/rAjustes.php">Ajustes</a></li>
                     <li><hr class="sep_hr"></li>
                     <li style="margin-top: 10px;"><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
                   </ul>
