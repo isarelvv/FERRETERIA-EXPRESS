@@ -9,6 +9,11 @@
     <title>Pedidos - Repartidores</title>
 </head>
 <body>
+<?php
+    use MyApp\query\select;
+    require_once ("../../vendor/autoload.php");
+    session_start();
+    ?>
     <div class="row">
         <!--Barra-->
         <nav class="col-2">
@@ -42,9 +47,9 @@
                         <a class="nav-item dropdown-toggle link_drop" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configuracion</a>
                         
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li style="margin-bottom: 10px;"><a class="dropdown-item" href="../views_repartidor/rAjustes.php">Ajustes</a></li>
+                            <li style="margin-bottom: 10px;"><a class="dropdown-item" href="../views_repartidor/rAjustes.html">Ajustes</a></li>
                             <li><hr class="sep_hr"></li>
-                            <li style="margin-top: 10px;"><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
+                            <li style="margin-top: 10px;"><a class="dropdown-item" href="../scripts/cerrarSesion.php">Cerrar Sesion</a></li>
                         </ul>
                     </div>
                 </div>
@@ -64,27 +69,43 @@
 
                     <div class="col   barras_mensaje"><hr></div>
                 </div>
-
                 <div class="cuadros">
                     <!--Pedidos-hoy-->
                     <div class="row justify-content-evenly     cuadros_pedidos">
+                        <?php
+                        for ($i=0; $i < 2; $i++) { 
+                        $repartidor=$_SESSION['ID'];
+                        $consulta = new select ();
+                        $qry="call save.PEDIDOS_REPARTIDOR_PERIODO(602, 'Pendiente', '2022-08-20', '2022-08-20');";
+                        $datos=$consulta->seleccionar($qry);
+                        foreach ($datos as $tabla) 
+                        {
+                            $nombre_cliente=$tabla->NOMBRE;
+                            $dire=$tabla->DIRECCION;
+                            $total=$tabla->TOTAL;
+                            $tel=$tabla->TELEFONO;
+                            $mail=$tabla->CORREO;
+                            $no_venta=$tabla->VENTA;
+                            $fecha=$tabla->FECHA;                            
+                        ?>
                         <!--Pedidos-->
-                        <div class="col-4 border border-secondary rounded-2 text-center  info_pedidos" style="max-width: 360px;">
-                            <div class="num_pedido"><b>Pedido N.° #123-456-7890</b></div>
-                            <div class="persona_pedido"><p>#Edeh Gerardo Meza Reyes</p></div>
+                        <div class="col-6 border border-secondary rounded-2 text-center  info_pedidos" style="max-width: 360px;">
+                            <div class="num_pedido"><b>Pedido N.° #<?php echo $no_venta ?></b></div>
+                            <div class="persona_pedido"><p><?php echo $nombre_cliente ?></p></div>
+                            <div class=""><b> Pedido Para Hoy</b></div>
                             <hr>
                             <div class="row contenedor_boton">
-                                <button class="btn boton-informacion" type="button" data-bs-toggle="modal" data-bs-target="#pedidos_hoy_info">
-                                    <b>Mas Informacion</b>
+                                <button class="btn boton-informacion" type="button" data-bs-toggle="modal" data-bs-target="#pedidos_hoy_info<?php echo $no_venta ?>">
+                                    <b>Mas Informacion </b>
                                 </button>
 
                                 <!--Modal Info Pedido-->
-                                <div class="modal modal-lg fade" id="pedidos_hoy_info" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal modal-lg fade" id="pedidos_hoy_info<?php echo $no_venta ?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
                                         <!--Header-->
                                         <div class="modal-header header_modal">
-                                        <h5 class="modal-title" id="exampleModalLabel">Pedido N.° #123-456-7890</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Pedido N.° #<?php echo $no_venta ?></h5>
                                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
 
@@ -93,25 +114,39 @@
 
                                             <!--Info Cliente-->
                                             <div class="text-start info_cliente_modal">
-                                                <div class="info_cliente_modal_lab"><b>Cliente:</b> #Edeh Gerardo Meza Reyes</div>
-                                                <div class="info_cliente_modal_lab"><b>Direccion:</b> #ejemplo</div>
-                                                <div class="info_cliente_modal_lab"><b>Telefono:</b> #8717321111</div>
-                                                <div class="info_cliente_modal_lab"><b>Correo Electronico:</b> #tilinlover17@gmail.com</div>
+                                                <div class="info_cliente_modal_lab"><b>Cliente: </b> <?php echo $nombre_cliente ?></div>
+                                                <div class="info_cliente_modal_lab"><b>Direccion: </b> <?php echo $dire ?></div>
+                                                <div class="info_cliente_modal_lab"><b>Telefono: </b> <?php echo $tel ?></div>
+                                                <div class="info_cliente_modal_lab"><b>Correo Electronico: </b><?php echo $mail ?></div>
                                             </div>
 
-                                            <!--Productos-->
-                                            <!--Cuadros Info Productos-->
+                                            <?php
+                                                        $consulta = new select();
+                                                        $qry="call DETALLE_PEDIDOS(602,".$no_venta.");";
+                                                        $datos=$consulta->seleccionar($qry);
+                                                        
+                                                        
+                                                        foreach ($datos as $tabla) 
+                                                        {
+                                                            $producto=$tabla->PRODUCTO;
+                                                            $pic=$tabla->FOTO;
+                                                            $medida=$tabla->MEDIDA;
+                                                            $cantidad=$tabla->CANTIDAD;
+                                                            $precio=$tabla->PRECIO_VENTA;
+                                                            $subtotal=$tabla->TOTAL;
+                                                            
+                                                ?>
                                             <div class="row border border-secondary     productos">
                                                 <!--Imagen-->
                                                 <div class="col-1">
-                                                    <img src="../../svg/facebook.svg" alt="" class="imagen_productos">
+                                                    <img src="<?php echo $pic ?>" alt="" class="imagen_productos">
                                                 </div>
-                        
                                                 <!--Info Producto Carrito-->
+                                                
                                                 <div class="col text-start  info_producto_carrito">
                                                     <div class="row justify-content-between">
                                                         <div class="col-12   nombre_producto">
-                                                            <b>Producto</b>
+                                                            <b><?php echo $producto ?></b>
                                                         </div>
                                                     </div>
                         
@@ -119,83 +154,25 @@
                                                         <div class="col-4">
                                                             <div class="input-group">
                                                                 <span class="input-group-text   barra_cantidad">Cantidad</span>
-                                                                <input type="number" class="form-control    barra_cantidad" disabled="disabled" aria-label="Username">
-                                                                <span class="input-group-text   barra_cantidad">kg</span>
+                                                                <input type="number" class="form-control    barra_cantidad" disabled="disabled" aria-label="Username" value="<?php echo $cantidad ?>">
+                                                                <span class="input-group-text   barra_cantidad"><?php echo $medida ?></span>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-3 text-end  precio_total">
-                                                            <b>Precio: $150.00</b>
+                                                            <b>Precio: $<?php echo $precio ?>.00</b>
+                                                            <b>Subtotal:$<?php echo $subtotal ?>.00</b>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="row border border-secondary     productos">
-                                                <!--Imagen-->
-                                                <div class="col-1">
-                                                    <img src="../../svg/facebook.svg" alt="" class="imagen_productos">
-                                                </div>
-                        
-                                                <!--Info Producto Carrito-->
-                                                <div class="col text-start  info_producto_carrito">
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-12   nombre_producto">
-                                                            <b>Producto</b>
-                                                        </div>
-                                                    </div>
-                        
-                                                    <div class="row justify-content-between     barra_baja">
-                                                        <div class="col-4">
-                                                            <div class="input-group">
-                                                                <span class="input-group-text   barra_cantidad">Cantidad</span>
-                                                                <input type="number" class="form-control    barra_cantidad" disabled="disabled" aria-label="Username">
-                                                                <span class="input-group-text   barra_cantidad">kg</span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-3 text-end  precio_total">
-                                                            <b>Precio: $150.00</b>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row border border-secondary     productos">
-                                                <!--Imagen-->
-                                                <div class="col-1">
-                                                    <img src="../../svg/facebook.svg" alt="" class="imagen_productos">
-                                                </div>
-                        
-                                                <!--Info Producto Carrito-->
-                                                <div class="col text-start  info_producto_carrito">
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-12   nombre_producto">
-                                                            <b>Producto</b>
-                                                        </div>
-                                                    </div>
-                        
-                                                    <div class="row justify-content-between     barra_baja">
-                                                        <div class="col-4">
-                                                            <div class="input-group">
-                                                                <span class="input-group-text   barra_cantidad">Cantidad</span>
-                                                                <input type="number" class="form-control    barra_cantidad" disabled="disabled" aria-label="Username">
-                                                                <span class="input-group-text   barra_cantidad">kg</span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-3 text-end  precio_total">
-                                                            <b>Precio: $150.00</b>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            </div> 
+                                            <?php
+                                                        } 
+                                            ?> 
 
                                         <!--Footer-->
                                         <div class="modal-footer">
-                                        <button type="button" class="btn boton_cancelar" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn boton_activar">Activar Pedido</button>
+                                        <button type="button" class="btn boton_activar">Activar Pedido</button> <!-- SE VA A CONFIGURAR-->
                                         </div>
                                     </div>
                                     </div>
@@ -203,6 +180,10 @@
                             </div>
                         </div>
                 </div>
+                <?php
+                        }
+                    }
+                ?>
                 </div>
 
                 <!--Mensaje-->
@@ -219,24 +200,40 @@
                 <div class="cuadros">
                     <!--Pedidos-Proximos-->
                     <div class="row justify-content-evenly     cuadros_pedidos">
+                        <?php
+                        for ($i=0; $i < 2; $i++) { 
+                        $repartidor=$_SESSION['ID'];
+                        $consulta = new select ();
+                        $qry="call save.PEDIDOS_REPARTIDOR_PERIODO(602, 'Pendiente', '2022-08-20', '2022-08-20');";
+                        $datos=$consulta->seleccionar($qry);
+                        foreach ($datos as $tabla) 
+                        {
+                            $nombre_cliente=$tabla->NOMBRE;
+                            $dire=$tabla->DIRECCION;
+                            $total=$tabla->TOTAL;
+                            $tel=$tabla->TELEFONO;
+                            $mail=$tabla->CORREO;
+                            $no_venta=$tabla->VENTA;
+                            $fecha=$tabla->FECHA;                            
+                        ?>
                         <!--Pedidos-->
-                        <div class="col-4 border border-secondary rounded-2 text-center  info_pedidos">
-                            <div class="num_pedido"><b>Pedido N.° #123-456-7890</b></div>
-                            <div class="persona_pedido"><p>#Edeh Gerardo Meza Reyes</p></div>
-                            <div class=""><b>Fecha de Entrega:</b> 17/08/2022</div>
+                        <div class="col-6 border border-secondary rounded-2 text-center  info_pedidos" style="max-width: 360px;">
+                            <div class="num_pedido"><b>Pedido N.° #<?php echo $no_venta ?></b></div>
+                            <div class="persona_pedido"><p><?php echo $nombre_cliente ?></p></div>
+                            <div class=""><b>Fecha de Entrega:</b> <?php echo $fecha ?></div>
                             <hr>
                             <div class="row contenedor_boton">
-                                <button class="btn boton-informacion" type="button" data-bs-toggle="modal" data-bs-target="#pedidos_proximos_info">
-                                    <b>Mas Informacion</b>
+                                <button class="btn boton-informacion" type="button" data-bs-toggle="modal" data-bs-target="#pedidos_hoy_info">
+                                    <b>Mas Informacion </b>
                                 </button>
 
                                 <!--Modal Info Pedido-->
-                                <div class="modal modal-lg fade" id="pedidos_proximos_info" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal modal-lg fade" id="pedidos_hoy_info" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel<?php echo $no_venta ?>" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
                                         <!--Header-->
                                         <div class="modal-header header_modal">
-                                        <h5 class="modal-title" id="exampleModalLabel">Pedido N.° #123-456-7890</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel<?php echo $no_venta ?>">Pedido N.° #<?php echo $no_venta ?></h5>
                                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
 
@@ -245,25 +242,39 @@
 
                                             <!--Info Cliente-->
                                             <div class="text-start info_cliente_modal">
-                                                <div class="info_cliente_modal_lab"><b>Cliente:</b> #Edeh Gerardo Meza Reyes</div>
-                                                <div class="info_cliente_modal_lab"><b>Direccion:</b> #ejemplo</div>
-                                                <div class="info_cliente_modal_lab"><b>Telefono:</b> #8717321111</div>
-                                                <div class="info_cliente_modal_lab"><b>Correo Electronico:</b> #tilinlover17@gmail.com</div>
+                                                <div class="info_cliente_modal_lab"><b>Cliente:</b> <?php echo $nombre_cliente ?></div>
+                                                <div class="info_cliente_modal_lab"><b>Direccion:</b> <?php echo $dire ?></div>
+                                                <div class="info_cliente_modal_lab"><b>Telefono:</b> <?php echo $tel ?></div>
+                                                <div class="info_cliente_modal_lab"><b>Correo Electronico:</b><?php echo $mail ?></div>
                                             </div>
 
-                                            <!--Productos-->
-                                            <!--Cuadros Info Productos-->
+                                            <?php
+                                                        $consulta = new select();
+                                                        $qry="call DETALLE_PEDIDOS(602,".$no_venta.");";
+                                                        $datos=$consulta->seleccionar($qry);
+                                                        
+                                                        
+                                                        foreach ($datos as $tabla) 
+                                                        {
+                                                            $producto=$tabla->PRODUCTO;
+                                                            $pic=$tabla->FOTO;
+                                                            $medida=$tabla->MEDIDA;
+                                                            $cantidad=$tabla->CANTIDAD;
+                                                            $precio=$tabla->PRECIO_VENTA;
+                                                            $subtotal=$tabla->TOTAL;
+                                                            
+                                                ?>
                                             <div class="row border border-secondary     productos">
                                                 <!--Imagen-->
                                                 <div class="col-1">
-                                                    <img src="../../svg/facebook.svg" alt="" class="imagen_productos">
+                                                    <img src="<?php echo $pic ?>" alt="" class="imagen_productos">
                                                 </div>
-                        
                                                 <!--Info Producto Carrito-->
+                                                
                                                 <div class="col text-start  info_producto_carrito">
                                                     <div class="row justify-content-between">
                                                         <div class="col-12   nombre_producto">
-                                                            <b>Producto</b>
+                                                            <b><?php echo $producto ?></b>
                                                         </div>
                                                     </div>
                         
@@ -271,90 +282,37 @@
                                                         <div class="col-4">
                                                             <div class="input-group">
                                                                 <span class="input-group-text   barra_cantidad">Cantidad</span>
-                                                                <input type="number" class="form-control    barra_cantidad" disabled="disabled" aria-label="Username">
-                                                                <span class="input-group-text   barra_cantidad">kg</span>
+                                                                <input type="number" class="form-control    barra_cantidad" disabled="disabled" aria-label="Username" value="<?php echo $cantidad ?>">
+                                                                <span class="input-group-text   barra_cantidad"><?php echo $medida ?></span>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-3 text-end  precio_total">
-                                                            <b>Precio: $150.00</b>
+                                                            <b>Precio: $<?php echo $precio ?>.00</b>
+                                                            <b>Subtotal:$<?php echo $subtotal ?>.00</b>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="row border border-secondary     productos">
-                                                <!--Imagen-->
-                                                <div class="col-1">
-                                                    <img src="../../svg/facebook.svg" alt="" class="imagen_productos">
-                                                </div>
-                        
-                                                <!--Info Producto Carrito-->
-                                                <div class="col text-start  info_producto_carrito">
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-12   nombre_producto">
-                                                            <b>Producto</b>
-                                                        </div>
-                                                    </div>
-                        
-                                                    <div class="row justify-content-between     barra_baja">
-                                                        <div class="col-4">
-                                                            <div class="input-group">
-                                                                <span class="input-group-text   barra_cantidad">Cantidad</span>
-                                                                <input type="number" class="form-control    barra_cantidad" disabled="disabled" aria-label="Username">
-                                                                <span class="input-group-text   barra_cantidad">kg</span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-3 text-end  precio_total">
-                                                            <b>Precio: $150.00</b>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row border border-secondary     productos">
-                                                <!--Imagen-->
-                                                <div class="col-1">
-                                                    <img src="../../svg/facebook.svg" alt="" class="imagen_productos">
-                                                </div>
-                        
-                                                <!--Info Producto Carrito-->
-                                                <div class="col text-start  info_producto_carrito">
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-12   nombre_producto">
-                                                            <b>Producto</b>
-                                                        </div>
-                                                    </div>
-                        
-                                                    <div class="row justify-content-between     barra_baja">
-                                                        <div class="col-4">
-                                                            <div class="input-group">
-                                                                <span class="input-group-text   barra_cantidad">Cantidad</span>
-                                                                <input type="number" class="form-control    barra_cantidad" disabled="disabled" aria-label="Username">
-                                                                <span class="input-group-text   barra_cantidad">kg</span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-3 text-end  precio_total">
-                                                            <b>Precio: $150.00</b>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            </div> 
+                                            <?php
+                                                        } 
+                                            ?> 
 
                                         <!--Footer-->
-                                        <div class="modal-footer">
-                                        <button type="button" class="btn boton_cancelar" data-bs-dismiss="modal">Cancelar</button>
+                                        <div class="modal-footer"> <!-- SE VA A CONFIGURAR-->
+                                        <button type="button" class="btn boton_activar" disabled="disabled">Activar Pedido</button> <!-- SE VA A CONFIGURAR-->
                                         </div>
                                     </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-            </div>
+                </div>
+                <?php
+                        }
+                    }
+                ?>
+                </div>
         </main>
     </div>
 </body>

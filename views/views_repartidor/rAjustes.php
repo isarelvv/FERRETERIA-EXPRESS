@@ -9,6 +9,25 @@
     <title>Ajustes - Repartidores</title>
 </head>
 <body>
+<?php
+  use MyApp\query\select;
+  require_once("../../vendor/autoload.php");
+  session_start();
+  $repartidor=$_SESSION['ID'];
+  $datos = new select();
+  $consulta = "SELECT * FROM REPARTIDORES WHERE REPARTIDORES.LOGIN = $repartidor";
+    $vendedor = $datos->seleccionar($consulta);
+    foreach($vendedor as $infovendedor)
+    {
+       $nombre_re = $infovendedor->NOMBRE;
+       $apellidos_re = $infovendedor->APELLIDOS; 
+       $mail = $infovendedor->CORREO; 
+       $tel = $infovendedor->TELEFONO; 
+       $placas= $infovendedor->PLACAS; 
+       $no_licencia = $infovendedor->NUM_LICENCIA; 
+       $foto = $infovendedor->FOTO; 
+  ?>
+  
     <div class="row">
         <!--Barra-->
         <nav class="col-2">
@@ -44,7 +63,7 @@
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li style="margin-bottom: 10px;"><a class="dropdown-item" href="../views_repartidor/rAjustes.php">Ajustes</a></li>
                   <li><hr class="sep_hr"></li>
-                  <li style="margin-top: 10px;"><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
+                  <li style="margin-top: 10px;"><a class="dropdown-item" href="../scripts/cerrarSesion.php">Cerrar Sesion</a></li>
                 </ul>
               </div>
             </div>
@@ -78,21 +97,14 @@
                       <div class="label_form">
                           <label for="nombre" class="form-label   texto_label"><b>Nombre</b></label>
                           <fieldset disabled="disabled">
-                              <input type="text" id="nombre" class="form-control" placeholder="#Edeh Gerardo">
+                              <input type="text" id="nombre" class="form-control" placeholder="<?php echo $nombre_re ?>">
                           </fieldset>
                       </div>
       
                       <div class="label_form">
                           <label for="apellido_paterno" class="form-label     texto_label"><b>Apellido Paterno</b></label>
                           <fieldset disabled="disabled">
-                              <input type="text" id="apellido_paterno" class="form-control" placeholder="#Meza">
-                          </fieldset>
-                      </div>
-      
-                      <div class="label_form">
-                          <label for="apellido_materno" class="form-label     texto_label"><b>Apellido Materno</b></label>
-                          <fieldset disabled="disabled">
-                              <input type="text" id="apellido_materno" class="form-control" placeholder="#Reyes">
+                              <input type="text" id="apellido_paterno" class="form-control" placeholder="<?php echo $apellidos_re ?>">
                           </fieldset>
                       </div>
       
@@ -101,7 +113,7 @@
                       <div class="label_form">
                         <label for="email" class="form-label    texto_label"><b>Numero de Telefono</b></label>
                         <fieldset disabled="disabled">
-                            <input type="tel" id="email" class="form-control" placeholder="#8717321111">
+                            <input type="tel" id="email" class="form-control" placeholder="<?php echo $tel ?>">
                         </fieldset>
                     </div>
 
@@ -110,7 +122,7 @@
                       <div class="label_form">
                           <label for="email" class="form-label    texto_label"><b>Correo Electronico</b></label>
                           <fieldset disabled="disabled">
-                              <input type="text" id="email" class="form-control" placeholder="#tilinlover17@gmail.com">
+                              <input type="text" id="email" class="form-control" placeholder="<?php echo $mail ?>">
                           </fieldset>
                       </div>
                   </div>
@@ -153,12 +165,12 @@
 
                         <div class="label_form">
                           <label for="licencia" class="form-label     texto_label"><b>Numero de Licencia</b></label>
-                          <input type="text" id="licencia" class="form-control" placeholder="#1234567890" disabled>
+                          <input type="text" id="licencia" class="form-control" placeholder="<?php echo $no_licencia ?>" disabled>
                         </div>
 
                         <div class="label_form">
                           <label for="placas" class="form-label     texto_label"><b>Numero de Placas</b></label>
-                          <input type="text" id="placas" class="form-control" placeholder="#1234567890" disabled>
+                          <input type="text" id="placas" class="form-control" placeholder="<?php echo $placas ?>" disabled>
                         </div>
                       </div>
                   </div>
@@ -167,6 +179,9 @@
             </div>
         </main>
     </div>
+    <?php
+    }
+    ?>
 </body>
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/bootstrap.bundle.js"></script>
