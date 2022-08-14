@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,17 +16,23 @@
     use MyApp\query\ejecutar;
     use MyApp\query\select;
     require_once("../../vendor/autoload.php");
-    if($_POST['compra'])
+    
+    if(isset($_POST['compra']))
     {
-        $ID = $_SESSION['SESION'];
         extract($_POST);
-        $searchventa = new select();
-        $insert = new ejecutar();
-        $insert2 = new ejecutar();
-        $fecha = date('Y-m-d');
-        $nuevaventa = "INSERT INTO VENTAS (CLIENTE,fecha)VALUES ('$ID','$fecha')";
-        $insert->ejecutar($nuevaventa);
-        $ventarealizada = "SELECT LAST_INSERT_ID(CVE)";
+        echo $metodo_entrega;
+        echo $_SESSION['ID_CLIENTE'];
+        print_r ($_SESSION['carrito']);
+        echo "</pre>";
+        //$ID = $_SESSION['SESION'];
+        //extract($_POST);
+        //$searchventa = new select();
+        //$insert = new ejecutar();
+        //$insert2 = new ejecutar();
+        //$fecha = date('Y-m-d');
+        //$nuevaventa = "INSERT INTO VENTAS (CLIENTE,fecha)VALUES ('$ID','$fecha')";
+        //$insert->ejecutar($nuevaventa);
+       //$ventarealizada = "SELECT LAST_INSERT_ID(CVE)";
     } 
     ?>
     </div>

@@ -574,18 +574,18 @@ session_start();
         $id = $_POST["cod"];
         $total_c=0;
         if(isset($_SESSION["carrito"])){
-          foreach($_SESSION["carrito"] as $indice =>$arrreglo){
+          foreach($_SESSION["carrito"] as $indice =>$arreglo){
                if($producto==$indice){
                $total_c=intval($arrreglo["cantidad"]);
                 }
             }
       }
 
-$_SESSION["carrito"][$producto]["cantidad"] = $total_c+$cantidad;
-$_SESSION["carrito"][$producto]["precio"] = $precio;
-$_SESSION["carrito"][$producto]["nombre"] = $producto;
-$_SESSION["carrito"][$producto]["foto"] = $foto;
-$_SESSION["carrito"][$producto]["id"] = $id;
+$_SESSION["carrito"][$id]["cantidad"] = $total_c+$cantidad;
+$_SESSION["carrito"][$id]["precio"] = $precio;
+$_SESSION["carrito"][$id]["nombre"] = $producto;
+$_SESSION["carrito"][$id]["foto"] = $foto;
+$_SESSION["carrito"][$id]["id"] = $id;
 
 
 echo "<script>alert('Producto $producto agregado al carrito');</script>";

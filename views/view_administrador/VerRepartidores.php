@@ -15,7 +15,7 @@
         require_once("../../vendor/autoload.php");
 
         $query=new Select();
-        $cadena="SELECT * from repartidores";
+        $cadena="SELECT login.ID_LOGIN as Login , login.CORREO as CORREO,repartidores.NOMBRE AS NOMBRE,repartidores.APELLIDOS AS APELLIDOS, repartidores.TELEFONO as TELEFONO, repartidores.NUM_LICENCIA, LICENCIA,repartidores.  FROM login JOIN repartidores ON login.ID_LOGIN=repartidores.LOGIN";
         $tabla =$query ->seleccionar($cadena);
 
         echo "<table class='table table-hover'>

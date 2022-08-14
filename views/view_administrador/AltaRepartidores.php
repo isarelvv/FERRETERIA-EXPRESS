@@ -22,7 +22,7 @@
                         </div>
                         <!--Apellidos-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="text" id="a_p" placeholder="Apellido Paterno" name="apellidos" required>
+                            <input class="form-control  conf_labels" type="text" id="a_p" placeholder="Apellidos" name="apellidos" required>
                             <label class="form-label" for="a_p">Apellidos</label>
                         </div>
 
@@ -34,13 +34,13 @@
 
                         <!--Numero de Telefono-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Numero de Telefono" name="placas" required>
+                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Placas" name="placas" required>
                             <label class="form-label" for="placas">Placas</label>
                         </div>
 
                         <!--Numero de Telefono-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Numero de Telefono" name="licencia" required>
+                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Licencia" name="licencia" required>
                             <label class="form-label" for="telefono">Numero de licencia</label>
                         </div>
                     </div>

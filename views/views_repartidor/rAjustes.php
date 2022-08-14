@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +13,28 @@
     <title>Ajustes - Repartidores</title>
 </head>
 <body>
+<?php
+        use MyApp\query\select;
+        require_once("../../vendor/autoload.php");
+
+        $query=new Select();
+        $id=$_SESSION["ID"];
+        $cadena="SELECT * from repartidores where ID_REPARTIDOR='$id'";
+        $registro =$query ->seleccionar($cadena);
+
+        foreach($tabla as $registro)
+        {
+            echo "<tr>";
+            echo "<td> <input type='hidden' value='$registro->ID_REPARTIDOR' name='id'></td>";
+            echo "<td> <input type='text' value='$registro->NOMBRE' name='nombre'></td>";
+            echo "<td> <input type='text' value='$registro->APELLIDOS' name='apellidos'> </td>";
+            echo "<td> <input type='text' value='$registro->CORREO' name='correo'> </td>";
+            echo "<td> <input type='text' value='$registro->TELEFONO' name='telefono'> </td>";
+            echo "<td> <input type='text' value='$registro->PLACAS' name='placas'></td>";
+            echo "<td> <input type='text' value='$registro->NUM_LICENCIA' name='licencia'> </td>";
+            echo "</tr>";
+        }
+        ?>
     <div class="row">
         <!--Barra-->
         <nav class="col-2">
@@ -78,21 +104,14 @@
                       <div class="label_form">
                           <label for="nombre" class="form-label   texto_label"><b>Nombre</b></label>
                           <fieldset disabled="disabled">
-                              <input type="text" id="nombre" class="form-control" placeholder="#Edeh Gerardo">
+                              <input type="text" id="nombre" class="form-control" placeholder="#Edeh Gerardo" value='<?php $registro->NOMBRE ?>' name='id'>
                           </fieldset>
                       </div>
       
                       <div class="label_form">
                           <label for="apellido_paterno" class="form-label     texto_label"><b>Apellido Paterno</b></label>
                           <fieldset disabled="disabled">
-                              <input type="text" id="apellido_paterno" class="form-control" placeholder="#Meza">
-                          </fieldset>
-                      </div>
-      
-                      <div class="label_form">
-                          <label for="apellido_materno" class="form-label     texto_label"><b>Apellido Materno</b></label>
-                          <fieldset disabled="disabled">
-                              <input type="text" id="apellido_materno" class="form-control" placeholder="#Reyes">
+                              <input type="text" id="apellido_paterno" class="form-control" placeholder="#Meza" value='<?php $registro->APELLIDOS ?>' name='id'>
                           </fieldset>
                       </div>
       
@@ -101,7 +120,7 @@
                       <div class="label_form">
                         <label for="email" class="form-label    texto_label"><b>Numero de Telefono</b></label>
                         <fieldset disabled="disabled">
-                            <input type="tel" id="email" class="form-control" placeholder="#8717321111">
+                            <input type="tel" id="email" class="form-control" placeholder="#8717321111" value='<?php $registro->TELEFONO ?>' name='id'>
                         </fieldset>
                     </div>
 
@@ -113,34 +132,7 @@
                               <input type="text" id="email" class="form-control" placeholder="#tilinlover17@gmail.com">
                           </fieldset>
                       </div>
-                  </div>
-      
-                  <!--Cambiar Contraseña-->
-                  <div class="col-5">
-                      <div class="border border-dark rounded rounded-3  cont_form">
-                        <h4><b>Cambiar Contraseña</b></h4>
-                      
-                      <div class="label_form">
-                          <label for="pass_ant" class="form-label     texto_label"><b>Contraseña Antigua</b></label>
-                          <input type="password" id="pass_ant" class="form-control">
-                      </div>
-      
-                      <div class="label_form">
-                          <label for="pass_nue" class="form-label     texto_label"><b>Nueva Contraseña</b></label>
-                          <input type="password" id="pass_nue" class="form-control">
-                      </div>
-      
-                      <div class="label_form">
-                          <label for="pass_nue_r" class="form-label   texto_label"><b>Repetir Contraseña</b></label>
-                          <input type="password" id="pass_nue_r" class="form-control">
-                      </div>
-      
-                      <div class="text-center    boton_guardar">
-                          <button class="btn    texto_boton_guardar">
-                              <b>Guardar Cambios</b>
-                          </button>
-                      </div>
-                      </div>
+                  </div>   
                   </div>
                 </div>
 

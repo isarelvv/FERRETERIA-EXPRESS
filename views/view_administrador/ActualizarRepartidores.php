@@ -16,7 +16,7 @@
 
         $query=new Select();
         $id=$_GET["id"];
-        $cadena="SELECT * from repartidores where ID_REPARTIDOR='$id'";
+        $cadena="SELECT login.ID_LOGIN,login.CORREO,repartidores.NOMBRE,repartidores.APELLIDOS, repartidores.CORREO, repartidores.TELEFONO FROM login JOIN repartidores ON login.ID_LOGIN=repartidores.LOGIN where ID_LOGIN='$id';";
         $tabla =$query ->seleccionar($cadena);
 
         echo "

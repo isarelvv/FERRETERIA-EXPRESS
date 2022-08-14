@@ -187,8 +187,8 @@ if(isset($_SESSION['usuario']))
                         if(!isset($_SESSION['usuario']))
 
                         {
-                         echo "<li class='nav-item    boton-bb disabled '>
-                         <a class='btn   boton-a-bb' href='views/views_inicio/pedidos.php'>
+                         echo "<li class='nav-item    boton-bb '>
+                         <a class='btn   boton-a-bb'type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion' >
                              <div class='organizar'>
                                  <img src='svg/bolsa-b.svg' class='icono'>
                                  <p class='texto-botones-bb'><b>Mis Pedidos</b></p>

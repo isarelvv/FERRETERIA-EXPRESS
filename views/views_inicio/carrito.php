@@ -178,7 +178,7 @@ else
     <!--Carrito de Compras-->
     <div class="container">
         <!--Mensaje-->
-        <form action='../scripts/compra.php' method="POST">
+        <form action='../scripts/compraCarrito.php' method="POST">
         <div class="row text-center">
             <div class="col   barras_mensaje"><hr></div>
 
@@ -211,10 +211,12 @@ else
                         {
                             foreach($_SESSION['carrito'] as $indice)
                             {
+                                
                             echo"<!--Productos-->
                             <div class='row border border-secondary     productos'>
                                 <!--Imagen-->
-                                <div class='col-1'>
+                                <div class='col-1'> 
+                           
                                     <img src=' ".$indice['foto']."' alt='' class='imagen_productos'>
                                 </div>
         
@@ -222,6 +224,7 @@ else
                                 <div class='col  info_producto_carrito'>
                                     <div class='row justify-content-between'>
                                         <div class='col-9   nombre_producto'>
+                                       
                                             <b>".$indice["nombre"]."</b>
                                         </div>";
                         ?>
@@ -239,11 +242,9 @@ else
                         </div>
                             <?php
                         }
-
-
+                        
                          ?>
                     </div>
-    
                                 <div class="row     barra_baja">
                                     <div class="col-4">
                                     </div>
@@ -254,7 +255,8 @@ else
                                         </div>
     
                                         <div class="col-4   d_p">
-                                        <a href="carrito.php?item=<?php echo $indice['nombre'] ?>">Eliminar Producto</a>
+                                        
+                                        <a href="carrito.php?item=<?php echo $indice['id'] ?>">Eliminar Producto</a>
                                         </div>
                                           
                                         <!--Modal Informacion de Productos-->
@@ -338,7 +340,7 @@ else
                             <b>Metodo de Entrega</b>
                         </div>
 
-                        <form action='compraCarrito.php' method="POST">
+                        <form action='../scripts/compraCarrito.php' method="POST">
                         <div class="row">
                                 
                         <?php
@@ -346,7 +348,7 @@ else
                         {
                             echo "<div class='col-12 border-start'>
                             <div class='form-check  opciones_check_dos'>
-                                <input class='form-check-input' type='radio' name='metodo_entrega' id='tienda' checked>
+                                <input class='form-check-input' type='radio' name='metodo_entrega' id='tienda' value='Mostrador' checked>
                                 <label class='form-check-label' for=tienda'>
                                     Recoger en tienda
                                 </label>
@@ -377,21 +379,26 @@ else
                         </div>
                         <?php
                         }
-                        ?>
-                            
-    
-                            
-                        </div>
-              
-    
+                        ?> </div>
                     <!--Fecha de Entrega-->
                     <div class="border border-secondary     cuadros_detalles fondo_compra">
                         <div class="text-center border-bottom border-secondary  cuadro_header">
                             <b>Fecha de Entrega</b>
                         </div>
-    
+                            <?php
+                            if($total<500)
+                            {
+                                $fechaentrega=null;
+                            }
+                            else
+                            {
+                                $fechahoy = date('Y-m-d');
+                                $fechaentrega = strtotime('+3 day',strtotime($fechahoy));
+                                $fechaentrega = date('Y-m-d',$fechaentrega);
+                            }
+                             ?>
                         <div class="">
-                            <input class="col-12" type="date" value="Fecha de Hoy" min="Fecha minima para seleccionar" max="Fecha minima para seleccionar" step="1"">
+                            <input class="col-12" style="text-align: center;" type="text" value="<?php echo $fechaentrega ?>" min="Fecha minima para seleccionar" max="Fecha minima para seleccionar" disabled>
                         </div>
                     </div>
     
@@ -414,19 +421,37 @@ else
                     <!--Boton Proceder al Pago-->
                     <div class="row">
                         <div class="text-center row     row_boton">
-                            <button class="btn  texto_boton_pago" type="submit">
+                            <button class="btn  texto_boton_pago" type="submit" name="compra">
                                 Proceder al Pago
                             </button>
                         </div>
                     </div>
+                        
                 </div>
             </div>
-        
+    </div>
     </div>
     <?php 
 
-    ?>
+    $_SESSION['pago']=$_SESSION['carrito'];
+    echo "<pre>";
+    echo var_dump($_SESSION['pago']);
+    echo "</pre>";
+    if($total>=500 && $total<1000)
+    {
+        $_SESSION['repartidor']= 600;
+    }
+    else if($total>1000 && $total<2000)
+    {
+        $_SESSION['repartidor']= 601;
+    }
+    else if($total>2000)
+    {
+    $_SESSION['repartidor']= 602;
+    }
 
+    ?>
+</form>
     <!--Footer-->
     <footer>
         <div class="row">
@@ -447,7 +472,8 @@ else
 
             <div class="col-3">
                 <h5>Redes Sociales</h5>
-                <a href="https://www.facebook.com/Ferretería-y-Materiales-Express-Torreón-1672126383002791/"><img src="../svg/facebook.svg" alt="facebook" class="icono_facebook"></a>
+                <a href="https://www.facebook.com/Ferretería-y-Materiales-Express-Torreón-1672126383002791/"><img src="../../svg/facebook.svg" alt="facebook" class="icono_facebook">
+            </a>
             </div>
         </div>
 
