@@ -36,3 +36,59 @@ nav
     margin-top: 0%;
     margin-bottom: 0%;
 }
+
+
+
+/*Contenedor*/
+.container
+{
+    margin-top: 20px;
+}
+
+.agregar_productos
+{
+    padding: 10px;
+}
+
+.contenedor_productos
+{
+    margin: 10px;
+}
+
+.boton_buscar
+{
+    border-color: #0254EB;
+    background-color: #0254EB;
+    border-width: 2px;
+    color: #fff;
+}
+
+.boton_buscar:hover
+{
+    border-color: #010059;
+    background-color: #010059;
+    border-width: 2px;
+    color: #fff;
+}
+
+/*Productos*/
+.producto_carito
+{
+    margin-top: 10px;
+}
+
+.imagen_productos
+{
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.pNombre
+{
+    font-size: 14pt;
+}
+
+.nPrecio
+{
+
+}

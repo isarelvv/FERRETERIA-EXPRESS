@@ -54,7 +54,60 @@
 
         <!--Info Pedidos-->
         <main class="col-10 border">
-            <div class="container   contenedor">
+            <div class="container">
+              <div class="row">
+
+                <!--Agregar productos-->
+                <div class="col-8 border  agregar_productos">
+                  <form action="">
+                    <div>
+                      <div class="row">
+                        <div class="col-8"><input class="form-control" type="text" id="productos" placeholder="Ingresa el nombre del producto..."></div>
+                        <div class="col-2">
+                          <div class="row">
+                            <button class="btn boton_buscar" type="button">Buscar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  
+                  <hr>
+
+                  <!--Productos-->
+                  <div class="mt-2">
+                    <div class="contenedor_productos">
+                      <!--Producto-->
+                      <div class="row border  producto_carito">
+                        <!--Imagen-->
+                        <div class="col-1 p-0">
+                            <img src="../../svg/facebook.svg" alt="" class="imagen_productos">
+                        </div>
+  
+                        <!--Info Producto Carrito-->
+                        <div class="col ms-1 mt-2">
+                            <div class="row justify-content-lg-start">
+                                <div class="col-9 pNombre"><b>#Producto</b></div>
+                                <div class="col-3 text-end nPrecio"><b>Precio: </b>$150.00</div>
+                            </div>
+  
+                            <div class="row justify-content-start mt-1">
+                              <div class="col-2"><b>#Herramientas</b></div>
+                              <div class="col-3"><b>Cantidad en Stock: </b>#10</div>
+                            <div class="col text-end">
+                              <button class="btn btn-sm" type="button">
+                                Agregar al Carrito
+                              </button>
+                            </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-4 border"></div>
+              </div>
             </div>
         </main>
     </div>
