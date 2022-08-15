@@ -193,7 +193,7 @@ session_start();
         </div>
         <?php
          $consulta= new select();
-         $query="call VENTAS('', 'Pendiente');";
+         $query="call VENTAS('".$_SESSION['ID_CLIENTE']."', 'Pendiente');";
          $info=$consulta->seleccionar($query);
          if ($info!=NULL)
          {
@@ -418,8 +418,8 @@ session_start();
         </div>
 <?php
                 $consulta= new select();
-                $query="call VENTAS('egmr.90@gmail.com', 'Entregado');";
-                $query2="call VENTA_DETALLE ('egmr.90@gmail.com', 'Entregado');";
+                $query="call VENTAS('".$_SESSION['ID_CLIENTE']."', 'Entregado');";
+                $query2="call VENTA_DETALLE ('".$_SESSION['ID_CLIENTE']."', 'Entregado');";
                 $info=$consulta->seleccionar($query);
                 $infomodal=$consulta->seleccionar($query2);
                 if ($info!=NULL)

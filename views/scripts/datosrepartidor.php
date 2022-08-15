@@ -14,7 +14,7 @@
     $datos = new select();
     $consulta = "SELECT ID_REPARTIDOR as ID, NOMBRE AS NOMBRE, APELLIDOS AS APELLIDOS, TELEFONO AS TELEFONO, PLACAS AS PLACAS, NUM_LICENCIA AS LICENCIA FROM REPARTIDORES WHERE REPARTIDORES.LOGIN= '$id'";
     $repartidor = $datos->seleccionar($consulta);
-    foreach($vendedor as $inforepartidor)
+    foreach($repartidor as $inforepartidor)
     {
         $_SESSION['IDREP'] = $inforepartidor->ID;
         $_SESSION['NOMBREREP'] = $inforepartidor->NOMBRE;

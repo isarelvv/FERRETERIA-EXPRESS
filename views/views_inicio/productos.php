@@ -439,7 +439,7 @@ session_start();
                     <input type="hidden" name="foto" value="<?php echo $datos->FOTO ?>">
                     <img src="<?php echo $datos->FOTO ?>" alt="<?php echo $datos->FOTO ?>" class="imagenes_productos">
                     <div class="categoria_producto">
-                        <input type="hidden" name="categoria" value="<?php $datos->CATEGORIA?>">
+                        <input type="hidden" name="categoria" value="<?php echo $datos->CATEGORIA?>">
                         <b><?php echo $datos->CATEGORIA ?></b>
                     </div>
                     <div class="nombre_producto" style="height:80px ">
@@ -572,6 +572,8 @@ session_start();
         $precio=$_POST["precio"];
         $foto = $_POST["foto"];
         $id = $_POST["cod"];
+        $des = $_POST["descripcion"];
+        $cat = $_POST["categoria"];
         $total_c=0;
         if(isset($_SESSION["carrito"])){
           foreach($_SESSION["carrito"] as $indice =>$arreglo){
@@ -586,6 +588,9 @@ $_SESSION["carrito"][$id]["precio"] = $precio;
 $_SESSION["carrito"][$id]["nombre"] = $producto;
 $_SESSION["carrito"][$id]["foto"] = $foto;
 $_SESSION["carrito"][$id]["id"] = $id;
+$_SESSION["carrito"][$id]["cat"] = $cat;
+$_SESSION["carrito"][$id]["descr"] = $des;
+
 
 
 echo "<script>alert('Producto $producto agregado al carrito');</script>";

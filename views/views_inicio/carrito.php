@@ -211,7 +211,7 @@ else
                         {
                             foreach($_SESSION['carrito'] as $indice)
                             {
-                                
+                            
                             echo"<!--Productos-->
                             <div class='row border border-secondary     productos'>
                                 <!--Imagen-->
@@ -277,7 +277,7 @@ else
     
                                                         <!--Categoria del Producto-->
                                                         <div class="categoria_producto_modal">
-                                                            <b><?php echo $indice['categoria'] ?></b>
+                                                            <b><?php echo $indice['cat'] ?></b>
                                                         </div>
     
                                                         <!--Nombre del Producto-->
@@ -294,7 +294,7 @@ else
     
                                                         <!--Descripcion del Producto-->
                                                         <div class="descripcion_producto_modal">
-                                                            Descripcion: <?php echo $indice['descripcion'] ?>
+                                                            Descripcion: <?php echo $indice['descr'] ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -305,13 +305,13 @@ else
                             </div>
                             
                         </div>
-                        <a href="carrito.php?vaciar=true" class="offset-10 col-3">Vaciar Carrito</a>
-
+                        
                         <?php
                         
                         }
                         ?>
-                        
+                        <a href="carrito.php?vaciar=true" class="offset-10 col-3">Vaciar Carrito</a>
+
                         <?php
                         }
                         else
@@ -432,11 +432,6 @@ else
     </div>
     </div>
     <?php 
-
-    $_SESSION['pago']=$_SESSION['carrito'];
-    echo "<pre>";
-    echo var_dump($_SESSION['pago']);
-    echo "</pre>";
     if($total>=500 && $total<1000)
     {
         $_SESSION['repartidor']= 600;
@@ -449,7 +444,7 @@ else
     {
     $_SESSION['repartidor']= 602;
     }
-
+$_SESSION['totalventa'] = $total;
     ?>
 </form>
     <!--Footer-->
