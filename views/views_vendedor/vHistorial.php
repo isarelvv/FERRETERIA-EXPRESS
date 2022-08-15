@@ -33,10 +33,10 @@
                   <a class="nav-link    items" aria-current="page" href="../../views/views_vendedor/vVentas.html">Ventas</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link   items" href="../../views/views_vendedor/vInventario.html">Inventario</a>
+                  <a class="nav-link   items" href="../../views/views_vendedor/vInventario.php">Inventario</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active    items" href="../../views/views_vendedor/vHistorial.html">Historial de Ventas</a>
+                  <a class="nav-link active    items" href="../../views/views_vendedor/vHistorial.php">Historial de Ventas</a>
                 </li>
               </ul>
 

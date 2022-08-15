@@ -259,7 +259,7 @@ session_start();
                         <input class="form-check-input" type="radio" id="alumbrado" value="iluminacion" name="categorias">
                         <label class="form-check-label" for="alumbrado">Alumbrado</label>
                     </div>
-    
+     
                     <div class="form-check">
                         <input class="form-check-input" type="radio" id="proteccion" value="seguridad" name="categorias">
                         <label class="form-check-label" for="proteccion">Proteccion</label>
