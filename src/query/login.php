@@ -13,7 +13,7 @@ class Login
         try 
         {
             $login = 0;
-            $cc = new Database("save","root","admin");
+            $cc = new Database("save","root","");
             $objetoPDO = $cc->getPDO();
             $query ="SELECT usuarios.KEY as SESION, usuarios.TIPO as TIPO,login.ID_LOGIN, login.correo as correo, login.contraseña as contraseña FROM usuarios join login on usuarios.KEY=login.TIPO_USUARIO where login.correo='$usuario'";
             $consulta = $objetoPDO->query($query);
@@ -24,7 +24,6 @@ class Login
                 if (password_verify($password,$renglon['contraseña']))
                 {   
                    $login=1;
-
                    if ($renglon['SESION'] == 300 )
                    {
                         $login=300;

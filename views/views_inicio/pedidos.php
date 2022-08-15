@@ -193,7 +193,223 @@ session_start();
         </div>
         <?php
          $consulta= new select();
-         $query="call VENTAS('', 'Pendiente');";
+         $query="call VENTAS('".$_SESSION['ID_CLIENTE']."', 'Pendiente');";
+         $infopendientes=$consulta->seleccionar($query);
+         $query="call VENTAS('".$_SESSION['ID_CLIENTE']."', 'En camino');";
+         $infocamino=$consulta->seleccionar($query);
+         if ($infopendientes!=NULL || $infocamino!=NULL)
+         {
+            foreach ($infopendientes as $datos)
+            {
+                echo "
+    <div class='border border-secondary  contenedor_pedidos_entregados'>
+       
+        <div class='row border border-dark  producto_carrito'>
+            <div class='col-1'>
+                <img src='".$datos->FOTO."' alt='' class='imagen_producto'>
+            </div>
+
+            <div class='col-10  info_producto'>
+                <div class='n_p'>
+                    <p><b>Pedido N.° ".$datos->FOLIO."</b></p>
+                </div>
+
+                <div class='row'>
+                    
+                    
+                    <div class='col-2'>
+                        <label for='total' class='l_p'><b>Total</b></label>
+                        <input type='text' class='form-control  i_p' id='total' placeholder= '$".$datos->TOTAL."' disabled='disabled'>
+                    </div>
+                    <div class='col-3'>
+                        <label for='f_p' class='l_p'><b>Fecha de Pedido</b></label>
+                        <input type='text' class='form-control  i_p' id='f_p' placeholder='".$datos->FECHA_ORDEN."' disabled='disabled'>
+                    </div>
+                    <div class='col-5'>
+                        <label for='d_e' class='l_p'><b>Direccion de Entrega</b></label>
+                        <input type='text' class='form-control  i_p' id='d_e' placeholder='".$datos->DOMICILIO."' disabled='disabled'>
+                    </div>
+                    <div class='col-2 text-end   d_p'>
+                        <a href='' data-bs-toggle='modal' data-bs-target='#modal_detalles_pedido".$datos->FOLIO."'>Detalles del Pedido</a>
+                    </div>
+                   
+                      <div class='modal modal-lg fade' id='modal_detalles_pedido".$datos->FOLIO."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                        <div class='modal-dialog modal-dialog-centered'>
+                          <div class='modal-content'>
+                            <div class='modal-header    header_detalles'>
+                              <h5 class='modal-title' id='exampleModalLabel'>Detalles del Pedido</h5>
+                              <button type='button' class='btn-close btn-close-white' data-bs-dismiss='modal' aria-label='Close'></button>
+                            </div>   
+                            ";
+                            $consulta= new select();
+                            $query="call VENTA_DETALLE('".$_SESSION['ID_CLIENTE']."', 'Pendiente',".$datos->FOLIO.");";
+                            $info=$consulta->seleccionar($query);
+                            $consulta= new select();
+                            foreach ($info as $datos) {
+                            echo "
+                            <div class='modal-body'>        
+                                <div class='row border border-secondary     productos'>
+                               
+                                    <div class='col-1'>
+                                        <img src='".$datos->FOTO."' alt='' class='imagen_productos'>
+                                    </div>
+                                    <div class='col  info_producto_carrito'>
+                                        <div class='row justify-content-between'>
+                                            <div class='col-9   nombre_producto'>
+                                                <b>".$datos->PRODUCTO."</b>
+                                            </div>
+                                            <div class='col-3 text-end  precio_total'>
+                                                <b>Precio: $".$datos->PRECIO.".00</b>
+                                            </div>
+                                        </div>
+            
+                                        <div class='row     barra_baja'>
+                                            <div class='col-4'>
+                                                <div class='input-group'>
+                                                    <span class='input-group-text   barra_cantidad'>Cantidad</span>
+                                                    <input type='number' class='form-control    barra_cantidad' disabled='disabled' aria-label='Username' placeholder=".$datos->CANTIDAD.">
+                                                    <span class='input-group-text   barra_cantidad'>kg</span>
+                                                </div>
+                                            </div>
+            
+                                            <div class='col text-end  precio_total'>
+                                                <b>Precio Total: $".$datos->TOTAL.".00</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>";
+                            }
+                            echo "
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+                ";
+            }  
+            foreach ($infocamino as $datos)
+            {
+                echo "
+    <div class='border border-secondary  contenedor_pedidos_entregados'>
+       
+        <div class='row border border-dark  producto_carrito'>
+            <div class='col-1'>
+                <img src='".$datos->FOTO."' alt='' class='imagen_producto'>
+            </div>
+
+            <div class='col-10  info_producto'>
+                <div class='n_p'>
+                    <p><b>Pedido N.° ".$datos->FOLIO."</b></p>
+                </div>
+
+                <div class='row'>
+                    
+                    
+                    <div class='col-2'>
+                        <label for='total' class='l_p'><b>Total</b></label>
+                        <input type='text' class='form-control  i_p' id='total' placeholder= '$".$datos->TOTAL."' disabled='disabled'>
+                    </div>
+                    <div class='col-3'>
+                        <label for='f_p' class='l_p'><b>Fecha de Pedido</b></label>
+                        <input type='text' class='form-control  i_p' id='f_p' placeholder='".$datos->FECHA_ORDEN."' disabled='disabled'>
+                    </div>
+                    <div class='col-5'>
+                        <label for='d_e' class='l_p'><b>Direccion de Entrega</b></label>
+                        <input type='text' class='form-control  i_p' id='d_e' placeholder='".$datos->DOMICILIO."' disabled='disabled'>
+                    </div>
+                    <div class='col-2 text-end   d_p'>
+                        <a href='' data-bs-toggle='modal' data-bs-target='#modal_detalles_pedido".$datos->FOLIO."'>Detalles del Pedido</a>
+                    </div>
+                   
+                      <div class='modal modal-lg fade' id='modal_detalles_pedido".$datos->FOLIO."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                        <div class='modal-dialog modal-dialog-centered'>
+                          <div class='modal-content'>
+                            <div class='modal-header    header_detalles'>
+                              <h5 class='modal-title' id='exampleModalLabel'>Detalles del Pedido</h5>
+                              <button type='button' class='btn-close btn-close-white' data-bs-dismiss='modal' aria-label='Close'></button>
+                            </div>   
+                            ";
+                            $consulta= new select();
+                            $query="call VENTA_DETALLE('".$_SESSION['ID_CLIENTE']."', 'Pendiente',".$datos->FOLIO.");";
+                            $info=$consulta->seleccionar($query);
+                            $consulta= new select();
+                            foreach ($info as $datos) {
+                            echo "
+                            <div class='modal-body'>        
+                                <div class='row border border-secondary     productos'>
+                               
+                                    <div class='col-1'>
+                                        <img src='".$datos->FOTO."' alt='' class='imagen_productos'>
+                                    </div>
+                                    <div class='col  info_producto_carrito'>
+                                        <div class='row justify-content-between'>
+                                            <div class='col-9   nombre_producto'>
+                                                <b>".$datos->PRODUCTO."</b>
+                                            </div>
+                                            <div class='col-3 text-end  precio_total'>
+                                                <b>Precio: $".$datos->PRECIO.".00</b>
+                                            </div>
+                                        </div>
+            
+                                        <div class='row     barra_baja'>
+                                            <div class='col-4'>
+                                                <div class='input-group'>
+                                                    <span class='input-group-text   barra_cantidad'>Cantidad</span>
+                                                    <input type='number' class='form-control    barra_cantidad' disabled='disabled' aria-label='Username' placeholder=".$datos->CANTIDAD.">
+                                                    <span class='input-group-text   barra_cantidad'>kg</span>
+                                                </div>
+                                            </div>
+            
+                                            <div class='col text-end  precio_total'>
+                                                <b>Precio Total: $".$datos->TOTAL.".00</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>";
+                            }
+                            echo "
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+                ";
+            }  
+         }
+         else
+         {
+           echo " <div class='text-center'>
+            <div><img src=''../../svg/bolsa.svg' alt='' class='lupa'></div>
+            <div class='mensaje_no_encontrado'><b>No tiene ningun pedido activo en este momento</b></div>
+        </div>";
+         }
+        ?>
+
+    </div>
+
+    <!--Pedidos Completados-->
+    <div class="container   pedidos_entregados">
+        <!--Mensaje-->
+        <div class="row text-center">
+            <div class="col   barras_mensaje"><hr></div>
+
+            <div class="col-3   mensaje_arriba">
+                <p><b>Pedidos Entregados</b></p>
+            </div>
+
+            <div class="col   barras_mensaje"><hr></div>
+        </div>
+        <?php
+         $consulta= new select();
+         $query="call VENTAS('".$_SESSION['ID_CLIENTE']."', 'Entregados');";
          $info=$consulta->seleccionar($query);
          if ($info!=NULL)
          {
@@ -228,27 +444,36 @@ session_start();
                         <input type='text' class='form-control  i_p' id='d_e' placeholder='".$datos->DOMICILIO."' disabled='disabled'>
                     </div>
                     <div class='col-2 text-end   d_p'>
-                        <a href='' data-bs-toggle='modal' data-bs-target='#modal_detalles_pedido'>Detalles del Pedido</a>
+                        <a href='' data-bs-toggle='modal' data-bs-target='#modal_detalles_pedido".$datos->FOLIO."'>Detalles del Pedido</a>
                     </div>
-                      <div class='modal modal-lg fade' id='modal_detalles_pedido' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                   
+                      <div class='modal modal-lg fade' id='modal_detalles_pedido".$datos->FOLIO."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                         <div class='modal-dialog modal-dialog-centered'>
                           <div class='modal-content'>
                             <div class='modal-header    header_detalles'>
                               <h5 class='modal-title' id='exampleModalLabel'>Detalles del Pedido</h5>
                               <button type='button' class='btn-close btn-close-white' data-bs-dismiss='modal' aria-label='Close'></button>
-                            </div>
-                            <div class='modal-body'>
+                            </div>   
+                            ";
+                            $consulta= new select();
+                            $query="call VENTA_DETALLE('".$_SESSION['ID_CLIENTE']."', 'Pendiente',".$datos->FOLIO.");";
+                            $info=$consulta->seleccionar($query);
+                            $consulta= new select();
+                            foreach ($info as $datos) {
+                            echo "
+                            <div class='modal-body'>        
                                 <div class='row border border-secondary     productos'>
+                               
                                     <div class='col-1'>
-                                        <img src='../../svg/facebook.svg' alt='' class='imagen_productos'>
+                                        <img src='".$datos->FOTO."' alt='' class='imagen_productos'>
                                     </div>
                                     <div class='col  info_producto_carrito'>
                                         <div class='row justify-content-between'>
                                             <div class='col-9   nombre_producto'>
-                                                <b>Producto</b>
+                                                <b>".$datos->PRODUCTO."</b>
                                             </div>
                                             <div class='col-3 text-end  precio_total'>
-                                                <b>Precio: $150.00</b>
+                                                <b>Precio: $".$datos->PRECIO.".00</b>
                                             </div>
                                         </div>
             
@@ -256,18 +481,20 @@ session_start();
                                             <div class='col-4'>
                                                 <div class='input-group'>
                                                     <span class='input-group-text   barra_cantidad'>Cantidad</span>
-                                                    <input type='number' class='form-control    barra_cantidad' disabled='disabled' aria-label='Username'>
+                                                    <input type='number' class='form-control    barra_cantidad' disabled='disabled' aria-label='Username' placeholder=".$datos->CANTIDAD.">
                                                     <span class='input-group-text   barra_cantidad'>kg</span>
                                                 </div>
                                             </div>
             
                                             <div class='col text-end  precio_total'>
-                                                <b>Precio Total: $150.00</b>
+                                                <b>Precio Total: $".$datos->TOTAL.".00</b>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>";
+                            }
+                            echo "
                           </div>
                         </div>
                       </div>
@@ -282,244 +509,13 @@ session_start();
          else
          {
            echo " <div class='text-center'>
-            <div><img src=''../../svg/bolsa.svg' alt='' class='lupa'></div>
-            <div class='mensaje_no_encontrado'><b>No tiene ningun pedido activo en este momento</b></div>
+            <div><img src='../../svg/bolsa.svg' alt='' class='lupa'></div>
+            <div class='mensaje_no_encontrado'><b>No se ha entregado ninguno pedido por el momento</b></div>
         </div>";
          }
-         
-              
-      //  $cadena="";
-       // $pedidos_espera=$busqueda->seleccionar($cadena);
-
-
         ?>
 
-        <!--Pedidos-->
-         <!--
-        <div class="border border-secondary  contenedor_pedidos_entregados">
-           
-            <div class="row border border-dark  producto_carrito">
-                <div class="col-1">
-                    <img src="../../svg/facebook.svg" alt="" class="imagen_producto">
-                </div>
-
-                <div class="col-10  info_producto">
--->
-                    <!--Numero de Pedido-->
-                    <!--
-                    <div class="n_p">
-                        <p><b>Pedido N.° 123-456-7890</b></p>
-                    </div>
-
-                    <div class="row">
--->
-                        <!--Precio Total-->
-                        <!--
-                        <div class="col-2">
-                            <label for="total" class="l_p"><b>Total</b></label>
-                            <input type="text" class="form-control  i_p" id="total" placeholder="$759.00" disabled="disabled">
-                        </div>
--->
-                        <!--Fecha de Pedido-->
-                        <!--
-                        <div class="col-3">
-                            <label for="f_p" class="l_p"><b>Fecha de Pedido</b></label>
-                            <input type="text" class="form-control  i_p" id="f_p" placeholder="31 de julio de 2022" disabled="disabled">
-                        </div>
--->
-                        <!--Direccion de Entrega-->
-                        <!--
-                        <div class="col-5">
-                            <label for="d_e" class="l_p"><b>Direccion de Entrega</b></label>
-                            <input type="text" class="form-control  i_p" id="d_e" placeholder="Calle Laguneros 160 Fracc. El Tajito" disabled="disabled">
-                        </div>
--->
-                        <!--Detalles del Pedido-->
-                        <!--
-                        <div class="col-2 text-end   d_p">
-                            <a href="" data-bs-toggle="modal" data-bs-target="#modal_detalles_pedido">Detalles del Pedido</a>
-                        </div>
--->
-                          <!--Modal Detalles del Pedido-->
-                          <!--
-                          <div class="modal modal-lg fade" id="modal_detalles_pedido" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                              <div class="modal-content">
--->
-                                <!--Header Modal-->
-                                <!--
-                                <div class="modal-header    header_detalles">
-                                  <h5 class="modal-title" id="exampleModalLabel">Detalles del Pedido</h5>
-                                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
--->
-                                <!--Info Modal-->
-                                <!--
-                                <div class="modal-body">
-                                    <div class="row border border-secondary     productos">
--->
-                                        <!--Imagen-->
-                                        <!--
-                                        <div class="col-1">
-                                            <img src="../../svg/facebook.svg" alt="" class="imagen_productos">
-                                        </div>
--->
-                                        <!--Info Producto Carrito-->
-                                        <!--
-                                        <div class="col  info_producto_carrito">
-                                            <div class="row justify-content-between">
-                                                <div class="col-9   nombre_producto">
-                                                    <b>Producto</b>
-                                                </div>
-                                                <div class="col-3 text-end  precio_total">
-                                                    <b>Precio: $150.00</b>
-                                                </div>
-                                            </div>
-                
-                                            <div class="row     barra_baja">
-                                                <div class="col-4">
-                                                    <div class="input-group">
-                                                        <span class="input-group-text   barra_cantidad">Cantidad</span>
-                                                        <input type="number" class="form-control    barra_cantidad" disabled="disabled" aria-label="Username">
-                                                        <span class="input-group-text   barra_cantidad">kg</span>
-                                                    </div>
-                                                </div>
-                
-                                                <div class="col text-end  precio_total">
-                                                    <b>Precio Total: $150.00</b>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
--->
     </div>
-
-
-    <!--Pedidos Completados-->
-    <div class="container   pedidos_entregados">
-        <!--Mensaje-->
-        <div class="row text-center">
-            <div class="col   barras_mensaje"><hr></div>
-
-            <div class="col-3   mensaje_arriba">
-                <p><b>Pedidos Entregados</b></p>
-            </div>
-
-            <div class="col   barras_mensaje"><hr></div>
-        </div>
-<?php
-                $consulta= new select();
-                $query="call VENTAS('egmr.90@gmail.com', 'Entregado');";
-                $query2="call VENTA_DETALLE ('egmr.90@gmail.com', 'Entregado');";
-                $info=$consulta->seleccionar($query);
-                $infomodal=$consulta->seleccionar($query2);
-                if ($info!=NULL)
-                {
-                   foreach ($info as $datos)
-                   {
-                       echo "
-           <div class='border border-secondary  contenedor_pedidos_entregados'>
-              
-               <div class='row border border-dark  producto_carrito'>
-                   <div class='col-1'>
-                       <img src='".$datos->FOTO."' alt='' class='imagen_producto'>
-                   </div>
-       
-                   <div class='col-10  info_producto'>
-                       <div class='n_p'>
-                           <p><b>Pedido N.° ".$datos->FOLIO."</b></p>
-                       </div>
-       
-                       <div class='row'>
-                           
-                           
-                           <div class='col-2'>
-                               <label for='total' class='l_p'><b>Total</b></label>
-                               <input type='text' class='form-control  i_p' id='total' placeholder= '$".$datos->TOTAL."' disabled='disabled'>
-                           </div>
-                           <div class='col-3'>
-                               <label for='f_p' class='l_p'><b>Fecha de Pedido</b></label>
-                               <input type='text' class='form-control  i_p' id='f_p' placeholder='".$datos->FECHA_ORDEN."' disabled='disabled'>
-                           </div>
-                           <div class='col-5'>
-                               <label for='d_e' class='l_p'><b>Direccion de Entrega</b></label>
-                               <input type='text' class='form-control  i_p' id='d_e' placeholder='".$datos->DOMICILIO."' disabled='disabled'>
-                           </div>
-                           <div class='col-2 text-end   d_p'>
-                               <a href='' data-bs-toggle='modal' data-bs-target='#modal_detalles_pedido'>Detalles del Pedido</a>
-                           </div>
-                             <div class='modal modal-lg fade' id='modal_detalles_pedido' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                               <div class='modal-dialog modal-dialog-centered'>
-                                 <div class='modal-content'>
-                                   <div class='modal-header    header_detalles'>
-                                     <h5 class='modal-title' id='exampleModalLabel'>Detalles del Pedido</h5>
-                                     <button type='button' class='btn-close btn-close-white' data-bs-dismiss='modal' aria-label='Close'></button>
-                                   </div>
-                                   <div class='modal-body'>";
-                                   foreach ($infomodal as $datos) 
-                                    {
-                                   echo "    <div class='row border border-secondary     productos'>
-                                           <div class='col-1'>
-                                               <img src='".$datos->FOTO."' class='imagen_productos'>
-                                           </div>
-                                           <div class='col  info_producto_carrito'>
-                                               <div class='row justify-content-between'>
-                                                   <div class='col-9   nombre_producto'>
-                                                       <b>".$datos->PRODUCTO."</b>
-                                                   </div>
-                                                   <div class='col-3 text-end  precio_total'>
-                                                       <b>Precio: $".$datos->PRECIO.".00</b>
-                                                   </div>
-                                               </div>
-                   
-                                               <div class='row     barra_baja'>
-                                                   <div class='col-4'>
-                                                       <div class='input-group'>
-                                                           <span class='input-group-text   barra_cantidad'>Cantidad</span>
-                                                           <input type='number' class='form-control    barra_cantidad' disabled='disabled' aria-label='Username' placeholder='$datos->CANTIDAD'>
-                                                           <span class='input-group-text   barra_cantidad'>PZ</span>
-                                                       </div>
-                                                   </div>
-                   
-                                                   <div class='col text-end  precio_total'>
-                                                       <b>Precio Total: $".$datos->TOTAL.".00</b>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>";
-                                   }
-                                   echo "
-                                   </div>
-                                 </div>
-                               </div>
-                             </div>
-                       </div>
-                   </div>
-               </div>
-       
-           </div>
-                       ";
-                   }  
-                }
-                else
-                {
-                  echo "  <div class='text-center'>
-                  <div><img src='../../svg/bolsa.svg' alt='' class='lupa'></div>
-                  <div class='mensaje_no_encontrado'><b>No tiene ningun pedido entregado en este momento</b></div>
-              </div>";
-                }
-         ?>       
-   </div>
-            </div>  
     
     <!--Footer-->
     <footer>

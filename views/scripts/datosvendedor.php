@@ -12,7 +12,7 @@
     require_once ("../../vendor/autoload.php");
     $id = $_SESSION['ID'];
     $datos = new select();
-    $consulta = "SELECT * FROM VENDEDORES WHERE VENDEDORES.LOGIN = '$id'";
+    $consulta = "SELECT * FROM REPARTIDORES WHERE REPARTIDORES.LOGIN = 1014";
     $vendedor = $datos->seleccionar($consulta);
     foreach($vendedor as $infovendedor)
     {

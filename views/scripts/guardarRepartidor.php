@@ -31,7 +31,7 @@
     {
         $key->ID_LOGIN;
         $cadena = "INSERT INTO repartidores (NOMBRE,APELLIDOS,CORREO,TELEFONO,PLACAS,NUM_LICENCIA, LOGIN) VALUES
-        ('$nombre','$apellidos','$telefono','$correo','$placas','$licencia','$key->ID_LOGIN')";
+        ('$nombre','$apellidos','$correo','$telefono','$placas','$licencia','$key->ID_LOGIN')";
     
         $insert->ejecutar($cadena);
 
