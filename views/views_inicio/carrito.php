@@ -251,7 +251,7 @@ else
     
                                     <div class="col row">
                                         <div class="text-center col-5   d_p">
-                                            <a href="" data-bs-toggle="modal" data-bs-target="#info_producto">Informacion del producto</a>
+                                            <a href="" data-bs-toggle="modal" data-bs-target="#info_producto<?php echo $indice['id'] ?>">Informacion del producto</a>
                                         </div>
     
                                         <div class="col-4   d_p">
@@ -260,7 +260,7 @@ else
                                         </div>
                                           
                                         <!--Modal Informacion de Productos-->
-                                        <div class="modal modal-sm fade" id="info_producto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal modal-sm fade" id="info_producto<?php echo $indice['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <!--Barra Arriba-->
