@@ -243,7 +243,7 @@ session_start();
                             </div>   
                             ";
                             $consulta= new select();
-                    
+                            $query="call VENTA_DETALLE('".$_SESSION['ID_CLIENTE']."', 'Pendiente',".$datos->FOLIO.");";
                             $info=$consulta->seleccionar($query);
                             $consulta= new select();
                             foreach ($info as $datos) {
@@ -457,7 +457,7 @@ session_start();
                             </div>   
                             ";
                             $consulta2= new select();
-                            $query2="call VENTA_DETALLE('".$_SESSION['ID_CLIENTE']."', 'Entregado',".$datos->FOLIO.");";
+                            $query2="call VENTA_DETALLE('".$_SESSION['ID_CLIENTE']."', 'Pendiente',".$datos->FOLIO.");";
                             $info2=$consulta2->seleccionar($query2);
                             foreach ($info2 as $datos) {
                             echo "
