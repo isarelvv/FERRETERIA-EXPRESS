@@ -243,7 +243,7 @@ session_start();
                             </div>   
                             ";
                             $consulta= new select();
-                            $query="call VENTA_DETALLE('".$_SESSION['ID_CLIENTE']."', 'Pendiente',".$datos->FOLIO.");";
+                    
                             $info=$consulta->seleccionar($query);
                             $consulta= new select();
                             foreach ($info as $datos) {
@@ -334,10 +334,7 @@ session_start();
                               <button type='button' class='btn-close btn-close-white' data-bs-dismiss='modal' aria-label='Close'></button>
                             </div>   
                             ";
-                            $consulta= new select();
-                            $query="call VENTA_DETALLE('".$_SESSION['ID_CLIENTE']."', 'Pendiente',".$datos->FOLIO.");";
-                            $info=$consulta->seleccionar($query);
-                            $consulta= new select();
+                            
                             foreach ($info as $datos) {
                             echo "
                             <div class='modal-body'>        
@@ -370,11 +367,14 @@ session_start();
                                             </div>
                                         </div>
                                     </div>
+                                    ";
+                                }
+                                echo "
                                 </div>
-                            </div>";
-                            }
-                            echo "
+                               
+                            </div>
                           </div>
+                         
                         </div>
                       </div>
                 </div>
@@ -410,7 +410,7 @@ session_start();
         </div>
         <?php
          $consulta= new select();
-         $query="call VENTAS('".$_SESSION['ID_CLIENTE']."', 'Entregados');";
+         $query="call VENTAS('".$_SESSION['ID_CLIENTE']."', 'Entregado');";
          $info=$consulta->seleccionar($query);
          if ($info!=NULL)
          {
@@ -456,11 +456,10 @@ session_start();
                               <button type='button' class='btn-close btn-close-white' data-bs-dismiss='modal' aria-label='Close'></button>
                             </div>   
                             ";
-                            $consulta= new select();
-                            $query="call VENTA_DETALLE('".$_SESSION['ID_CLIENTE']."', 'Pendiente',".$datos->FOLIO.");";
-                            $info=$consulta->seleccionar($query);
-                            $consulta= new select();
-                            foreach ($info as $datos) {
+                            $consulta2= new select();
+                            $query2="call VENTA_DETALLE('".$_SESSION['ID_CLIENTE']."', 'Entregado',".$datos->FOLIO.");";
+                            $info2=$consulta2->seleccionar($query2);
+                            foreach ($info2 as $datos) {
                             echo "
                             <div class='modal-body'>        
                                 <div class='row border border-secondary     productos'>
