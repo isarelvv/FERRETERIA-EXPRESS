@@ -13,7 +13,7 @@
     <nav class="col-2">
           <div class="container d-flex flex-column">
             <!--Repartidores-->
-            <div class="text-center titulo">BIENVENIDO $NOMBRE</div>
+            <div class="text-center titulo">BIENVENIDO </div>
             <div class="text-center">
               <img src="../../svg/facebook.svg" alt="" class="border border-2 rounded-circle foto_perfil">
             </div>

@@ -577,8 +577,8 @@ session_start();
         $total_c=0;
         if(isset($_SESSION["carrito"])){
           foreach($_SESSION["carrito"] as $indice =>$arreglo){
-               if($producto==$indice){
-               $total_c=intval($arrreglo["cantidad"]);
+               if($id==$indice){
+               $total_c=intval($arreglo["cantidad"]);
                 }
             }
       }
