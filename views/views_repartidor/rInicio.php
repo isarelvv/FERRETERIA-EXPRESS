@@ -15,7 +15,7 @@
   session_start();
   $repartidor=$_SESSION['ID'];
   $datos = new select();
-    $consulta = "SELECT * FROM REPARTIDORES WHERE REPARTIDORES.LOGIN = 1014";
+    $consulta = "SELECT * FROM REPARTIDORES WHERE REPARTIDORES.LOGIN = $repartidor";
     $vendedor = $datos->seleccionar($consulta);
     foreach($vendedor as $infovendedor)
     {
