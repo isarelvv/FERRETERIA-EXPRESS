@@ -45,7 +45,7 @@ session_start();
             $cant = $datos[$i]['cantidad'];
             $ingresaprods = "INSERT INTO DETALLE_VENTAS(VENTA,PRODUCTO,CANTIDAD,TIPO_ENTREGA)VALUES('$ventacliente','$prod','$cant','$metodo_entrega')";
             $insert2->ejecutar($ingresaprods);
-
+        }
             if($metodo_entrega == 'Domicilio')
             {
             $consultardetalle = "SELECT DETALLE_VENTAS.FOLIO_DETALLE FROM DETALLE_VENTAS JOIN VENTAS ON DETALLE_VENTAS.VENTA = VENTAS.FOLIO JOIN (SELECT MAX(VENTAS.FOLIO) AS UV FROM VENTAS WHERE VENTAS.CLIENTE = $ID) AS VE ON DETALLE_VENTAS.VENTA = VE.UV WHERE DETALLE_VENTAS.VENTA = VE.UV";
@@ -89,7 +89,7 @@ session_start();
                 }
             }
             }
-        }
+        
            
         }
          
