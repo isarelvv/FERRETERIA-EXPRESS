@@ -1,0 +1,125 @@
+nav
+{
+    background-color: #272D33;
+    min-height: 900px;
+}
+
+.titulo
+{
+    font-size: 22pt;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.foto_perfil
+{
+    max-width: 120px;
+    max-height: 120px;
+    margin-top: 10px;
+}
+
+.items
+{
+    color: #fff;
+    font-size: 14pt;
+    margin-bottom: 10px;
+}
+
+.items:hover
+{
+    color: #C7000D;
+    font-size: 14pt;
+    margin-bottom: 10px;
+}
+
+.link_drop
+{
+    color: #fff;
+    text-decoration: none;
+}
+
+.link_drop:hover
+{
+    color: #C7000D;
+    text-decoration: none;
+}
+
+.sep_hr
+{
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+
+
+/*Contenedor*/
+.container
+{
+    margin-top: 20px;
+}
+
+.titulo_contenedor
+{
+    font-size: 24pt;
+    margin-bottom: 10px;
+    color: #0254EB;
+}
+
+.filtros_contenedor
+{
+    font-size: 18pt;
+    margin-bottom: 5px;
+}
+
+.boton_buscar
+{
+    border-color: #0254EB;
+    background-color: #0254EB;
+    color: #fff;
+}
+
+.boton_buscar:hover
+{
+    border-color: #010059;
+    background-color: #010059;
+    color: #fff;
+}
+
+/*Formulario*/
+.secciones_form
+{
+    margin-bottom: 20px;
+}
+
+label
+{
+    font-size: 14pt;
+}
+
+.crear_cuenta
+{
+    background-color: #0254EB;
+    border-color: #0254EB;
+    color: #fff;
+}
+
+.crear_cuenta:hover
+{
+    background-color: #010059;
+    border-color: #010059;
+    color: #fff;
+}
+
+.boton_cerrar
+{
+    background-color: #C7000D;
+    border-color: #C7000D;
+    color: #fff;
+}
+
+.boton_cerrar:hover
+{
+    background-color: #8B0006;
+    border-color: #8B0006;
+    color: #fff;
+}
