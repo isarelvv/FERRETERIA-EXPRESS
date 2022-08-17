@@ -25,10 +25,7 @@ if(isset($_SESSION['usuario']))
             break;
     }
 }
-else
-{
-    header("Location: ../../index.php");
-}?>
+?>
 <?php
     use MyApp\query\select;
     require_once ("../../vendor/autoload.php");

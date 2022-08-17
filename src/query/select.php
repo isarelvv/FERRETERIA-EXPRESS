@@ -11,7 +11,7 @@ class select
     {
         try
         {
-            $cc=new Database("save","root","");
+            $con = new Database("SAVE", "doamin", "AVNS_0irFMC1NWTaraDt_uR8");
             $objetoPDO=$cc ->getPDO();
             $resultado = $objetoPDO->query($qry);
             $fila = $resultado->fetchAll(PDO::FETCH_OBJ);
