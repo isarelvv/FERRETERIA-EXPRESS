@@ -11,10 +11,10 @@ class ejecutar
     {
         try
         {
-            $con = new Database("SAVE", "doadmin", "AVNS_0irFMC1NWTaraDt_uR8");
-            $objetoPDO = $con->getPDO();
+            $cc = new Database("SAVE", "doadmin", "AVNS_0irFMC1NWTaraDt_uR8");
+            $objetoPDO = $cc->getPDO();
             $objetoPDO->query($qry);
-            $con->desconectarDB();
+            $cc->desconectarDB();
         }
         catch(PDOException $e)
         {

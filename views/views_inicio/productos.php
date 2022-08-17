@@ -350,12 +350,12 @@ session_start();
                  }
                 
                 $tabla=$seleccionar->seleccionar($cadena);
-
+                 
                 if(isset($_POST['buscar']))
                 {
                     foreach($resultado as $datos)
                 {
-                  
+                  echo "PUTO";
                     ?>
                     <div class="col  " style="max-width: 250px; height:475px ">
                     <form action="" method="POST">
