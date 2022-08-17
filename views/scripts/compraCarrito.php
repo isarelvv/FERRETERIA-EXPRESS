@@ -96,6 +96,7 @@ session_start();
          unset($_SESSION['carrito']);
          echo "<div class='alert alert-success'>";
          echo "<h2 align='center'>VENTA REALIZADA<h2>";
+         header("../views_inicio/pedidos.php");
          echo "</div>";
  
          
