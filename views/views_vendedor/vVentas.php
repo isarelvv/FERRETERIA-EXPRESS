@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+use MyApp\query\select;
+require_once("../../vendor/autoload.php");
+session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -59,13 +64,13 @@
 
                 <!--Agregar productos-->
                 <div class="col-8  agregar_productos">
-                  <form action="">
+                  <form action="" method="POST">
                     <div>
                       <div class="row">
-                        <div class="col-8"><input class="form-control" type="text" id="productos" placeholder="Ingresa el nombre del producto..."></div>
+                        <div class="col-8"><input class="form-control" type="text" id="productos" name="buscar" placeholder="Ingresa el nombre del producto..."></div>
                         <div class="col-2">
                           <div class="row">
-                            <button class="btn boton_buscar" type="button">Buscar</button>
+                            <button class="btn boton_buscar" type="submit">Buscar</button>
                           </div>
                         </div>
                       </div>
@@ -73,30 +78,43 @@
                   </form>
                   
                   <hr>
-
+                 
+                  
                   <!--Productos-->
                   <div class="mt-2">
+                 
                     <form action="">
                       <div class="contenedor_productos">
+                      <?php
+                   if(isset($_POST['buscar']))
+                   {
+                       extract($_POST);
+                       $barra = new select();
+                       $consulta = "SELECT PRODUCTOS.CODIGO, PRODUCTOS.NOMBRE AS PRODUCTO, CATEGORIAS.NOMBRE AS CATEGORIA, 
+                       PRODUCTOS.PRECIO_VENTA AS PRECIO, PRODUCTOS.FOTO AS FOTO, PRODUCTOS.DESCRIPCION AS DESCRIPCION,
+                       PRODUCTOS.CANTIDAD_REAL AS CANTIDAD,(PRODUCTOS.CANTIDAD_IDEAL-PRODUCTOS.CANTIDAD_REAL) AS FALTANTES FROM PRODUCTOS
+                       INNER JOIN CATEGORIAS ON CATEGORIAS.ID_CATEGORIA = PRODUCTOS.CATEGORIA WHERE PRODUCTOS.NOMBRE   LIKE '%$buscar%'";
+                       $resultado = $barra->seleccionar($consulta);
+                       foreach ($resultado as $tabla ) {
+                        ?>
                         <!--Producto-->
                         <div class="row border  producto_carito">
                           <!--Imagen-->
                           <div class="col-1 p-0">
-                              <img src="../../svg/facebook.svg" alt="" class="imagen_productos">
+                              <img src="<?php echo $tabla->FOTO ?>" alt="" class="imagen_productos">
                           </div>
     
                           <!--Info Producto Carrito-->
                           <div class="col ms-1 mt-2">
                               <div class="row justify-content-lg-start">
-                                  <div class="col-9 pNombre"><b>#Producto</b></div>
-                                  <div class="col-3 text-end nPrecio"><b>Precio: </b>$150.00</div>
+                                  <div class="col-9 pNombre"><b><?php echo $tabla->PRODUCTO ?></b></div>
+                                  <div class="col-3 text-end nPrecio"><b>Precio: </b>$<?php echo $tabla->PRECIO ?>.00</div>
                               </div>
     
                               <div class="row justify-content-start mt-1">
-                                <div class="col-3 pt-1  pCategoria"><b>#Categoria</b></div>
-                                <div class="col-3 pt-1"><b>Cantidad en Stock: </b>#10</div>
+                                <div class="col-3 pt-1"><b>Cantidad en Stock: </b>#<?php echo $tabla->CANTIDAD ?></div>
                                 <div class="col-2">
-                                  <input class="form-control form-control-sm" type="number" id="cantidad_carrito" placeholder="Cantidad..." min="1" max="#10">
+                                  <input class="form-control form-control-sm" type="number" id="cantidad_carrito" placeholder="0" min="1" max="#10">
                                 </div>
                                 <div class="col text-end">
                                   <button class="btn btn-sm boton_buscar" type="button">
@@ -106,11 +124,17 @@
                               </div>
                           </div>
                         </div>
-                      </div>
+                        <?php
+                       }
+                      }
+                ?>
+                      </div>  
                     </form>
                   </div>
-                </div>
+                  
 
+                </div>
+                
                 <!--Info Venta-->
                 <div class="col-4 border  informacion_venta">
                   <!--Cliente-->
@@ -119,18 +143,36 @@
 
                     <hr class="mt-2 mb-3">
 
-                    <form action="">
+                    <form action="" method="POST">
                       <div class="row">
-                        <div class="col-8">
-                          <input class="form-control form-control-sm " type="tel" id="tel_cliente" placeholder="Ingresa el telefono del cliente...">
+                   
+                        <div class="col-6">
+                          <input class="form-control form-control-sm " type="tel" id="tel_cliente" placeholder="Ingresa el telefono del cliente..." name="cliente">
                         </div>
-
                         <div class="col-3 row">
-                          <button class="btn btn-sm   boton_buscar">
+                          <button class="btn btn-sm   boton_buscar" type="submit">
                             Buscar
                           </button>
                         </div>
+                      </form>
                       </div>
+                      <?php 
+                      if(isset($_POST['cliente']))
+                      {
+                        $seleccionr=new select();
+                        $consulta="SELECT CLIENTES.NO_CLIENTE AS ID, CLIENTES.NOMBRE AS NOMBRE, CLIENTES.AP_PATERNO AS APE_PA, CLIENTES.AP_MATERNO AS AP_MA FROM
+                        clientes WHERE clientes.TELEFONO= '$cliente'";
+                        $dato=$seleccionr->seleccionar($consulta);
+                        foreach ($dato as $info) {
+                        
+                       ?>
+                      <div>
+                        <p><?php echo $info->NOMBRE ?></p>
+                      </div>
+                      <?php 
+                        }
+                      }
+                      ?>
 
                       <div class="text-center mt-2">
                         <a href="" class="link_modal" data-bs-toggle="modal" data-bs-target="#registrarse">Registrar cliente nuevo</a>
@@ -148,7 +190,7 @@
 
                             <!--Cuerpo-->
                             <div class="modal-body">
-                              <form action="">                      
+                            <form action="../scripts/guardarUsuario.php" method="POST">                      
                                 <div class="justify-content-center">
                                     <div class="">
                                       <!--Seccion1-->
@@ -156,27 +198,27 @@
                                         <h5>Informacion Personal</h5>
                                         <!--Nombre-->
                                         <div class="form-floating mb-2">
-                                            <input class="form-control  conf_labels" type="text" id="nombre" placeholder="Nombre">
+                                            <input class="form-control  conf_labels" type="text" id="nombre" placeholder="Nombre" name="nombre" required>
                                             <label class="form-label"  for="nombre">Nombre</label>
                                         </div>
                                         <!--Apellido Paterno-->
                                         <div class="form-floating mb-2">
-                                            <input class="form-control  conf_labels" type="text" id="a_p" placeholder="Apellido Paterno">
+                                            <input class="form-control  conf_labels" type="text" id="a_p" placeholder="Apellido Paterno" name="appaterno" required>
                                             <label class="form-label" for="a_p">Apellido Paterno</label>
                                         </div>
                                         <!--Apellido Materno-->
                                         <div class="form-floating mb-2">
-                                            <input class="form-control  conf_labels" type="text" id="a_m" placeholder="Apellido Materno">
+                                            <input class="form-control  conf_labels" type="text" id="a_m" placeholder="Apellido Materno" name="apmaterno" required>
                                             <label class="form-label" for="a_m">Apellido Materno</label>
                                         </div>
                                         <!--Correo Electronico-->
                                         <div class="form-floating mb-2">
-                                            <input class="form-control  conf_labels" type="email" id="correo" placeholder="Correo Electronico">
+                                            <input class="form-control  conf_labels" type="email" id="correo" placeholder="Correo Electronico" name="correo" required>
                                             <label class="form-label" for="correo">Correo Electronico</label>
                                         </div>
                                         <!--Numero de Telefono-->
                                         <div class="form-floating mb-2">
-                                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Numero de Telefono">
+                                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Numero de Telefono" name="tel" required>
                                             <label class="form-label" for="telefono">Numero de Telefono</label>
                                         </div>
                                     </div>
@@ -188,13 +230,13 @@
                                         <h5>Direccion</h5>
                                         <!--Direccion-->
                                         <div class="form-floating mb-2">
-                                            <input class="form-control  conf_labels" type="text" id="direccion" placeholder="Direccion">
+                                            <input class="form-control  conf_labels" type="text" id="direccion" placeholder="Direccion" name="dir" required>
                                             <label class="form-label" for="direccion">Direccion</label>
                                         </div>
                     
                                         <!--Codigo Postal-->
                                         <div class="form-floating mb-2">
-                                            <input class="form-control  conf_labels" type="text" id="cp" placeholder="Codigo Postal" style="max-width: 200px;">
+                                            <input class="form-control  conf_labels" type="text" id="cp" placeholder="Codigo Postal" style="max-width: 200px;" name="codpst" required>
                                             <label class="form-label" for="cp">Codigo Postal</label>
                                         </div>
                                     </div>
@@ -206,14 +248,14 @@
                                         <h5>Contraseña</h5>
                                         <!--Contraseña-->
                                         <div class="form-floating mb-2">
-                                            <input class="form-control  conf_labels" type="password" id="contra" placeholder="Contraseña">
+                                            <input class="form-control  conf_labels" type="password" id="contra" placeholder="Contraseña" name="pass" required maxlength="30" minlength="8">
                                             <label class="form-label" for="contra">Contraseña</label>
                                             <div id="ayuda_email" class="form-text">La contraseña debe tener al menos 8 digitos.</div>
                                         </div>
                     
                                         <!--Repetir Contraseña-->
                                         <div class="form-floating mb-2">
-                                            <input class="form-control  conf_labels" type="password" id="rcontra" placeholder="Repetir Contraseña">
+                                            <input class="form-control  conf_labels" type="password" id="rcontra" placeholder="Repetir Contraseña" name="pass1">
                                             <label class="form-label" for="rcontra">Repetir Contraseña</label>
                                         </div> 
                                     </div>
@@ -226,7 +268,7 @@
                             <div class="modal-footer bg-dark">
                               <button type="button" class="btn  boton_cerrar" data-bs-dismiss="modal">Cerrar</button>
                               <form action="">
-                                <button type="button" class="btn  crear_cuenta">Crear Cuenta</button>
+                                <button type="submit" class="btn  crear_cuenta">Crear Cuenta</button>
                               </form>
                             </div>
                           </div>
