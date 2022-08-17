@@ -97,7 +97,7 @@ session_start();
          echo "<div class='alert alert-success'>";
          echo "<h2 align='center'>VENTA REALIZADA<h2>";
          echo "</div>";
-         header("refresh:3; ../../index.php");
+ 
          
         
          
