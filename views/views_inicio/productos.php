@@ -294,7 +294,7 @@ session_start();
             <div class="col-10 row" >
             
                 <?php
-                 $cadena= "CALL PRODUCTOS();";
+                 $cadena= "CALL SAVE.PRODUCTOS();";
                  if ($_POST) 
                  {
                     $filtros_de_busqueda ="";
