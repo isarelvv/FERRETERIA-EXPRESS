@@ -1,0 +1,64 @@
+.barra_navegacion
+{
+    background-color: #272D33;
+    min-height: 900px;
+}
+
+.titulo
+{
+    font-size: 22pt;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.foto_perfil
+{
+    max-width: 120px;
+    max-height: 120px;
+    margin-top: 10px;
+}
+
+.items
+{
+    color: #fff;
+    font-size: 14pt;
+    margin-bottom: 10px;
+}
+
+.items:hover
+{
+    color: #C7000D;
+    font-size: 14pt;
+    margin-bottom: 10px;
+}
+
+.link_drop
+{
+    color: #fff;
+    text-decoration: none;
+}
+
+.link_drop:hover
+{
+    color: #C7000D;
+    text-decoration: none;
+}
+
+.sep_hr
+{
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+
+
+/*Formulario*/
+.secciones_form
+{
+    margin-bottom: 20px;
+}
+
+label
+{
+    font-size: 14pt;
+}

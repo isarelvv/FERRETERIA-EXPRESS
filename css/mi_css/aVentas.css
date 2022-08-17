@@ -1,0 +1,189 @@
+nav
+{
+    background-color: #272D33;
+    min-height: 900px;
+}
+
+.titulo
+{
+    font-size: 22pt;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.foto_perfil
+{
+    max-width: 120px;
+    max-height: 120px;
+    margin-top: 10px;
+}
+
+.items
+{
+    color: #fff;
+    font-size: 14pt;
+    margin-bottom: 10px;
+}
+
+.items:hover
+{
+    color: #C7000D;
+    font-size: 14pt;
+    margin-bottom: 10px;
+}
+
+.link_drop
+{
+    color: #fff;
+    text-decoration: none;
+}
+
+.link_drop:hover
+{
+    color: #C7000D;
+    text-decoration: none;
+}
+
+.sep_hr
+{
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+
+
+/*Contenedor*/
+.container
+{
+    margin-top: 20px;
+}
+
+.agregar_productos
+{
+    padding: 10px;
+}
+
+.contenedor_productos
+{
+    margin: 10px;
+}
+
+.boton_buscar
+{
+    border-color: #0254EB;
+    background-color: #0254EB;
+    color: #fff;
+}
+
+.boton_buscar:hover
+{
+    border-color: #010059;
+    background-color: #010059;
+    color: #fff;
+}
+
+/*Productos*/
+.producto_carito
+{
+    margin-top: 10px;
+}
+
+.imagen_productos
+{
+    max-width: 80px;
+    max-height: 80px;
+    vertical-align: middle;
+}
+
+.pNombre
+{
+    font-size: 14pt;
+}
+
+.nPrecio
+{
+    font-size: 14pt;
+}
+
+.pCategoria
+{
+    color: #0254EB;
+}
+
+
+
+/*Informacion Venta*/
+.informacion_venta
+{
+    padding: 10px;
+}
+
+.titulo_secc
+{
+    font-size: 14pt;
+}
+
+.link_modal
+{
+    font-size: 10pt;
+}
+
+.titulos_tabla
+{
+    font-size: 13pt;
+}
+
+.resumen_pedido
+{
+    font-size: 13pt;
+}
+
+
+
+/*Modal Crear Cuenta*/
+.modal-title
+{
+    font-size: 16pt;
+}
+
+.boton_cerrar
+{
+    background-color: #C7000D;
+    border-color: #C7000D;
+    color: #fff;
+}
+
+.boton_cerrar:hover
+{
+    background-color: #8B0006;
+    border-color: #8B0006;
+    color: #fff;
+}
+
+.crear_cuenta
+{
+    background-color: #0254EB;
+    border-color: #0254EB;
+    color: #fff;
+}
+
+.crear_cuenta:hover
+{
+    background-color: #010059;
+    border-color: #010059;
+    color: #fff;
+}
+
+
+
+/*Modal Check Productos*/
+.imagen_productos_modal
+{
+    max-width: 60px;
+    max-height: 60px;
+}
+
+.pNombre_modal
+{
+    font-size: 12pt;
+}

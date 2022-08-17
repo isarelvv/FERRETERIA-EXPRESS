@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/mi_css/aInventario.css">
+    <title>Inventario - Administrador</title>
+</head>
+<body>
+  <div class="row">
+    <!--Barra-->
+    <nav class="col-2">
+      <div class="container d-flex flex-column">
+        <!--Repartidores-->
+        <div class="text-center titulo">Administrador</div>
+        <div class="text-center">
+          <img src="../../svg/facebook.svg" alt="" class="border border-2 rounded-circle foto_perfil">
+        </div>
+
+        <hr class="text-white">
+
+        <!--Botones paginas-->
+        <ul class="nav nav-pills row text-center justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link     items" aria-current="page" href="../../views/views_administrador/aInicio.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aReportesVendedores.html">Reportes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link    items" href="../../views/views_administrador/aAltasProductos.html">Altas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active bg-danger    items" href="../../views/views_administrador/aInventario.html">Inventarios</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link    items" href="../../views/views_administrador/aVentas.html">Ventas</a>
+          </li>
+        </ul>
+
+        <hr class="text-white">
+
+        <!--Configuracion-->
+        <div class="text-center">
+          <div class="dropdown dropdown-center">
+            <a class="nav-item dropdown-toggle link_drop" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configuracion</a>
+          
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!--Contenedor-->
+    <main class="col-10">
+      <div class="container">
+        <div class="titulo_contenedor"><b>Inventario</b></div>
+
+              <form action="">
+                <div class="filtros_contenedor"><b>Filtros de Busqueda</b></div>
+
+                <!--Selects-->
+                <!--Fila 1-->
+                <div class="row mb-2">
+                  <!--Buscar por Nombre-->
+                  <div class="col">
+                    <label class="form-label" for="b_nombre"><b>Buscar por Nombre</b></label>
+                    <div class="row">
+                      <div class="col-5">
+                        <input class="form-control form-control-sm" type="text" id="b_nombre" placeholder="Ingresa el nombre del producto...">
+                      </div>
+
+                      <!--Boton-->
+                      <div class="col-2 row">
+                        <button class="btn btn-sm btn-danger" type="button">
+                          Buscar Producto
+                        </button>
+                      </div>  
+                  </div>
+                  </div>
+
+                  
+                </div>
+
+                <hr>
+
+                <!--Fila 2-->
+                <div class="row">
+                  <!--Ordenar-->
+                  <div class="col-5">
+                    <select name="filtros_de_busqueda" class="form-select form-select-sm     select_filtros" aria-label="Default select example">
+                      <option value="1">Todos los productos</option>
+                      <option value="2">Ordenar de la A a la Z</option>
+                      <option value="3">Ordenar de la Z a la A</option>
+                      <option value="4">De Mayor a Menor Cantidad</option>
+                      <option value="5">De Menor a Mayor Cantidad</option>
+                    </select>
+                  </div>
+
+                  <!--Categorias-->
+                  <div class="col-5">
+                    <select name="filtros_de_busqueda" class="form-select form-select-sm     select_filtros" aria-label="Default select example">
+                      <option value="1">Todas las categorias</option>
+                      <option value="2">Herramientas</option>
+                      <option value="3">Union</option>
+                      <option value="4">Medicion</option>
+                      <option value="5">Construccion</option>
+                      <option value="6">Tuberias</option>
+                      <option value="7">Alumbrado</option>
+                      <option value="8">Proteccion</option>
+                      <option value="9">Limpieza</option>
+                      <option value="10">Pintura</option>
+                      <option value="11">Componentes Diversos</option>
+                    </select>
+                  </div>
+
+                  <!--Boton-->
+                  <div class="col-2 row">
+                    <button class="btn btn-sm btn-danger" type="button">
+                      Filtrar Resultados
+                    </button>
+                  </div>
+                </div>
+              </form>
+
+              <hr>
+
+              <!--Tabla Inventario-->
+              <table class="table table-bordered">
+                <thead>
+                  <tr class="table-dark">
+                    <th scope="col">Foto</th>
+                    <th scope="col">Nombre del Producto</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Canitidad</th>
+                    <th scope="col">Faltantes</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Modificar</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                    <tr style="vertical-align: middle;">
+                        <td class="text-center" style="padding: 0%;">
+                          <img src="../../svg/facebook.svg" alt="" style="max-width: 60px;">
+                        </td>
+                        <td>#LENTES DE SEGURIDAD TRANPARENTES DE SOBREPONER *TRUPER* MODELO 14308</td>
+                        <td>#Seguridad</td>
+                        <td class="text-center">#12</td>
+                        <td class="text-center">#20</td>
+                        <td class="text-center">#$49</td>
+                        <td><a href="" data-bs-toggle="modal" data-bs-target="#editarProducto">Editar Producto</a></td>
+
+                        <!--Modal Editar Producto-->
+                        <div class="modal modal-lg fade" id="editarProducto" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+
+                              <!--Header-->
+                              <div class="modal-header bg-dark text-white">
+                                <h5 class="modal-title" id="exampleModalLabel">Editar Informacion del Producto</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+
+                              <!--Cuerpo-->
+                              <div class="modal-body">
+                                <div>
+                                  <form action="">
+                                    <!--Nombre-->
+                                    <div class="secciones_form">
+                                      <label class="form-label" for="nProduto"><b>Nombre del Producto</b></label>
+                                      <input class="form-control" type="text" id="nProduto" value="#LENTES DE SEGURIDAD TRANPARENTES DE SOBREPONER *TRUPER* MODELO 14308">
+                                    </div>
+                        
+                                    <!--ID-->
+                                    <div class="secciones_form">
+                                      <label class="form-label" for="idProducto"><b>ID del Producto</b></label>
+                                      <input class="form-control" type="text" id="idProducto" value="#123-456-789">
+                                    </div>
+                        
+                                    <!--Foto-->
+                                    <div class="secciones_form">
+                                      <label class="form-label" for="fProducto"><b>Foto del Producto</b></label>
+                                      <input class="form-control" type="file" accept="image/*" id="fProducto">
+                                    </div>
+                        
+                                    <!--Descripcion-->
+                                    <div class="secciones_form">
+                                      <label class="form-label" for="dProducto"><b>Descripcion</b></label>
+                                      <textarea class="form-control" name="" id="dProducto" rows="5">#Ejemplo</textarea>
+                                    </div>
+                        
+                                    <!--Linea 2-->
+                                    <div class="row">
+                                      <!--Cantidad Real-->
+                                      <div class="col secciones_form">
+                                        <label class="form-label" for="crProducto"><b>Cantidad Real</b></label>
+                                        <input class="form-control" type="number" value="1" min="1" max="#10" id="crProducto">
+                                      </div>
+                          
+                                      <!--Cantidad Ideal-->
+                                      <div class="col secciones_form">
+                                        <label class="form-label" for="ciProducto"><b>Cantidad Ideal</b></label>
+                                        <input class="form-control" type="number" value="1" min="1" max="#10" id="ciProducto">
+                                      </div>
+                          
+                                      <!--Precio Venta-->
+                                      <div class="col secciones_form">
+                                        <label class="form-label" for="pvProducto"><b>Precio Venta</b></label>
+                                        <div class="input-group">
+                                          <span class="input-group-text">$</span>
+                                          <input class="form-control" type="text" id="pvProducto" value="49">
+                                        </div>
+                                      </div>
+                          
+                                      <!--Precio Compra-->
+                                      <div class="col secciones_form">
+                                        <label class="form-label" for="pcProducto"><b>Precio Compra</b></label>
+                                        <div class="input-group">
+                                          <span class="input-group-text">$</span>
+                                          <input class="form-control" type="text" id="pcProducto" value="35">
+                                        </div>
+                                      </div>
+                                    </div>
+                        
+                        
+                                    <!--Linea 3-->
+                                    <div class="row">
+                                      <!--Medida-->
+                                      <div class="col secciones_form">
+                                        <label class="form-label" for="mProducto"><b>Medida</b></label>
+                                        <select class="form-select" name="" id="mProducto">
+                                          <option value="">Gramos (g)</option>
+                                          <option value="">Piezas (pz)</option>
+                                          <option value="">Metros (m)</option>
+                                          <option value="">Metros Cuadrados (m³)</option>
+                                        </select>
+                                      </div>
+                                      
+                                      <!--Proovedor-->
+                                      <div class="col secciones_form">
+                                        <label class="form-label" for="provProducto"><b>Proovedor</b></label>
+                                        <select class="form-select" name="" id="provProducto">
+                                          <option value="">#Distribuidor Herrera</option>
+                                        </select>
+                                      </div>
+                          
+                                      <!--Categoria-->
+                                      <div class="col secciones_form">
+                                        <label class="form-label" for="catProducto"><b>Categoria</b></label>
+                                        <select class="form-select" name="" id="catProducto">
+                                          <option value="">Herramientas</option>
+                                          <option value="">Union</option>
+                                          <option value="">Medicion</option>
+                                          <option value="">Construccion</option>
+                                          <option value="">Tuberia</option>
+                                          <option value="">Iluminacion</option>
+                                          <option value="">Seguridad</option>
+                                          <option value="">Limpieza</option>
+                                          <option value="">Pintura</option>
+                                          <option value="">Componentes Diversos</option>
+                                        </select>
+                                      </div>
+                          
+                        
+                                      <!--Entrega a Domicilio-->
+                                      <div class="col secciones_form">
+                                        <label class="form-label" for="eadProductos"><b>Entrega a Domicilio</b></label>
+                                        <select class="form-select" name="" id="eadProductos">
+                                          <option value="">Si</option>
+                                          <option value="">No</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                              <div class="modal-footer bg-dark">
+                                <form action="">
+                                  <button type="button" class="btn  boton_cerrar" data-bs-dismiss="modal">Cerrar</button>
+                                  <button type="button" class="btn  crear_cuenta">Guardar Cambios</button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </tr>
+                </tbody>
+              </table>
+
+              <hr>
+
+              <!--Surtir-->
+              <div class="text-center">
+                <button class="btn btn-danger col-2" data-bs-toggle="modal" data-bs-target="#surtirProducto">Surtir Productos</button>
+
+                <!--Modal Surtir Productos-->
+                <div class="modal modal-lg fade text-start" id="surtirProducto" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+
+                      <!--Header-->
+                      <div class="modal-header bg-dark text-white">
+                        <h5 class="modal-title" id="exampleModalLabel">Surtir Productos</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+
+                      <!--Cuerpo-->
+                      <div class="modal-body">
+                        <div>
+                          <form action="">
+                            <div class="row">
+                              <div class="col-3 pt-1">
+                                <label class="form-label" for="cvProducto"><b>Clave del Producto:</b></label>
+                              </div>
+                              <div class="col-5">
+                                <input class="form-control" type="text" id="cvProducto" placeholder="Ingresa la clave aqui...">
+                              </div>
+                              <div class="col">
+                                <input class="form-control" type="number" placeholder="Cantidad..." value="1" min="1">
+                              </div>
+                              <div class="col">
+                                <button class="btn btn-primary col">Agregar</button>
+                              </div>
+                            </div>
+                          </form>
+
+                          <hr>
+
+
+                        </div>
+                      </div>
+
+                      <!--Footer-->
+                      <div class="modal-footer bg-dark">
+                        <form action="">
+                          <button type="button" class="btn  boton_cerrar" data-bs-dismiss="modal">Cerrar</button>
+                          <button type="button" class="btn  crear_cuenta">Guardar Cambios</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      </div>
+    </main>
+  </div>
+</body>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrap.bundle.js"></script>
+</html>
