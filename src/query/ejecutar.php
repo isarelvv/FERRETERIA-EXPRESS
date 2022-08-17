@@ -11,7 +11,7 @@ class ejecutar
     {
         try
         {
-            $con = new Database("save", "ferreteria", "AVNS_ZPLENwWlUbpBGayyCMg");
+            $con = new Database("SAVE", "ferreteria", "AVNS_ZPLENwWlUbpBGayyCMg");
             $objetoPDO = $con->getPDO();
             $objetoPDO->query($qry);
             $con->desconectarDB();
