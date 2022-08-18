@@ -10,14 +10,17 @@ class Login
 {
     public function verificaLogin($usuario, $password)
     {
+        echo "<div class='alert alert-success'>";
+                echo "<h2 align='center'> usuario o password incorrecto <h2>";
+                echo "</div>";
+                header ("refresh:3; ../../index.php");
         try 
         {
             $login = 0;
             #$cc=new database("SAVE","root","");
             $cc = new Database("SAVE", "doadmin", "AVNS_0irFMC1NWTaraDt_uR8");
             $objetoPDO = $cc->getPDO();
-            $query ="USE SAVE;
-            SELECT USUARIOS.KEY AS SESION, USUARIOS.TIPO AS 
+            $query ="SELECT USUARIOS.KEY AS SESION, USUARIOS.TIPO AS 
             TIPO,LOGIN.ID_LOGIN, LOGIN.CORREO AS CORREO, LOGIN.CONTRASEÑA AS CONTRASEÑA 
             FROM USUARIOS JOIN LOGIN ON USUARIOS.KEY=LOGIN.TIPO_USUARIO WHERE LOGIN.CORREO='$usuario';";
             $consulta = $objetoPDO->query($query);
