@@ -290,12 +290,10 @@ else
                                                             Precio: $<?php echo $indice['precio'] ?>
                                                         </div>
     
-                                                        <hr>
-    
-                                                        <!--Descripcion del Producto-->
-                                                        <div class="descripcion_producto_modal">
+                                                        <!--<div class="descripcion_producto_modal">
                                                             Descripcion: <?php echo $indice['descr'] ?>
-                                                        </div>
+                                                        </div>-->
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
