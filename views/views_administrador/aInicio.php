@@ -9,6 +9,32 @@
     <title>Inicio - Administrador</title>
 </head>
 <body>
+  <?php
+
+use MyApp\query\select;
+require_once("../../vendor/autoload.php");
+$seleccionar = new select();
+
+$fechahoy = date('Y-m-d');
+$fechasemana = strtotime('-6 day',strtotime($fechahoy));
+$fechasemana = date('Y-m-d',$fechasemana);
+$mes=date("m");
+$ano=date("Y");
+
+
+$cadena=" CALL GANANCIA_VENTAS_MES($mes)";
+$resultado=$seleccionar->seleccionar($cadena);
+
+$cadena2=" CALL GANANCIA_VENTAS_AÑO($ano)";
+$resultado2=$seleccionar->seleccionar($cadena2);
+
+$cadena3=" CALL GANANCIA_VENTAS_PERIODO($fechasemana,$fechahoy)";
+$resultado3=$seleccionar->seleccionar($cadena3);
+
+$cadena4=" CALL GANANCIA_VENTAS_PERIODO($fechahoy,$fechahoy)";
+$resultado4=$seleccionar->seleccionar($cadena4);
+  ?>
+
   <div class="row">
     <!--Barra-->
     <nav class="col-2">
@@ -24,26 +50,25 @@
         <!--Botones paginas-->
         <ul class="nav nav-pills row text-center justify-content-center">
           <li class="nav-item">
-            <a class="nav-link active bg-danger    items" aria-current="page" href="../../views/views_administrador/aInicio.html">Inicio</a>
+            <a class="nav-link active bg-danger    items" aria-current="page" href="../../views/views_administrador/aInicio.php">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aReportesVendedores.html">Reportes</a>
+            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aReportesVendedores.php">Reportes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/aAltasProductos.html">Altas</a>
+            <a class="nav-link    items" href="../../views/views_administrador/aAltasProductos.php">Altas</a>
           </li>
           <li class="nav-item">
-<<<<<<< Updated upstream
-            <a class="nav-link    items" href="../../views/views_administrador/aInventario.html">Inventarios</a>
+            <a class="nav-link    items" href="../../views/views_administrador/aInventario.php">Inventarios</a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/aVentas.html">Ventas</a>
-=======
+            <a class="nav-link    items" href="../../views/views_administrador/aVentas.php">Ventas</a>
+
             <a class="nav-link    items" href="../../views/views_administrador/inentario.php">Inventarios</a>
           </li> 
           <li class="nav-item">
             <a class="nav-link    items" href="../../views/views_administrador/ventas">Ventas</a>
->>>>>>> Stashed changes
+
           </li>
         </ul>
 
@@ -55,13 +80,13 @@
             <a class="nav-item dropdown-toggle link_drop" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configuracion</a>
           
             <ul class="dropdown-menu dropdown-menu-dark">
-<<<<<<< Updated upstream
+
               <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
-=======
+
               <li style="margin-bottom: 10px;"><a class="dropdown-item" href="configuracion.php">Ajustes</a></li>
               <li><hr class="sep_hr"></li>
               <li style="margin-top: 10px;"><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
->>>>>>> Stashed changes
+
             </ul>
           </div>
         </div>
@@ -87,29 +112,37 @@
                 <th class="text-center" colspan="1" scope="col">Cantidad Bruta</th>
                 <th class="text-center" colspan="1" scope="col">Cantidad Capital</th>
               </tr>
-
+              <?php
+                foreach($resultado4 as $datos4)
+                ?>
               <tr class="ingresos_periodo">
                 <td><b>DIARIO ----------------------------------------</b></td>
-                <td class="text-center">$150.00</td>
-                <td class="text-center">$100.00</td>
+                <td class="text-center">$<?php echo $datos4->MONTO_GENERADO?></td>
+                <td class="text-center">$<?php echo $datos4->MONTO_CAPITAL?></td>
               </tr>
-
+              <?php
+                foreach($resultado3 as $datos3)
+                ?>
               <tr class="ingresos_periodo">
                 <td><b>SEMANAL -------------------------------------</b></td>
-                <td class="text-center">$1,050.00</td>
-                <td class="text-center">$700.00</td>
+                <td class="text-center">$<?php echo $datos3->MONTO_GENERADO?></td>
+                <td class="text-center">$<?php echo $datos3->MONTO_CAPITAL?></td>
               </tr>
-
+                <?php
+                foreach($resultado as $datos)
+                ?>
               <tr class="ingresos_periodo">
                 <td><b>MENSUAL -------------------------------------</b></td>
-                <td class="text-center">$4,200.00</td>
-                <td class="text-center">$2,800.00</td>
+                <td class="text-center">$<?php echo $datos->MONTO_GENERADO?></td>
+                <td class="text-center">$<?php echo $datos->MONTO_CAPITAL?></td>
               </tr>
-
+              <?php
+                foreach($resultado2 as $datos2)
+                ?>
               <tr class="ingresos_periodo">
                 <td><b>ANUAL ----------------------------------------</b></td>
-                <td class="text-center">$50,400,00</td>
-                <td class="text-center">$33,600.00</td>
+                <td class="text-center">$<?php echo $datos2->MONTO_GENERADO?></td>
+                <td class="text-center">$<?php echo $datos2->MONTO_CAPITAL?></td>
               </tr>
             </thead>
           </table>

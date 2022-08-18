@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/mi_css/aAltas.css">
-    <title>Altas Vendedores - Administrador</title>
+    <title>Altas Repartidores - Administrador</title>
 </head>
 <body>
   <div class="row">
@@ -24,19 +24,19 @@
         <!--Botones paginas-->
         <ul class="nav nav-pills row text-center justify-content-center">
           <li class="nav-item">
-            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aInicio.html">Inicio</a>
+            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aInicio.php">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link     items" aria-current="page" href="../../views/views_administrador/aReportesVendedores.html">Reportes</a>
+            <a class="nav-link     items" aria-current="page" href="../../views/views_administrador/aReportesVendedores.php">Reportes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active bg-danger   items" href="../../views/views_administrador/aAltasProductos.html">Altas</a>
+            <a class="nav-link active bg-danger   items" href="../../views/views_administrador/aAltasProductos.php">Altas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/aInventario.html">Inventarios</a>
+            <a class="nav-link    items" href="../../views/views_administrador/aInventario.php">Inventarios</a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/aVentas.html">Ventas</a>
+            <a class="nav-link    items" href="../../views/views_administrador/aVentas.php">Ventas</a>
           </li>
         </ul>
 
@@ -65,22 +65,22 @@
           <ul class="nav nav-pills nav-fill justify-content-center">
             <!--Productos-->
             <li class="nav-item">
-              <a class="nav-link border border-danger text-danger" aria-current="page" href="../../views/views_administrador/aAltasProductos.html">Productos</a>
+              <a class="nav-link border border-danger text-danger" aria-current="page" href="../../views/views_administrador/aAltasProductos.php">Productos</a>
             </li>
 
             <!--Proovedores-->
             <li class="nav-item ms-2 me-1">
-              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aAltasProovedores.html">Proovedores</a>
+              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aAltasProovedores.php">Proovedores</a>
             </li>
 
             <!--Vendedores-->
             <li class="nav-item ms-1 me-2">
-              <a class="nav-link active bg-danger border border-danger" href="../../views/views_administrador/aAltasVendedores.html">Vendedores</a>
+              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aAltasVendedores.php">Vendedores</a>
             </li>
 
             <!--Repartidores-->
             <li class="nav-item">
-              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aAltasRepartidores.html">Repartidores</a>
+              <a class="nav-link active bg-danger border border-danger" href="../../views/views_administrador/aAltasRepartidores.php">Repartidores</a>
             </li>
           </ul>
         </div>
@@ -89,71 +89,74 @@
 
         <!--Formulario-->
         <div>
-          <form action="">
+          <form action="../scripts/guardarRepartidor.php" method="POST">
             <!--Nombre-->
             <div class="secciones_form">
-              <label class="form-label" for="nVendedor"><b>Nombre(s)</b></label>
-              <input class="form-control" type="text" id="nVendedor">
+              <label class="form-label" for="nReparitdor"><b>Nombre(s)</b></label>
+              <input class="form-control" type="text" id="nReparitdor" name="nombre">
             </div>
 
             <!--Apellidos-->
             <div class="row">
                 <!--Apellido Paterno-->
                 <div class="secciones_form col">
-                    <label class="form-label" for="apVendedor"><b>Apellido Paterno</b></label>
-                    <input class="form-control" type="text" id="apVendedor">
+                    <label class="form-label" for="apReparitdor"><b>Apellidos</b></label>
+                    <input class="form-control" type="text" id="apReparitdor" name="apellidos">
                 </div>
-
-                <!--Apellido Materno-->
-                <div class="secciones_form col">
-                    <label class="form-label" for="amVendedor"><b>Apellido Materno</b></label>
-                    <input class="form-control" type="text" id="amVendedor">
-                </div>
-            </div>
-
 
             <!--Fila Info-->
             <div class="row">
                 <!--Foto-->
                 <div class="secciones_form col">
-                    <label class="form-label" for="fVendedor"><b>Foto del Vendedor</b></label>
-                    <input class="form-control" type="file" accept="image/*" id="fVendedor">
+                    <label class="form-label" for="fReparitdor"><b>Foto del Vendedor</b></label>
+                    <input class="form-control" type="file" accept="image/*" id="fReparitdor" name="foto">
                 </div>
 
-                <!--Sexo-->
-                <div class="secciones_form col-3">
-                    <label class="form-label" for="sexVendedor"><b>Sexo</b></label>
-                    <select class="form-select" name="" id="sexVendedor">
-                        <option value="">Masculino</option>
-                        <option value="">Femenino</option>
-                    </select>
-                </div>
             </div>
             
             <!--Telefono-->
             <div class="secciones_form">
-                <label class="form-label" for="telVendedor"><b>Numero de Telefono</b></label>
-                <input class="form-control" type="tel" id="telVendedor">
+                <label class="form-label" for="telReparitdor"><b>Numero de Telefono</b></label>
+                <input class="form-control" type="tel" id="telReparitdor" name="telefono">
               </div>
   
             <!--Email-->
             <div class="secciones_form">
-                <label class="form-label" for="emailVendedor"><b>Correo Electronico</b></label>
-                <input class="form-control" type="email" id="emailVendedor">
+                <label class="form-label" for="emailReparitdor"><b>Correo Electronico</b></label>
+                <input class="form-control" type="email" id="emailReparitdor" name="correo">
             </div>
 
             <!--Contraseña-->
             <div class="row">
                 <!--Contraseña-->
                 <div class="secciones_form col">
-                    <label class="form-label" for="cVendedor"><b>Contraseña</b></label>
-                    <input class="form-control" type="password" id="cVendedor">
+                    <label class="form-label" for="cReparitdor"><b>Contraseña</b></label>
+                    <input class="form-control" type="password" id="cVendedor" name="pass">
                 </div>
 
                 <!--Repetir Contraseña-->
                 <div class="secciones_form col">
-                    <label class="form-label" for="rcVendedor"><b>Repetir Contraseña</b></label>
-                    <input class="form-control" type="password" id="rcVendedor">
+                    <label class="form-label" for="rcReparitdor"><b>Repetir Contraseña</b></label>
+                    <input class="form-control" type="password" id="rcReparitdor" name="pass1">
+                </div>
+            </div>
+
+            <hr>
+
+            <!--Vehiculo-->
+            <div class="row">
+                <h5><b>Informacion del Vehiculo</b></h5>
+
+                <!--Numero de Licencia-->
+                <div class="secciones_form col">
+                    <label class="form-label" for="nlReparitdor"><b>Numero de Licencia</b></label>
+                    <input class="form-control" type="text" id="nlReparitdor" name="licencia">
+                </div>
+
+                <!--Numero de Placas-->
+                <div class="secciones_form col">
+                    <label class="form-label" for="nlVendedor"><b>Numero de Placas</b></label>
+                    <input class="form-control" type="text" id="nlReparitdor" name="placas">
                 </div>
             </div>
 

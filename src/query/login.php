@@ -10,31 +10,40 @@ class Login
 {
     public function verificaLogin($usuario, $password)
     {
+        echo "<div class='alert alert-success'>";
+                echo "<h2 align='center'> usuario o password incorrecto <h2>";
+                echo "</div>";
+        
         try 
         {
             $login = 0;
+<<<<<<< HEAD
             $cc = new Database("save","admin","administrador");
+=======
+            #$cc=new database("SAVE","root","");
+            $cc = new Database("SAVE", "doadmin", "AVNS_0irFMC1NWTaraDt_uR8");
+>>>>>>> main
             $objetoPDO = $cc->getPDO();
-            $query ="SELECT usuarios.KEY as SESION, usuarios.TIPO as TIPO,login.ID_LOGIN, login.correo as correo, login.contraseña as contraseña FROM usuarios join login on usuarios.KEY=login.TIPO_USUARIO where login.correo='$usuario'";
+            $query ="call SAVE.LOGUEAR('$usuario');";
             $consulta = $objetoPDO->query($query);
-
             while($renglon = $consulta->fetch(PDO::FETCH_ASSOC))
+            #foreach($consulta as $renglon)
             {
-                
-                if (password_verify($password,$renglon['contraseña']))
+                print_r($renglon);
+            echo $usuario;
+            echo $password;
+                if (password_verify($password,$renglon['CONTRASEÑA']))
                 {   
-                   $login=1;
                    if ($renglon['SESION'] == 300 )
                    {
                         $login=300;
                         header("Location: ../views/views_administrador/inicio.php");
+                        
                    }
                    else if ($renglon['SESION'] == 301)
                    {
-                        $login=301;
-                        session_start();
-                        $_SESSION['ID'] = $renglon['ID_LOGIN'];    
-                        header("Location: ../scripts/datosvendedor.php");
+                        $login=301;   
+                        header("Location: ../views_vendedor/vAjustes.html");
                    }
                    else if ($renglon['SESION']== 302)
                    {
@@ -44,11 +53,9 @@ class Login
                        header("Location: ../scripts/datosrepartidor.php");
                    }
                    else if ($renglon['SESION']== 303)
-                   {
-                        session_start();         
+                   {       
                         $login=303;
-                        $_SESSION['ID'] = $renglon['ID_LOGIN'];
-                        header("Location: ../scripts/datoscliente.php");
+                        header("Location: ../../index.php");
                    }
                 
                 }
@@ -58,6 +65,7 @@ class Login
                 session_start();
                 $_SESSION["usuario"] = $usuario;
                 $_SESSION["SESION"]=$login;
+                $_SESSION['ID']=$renglon['ID_LOGIN'];
         
             }
             else 
@@ -65,7 +73,7 @@ class Login
                 echo "<div class='alert alert-success'>";
                 echo "<h2 align='center'> usuario o password incorrecto <h2>";
                 echo "</div>";
-                header ("refresh:3; ../../index.php");
+     
             }
         }
         }

@@ -25,19 +25,19 @@
         <!--Botones paginas-->
         <ul class="nav nav-pills row text-center justify-content-center">
           <li class="nav-item">
-            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aInicio.html">Inicio</a>
+            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aInicio.php">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aReportesVendedores.html">Reportes</a>
+            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aReportesVendedores.php">Reportes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/aAltasProductos.html">Altas</a>
+            <a class="nav-link    items" href="../../views/views_administrador/aAltasProductos.php">Altas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/aInventario.html">Inventarios</a>
+            <a class="nav-link    items" href="../../views/views_administrador/aInventario.php">Inventarios</a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/aVentas.html">Ventas</a>
+            <a class="nav-link    items" href="../../views/views_administrador/aVentas.php">Ventas</a>
           </li>
         </ul>
 

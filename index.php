@@ -32,7 +32,7 @@ if(isset($_SESSION['usuario']))
             header("Location: views/views_vendedor/vInicio.php");
             break;
         case 302:
-            header("Location: views/views_repartidor/rInicio.php");
+                header("Location: views/views_repartidor/rInicio.php");
             break;
     }
 }
@@ -343,8 +343,7 @@ if(isset($_SESSION['usuario']))
         </div>
     </div>
 
-    <!--Servicios-->
-    <div class="border-bottom border-secondary   servicios fondo_servicios">
+    <!--<div class="border-bottom border-secondary   servicios fondo_servicios">
         <div class="text-center     texto_servicios">
             <p>Servicios</p>
         </div>
@@ -379,7 +378,8 @@ if(isset($_SESSION['usuario']))
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
+    
 
     <!--Mapa-->
     <div class="border-bottom border-secondary   div_mapa">

@@ -15,20 +15,20 @@ if(isset($_SESSION['usuario']))
     switch ($_SESSION['SESION']) 
     {
         case 300:
-            header("Location: ../views_administrador/inicio.php");
-            break;   
+           header("Location: ../views_administrador/inicio.php");
+           break;   
         case 303: 
-            header("Location: ../../");
+            header("Location: ../../index.php");
             break;
         case 301:
                 header("Location: ../views_vendedor/vVentas.php");
             break;
     }
 }
-else
-{
-    header("Location: ../../index.php");
-}?>
+#else
+#{
+#    header("Location: ../../index.php");
+#}?>
   <?php
   use MyApp\query\select;
   require_once("../../vendor/autoload.php");

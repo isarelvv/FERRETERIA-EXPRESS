@@ -16,6 +16,10 @@
 
         $query=new Select();
         $cadena="SELECT login.ID_LOGIN as Login , login.CORREO as CORREO,repartidores.NOMBRE AS NOMBRE,repartidores.APELLIDOS AS APELLIDOS, repartidores.TELEFONO as TELEFONO, repartidores.NUM_LICENCIA, LICENCIA,repartidores.  FROM login JOIN repartidores ON login.ID_LOGIN=repartidores.LOGIN";
+
+        $cadena="SELECT login.ID_LOGIN as LOGIN , repartidores.ID_REPARTIDOR as REPARTIDOR ,login.CORREO as CORREO,repartidores.NOMBRE AS NOMBRE,repartidores.APELLIDOS AS APELLIDOS, repartidores.TELEFONO as TELEFONO, repartidores.NUM_LICENCIA as LICENCIA,repartidores.PLACAS 
+        FROM login JOIN repartidores ON login.ID_LOGIN=repartidores.LOGIN;";
+
         $tabla =$query ->seleccionar($cadena);
 
         echo "<table class='table table-hover'>
@@ -36,8 +40,8 @@
             echo "<td> $registro->CORREO </td>";
             echo "<td> $registro->TELEFONO </td>";
             echo "<td> $registro->PLACAS </td>";
-            echo "<td> $registro->NUM_LICENCIA </td>";
-            echo "<td><a href='ActualizarRepartidores.php?id=$registro->ID_REPARTIDOR'>EDITAR</a></td>";
+            echo "<td> $registro->LICENCIA </td>";
+            echo "<td><a href='ActualizarRepartidores.php?id=$registro->LOGIN'>EDITAR</a></td>";
             echo "</tr>";
         }
 

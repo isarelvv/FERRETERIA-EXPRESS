@@ -23,7 +23,7 @@
     $contraseñahash = password_hash($pass, PASSWORD_DEFAULT);
     $cadena2 = "INSERT INTO login (correo,contraseña,tipo_usuario) VALUES ('$correo','$contraseñahash',303)";
     $insert2->ejecutar($cadena2);
-    $llave="SELECT ID_LOGIN FROM LOGIN WHERE correo = '$correo'";
+    $llave="CALL SAVE.GUARDAR_REPARTIDOR('$correo')";
     $result = $searchlogin->seleccionar($llave);
     foreach ($result as $key)
     {
@@ -36,6 +36,7 @@
     header("refresh:2; ../../index.php");
     
      }
+  
     else
     {
       echo "<div class='alert alert-danger'>Las contraseñas no coinciden</div>";

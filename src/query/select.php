@@ -11,7 +11,12 @@ class select
     {
         try
         {
+<<<<<<< HEAD
             $cc=new Database("save","admin","administrador");
+=======
+            #$cc=new database("SAVE","root","");
+            $cc = new Database("SAVE", "doadmin", "AVNS_0irFMC1NWTaraDt_uR8");
+>>>>>>> main
             $objetoPDO=$cc ->getPDO();
             $resultado = $objetoPDO->query($qry);
             $fila = $resultado->fetchAll(PDO::FETCH_OBJ);

@@ -6,13 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/mi_css/aReportesV_R.css">
-<<<<<<< Updated upstream
-    <title>Lista de Repartidores - Administrador</title>
-=======
-    <title>Reportes Repartidores - Administrador</title>
->>>>>>> Stashed changes
+
+    <title>Lista de Vendedores - Administrador</title>
+
+    <title>Reportes Vendedores - Administrador</title>
+
 </head>
 <body>
+<?php
+        use MyApp\query\select;
+        require_once("../../vendor/autoload.php");
+
+        $query=new Select();
+        $cadena="SELECT login.ID_LOGIN as LOGIN,login.CORREO as CORREO,vendedores.NOMBRE AS NOMBRE,vendedores.APELLIDOS AS APELLIDOS, vendedores.TELEFONO AS TELEFONO, vendedores.SEXO AS SEXO FROM login JOIN vendedores ON login.ID_LOGIN=vendedores.LOGIN;";
+
+        $tabla =$query ->seleccionar($cadena);
+        ?>
   <div class="row">
     <!--Barra-->
     <nav class="col-2   barra_navegacion">
@@ -28,27 +37,21 @@
         <!--Botones paginas-->
         <ul class="nav nav-pills row text-center justify-content-center">
           <li class="nav-item">
-            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aInicio.html">Inicio</a>
+            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aInicio.php">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active bg-danger    items" aria-current="page" href="../../views/views_administrador/aReportesVendedores.html">Reportes</a>
+            <a class="nav-link active bg-danger    items" aria-current="page" href="../../views/views_administrador/aReportesVendedores.php">Reportes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/aAltasProductos.html">Altas</a>
+            <a class="nav-link    items" href="../../views/views_administrador/aAltasProductos.php">Altas</a>
           </li>
           <li class="nav-item">
-<<<<<<< Updated upstream
-            <a class="nav-link    items" href="../../views/views_administrador/aInventario.html">Inventarios</a>
+
+            <a class="nav-link    items" href="../../views/views_administrador/aInventario.php">Inventarios</a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/aVentas.html">Ventas</a>
-=======
-            <a class="nav-link    items" href="../../views/views_administrador/inentario.php">Inventarios</a>
+            <a class="nav-link    items" href="../../views/views_administrador/aVentas.php">Ventas</a>
           </li> 
-          <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/ventas">Ventas</a>
->>>>>>> Stashed changes
-          </li>
         </ul>
 
         <hr class="text-white">
@@ -59,13 +62,13 @@
             <a class="nav-item dropdown-toggle link_drop" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configuracion</a>
           
             <ul class="dropdown-menu dropdown-menu-dark">
-<<<<<<< Updated upstream
+
               <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
-=======
+
               <li style="margin-bottom: 10px;"><a class="dropdown-item" href="configuracion.php">Ajustes</a></li>
               <li><hr class="sep_hr"></li>
               <li style="margin-top: 10px;"><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
->>>>>>> Stashed changes
+
             </ul>
           </div>
         </div>
@@ -80,59 +83,55 @@
           <ul class="nav nav-pills nav-fill justify-content-center">
             <!--Vendedores-->
             <li class="nav-item">
-              <a class="nav-link border border-danger text-danger" aria-current="page" href="../../views/views_administrador/aReportesVendedores.html">Lista de Vendedores</a>
+              <a class="nav-link active bg-danger border border-danger" aria-current="page" href="../../views/views_administrador/aReportesVendedores.php">Lista de Vendedores</a>
             </li>
 
             <!--Repartidores-->
             <li class="nav-item ms-3 me-3">
-              <a class="nav-link active bg-danger border border-danger" href="../../views/views_administrador/aReportesRepartidores.html">Lista de Repartidores</a>
+              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aReportesRepartidores.php">Lista de Repartidores</a>
             </li>
 
             <!--Productos-->
             <li class="nav-item">
-<<<<<<< Updated upstream
-              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aReportesPedidos.html">Lista de Pedidos</a>
-=======
-              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aReportesPedidos.html">Reportes de Pedidos</a>
->>>>>>> Stashed changes
+              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aReportesPedidos.php">Lista de Pedidos</a>
+
             </li>
           </ul>
         </div>
 
         <hr>
-
         <div>
           <table class="table">
             <thead>
               <tr class="text-center">
-                <th scope="col" colspan="4" class="informacion">Informacion Personal</th>
+                <th scope="col" colspan="3" class="informacion">Informacion Personal</th>
                 <th scope="col" colspan="2" class="informacion">Informacion de Contacto</th>
-                <th scope="col" colspan="2" class="informacion">Informacion del Vehiculo</th>
+
               </tr>
               <tr class="bg-dark text-white">
                 <th scope="col">Nombre</th>
-                <th scope="col">Apellido Paterno</th>
-                <th scope="col">Apellido Materno</th>
+                <th scope="col">Apellidos</th>
                 <th class="border-end" scope="col">Sexo</th>
                 <th scope="col">Correo Electronico</th>
-                <th class="border-end" scope="col">Telefono</th>
-                <th scope="col">N° Licencia</th>
-                <th scope="col">N° Placas</th>
+                <th scope="col">Telefono</th>
               </tr>
             </thead>
-
             <tbody>
+                          <?php
+        foreach($tabla as $registro)
+        {
+          ?>
               <tr>
-                <td>#Edeh Gerardo</td>
-                <td>#Meza</td>
-                <td>#Reyes</td>
-                <td class="border-end">#M</td>
-                <td>#tilinlover17@gmail.com</td>
-                <td class="border-end">#8717321111</td>
-                <td>#Ejemplo</td>
-                <td>#Ejemplo</td>
+                <td><?php echo $registro->NOMBRE?></td>
+                <td><?php echo $registro->APELLIDOS?></td>
+                <td class="border-end"><?php echo $registro->SEXO?></td>
+                <td><?php echo $registro->CORREO?></td>
+                <td><?php echo $registro->TELEFONO?></td>
               </tr>
             </tbody>
+            <?php
+        }
+        ?>
           </table>
         </div>
       </div>

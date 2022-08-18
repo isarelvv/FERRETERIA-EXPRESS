@@ -10,26 +10,10 @@
 </head>
 <body>
 <?php
-if(isset($_SESSION['usuario']))
-{
-    switch ($_SESSION['SESION']) 
-    {
-        case 300:
-            header("Location: ../views_administrador/inicio.php");
-            break;   
-        case 303: 
-            header("Location: ../../");
-            break;
-        case 301:
-                header("Location: ../views_vendedor/vVentas.php");
-            break;
-    }
-}
-?>
-<?php
     use MyApp\query\select;
     require_once ("../../vendor/autoload.php");
-    session_start();
+    $fecha=date("Y-m-d");
+    $fecha2=date("Y-m-d");
     ?>
     <div class="row">
         <!--Barra-->
@@ -72,10 +56,22 @@ if(isset($_SESSION['usuario']))
                 </div>
             </div>
         </nav>
-
+    
         <!--Info Pedidos-->
         <main class="col-10 border">
+
             <div class="container">
+            <form action="" method="POST">
+                <input type="date" value="<?php echo $fecha ?>" name="fecha">
+                entre
+                <input type="date" value="<?php echo $fecha2 ?>" name="fecha2">
+
+                    <div class="text-center">
+                        <button class="btn  agregar_carrito" type="submit" name="filtrar">
+                            <b>Filtrar Resultados</b>
+                        </button>
+                    </div>
+                </form>
                 <!--Mensaje-->
                 <div class="row text-center     mensaje">
                     <div class="col   barras_mensaje"><hr></div>
@@ -83,50 +79,54 @@ if(isset($_SESSION['usuario']))
                     <div class="col-3   mensaje_arriba">
                         <p><b>Pedidos de Hoy</b></p>
                     </div>
+                    
 
                     <div class="col   barras_mensaje"><hr></div>
                 </div>
                 <div class="cuadros">
                     <!--Pedidos-hoy-->
                     <div class="row justify-content-evenly     cuadros_pedidos">
-                        <?php
-                        $repartidor=$_SESSION['ID'];
-                        $consulta = new select ();
-                        $fecha_de_hoy= date("y-m-d");
-                        $qry="call save.PEDIDOS_REPARTIDOR_PERIODO(601, 'Pendiente', '2022-08-01', '2022-08-20');";
-                       #consulta para que aparezca los pedidos de la fecha de hoy
-                        # $qry="call save.PEDIDOS_REPARTIDOR_PERIODO(602, 'Pendiente', '$fecha_de_hoy', '$fecha_de_hoy');";
-                        $datos=$consulta->seleccionar($qry);
-                        foreach ($datos as $tabla) 
-                        {
-                            $nombre_cliente=$tabla->NOMBRE;
-                            $dire=$tabla->DIRECCION;
-                            $total=$tabla->TOTAL;
-                            $tel=$tabla->TELEFONO;
-                            $mail=$tabla->CORREO;
-                            $no_venta=$tabla->VENTA;
-                      
-                                                             
-                        ?>
+                    <?php
+                    $consulta1= new select();
+                    if(isset($_POST))
+                    {
+                    extract($_POST);
+                    $cadena1="CALL VENTAS_ADMIN_FECHA ('$fecha', '$fecha2')";
+                    $datos1=$consulta1->seleccionar($cadena1);
+                
+                    foreach ($datos1 as $venta)
+                    {
+                        $folio=$venta->FOLIO;
+                        $cliente=$venta->CLIENTE;
+                        $fecha=$venta->FECHA;
+                    ?>
+                        
+
+
                         <!--Pedidos-->
                         <div class="col-6 border border-secondary rounded-2 text-center  info_pedidos" style="max-width: 360px;">
-                            <div class="num_pedido"><b>Pedido N.° #<?php echo $no_venta ?></b></div>
-                            <div class="persona_pedido"><p><?php echo $nombre_cliente ?></p></div>
-                            <div class=""><b> Pedido Para Hoy</b></div>
+                            <div class="num_pedido"><b>Pedido N.° #<?php echo $folio ?></b></div>
+                            <div class="persona_pedido"><p><?php echo $cliente ?></p></div>
+                            <div class=""><b> Pedido Para <?php echo $fecha ?></b></div>
                             <hr>
                             <div class="row contenedor_boton">
-                                <button class="btn boton-informacion" type="button" data-bs-toggle="modal" data-bs-target="#pedidos_hoy_info<?php echo $no_venta ?>">
+                                <button class="btn boton-informacion" type="button" data-bs-toggle="modal" data-bs-target="#pedidos_hoy_info<?php echo $folio ?>">
                                     <b>Mas Informacion </b>
                                 </button>
 
-                                <!--Modal Info Pedido-->
-                                <div class="modal modal-lg fade" id="pedidos_hoy_info<?php echo $no_venta ?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                        <?php
+                        
+                        ?>
+                         
+                <!--Modal Info Pedido-->
+                                <div class="modal modal-lg fade" id="pedidos_hoy_info<?php echo $folio ?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
                                         <!--Header-->
                                         <div class="modal-header header_modal">
-                                        <h5 class="modal-title" id="exampleModalLabel">Pedido N.° #<?php echo $no_venta ?></h5>
-                                        <button type="buttonEclass="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <h5 class="modal-title" id="exampleModalLabel">Pedido N.° #<?php echo $folio ?></h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
 
                                         <!--Cuerpo-->
@@ -134,15 +134,16 @@ if(isset($_SESSION['usuario']))
 
                                             <!--Info Cliente-->
                                             <div class="text-start info_cliente_modal">
-                                                <div class="info_cliente_modal_lab"><b>Cliente: </b> <?php echo $nombre_cliente ?></div>
-                                                <div class="info_cliente_modal_lab"><b>Direccion: </b> <?php echo $dire ?></div>
-                                                <div class="info_cliente_modal_lab"><b>Telefono: </b> <?php echo $tel ?></div>
+                                                <div class="info_cliente_modal_lab"><b>Cliente: </b> <?php echo $nombre ?></div>
+                                                <div class="info_cliente_modal_lab"><b>Direccion: </b> <?php echo $direccion ?></div>
+                                                <div class="info_cliente_modal_lab"><b>Telefono: </b> <?php echo $telefono ?></div>
                                                 <div class="info_cliente_modal_lab"><b>Correo Electronico: </b><?php echo $mail ?></div>
                                             </div>
 
+
                                             <?php
                                                         $consulta = new select();
-                                                        $qry="call DETALLE_PEDIDOS(601,".$no_venta.");";
+                                                        $qry="call MOSTRAR_DETALLE_VENTAS('$folio');";
                                                         $datos=$consulta->seleccionar($qry);
                                                         
                                                         
@@ -150,9 +151,8 @@ if(isset($_SESSION['usuario']))
                                                         {
                                                             $producto=$tabla->PRODUCTO;
                                                             $pic=$tabla->FOTO;
-                                                            $medida=$tabla->MEDIDA;
+                                                            $precio=$tabla->PRECIO;
                                                             $cantidad=$tabla->CANTIDAD;
-                                                            $precio=$tabla->PRECIO_VENTA;
                                                             $subtotal=$tabla->TOTAL;
                                                             
                                                 ?>
@@ -175,7 +175,7 @@ if(isset($_SESSION['usuario']))
                                                             <div class="input-group">
                                                                 <span class="input-group-text   barra_cantidad">Cantidad</span>
                                                                 <input type="number" class="form-control    barra_cantidad" disabled="disabled" aria-label="Username" value="<?php echo $cantidad ?>">
-                                                                <span class="input-group-text   barra_cantidad"><?php echo $medida ?></span>
+                                                                <span class="input-group-text   barra_cantidad"><?php echo $precio ?></span>
                                                             </div>
                                                         </div>
 
@@ -189,15 +189,11 @@ if(isset($_SESSION['usuario']))
                                             <?php
                                                         } 
                                             ?> 
+                                            
 
                                         <!--Footer-->
-                                        <form action="..\scripts\ActualizarPedidoAcitov.php" method="POST">
                                         <div class="modal-footer">
-                                            <a href="..\scripts\ActualizarPedidoAcitov.php">
-                                        <button type="submit" class="btn boton_activar" name="id_vent" value="<?php echo $no_venta  ?>" >Activar Pedido <?php echo $no_venta ?></button> <!-- SE VA A CONFIGURAR-->
-                                        </form>
-                                       
-                                        </a>
+                                        <button type="button" class="btn boton_activar">Activar Pedido</button> <!-- SE VA A CONFIGURAR-->
                                         </div>
                                     </div>
                                     </div>
@@ -206,10 +202,13 @@ if(isset($_SESSION['usuario']))
                         </div>
                 </div>
                 <?php
-               
+
+                    }
+                }
+                ?>           
+                <?php
+                        
                     
-                
-                        }
                 ?>
                 </div>
 
@@ -228,9 +227,8 @@ if(isset($_SESSION['usuario']))
                     <!--Pedidos-Proximos-->
                     <div class="row justify-content-evenly     cuadros_pedidos">
                         <?php
-                        $repartidor=$_SESSION['ID'];
                         $consulta = new select ();
-                        $qry="call save.PEDIDOS_REPARTIDOR_PERIODO(601, 'Pendiente', '2022-08-01e', '2022-08-20');";
+                        $qry="call save.PEDIDOS_REPARTIDOR_PERIODO(602, 'Pendiente', '2022-08-20', '2022-08-20');";
                         $datos=$consulta->seleccionar($qry);
                         foreach ($datos as $tabla) 
                         {
@@ -276,7 +274,7 @@ if(isset($_SESSION['usuario']))
 
                                             <?php
                                                         $consulta = new select();
-                                                        $qry="call DETALLE_PEDIDOS(601,".$no_venta.");";
+                                                        $qry="call DETALLE_PEDIDOS(602,".$no_venta.");";
                                                         $datos=$consulta->seleccionar($qry);
                                                         
                                                         

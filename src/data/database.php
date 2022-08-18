@@ -22,8 +22,14 @@ class Database
     public function getPDO()
     {
         try
+<<<<<<< HEAD
         {
             $host="mysql:host=bdsave.ccganlooa8o7.us-west-1.rds.amazonaws.com; dbname=$this->dbname";
+=======
+        {   
+            #$host="mysql:host=localhost; dbname=$this->dbname";
+            $host="mysql:host=save-do-user-12256132-0.b.db.ondigitalocean.com;port=25060 dbname='SAVE'";
+>>>>>>> main
             $objetoPDO=new PDO($host,$this->user,$this->password);
             return $objetoPDO;
         }

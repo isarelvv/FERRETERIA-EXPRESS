@@ -354,7 +354,7 @@ session_start();
                 if(isset($_POST['buscar']))
                 {
                     foreach($resultado as $datos)
-                {
+                 {
                   
                     ?>
                     <div class="col  " style="max-width: 250px; height:475px ">

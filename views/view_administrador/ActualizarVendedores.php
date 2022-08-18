@@ -16,7 +16,7 @@
 
         $query=new Select();
         $id=$_GET["id"];
-        $cadena="SELECT * from vendedores where ID_VENDEDOR='$id'";
+        $cadena="SELECT login.ID_LOGIN as LOGIN, vendedores.ID_VENDEDOR AS VENDEDOR, login.CORREO AS CORREO,vendedores.NOMBRE AS NOMBRE,vendedores.APELLIDOS AS APELLIDOS, vendedores.TELEFONO AS TELEFONO, vendedores.SEXO AS SEXO FROM login JOIN vendedores ON login.ID_LOGIN=vendedores.LOGIN where ID_LOGIN='$id';";
         $tabla =$query ->seleccionar($cadena);
 
         echo "
@@ -24,7 +24,7 @@
         <table class='table table-hover'>
         <thead class='table-dark'>
         <tr>
-        <th></th>
+        <th></th><th></th>
         <th>Nombre</th><th>Apellidos</th>
         <th>Correo</th><th>Telefono</th><th>Sexo</th>
         </tr>
@@ -34,13 +34,13 @@
         foreach($tabla as $registro)
         {
             echo "<tr>";
-            echo "<td> <input type='hidden' value='$registro->ID_VENDEDOR' name='id'></td>";
+            echo "<td> <input type='hidden' value='$registro->LOGIN' name='id_login'></td>";
+            echo "<td> <input type='hidden' value='$registro->VENDEDOR' name='id_vendedor'></td>";
             echo "<td> <input type='text' value='$registro->NOMBRE' name='nombre'></td>";
             echo "<td> <input type='text' value='$registro->APELLIDOS' name='apellidos'> </td>";
             echo "<td> <input type='text' value='$registro->CORREO' name='correo'> </td>";
             echo "<td> <input type='text' value='$registro->TELEFONO' name='telefono'> </td>";
             echo "<td> <input type='text' value='$registro->SEXO' name='sexo'></td>";
-             
             echo "</tr>";
         }
 
