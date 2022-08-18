@@ -23,6 +23,8 @@ class Login
             $consulta = $objetoPDO->query($query);
             while($renglon = $consulta->fetch(PDO::FETCH_ASSOC))
             print_r($renglon);
+            echo $usuario;
+            echo $password;
             {
                 if (password_verify($password,$renglon['CONTRASEÑA']))
                 {   
