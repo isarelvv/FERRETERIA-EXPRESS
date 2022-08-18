@@ -15,6 +15,17 @@
 
 </head>
 <body>
+  <?php
+  use MyApp\query\select;
+  require_once("../../vendor/autoload.php");
+  $seleccionar = new select();
+$fechahoy = date('Y-m-d');
+
+$cadena=" select ID_REPARTIDOR, NOMBRE from repartidores";
+$resultado=$seleccionar->seleccionar($cadena);
+  ?>
+  
+  
   <div class="row">
     <!--Barra-->
     <nav class="col-2   barra_navegacion">
@@ -95,25 +106,22 @@
         <hr class="mb-2">
 
         <div>
-          <form action="">
+          <form action="" method="post">
             <div class="row mb-4">
               <h5><b>Filtros de Busqueda</b></h5>
-
-              <!--Vendedor-->
-              <div class="col-6 mb-2">
-                <label class="form-label" for="ven"><b>Vendedor</b></label>
-                <select class="form-select form-select-sm" name="" id="ven">
-                  <option value="">Todos los Vendedores</option>
-                  <option value="">#Ejemplo</option>
-                </select>
-              </div>
 
               <!--Repartidor-->
               <div class="col-6 mb-2">
                 <label class="form-label" for="rep"><b>Repartidor</b></label>
-                <select class="form-select form-select-sm" name="" id="rep">
-                  <option value="">Todos los Repartidores</option>
-                  <option value="">#Ejemplo</option>
+                <select class="form-select form-select-sm" name="repartidor" id="rep">
+                  <?php
+                  foreach($resultado as $datos)
+                  {
+                    ?>
+                <option value="<?php $datos->ID  ?>"> <?php echo $datos->NOMBRE ?></option>
+                  <?php
+                  }
+                  ?>
                 </select>
               </div>
 
@@ -121,36 +129,44 @@
               <div class="col-9 row mb-2">
                 <div class="col">
                   <label class="form-label" for="desde"><b>Desde</b></label>
-                  <input class="form-control form-control-sm" type="date" name="" id="desde">
+                  <input class="form-control form-control-sm" type="date" name="fecha1" id="desde" value="<?php echo $fechahoy?>">
                 </div>
 
                 <div class="col">
                   <label class="form-label" for="hasta"><b>Hasta</b></label>
-                  <input class="form-control form-control-sm" type="date" name="" id="hasta">
+                  <input class="form-control form-control-sm" type="date" name="fecha2" id="hasta" value="<?php echo $fechahoy?>">
                 </div>
               </div>
 
               <!--Status-->
               <div class="col mb-2">
                 <label class="form-label" for="rep"><b>Status</b></label>
-                <select class="form-select form-select-sm" name="" id="rep">
-                  <option value="">Todos los Status</option>
-                  <option value="">Entregado</option>
-                  <option value="">Pendiente</option>
-                  <option value="">En Camino</option>
+                <select class="form-select form-select-sm" name="estatus" id="rep">
+                  <option value="Entregado">Entregado</option>
+                  <option value="Pendiente">Pendiente</option>
+                  <option value="En camino">En Camino</option>
                 </select>
               </div>
 
               <!--Boton-->
               <div class="text-end pt-2">
-                <button class="btn btn-sm btn-primary col-2">Filtrar</button>
+                <button class="btn btn-sm btn-primary col-2" type="submit" name="filtrar">Filtrar</button>
               </div>
             </div>
           </form>
 
           <hr class="mb-3">
 
-          
+          <?php
+
+          if(isset($_POST['repartidor']['estatus']['fecha1']['fecha2']))
+          {
+                extract($_POST);
+                $barra= new select();
+                $consulta="PEDIDOS_REPARTIDOR_PERIODO('$repartidor','$estatus','$fecha1','$fecha2')";
+                $tabla=$barra->seleccionar($consulta);
+                ?>
+
 
         <hr>
 
@@ -171,77 +187,27 @@
             </thead>
 
             <tbody>
-              <tr>
+              <tr>  
+                <?php
+                foreach($tabla as $tabla1)
+                {
+                  ?>
+                }
 
-                <td>#123-456</td>
-                <td>#Edeh Gerardo Meza Reyes</td>
-                <td>#Luis Angel Zapata Zuñiga</td>
+                <td>#123-456ec</td>
+                <td><?php echo $tabla1->NOMBRE ?> </td>
+                <td><?php echo $tabla1->VENDEDOR?></td>
                 <td>#Javier Resendiz Carpio</td>
                 <td>#12/08/2022</td>
                 <td>#15/08/2022</td>
                 <td>#Pendiente</td>
                 <td>#$1000.00</td>
-                <td>
-                  <a href="" role="button" data-bs-toggle="modal" data-bs-target="#pedidos_proximos_info">
-                    Mas Detalles
-                  </a>
-                </td>
+                  <?php
+                  }
+                
+              }
+          ?>
 
-                <!--Modal Info Venta-->
-                <div class="modal modal-lg" id="pedidos_proximos_info" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <!--Header-->
-                        <div class="modal-header header_modal">
-                        <h5 class="modal-title" id="exampleModalLabel">Venta N.° #123-456</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-
-                        <!--Cuerpo-->
-                        <div class="modal-body">
-                            <!--Productos-->
-                            <!--Cuadros Info Productos-->
-                            <div class="row border border-secondary     productos">
-                                <!--Imagen-->
-                                <div class="col-1">
-                                    <img src="../../svg/facebook.svg" alt="" class="imagen_productos">
-                                </div>
-        
-                                <!--Info Producto Carrito-->
-                                <div class="col text-start  info_producto_carrito">
-                                    <div class="row justify-content-between">
-                                        <div class="col-12   nombre_producto">
-                                            <b>Producto</b>
-                                        </div>
-                                    </div>
-        
-                                    <div class="row justify-content-between     barra_baja">
-                                        <div class="col-4">
-                                            <div class="input-group">
-                                                <span class="input-group-text   barra_cantidad">Cantidad</span>
-                                                <input type="number" class="form-control    barra_cantidad" disabled="disabled" aria-label="Username">
-                                                <span class="input-group-text   barra_cantidad">kg</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-3 text-end  precio_total">
-                                            <b>Precio: $150.00</b>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--Footer-->
-                        <div class="modal-footer">
-                          <button type="button" class="btn boton_cancelar" data-bs-dismiss="modal">Cerrar</button>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </main>

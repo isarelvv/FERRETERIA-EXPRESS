@@ -13,7 +13,7 @@
             
             use MyApp\query\select;
             require_once("../../vendor/autoload.php");
-            $seleccionar = new select();
+           
 
     ?>
   <div class="row">
@@ -195,9 +195,8 @@
                     <th scope="col">Nombre del Producto</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Cantidad</th>
-                    <th scope="col">Faltantes</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Modificar</th>
+                    <th scope="col">Precio venta</th>
+                    <th scope="col">Precio compra</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -209,192 +208,26 @@
                         <td class="text-center" style="padding: 0%;">
                           <img src='<?php echo $registro->FOTO?>'  style="max-width: 60px;">
                         </td>
-                        <td><?php echo $registro->CODIGO?></td>
                         <td><?php echo $registro->NOMBRE?></td>
                         <td><?php echo $registro->CATEGORIA?></td>
                         <td class="text-center"><?php echo $registro->CANTIDAD_REAL?></td>
-                        <td class="text-center">#20</td>
-                        <td class="text-center">#$49</td>
-                        <td><a href="" data-bs-toggle="modal" data-bs-target="<?php echo '#HOLA' .$registro->CODIGO?>">Editar Producto</a></td>
+                        <td class="text-center"><?php echo $registro->PRECIO_VENTA?></td>
+                        <td class="text-center"><?php echo $registro->PRECIO_COMPRA?></td>
                 </tbody>
                 <?php 
                   }
-                  
-                  $query1=new Select();
-<<<<<<< HEAD
-=======
-                  $cadena1="SELECT CODIGO,NOMBRE, DESCRIPCION, CANTIDAD_REAL, CANTIDAD_IDEAL, PRECIO_VENTA, PRECIO_COMPRA,
-                  MEDIDA,PROVEEDOR, CATEGORIA,ENTREGA_DOMICILIO FROM productos WHERE CODIGO='$id'";
-                  $tabla1 =$query1 ->seleccionar($cadena1);
->>>>>>> main
-
-                  $cadena2="SELECT ID_PROVEEDOR, COMPAÑIA FROM PROVEEDORES";
-                  $reg1 = $query1->seleccionar($cadena2);
-        
-                  $cadena3="SELECT ID_CATEGORIA, NOMBRE FROM CATEGORIAS";
-                  $reg2 = $query1->seleccionar($cadena3);
-                  
-                ?>
-                </table> 
-                  <?php
-                      foreach($resultado as $registro)
-                      {
-                                 ?>
-                        <!--Modal Editar Producto-->
-                        <div class="modal modal-lg fade" id="<?php echo '#HOLA' .$registro->CODIGO?>" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <?php
                   ?>
-                          <div class="modal-dialog">
-                            <div class="modal-content">
 
-                              <!--Header-->
-                              <div class="modal-header bg-dark text-white">
-                                <h5 class="modal-title" id="exampleModalLabel">Editar Informacion del Producto</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                            
-                              <!--Cuerpo-->
-                              <div class="modal-body">
-                                <div>
-                                  <form action="">
-
-                                    <!--Nombre-->
-                                    <div class="secciones_form">
-                                      <label class="form-label" for="nProduto"><b>Nombre del Producto</b></label>
-                                      <input class="form-control" type="text" id="nProduto" value='<?php echo $datos->NOMBRE ?>'>
-                                    </div>
-                        
-                                    <!--Foto-->
-                                    <div class="secciones_form">
-                                      <label class="form-label" for="fProducto"><b>Foto del Producto</b></label>
-                                      <input class="form-control" type="file" accept="image/*" id="fProducto">
-                                    </div>
-                        
-                                    <!--Descripcion-->
-                                    <div class="secciones_form">
-                                      <label class="form-label" for="dProducto"><b>Descripcion</b></label>
-                                      <textarea><p value='<?php echo $datos->DESCRIPCION
-                                      ?>'>
-                                      </p>
-                                    </textarea>
-                                    </div>
-                        
-                                    <!--Linea 2-->
-                                    <div class="row">
-                                      <!--Cantidad Real-->
-                                      <div class="col secciones_form">
-                                        <label class="form-label" for="crProducto"><b>Cantidad Real</b></label>
-                                        <input class="form-control" type="number" value="<?php echo $datos->CANTIDAD_REAL
-                                      ?>" min="" max="#10" id="crProducto">
-                                      </div>
-                          
-                                      <!--Cantidad Ideal-->
-                                      <div class="col secciones_form">
-                                        <label class="form-label" for="ciProducto"><b>Cantidad Ideal</b></label>
-                                        <input class="form-control" type="number" value="<?php echo $datos->CANTIDAD_IDEAL
-                                      ?>" min="" max="#10" id="ciProducto">
-                                      </div>
-                          
-                                      <!--Precio Venta-->
-                                      <div class="col secciones_form">
-                                        <label class="form-label" for="pvProducto"><b>Precio Venta</b></label>
-                                        <div class="input-group">
-                                          <span class="input-group-text">$</span>
-                                          <input class="form-control" type="text" id="pvProducto" value="<?php echo $datos->PRECIO_VENTA
-                                      ?>">
-                                        </div>
-                                      </div>
-                          
-                                      <!--Precio Compra-->
-                                      <div class="col secciones_form">
-                                        <label class="form-label" for="pcProducto"><b>Precio Compra</b></label>
-                                        <div class="input-group">
-                                          <span class="input-group-text">$</span>
-                                          <input class="form-control" type="text" id="pcProducto" value="<?php echo $datos->PRECIO_COMPRA
-                                      ?>">
-                                        </div>
-                                      </div>
-                                    </div>
-                        
-                        
-                                    <!--Linea 3-->
-                                    <div class="row">
-                                      <!--Medida-->
-                                      <div class="col secciones_form">
-                                        <label class="form-label" for="mProducto"><b>Medida</b></label>
-                                        <select class="form-select" name="medida" id="mProducto">
-                                          <option value="Gramo">Gramos (g)</option>
-                                          <option value="Pieza">Piezas (pz)</option>
-                                          <option value="Metro">Metros (m)</option>
-                                          <option value="M3">Metros Cuadrados (m³)</option>
-                                        </select>
-                                      </div>
-                                      
-                                      <!--Proovedor-->
-                                      <div class="col secciones_form">
-                                        <label class="form-label" for="provProducto"><b>Proovedor</b></label>
-                                        <select class="form-select" name="proveedor" id="provProducto">
-                                        <?php
-                                        foreach ($reg1 as $value1)
-                                          {
-                                          
-                                            echo "<option value='".$value1->ID_PROVEEDOR."'>".$value1->COMPAÑIA."</option>";
-                                          }
-            ?>
-                                        </select>
-                                      </div>
-                          
-                                      <!--Categoria-->
-                                      <div class="col secciones_form">
-                                        <label class="form-label" for="catProducto"><b>Categoria</b></label>
-                                        <select class="form-select" name="" id="catProducto">
-                                        <?php
-                                        foreach ($reg2 as $value2)
-                                          {
-                                            if($registro->CATEGORIA==$value2->NOMBRE)
-                                            {
-                                              echo "<option value='$value2->ID_CATEGORIA' selected >".$value2->NOMBRE."</option>"; 
-                                            } 
-                                          }
-            ?>
-                                        </select>
-                                      </div>
-                          
-                        
-                                      <!--Entrega a Domicilio-->
-                                      <div class="col secciones_form">
-                                        <label class="form-label" for="eadProductos"><b>Entrega a Domicilio</b></label>
-                                        <select class="form-select" name="" id="eadProductos">
-                                          <option value="">Si</option>
-                                          <option value="">No</option>
-                                        </select>
-                                      </div>
-                                    </div>
-                                    <?php
-                                   } 
-                                    ?>
-                                  </form>
-                                </div>
-                              </div>
-                              <div class="modal-footer bg-dark">
-                                <form action="">
-                                  <button type="button" class="btn  boton_cerrar" data-bs-dismiss="modal">Cerrar</button>
-                                  <button type="button" class="btn  crear_cuenta">Guardar Cambios</button>
-                                </form>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </tr>
                               
             <?php
                   
         }
         else
         {
+          $query=new Select();
+          $tabla =$query ->seleccionar($cadena);
        ?>
-         <?php
-        ?>
+       
         <!--Tabla Inventario-->
         <table class="table table-bordered">
           <thead>
@@ -403,9 +236,8 @@
               <th scope="col">Nombre del Producto</th>
               <th scope="col">Categoria</th>
               <th scope="col">Cantidad</th>
-              <th scope="col">Faltantes</th>
-              <th scope="col">Precio</th>
-              <th scope="col">Modificar</th>
+              <th scope="col">Precio venta</th>
+              <th scope="col">Precio compra</th>
             </tr>
           </thead>
         
@@ -422,179 +254,22 @@
                   <td><?php echo $registro->NOMBRE?></td>
                   <td><?php echo $registro->CATEGORIA?></td>
                   <td class="text-center"><?php echo $registro->CANTIDAD_REAL?></td>
-                  <td class="text-center">#20</td>
-                  <td class="text-center">#$49</td>
-                  <td><a href="" data-bs-toggle="modal" data-bs-target="#editarProducto">Editar Producto</a></td>
+                  <td class="text-center"><?php echo $registro->PRECIO_VENTA?></td>
+                  <td class="text-center"><?php echo $registro->PRECIO_COMPRA?></td>
                   <?php
     }
     ?>
             </tbody>
           
                   <?php
-
-  $query1=new Select();
-  $id=$registro->CODIGO;
-  $cadena1="SELECT CODIGO,NOMBRE, DESCRIPCION, CANTIDAD_REAL, CANTIDAD_IDEAL, PRECIO_VENTA, PRECIO_COMPRA,
-  MEDIDA,PROVEEDOR, CATEGORIA,ENTREGA_DOMICILIO FROM productos WHERE CODIGO='$id'";
-  $tabla1 =$query1 ->seleccionar($cadena1);
-
-  $cadena2="SELECT ID_PROVEEDOR, COMPAÑIA FROM PROVEEDORES";
-  $reg1 = $query1->seleccionar($cadena2);
-
-  $cadena3="SELECT ID_CATEGORIA, NOMBRE FROM CATEGORIAS";
-  $reg2 = $query1->seleccionar($cadena3);
-  ?>
-                  
-
-                  <!--Modal Editar Producto-->
-                  <div class="modal modal-lg fade" id="editarProducto" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-
-                        <!--Header-->
-                        <div class="modal-header bg-dark text-white">
-                          <h5 class="modal-title" id="exampleModalLabel">Editar Informacion del Producto</h5>
-                          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-
-                        <!--Cuerpo-->
-                        <div class="modal-body">
-                          <div>
-                            <form action="">
-                              <!--Nombre-->
-                              <div class="secciones_form">
-                                <label class="form-label" for="nProduto"><b>Nombre del Producto</b></label>
-                                <input class="form-control" type="text" id="nProduto" value='<?php echo $registro->NOMBRE ?>'>
-                              </div>
-                  
-                              <!--Foto-->
-                              <div class="secciones_form">
-                                <label class="form-label" for="fProducto"><b>Foto del Producto</b></label>
-                                <input class="form-control" type="file" accept="image/*" id="fProducto">
-                              </div>
-                  
-                              <!--Descripcion-->
-                              <div class="secciones_form">
-                                <label class="form-label" for="dProducto"><b>Descripcion</b></label>
-                                <textarea><p value='<?php echo $registro->DESCRIPCION
-                                ?>'>
-                                </p>
-                              </textarea>
-                              </div>
-                  
-                              <!--Linea 2-->
-                              <div class="row">
-                                <!--Cantidad Real-->
-                                <div class="col secciones_form">
-                                  <label class="form-label" for="crProducto"><b>Cantidad Real</b></label>
-                                  <input class="form-control" type="number" value="<?php echo $registro->CANTIDAD_REAL
-                                ?>" min="" max="#10" id="crProducto">
-                                </div>
-                    
-                                <!--Cantidad Ideal-->
-                                <div class="col secciones_form">
-                                  <label class="form-label" for="ciProducto"><b>Cantidad Ideal</b></label>
-                                  <input class="form-control" type="number" value="<?php echo $registro->CANTIDAD_IDEAL
-                                ?>" min="" max="#10" id="ciProducto">
-                                </div>
-                    
-                                <!--Precio Venta-->
-                                <div class="col secciones_form">
-                                  <label class="form-label" for="pvProducto"><b>Precio Venta</b></label>
-                                  <div class="input-group">
-                                    <span class="input-group-text">$</span>
-                                    <input class="form-control" type="text" id="pvProducto" value="<?php echo $registro->PRECIO_VENTA
-                                ?>">
-                                  </div>
-                                </div>
-                    
-                                <!--Precio Compra-->
-                                <div class="col secciones_form">
-                                  <label class="form-label" for="pcProducto"><b>Precio Compra</b></label>
-                                  <div class="input-group">
-                                    <span class="input-group-text">$</span>
-                                    <input class="form-control" type="text" id="pcProducto" value="<?php echo $registro->PRECIO_COMPRA
-                                ?>">
-                                  </div>
-                                </div>
-                              </div>
-                  
-                  
-                              <!--Linea 3-->
-                              <div class="row">
-                                <!--Medida-->
-                                <div class="col secciones_form">
-                                  <label class="form-label" for="mProducto"><b>Medida</b></label>
-                                  <select class="form-select" name="medida" id="mProducto">
-                                    <option value="Gramo">Gramos (g)</option>
-                                    <option value="Pieza">Piezas (pz)</option>
-                                    <option value="Metro">Metros (m)</option>
-                                    <option value="M3">Metros Cuadrados (m³)</option>
-                                  </select>
-                                </div>
-                                
-                                <!--Proovedor-->
-                                <div class="col secciones_form">
-                                  <label class="form-label" for="provProducto"><b>Proovedor</b></label>
-                                  <select class="form-select" name="proveedor" id="provProducto">
-                                  <?php
-                                  foreach ($reg1 as $value1)
-      {
-          echo "<option value='".$value1->ID_PROVEEDOR."'>".$value1->COMPAÑIA."</option>";
+        }
       }
-      ?>
-                                  </select>
-                                </div>
-                    
-                                <!--Categoria-->
-                                <div class="col secciones_form">
-                                  <label class="form-label" for="catProducto"><b>Categoria</b></label>
-                                  <select class="form-select" name="" id="catProducto">
-                                    <?php
-                                  foreach ($reg2 as $value2)
+      else
       {
-          echo "<option value='".$value2->ID_CATEGORIA."'>".$value2->NOMBRE."</option>";
-      }
-      ?>
-                                  </select>
-                                </div>
-                    
-                  
-                                <!--Entrega a Domicilio-->
-                                <div class="col secciones_form">
-                                  <label class="form-label" for="eadProductos"><b>Entrega a Domicilio</b></label>
-                                  <select class="form-select" name="" id="eadProductos">
-                                    <option value="">Si</option>
-                                    <option value="">No</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                        <div class="modal-footer bg-dark">
-                          <form action="">
-                            <button type="button" class="btn  boton_cerrar" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn  crear_cuenta">Guardar Cambios</button>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </tr>
-          </tbody>
-        </table>
 
-        <hr>
-    
-      <?php
-        } 
       }
             ?>
-                    <!--Surtir-->
-        <div class="text-center">
-          <a href="../views_administrador/aSurtir.html" type="button" class="btn btn-danger col-2">Surtir Productos</a>
-     <div>
+                  
       </div>
     </main>
   </div>
