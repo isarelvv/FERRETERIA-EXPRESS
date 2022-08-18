@@ -8,6 +8,7 @@ $total = 0;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../img/pared-r.ico"> 
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/mi_css/header.css">
     <link rel="stylesheet" href="../../css/mi_css/carrito.css">
@@ -251,7 +252,7 @@ else
     
                                     <div class="col row">
                                         <div class="text-center col-5   d_p">
-                                            <a href="" data-bs-toggle="modal" data-bs-target="#info_producto">Informacion del producto</a>
+                                            <a href="" data-bs-toggle="modal" data-bs-target="#info_producto<?php echo $indice['id'] ?>">Informacion del producto</a>
                                         </div>
     
                                         <div class="col-4   d_p">
@@ -260,7 +261,7 @@ else
                                         </div>
                                           
                                         <!--Modal Informacion de Productos-->
-                                        <div class="modal modal-sm fade" id="info_producto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal modal-sm fade" id="info_producto<?php echo $indice['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <!--Barra Arriba-->

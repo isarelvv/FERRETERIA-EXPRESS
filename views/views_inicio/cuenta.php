@@ -7,6 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../img/pared-r.ico"> 
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/mi_css/header.css">
     <link rel="stylesheet" href="../../css/mi_css/cuenta.css">
@@ -214,7 +215,7 @@ else
 
                 <div class="label_form">
                     <label for="apellido_materno" class="form-label     texto_label"><b>Apellido Materno</b></label>
-                    <fieldset disabled="disabled">
+                    <fieldset >
                         <input type="text" id="apellido_materno" class="form-control" placeholder="Apellido Materno" value="<?php echo $_SESSION['AM'] ?>">
                     </fieldset>
                 </div>

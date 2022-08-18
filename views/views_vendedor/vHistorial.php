@@ -10,6 +10,26 @@
 </head>
 <body>
   <?php
+if(isset($_SESSION['usuario']))
+{
+    switch ($_SESSION['SESION']) 
+    {
+        case 300:
+            header("Location: ../views_administrador/inicio.php");
+            break;   
+        case 303: 
+            header("Location: ../../");
+            break;
+        case 302:
+                header("Location: ../views_repartidor/rInicio.php");
+            break;
+    }
+}
+else
+{
+    header("Location: ../../index.php");
+}?>
+  <?php
   use MyApp\query\select;
   require_once("../../vendor/autoload.php");
   session_start();
@@ -119,7 +139,18 @@
                   <?php
                   $vendedor=$_SESSION['ID'];
                   $consult = new select();
-                  $qry="call VENTAS_DETERMINADO_VENDEDOR();";
+                  $qry="SELECT V1.FOTO, V1.FOLIO,SUM(V1.TOTAL) AS TOTAL,V1.FECHA_ORDEN, V1.DOMICILIO,V1.CLIENTE, V1.VENDEDOR,V1.VENDEDOR_APE
+                  FROM (SELECT DISTINCT PRODUCTOS.FOTO, VENTAS.FOLIO , (DETALLE_VENTAS.CANTIDAD*PRODUCTOS.PRECIO_VENTA) AS TOTAL, 
+                  VENTAS.FECHA_ORDEN, ENTREGA_DOMICILIO.DOMICILIO,CLIENTES.NOMBRE AS CLIENTE, vendedores.nombre as VENDEDOR,vendedores.APELLIDOS as VENDEDOR_APE FROM ENTREGA_DOMICILIO
+                  JOIN DETALLE_VENTAS ON DETALLE_VENTAS.FOLIO_DETALLE = ENTREGA_DOMICILIO.DETALLE_VENTA
+                  JOIN PRODUCTOS ON PRODUCTOS.CODIGO = DETALLE_VENTAS.PRODUCTO 
+                  JOIN VENTAS ON VENTAS.FOLIO = DETALLE_VENTAS.VENTA
+                  JOIN CLIENTES ON CLIENTES.NO_CLIENTE = VENTAS.CLIENTE
+                  LEFT JOIN VENDEDORES ON VENDEDORES.ID_VENDEDOR=VENTAS.VENDEDOR
+                  ) AS V1 GROUP BY V1.FOLIO
+                  
+                  
+                  ";
                   $datos=$consult->seleccionar($qry);
                   foreach ($datos as $tabla ) {
                   ?>
@@ -137,9 +168,9 @@
 
                         <tr>
                           <td><?php echo $tabla->FOLIO ?></td>
-                          <td><?php echo $tabla->NOMBRE_CLIENTES ?></td>
-                          <td><?php echo $tabla->NOMBRE_VENDEDORES ?></td>
-                          <td><?php echo $tabla->FECHA?></td>
+                          <td><?php echo $tabla->CLIENTE ?></td>
+                          <td><?php echo $tabla->VENDEDOR ?>  <?php echo $tabla->VENDEDOR_APE ?></td>
+                          <td><?php echo $tabla->FECHA_ORDEN ?></td>
                           <td>$<?php echo $tabla->TOTAL ?>.00 </td>
                           <td>
                               <button class="btn boton-informacion" type="button" data-bs-toggle="modal" data-bs-target="#detalles_producto<?php echo $tabla->FOLIO ?>">
@@ -150,7 +181,7 @@
                             <!--Modal Info Venta-->
                             <div class="modal modal-lg" id="detalles_producto<?php echo $tabla->FOLIO ?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog modal-dialog-centered">
-                              <div class="modal-content">
+                              <div class="modal-content"> 
                                   <!--Header-->
                                   <div class="modal-header header_modal">
                                   <h5 class="modal-title" id="exampleModalLabel">Venta N.° #<?php echo $tabla->FOLIO ?></h5>
@@ -163,7 +194,17 @@
                                       <!--Cuadros Info Productos-->
                                       <?php
                                       $consulta= new select();
-                                      $qry="call save.VENTA_DETALLE($tabla->FOLIO);";
+                                      $qry="SELECT PRODUCTOS.FOTO AS FOTO, PRODUCTOS.NOMBRE AS PRODUCTO,  DETALLE_VENTAS.CANTIDAD AS CANTIDAD,
+                                      PRODUCTOS.PRECIO_VENTA AS PRECIO, (DETALLE_VENTAS.CANTIDAD * PRODUCTOS.PRECIO_VENTA) AS TOTAL 
+                                        FROM ENTREGA_DOMICILIO 
+                                      LEFT JOIN DETALLE_VENTAS ON DETALLE_VENTAS.FOLIO_DETALLE = ENTREGA_DOMICILIO.DETALLE_VENTA
+                                      LEFT JOIN PRODUCTOS ON PRODUCTOS.CODIGO = DETALLE_VENTAS.PRODUCTO
+                                      LEFT JOIN VENTAS ON VENTAS.FOLIO = ENTREGA_DOMICILIO.VENTA
+                                      LEFT JOIN CLIENTES ON CLIENTES.NO_CLIENTE = VENTAS.CLIENTE
+                                        WHERE VENTAS.FOLIO= '$tabla->FOLIO'
+                                        Group by PRODUCTOS.nombre;
+                                    ";
+                                     
                                       $datos=$consulta->seleccionar($qry);
                                       foreach ($datos as $tabla) {
                                 

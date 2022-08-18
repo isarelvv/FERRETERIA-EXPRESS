@@ -10,6 +10,23 @@
 </head>
 <body>
 <?php
+if(isset($_SESSION['usuario']))
+{
+    switch ($_SESSION['SESION']) 
+    {
+        case 300:
+            header("Location: ../views_administrador/inicio.php");
+            break;   
+        case 303: 
+            header("Location: ../../");
+            break;
+        case 301:
+                header("Location: ../views_vendedor/vVentas.php");
+            break;
+    }
+}
+?>
+<?php
     use MyApp\query\select;
     require_once ("../../vendor/autoload.php");
     session_start();
@@ -73,10 +90,12 @@
                     <!--Pedidos-hoy-->
                     <div class="row justify-content-evenly     cuadros_pedidos">
                         <?php
-                        for ($i=0; $i < 2; $i++) { 
                         $repartidor=$_SESSION['ID'];
                         $consulta = new select ();
-                        $qry="call save.PEDIDOS_REPARTIDOR_PERIODO(602, 'Pendiente', '2022-08-20', '2022-08-20');";
+                        $fecha_de_hoy= date("y-m-d");
+                        $qry="call save.PEDIDOS_REPARTIDOR_PERIODO(601, 'Pendiente', '2022-08-01', '2022-08-20');";
+                       #consulta para que aparezca los pedidos de la fecha de hoy
+                        # $qry="call save.PEDIDOS_REPARTIDOR_PERIODO(602, 'Pendiente', '$fecha_de_hoy', '$fecha_de_hoy');";
                         $datos=$consulta->seleccionar($qry);
                         foreach ($datos as $tabla) 
                         {
@@ -86,7 +105,8 @@
                             $tel=$tabla->TELEFONO;
                             $mail=$tabla->CORREO;
                             $no_venta=$tabla->VENTA;
-                            $fecha=$tabla->FECHA;                            
+                      
+                                                             
                         ?>
                         <!--Pedidos-->
                         <div class="col-6 border border-secondary rounded-2 text-center  info_pedidos" style="max-width: 360px;">
@@ -106,7 +126,7 @@
                                         <!--Header-->
                                         <div class="modal-header header_modal">
                                         <h5 class="modal-title" id="exampleModalLabel">Pedido N.° #<?php echo $no_venta ?></h5>
-                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <button type="buttonEclass="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
 
                                         <!--Cuerpo-->
@@ -122,7 +142,7 @@
 
                                             <?php
                                                         $consulta = new select();
-                                                        $qry="call DETALLE_PEDIDOS(602,".$no_venta.");";
+                                                        $qry="call DETALLE_PEDIDOS(601,".$no_venta.");";
                                                         $datos=$consulta->seleccionar($qry);
                                                         
                                                         
@@ -171,8 +191,13 @@
                                             ?> 
 
                                         <!--Footer-->
+                                        <form action="..\scripts\ActualizarPedidoAcitov.php" method="POST">
                                         <div class="modal-footer">
-                                        <button type="button" class="btn boton_activar">Activar Pedido</button> <!-- SE VA A CONFIGURAR-->
+                                            <a href="..\scripts\ActualizarPedidoAcitov.php">
+                                        <button type="submit" class="btn boton_activar" name="id_vent" value="<?php echo $no_venta  ?>" >Activar Pedido <?php echo $no_venta ?></button> <!-- SE VA A CONFIGURAR-->
+                                        </form>
+                                       
+                                        </a>
                                         </div>
                                     </div>
                                     </div>
@@ -181,8 +206,10 @@
                         </div>
                 </div>
                 <?php
+               
+                    
+                
                         }
-                    }
                 ?>
                 </div>
 
@@ -201,10 +228,9 @@
                     <!--Pedidos-Proximos-->
                     <div class="row justify-content-evenly     cuadros_pedidos">
                         <?php
-                        for ($i=0; $i < 2; $i++) { 
                         $repartidor=$_SESSION['ID'];
                         $consulta = new select ();
-                        $qry="call save.PEDIDOS_REPARTIDOR_PERIODO(602, 'Pendiente', '2022-08-20', '2022-08-20');";
+                        $qry="call save.PEDIDOS_REPARTIDOR_PERIODO(601, 'Pendiente', '2022-08-01e', '2022-08-20');";
                         $datos=$consulta->seleccionar($qry);
                         foreach ($datos as $tabla) 
                         {
@@ -250,7 +276,7 @@
 
                                             <?php
                                                         $consulta = new select();
-                                                        $qry="call DETALLE_PEDIDOS(602,".$no_venta.");";
+                                                        $qry="call DETALLE_PEDIDOS(601,".$no_venta.");";
                                                         $datos=$consulta->seleccionar($qry);
                                                         
                                                         
@@ -310,7 +336,6 @@
                 </div>
                 <?php
                         }
-                    }
                 ?>
                 </div>
         </main>

@@ -9,6 +9,26 @@
     <title>Inicio - Repartidor</title>
 </head>
 <body>
+<?php
+if(isset($_SESSION['usuario']))
+{
+    switch ($_SESSION['SESION']) 
+    {
+        case 300:
+           header("Location: ../views_administrador/inicio.php");
+           break;   
+        case 303: 
+            header("Location: ../../index.php");
+            break;
+        case 301:
+                header("Location: ../views_vendedor/vVentas.php");
+            break;
+    }
+}
+#else
+#{
+#    header("Location: ../../index.php");
+#}?>
   <?php
   use MyApp\query\select;
   require_once("../../vendor/autoload.php");
@@ -80,7 +100,6 @@
                 </div>
               </div>
               <?php
-              for ($i=0; $i < 5; $i++) { 
               $consulta = new select();
                             $qry="call PEDIDOS_REPARTIDOR_STATUS('En camino', 601);";
                             $datos=$consulta->seleccionar($qry);
@@ -137,7 +156,13 @@
 
                   <div class="text-center">
                     <a href="#" data-bs-toggle="modal" data-bs-target="#pedidos_proximos_info<?php echo $no_venta ?>">Mas Informacion</a>
-                    <button type="button" class="btn boton_activar">Entregado</button>    <!-- ESCRIPT PARA ACTUALIZAR DE EN CAMINO A ENTREGADO-->        
+                    <form action="../scripts/ActualizarPedidoEntregado.php" method="POST">
+                                        <div class="modal-footer">
+                                            <a href="../scripts/ActualizarPedidoEntregado.php">
+                                        <button type="submit" class="btn boton_activar" name="id_vent" value="<?php echo $no_venta  ?>" >ENTREGADO <?php echo $no_venta ?></button>
+                            </a> <!-- SE VA A CONFIGURAR-->
+                                        </form>
+                       <!-- ESCRIPT PARA ACTUALIZAR DE EN CAMINO A ENTREGADO-->        
                     <!--Modal Info Pedido-->
                     <div class="modal modal-lg fade" id="pedidos_proximos_info<?php echo $no_venta ?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
@@ -145,7 +170,7 @@
                           <!--Header-->
                           <div class="modal-header header_modal">
                           <h5 class="modal-title" id="exampleModalLabel">Pedido N.° #<?php echo $no_venta ?></h5>
-                          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                          <button type="reset" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
 
                           <!--Cuerpo-->
@@ -203,18 +228,18 @@
                                                         } 
                                             ?> 
                           <!--Footer-->
-                          <div class="modal-footer">
-                          <button type="button" class="btn boton_cancelar" data-bs-dismiss="modal">Cerrar</button>
-                          </div>
+               
                       </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>  
+              </div>
+             
             </div>
+                                                      </div>
             <?php }
-            }?>
+            ?>  
         </main>
     </div>
 </body>

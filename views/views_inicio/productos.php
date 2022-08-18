@@ -8,6 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../img/pared-r.ico"> 
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/mi_css/header.css">
     <link rel="stylesheet" href="../../css/mi_css/productos.css">
@@ -577,8 +578,8 @@ session_start();
         $total_c=0;
         if(isset($_SESSION["carrito"])){
           foreach($_SESSION["carrito"] as $indice =>$arreglo){
-               if($producto==$indice){
-               $total_c=intval($arrreglo["cantidad"]);
+               if($id==$indice){
+               $total_c=intval($arreglo["cantidad"]);
                 }
             }
       }

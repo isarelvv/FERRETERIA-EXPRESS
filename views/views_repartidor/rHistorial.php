@@ -9,6 +9,23 @@
     <title>Pedidos - Repartidores</title>
 </head>
 <body>
+<?php
+if(isset($_SESSION['usuario']))
+{
+    switch ($_SESSION['SESION']) 
+    {
+        case 300:
+            header("Location: ../views_administrador/inicio.php");
+            break;   
+        case 303: 
+            header("Location: ../../");
+            break;
+        case 301:
+                header("Location: ../views_vendedor/vVentas.php");
+            break;
+    }
+}
+?>
     <?php
     use MyApp\query\select;
     require_once ("../../vendor/autoload.php");
@@ -71,12 +88,9 @@
                 
                 <div class="cuadros">
                 <?php
-                    for ($i=0; $i < 2; $i++) { 
-                        # code...
-                    
                             $repartidor=$_SESSION['ID'];
                             $consulta = new select();
-                            $qry="call PEDIDOS_REPARTIDOR_STATUS('Entregado', 600);";
+                            $qry="call PEDIDOS_REPARTIDOR_STATUS('Entregado', 601);";
                             $datos=$consulta->seleccionar($qry);
                                 # code...
                             foreach ($datos as $tabla) 
@@ -95,17 +109,16 @@
                     <div class="row justify-content-evenly     cuadros_pedidos">
                         <!--Pedidos-->
                         <div class="col-4 border border-secondary rounded-2 text-center  info_pedidos">
-                        <?php echo $i; ?>
                             <div class="num_pedido"><b>Pedido N.° # <?php echo $no_venta ?></b></div>
                             <div class="persona_pedido"><p><?php echo $nombre ?></p></div>
                             <div class=""><b>Se Entrego : </b><?php echo $fecha?></div>
                             <hr>
                             <div class="row contenedor_boton">
-                                <button class="btn boton-informacion" type="button" data-bs-toggle="modal" data-bs-target="#pedidos_proximos_info">
+                                <button class="btn boton-informacion" type="button" data-bs-toggle="modal" data-bs-target="#pedidos_proximos_info<?php echo $no_venta?>">
                                     <b>Mas Informacion</b>
                                 </button>
                                 <!--Modal Info Pedido-->
-                                <div class="modal modal-lg fade" id="pedidos_proximos_info" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal modal-lg fade" id="pedidos_proximos_info<?php echo $no_venta?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
                                         <!--Header-->
@@ -127,7 +140,7 @@
                                             <!--Cuadros Info Productos-->
                                             <?php
                                                         $consulta = new select();
-                                                        $qry="call DETALLE_PEDIDOS(600,".$no_venta.");";
+                                                        $qry="call DETALLE_PEDIDOS(601  ,".$no_venta.");";
                                                         $datos=$consulta->seleccionar($qry);
                                                         
                                                         
@@ -187,7 +200,7 @@
                         </div>
                     </div>
                     <?php }
-                    } 
+                    
                     ?> 
             </div> 
         </main>
