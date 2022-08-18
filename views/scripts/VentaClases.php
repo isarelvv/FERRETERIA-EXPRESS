@@ -10,9 +10,7 @@ session_start();
     if ($accion==2) {
         echo "CHINGA TU REPUTA MADRE EDER";
         $seleccionr=new select();
-        $consulta2="SELECT CLIENTES.NO_CLIENTE AS ID, CLIENTES.NOMBRE AS NOMBRE, CLIENTES.AP_PATERNO AS APE_PA, CLIENTES.AP_MATERNO AS AP_MA, CLIENTES.TELEFONO AS TEL,
-        CLIENTES.CORREO AS MAIL FROM
-        clientes WHERE clientes.TELEFONO= '$cliente'";
+        $consulta2="CALL SAVE.TELEFONO_CLIENTE('$cliente')";
         $dato=$seleccionr->seleccionar($consulta2);
         foreach ($dato as $info) {
           $_SESSION['comprador']=$info->NOMBRE ;

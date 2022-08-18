@@ -12,11 +12,9 @@
         <?php
         use MyApp\query\Login;
         require("../../vendor/autoload.php");
-        echo "CHINGA TU MADRE";
         $usuarios =new Login();
         extract($_POST);
         echo $usuario;
-        echo "alv";
         echo $contraseña;
         $usuarios->verificaLogin("$usuario","$contraseña");
         ?>

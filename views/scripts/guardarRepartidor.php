@@ -25,7 +25,7 @@
     $contraseñahash = password_hash($pass, PASSWORD_DEFAULT);
     $cadena2 = "INSERT INTO login (correo,contraseña,tipo_usuario) VALUES ('$correo','$contraseñahash',302)";
     $insert2->ejecutar($cadena2);
-    $llave="SELECT ID_LOGIN FROM LOGIN WHERE correo='$correo'";
+    $llave="CALL SAVE.GUARDAR_REPARTIDOR('$correo')";
     $result = $searchlogin->seleccionar($llave);
     foreach ($result as $key)
     {
