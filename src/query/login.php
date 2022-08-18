@@ -22,7 +22,7 @@ class Login
             while($renglon = $consulta->fetch(PDO::FETCH_ASSOC))
             {
                 
-                if (password_verify($password,$renglon['contraseña']))
+                if (password_verify($password,$renglon['CONTRASEÑA']))
                 {   
                    $login=1;
                    if ($renglon['SESION'] == 300 )
