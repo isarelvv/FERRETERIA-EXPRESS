@@ -42,7 +42,7 @@ if(isset($_SESSION['usuario']))
         <!--Parte Arriba Header-->
         <div class="row justify-content-center border-bottom border-1 border-dark border-opacity-25     barra_arriba">
             <!--Logo Express-->
-            <div class="col-2 text-end">
+            <div class="col-2 col-sm-3  text-end">
                 <object data="svg/logo-r.svg" class="text-end border border-dark   logo"></object>
             </div>
 
@@ -132,27 +132,27 @@ if(isset($_SESSION['usuario']))
                 <!--Inicio-Productos-Servicios-->
                 <div class="col-8">
                     <ul class="nav justify-content-center">           
-                        <li class="nav-item     boton-bb">
+                        <li class="nav-item     boton-bb col-sm-1">
                             <a class="btn   boton-a-bb" type="button" href="index.php">
                                 <div class="organizar">
                                     <img src="svg/casa-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Inicio</b></p>
+                                    <p class="texto-botones-bb d-lg-block d-none"><b>Inicio</b></p>
                                 </div>
                             </a>
                         </li>
-                        <li class="nav-item     boton-bb">
+                        <li class="nav-item     boton-bb col-sm-1">
                             <a class="btn   boton-a-bb" href="views/views_inicio/productos.php">
                                 <div class="organizar">
                                     <img src="svg/caja-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Productos</b></p>
+                                    <p class="texto-botones-bb d-lg-block d-none"><b>Productos</b></p>
                                 </div>
                             </a>
                         </li>
-                        <li class="nav-item     boton-bb">
+                        <li class="nav-item     boton-bb col-sm-1">
                             <a class="btn   boton-a-bb" href="views/views_inicio/servicios.php">
                                 <div class="organizar">
                                     <img src="svg/servicios-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Servicios</b></p>
+                                    <p class="texto-botones-bb d-lg-block d-none"><b>Servicios</b></p>
                                 </div>
                             </a>
                         </li>
@@ -161,23 +161,23 @@ if(isset($_SESSION['usuario']))
                             if (!isset($_SESSION["usuario"]))
                             {
                             echo
-                        "<li class='nav-item disabled    boton-bb'>
+                        "<li class='nav-item disabled    boton-bb col-sm-1'>
                             <a class='btn   boton-a-bb'
                             class='btn  boton-login' type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion'>
                                 <div class='organizar'>
                                     <img src='svg/carrito-b.svg' class='icono'>
-                                    <p class='texto-botones-bb'><b>Carrito</b></p>
+                                    <p class='texto-botones-bb d-lg-block d-none'><b>Carrito</b></p>
                                 </div>
                             </a>
                         </li>";
                             }
                             else
                             {
-                                echo "<li class='nav-item    boton-bb'>
+                                echo "<li class='nav-item    boton-bb col-sm-1'>
                                 <a class='btn   boton-a-bb' href='views/views_inicio/carrito.php'>
                                     <div class='organizar'>
                                         <img src='svg/carrito-b.svg' class='icono'>
-                                        <p class='texto-botones-bb'><b>Carrito</b></p>
+                                        <p class='texto-botones-bb d-lg-block d-none'><b>Carrito</b></p>
                                     </div>
                                 </a>
                             </li>";
@@ -187,22 +187,22 @@ if(isset($_SESSION['usuario']))
                         if(!isset($_SESSION['usuario']))
 
                         {
-                         echo "<li class='nav-item    boton-bb '>
+                         echo "<li class='nav-item    boton-bb col-sm-1 col-lg-2 '>
                          <a class='btn   boton-a-bb'type='button' data-bs-toggle='modal' data-bs-target='#iniciar-sesion' >
                              <div class='organizar'>
                                  <img src='svg/bolsa-b.svg' class='icono'>
-                                 <p class='texto-botones-bb'><b>Mis Pedidos</b></p>
+                                 <p class='texto-botones-bb d-lg-block d-none'><b>Mis Pedidos</b></p>
                              </div>
                          </a>
                      </li> ";
                         }
                         else
                         {
-                            echo "<li class='nav-item     boton-bb'>
+                            echo "<li class='nav-item     boton-bb col-sm-1 col-lg-2 '>
                             <a class='btn   boton-a-bb' href='views/views_inicio/pedidos.php'>
                                 <div class='organizar'>
                                     <img src='svg/bolsa-b.svg' class='icono'>
-                                    <p class='texto-botones-bb'><b>Mis Pedidos</b></p>
+                                    <p class='texto-botones-bb d-lg-block d-none'><b>Mis Pedidos</b></p>
                                 </div>
                             </a>
                         </li> ";
@@ -216,19 +216,45 @@ if(isset($_SESSION['usuario']))
     </header>
 
     <!--Carrusel-->
-    <div class="carrusel">
+    <div class="carrusel h-auto">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner align-content-center">
+              <div class="carousel-item active">
+                <img src="img/carrusel/Car1l.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/carrusel/Car2l.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/carrusel/Car3l.jpg" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
     </div>
 
     <!--Quienes Somos-->
     <div class="row     presentacion">
-        <div class="col-6 border-end text-center    info_pre info_pre_1">
+        <div class="col-lg-6 col-sm-12 d-sm-none d-md-block border-end text-center    info_pre info_pre_1">
             <div class="div_p1">
                 <p>¿Quiénes somos?</p>
             </div>
         </div>
-        <div class="col-6   info_pre info_pre_2">
-            <div class="div_p2">
-                <p>
+        <div class="col-lg-6 col-sm-12   info_pre info_pre_2">
+            <div class="div_p2 col-lg-10" style="height: 20px;">
+                <p class="pt-lg-2 ps-lg-5">
                     Somos una distribuidora de materiales y herramientas de la comarca lagunera con la mision de llevar a tu casa todos los productos que necesites para que tengas la comodidad en tu hogar por la que tanto trabajas dia con dia.
                 </p>
             </div>
@@ -237,16 +263,16 @@ if(isset($_SESSION['usuario']))
 
     <!--Fotos-->
     <div class="row justify-content-center  div_fotos">
-        <div class="col border border-dark    cuatro_im">
+        <div class="col border border-dark  mb-sm-3    cuatro_im">
             <a data-bs-toggle="modal" data-bs-target="#foto1"><img src="img/Foto1.jpg" alt="" class="imagenes_cuat"></a>
         </div>
-        <div class="col border border-dark    cuatro_im">
+        <div class="col border border-dark  mb-sm-3    cuatro_im">
             <a data-bs-toggle="modal" data-bs-target="#foto2"><img src="img/Foto2.jpg" alt="" class="imagenes_cuat"></a>
         </div>
-        <div class="col border border-dark    cuatro_im">
+        <div class="col border border-dark  mb-sm-3    cuatro_im">
             <a data-bs-toggle="modal" data-bs-target="#foto3"><img src="img/Foto3.jpg" alt="" class="imagenes_cuat"></a>
         </div>
-        <div class="col border border-dark    cuatro_im">
+        <div class="col border border-dark  mb-sm-3    cuatro_im">
             <a data-bs-toggle="modal" data-bs-target="#foto4"><img src="img/Foto5.jpg" alt="" class="imagenes_cuat"></a>
         </div>
 
@@ -255,7 +281,7 @@ if(isset($_SESSION['usuario']))
         <div class="modal fade" id="foto1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <img src="../img/Foto1.jpg" alt="">
+                <img src="img/Foto1.jpg" alt="">
             </div>
             </div>
         </div>
@@ -264,7 +290,7 @@ if(isset($_SESSION['usuario']))
         <div class="modal fade" id="foto2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <img src="../img/Foto2.jpg" alt="">
+                <img src="img/Foto2.jpg" alt="">
             </div>
             </div>
         </div>
@@ -273,7 +299,7 @@ if(isset($_SESSION['usuario']))
         <div class="modal fade" id="foto3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <img src="../img/Foto3.jpg" alt="">
+                <img src="img/Foto3.jpg" alt="">
             </div>
             </div>
         </div>
@@ -282,7 +308,7 @@ if(isset($_SESSION['usuario']))
         <div class="modal fade" id="foto4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <img src="../img/Foto5.jpg" alt="">
+                <img src="img/Foto5.jpg" alt="">
             </div>
             </div>
         </div>
@@ -291,52 +317,52 @@ if(isset($_SESSION['usuario']))
     <!--Productos-->
     <div class="productos">
         <div class="row align-content-around border-bottom border-2">
-            <div class="col-3 text-center    np">
+            <div class="col-lg-3 col-sm-6 text-center    np">
                 <p>Nuestros Productos</p>
             </div>
-            <div class="col-6">
+            <div class="col-lg-6 col-sm-6 ">
                 <p>Contamos con lo necesario para el mantenimiento y reparaciones del hogar, ademas de un extenso surtido en material para contruccion y acabados.</p>
             </div>
         </div>
 
         <div class="row justify-content-evenly  categorias">
-            <div class="col-1 align-content-center btn">
+            <div class="col-lg-1 col-sm-5 text-center">
                 <img src="svg/Herramientas-b.svg" alt="" class="icono_cat">
                 <p class="t_cat">Herramientas</p>
             </div>
-            <div class="col-1 text-center btn">
+            <div class="col-lg-1 col-sm-5 text-center">
                 <img src="svg/Union-b.svg" alt="" class="icono_cat">
                 <p class="t_cat">Union</p>
             </div>
-            <div class="col-1 text-center btn">
+            <div class="col-lg-1 col-sm-5 text-center">
                 <img src="svg/Mediciones-b.svg" alt="" class="icono_cat">
                 <p class="t_cat">Medicion</p>
             </div>
-            <div class="col-1 text-center btn">
+            <div class="col-lg-1 col-sm-5 text-center">
                 <img src="svg/Construccion-b.svg" alt="" class="icono_cat">
                 <p class="t_cat">Construccion</p>
             </div>
-            <div class="col-1 text-center btn">
+            <div class="col-lg-1 col-sm-5 text-center">
                 <img src="svg/Tuberias-b.svg" alt="" class="icono_cat">
                 <p class="t_cat">Tuberias</p>
             </div>
-            <div class="col-1 text-center btn">
+            <div class="col-lg-1 col-sm-5 text-center">
                 <img src="svg/Alumbrado-b.svg" alt="" class="icono_cat">
                 <p class="t_cat">Alumbrado</p>
             </div>
-            <div class="col-1 text-center btn">
+            <div class="col-lg-1 col-sm-5 text-center">
                 <img src="svg/Proteccion-b.svg" alt="" class="icono_cat">
                 <p class="t_cat">Proteccion</p>
             </div>
-            <div class="col-1 text-center btn">
+            <div class="col-lg-1 col-sm-5 text-center">
                 <img src="svg/Limpieza-b.svg" alt="" class="icono_cat">
                 <p class="t_cat">Limpieza</p>
             </div>
-            <div class="col-1 text-center btn">
+            <div class="col-lg-1 col-sm-5 text-center">
                 <img src="svg/Pintura-b.svg" alt="" class="icono_cat">
                 <p class="t_cat">Pintura</p>
             </div>
-            <div class="col-1 text-center btn">
+            <div class="col-lg-1 col-sm-5 text-center">
                 <img src="svg/Diversos-b.svg" alt="" class="icono_cat">
                 <p class="t_cat">Diversos</p>
             </div>
@@ -395,7 +421,7 @@ if(isset($_SESSION['usuario']))
     <!--Footer-->
     <footer>
         <div class="row">
-            <div class="col-2">
+            <div class="col-lg-2 col-sm-4">
                 <h5>Contacto</h5>
                 <h6>Telefonos de Contacto</h6>
                 <li class="lista_cont">8717922116</li>
@@ -403,29 +429,28 @@ if(isset($_SESSION['usuario']))
                 <li class="lista_cont">8711930946</li>
             </div>
 
-            <div class="col-4">
+            <div class="col-lg-4 col-sm-4">
                 <div>
                     <h5>Direccion</h5>
                     <h6>Calz. Agustín Espinoza, Satelite 5053, 27059 Torreón, Coah.</h6>
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-lg-4 col-sm-4">
                 <h5>Redes Sociales</h5>
                 <a href="https://www.facebook.com/Ferretería-y-Materiales-Express-Torreón-1672126383002791/"><img src="svg/facebook.svg" alt="facebook" class="icono_facebook"></a>
             </div>
         </div>
 
         <div class="row     p_abajo">
-            <div class="col-2">
+            <div class="col-lg-3 col-sm-4">
                 <h6>Correos de Contacto</h6>
-                <li class="lista_cont">gerrymatrix@hotmail.com</li>
-                <li class="lista_cont">tilinlover17@gmail.com</li>
+                <li class="lista_cont"><a href="gerrymatrix@hotmail.com">gerrymatrix@hotmail.com</a></li>
             </div>
-            <div class="col-4"></div>
-            <div class="col-6 text-end">
-                <img src="svg/utt.svg" alt="" class="f_express">
-                <img src="svg/express-r.svg" alt="" class="f_express">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-6 text-end">
+                <img src="svg/utt.svg" alt="" class="f_express col-sm-4">
+                <img src="svg/express-r.svg" alt="" class="f_express col-sm-3">
             </div>
         </div>
     </footer>

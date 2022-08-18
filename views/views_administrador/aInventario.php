@@ -96,10 +96,10 @@
             {
                 extract($_POST);
                 $barra = new select();
-                $consulta = "SELECT productos.CODIGO, categorias.NOMBRE as CATEGORIA, productos.NOMBRE, productos.DESCRIPCION, productos.CANTIDAD_REAL,productos.CANTIDAD_IDEAL,productos.PRECIO_VENTA,productos.PRECIO_COMPRA, 
-                productos.MEDIDA, PROVEEDORES.COMPAÑIA ,productos.FOTO FROM productos join categorias on categorias.ID_CATEGORIA=productos.CATEGORIA
-                JOIN PROVEEDORES on PROVEEDORES.ID_PROVEEDOR=productos.PROVEEDOR
-                where productos.nombre like '%$buscar%'";
+                $consulta = "SELECT productos.CODIGO, categorias.NOMBRE AS CATEGORIA, productos.NOMBRE, productos.DESCRIPCION, productos.CANTIDAD_REAL,productos.CANTIDAD_IDEAL,productos.PRECIO_VENTA,productos.PRECIO_COMPRA, 
+                productos.MEDIDA, PROVEEDORES.COMPAÑIA ,productos.FOTO FROM productos JOIN categorias ON categorias.ID_CATEGORIA=productos.CATEGORIA
+                JOIN PROVEEDORES ON PROVEEDORES.ID_PROVEEDOR=productos.PROVEEDOR
+                WHERE productos.nombre LIKE '%$buscar%'";
                 $resultado = $barra->seleccionar($consulta);
             }
             ?>
@@ -221,6 +221,12 @@
                   }
                   
                   $query1=new Select();
+<<<<<<< HEAD
+=======
+                  $cadena1="SELECT CODIGO,NOMBRE, DESCRIPCION, CANTIDAD_REAL, CANTIDAD_IDEAL, PRECIO_VENTA, PRECIO_COMPRA,
+                  MEDIDA,PROVEEDOR, CATEGORIA,ENTREGA_DOMICILIO FROM productos WHERE CODIGO='$id'";
+                  $tabla1 =$query1 ->seleccionar($cadena1);
+>>>>>>> main
 
                   $cadena2="SELECT ID_PROVEEDOR, COMPAÑIA FROM PROVEEDORES";
                   $reg1 = $query1->seleccionar($cadena2);
@@ -428,7 +434,7 @@
 
   $query1=new Select();
   $id=$registro->CODIGO;
-  $cadena1="select CODIGO,NOMBRE, DESCRIPCION, CANTIDAD_REAL, CANTIDAD_IDEAL, PRECIO_VENTA, PRECIO_COMPRA,
+  $cadena1="SELECT CODIGO,NOMBRE, DESCRIPCION, CANTIDAD_REAL, CANTIDAD_IDEAL, PRECIO_VENTA, PRECIO_COMPRA,
   MEDIDA,PROVEEDOR, CATEGORIA,ENTREGA_DOMICILIO FROM productos WHERE CODIGO='$id'";
   $tabla1 =$query1 ->seleccionar($cadena1);
 

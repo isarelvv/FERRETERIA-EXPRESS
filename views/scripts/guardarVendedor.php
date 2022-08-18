@@ -25,7 +25,7 @@
     $contraseñahash = password_hash($pass, PASSWORD_DEFAULT);
     $cadena2 = "INSERT INTO login (correo,contraseña,tipo_usuario) VALUES ('$correo','$contraseñahash',301)";
     $insert2->ejecutar($cadena2);
-    $llave="CALL SAVE.GUARDAR_REPARTIDOR('$correo')";
+    $llave="SELECT ID FROM LOGIN WHERE LOGIN.CORREO = '$correo'";
     $result = $searchlogin->seleccionar($llave);
     $nombre_imagen = $_FILES['foto']['name'];
     $temporal = $_FILES['foto']['tmp_name'];

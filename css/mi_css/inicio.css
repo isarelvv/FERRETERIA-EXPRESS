@@ -6,15 +6,14 @@ body
 /*Carrusel*/
 .carrusel
 {
-    height: 250px;
+    min-height: 150px;
     background-color: #bcb7b741;
 }
 
 /*Quienes somos*/
 .presentacion
 {
-    
-    height: 142px;
+    min-height: 142px;
     max-height: 142px;
     background-color: #8B0006;
 }
