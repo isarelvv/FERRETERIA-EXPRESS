@@ -54,7 +54,7 @@ class Login
                    else if ($renglon['SESION']== 303)
                    {       
                         $login=303;
-                        header("Location: ../../index.php");
+                        header("Location: ../scripts/datoscliente.php");
                    }
                 
                 }
