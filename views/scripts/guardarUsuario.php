@@ -36,6 +36,7 @@
     header("refresh:2; ../../index.php");
     
      }
+  
     else
     {
       echo "<div class='alert alert-danger'>Las contraseñas no coinciden</div>";

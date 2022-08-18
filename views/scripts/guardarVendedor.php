@@ -30,20 +30,20 @@
     foreach ($result as $key)
     {
         $key->ID_LOGIN;
-        $cadena = "INSERT INTO vendedores (NOMBRE,APELLIDOS,CORREO,TELEFONO,SEXO, LOGIN) VALUES
-        ('$nombre','$apellidos','$telefono','$correo','$sexo','$key->ID_LOGIN')";
+        $cadena = "INSERT INTO vendedores (NOMBRE,APELLIDOS,CORREO,TELEFONO,SEXO, LOGIN,FOTO) VALUES
+        ('$nombre','$apellidos','$correo','$telefono','$sexo','$key->ID_LOGIN','$foto')";
     
         $insert->ejecutar($cadena);
 
     }
 
     echo "<div class='alert alert-success'>Vendedor Registrado</div>";
-    header("refresh:3; ../view_administrador/VerVendedores.php");
+    header("refresh:3; ../views_administrador/aAltasVendedores.php");
     }
     else 
     {
         echo "<div class='alert alert-danger'>Las contraseñas no coinciden</div>";
-        header("refresh:2; ../view_administrador/AltaVendedores.php");
+        header("refresh:2; ../views_administrador/aAltasVendedores.php");
 
     }
     ?>

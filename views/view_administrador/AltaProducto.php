@@ -11,7 +11,7 @@
 <body>
 <div class="row justify-content-center">
             <div class="col-6">
-                <form action="../scripts/guardarRepartidor.php" method="POST">
+                <form action="../scripts/guardarProducto.php" method="POST">
                     <!--Seccion1-->
                     <div class="border border-secondary rounded-2    contenedores_form">
                         <h5>Datos de producto</h5>
@@ -22,62 +22,100 @@
                         </div>
                         <!--Apellidos-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="text" id="a_p" placeholder="Apellido Paterno" name="apellidos" required>
-                            <label class="form-label" for="a_p">Apellidos</label>
+                            <input class="form-control  conf_labels" type="text" id="a_p" placeholder="Apellido Paterno" name="descripcion" required>
+                            <label class="form-label" for="a_p">Descripcion</label>
+                        </div>
+
+                        
+                        <div class="form-floating">
+                            <input class="form-control  conf_labels" type="file" id="telefono" placeholder="Numero de Telefono" name="foto" required>
+                            <label class="form-label" for="telefono">FOTO</label>
                         </div>
 
                         <!--Numero de Telefono-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Numero de Telefono" name="telefono" required>
-                            <label class="form-label" for="telefono">Numero de Telefono</label>
+                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Numero de Telefono" name="cantidad_real" required>
+                            <label class="form-label" for="telefono">Cantidad Real</label>
                         </div>
 
                         <!--Numero de Telefono-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Numero de Telefono" name="placas" required>
-                            <label class="form-label" for="placas">Placas</label>
+                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Numero de Telefono" name="cantidad_ideal" required>
+                            <label class="form-label" for="placas">Cantidad Ideal</label>
                         </div>
 
                         <!--Numero de Telefono-->
                         <div class="form-floating">
-                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Numero de Telefono" name="licencia" required>
-                            <label class="form-label" for="telefono">Numero de licencia</label>
+                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Numero de Telefono" name="precio_venta" required>
+                            <label class="form-label" for="telefono">Precio Venta</label>
+                        </div>
+
+                        <div class="form-floating">
+                            <input class="form-control  conf_labels" type="tel" id="telefono" placeholder="Numero de Telefono" name="precio_compra" required>
+                            <label class="form-label" for="telefono">Precio Compra</label>
+                        </div>
+
+                        <div>
+                            <label for="" class='control-label'> Medida</label> <br>
+                            <select name="medida" id="">
+                                <option value="Pieza" >Pieza</option>
+                                <option value="Litro">Litro</option>
+                                <option value="Lata">Lata</option>
+                                <option value="Metro">Metro</option>
+                                <option value="Kg">Kg</option>
+                                <option value="M3">M3</option>
+                                <option value="Gramo">Gramo</option>
+                            </select>
+                        </div>
+                        <br>
+                        <?php 
+                use MyApp\Query\select;
+                require_once("../../vendor/autoload.php");
+
+                $query = new select();
+                $cadena="SELECT ID_PROVEEDOR, COMPAÑIA FROM PROVEEDORES";
+                $reg = $query->seleccionar($cadena);
+
+                echo "<div class='mb-3'>
+                <label class='control-label'>
+                PROVEEDOR </label>
+                <select name='proveedor' class='form-select'>";
+
+                foreach ($reg as $value)
+                {
+                    echo "<option value='".$value->ID_PROVEEDOR."'>".$value->COMPAÑIA."</option>";
+                }
+
+                echo "</select>
+                </div>";  
+
+                $cadena2="SELECT ID_CATEGORIA, NOMBRE FROM CATEGORIAS";
+                $reg1 = $query->seleccionar($cadena2);
+
+                echo "<div class='mb-3'>
+                <label class='control-label'>
+                Categorias </label>
+                <select name='categoria' class='form-select'>";
+
+                foreach ($reg1 as $value1)
+                {
+                    echo "<option value='".$value1->ID_CATEGORIA."'>".$value1->NOMBRE."</option>";
+                }
+
+                echo "</select>
+                </div>";
+                ?>
+                 <div>
+                            <label for="" class='control-label'>Entrega a domicilio</label> <br>
+                            <select name="entrega_domicilio" id="">
+                                <option value="Si" >Si</option>
+                                <option value="No">No</option>
+                            </select>
                         </div>
                     </div>
-    
-                    <!--Seccion3-->
-                    <div class="border border-secondary rounded-2    contenedores_form">
-                        <h5>Login</h5>
-                         <!--Correo Electronico-->
-                        <div class="form-floating">
-                            <input class="form-control  conf_labels" type="email" id="correo" placeholder="Correo Electronico" name="correo" required>
-                            <label class="form-label" for="correo">Correo Electronico</label>
-                        </div>
-                        <!--Contraseña-->
-                        <div class="form-floating">
-                            <input class="form-control  conf_labels" type="password" id="contra" placeholder="Contraseña" name="pass" required maxlength="30" minlength="8">
-                            <label class="form-label" for="contra">Contraseña</label>
-                            <div id="ayuda_email" class="form-text">La contraseña debe tener al menos 8 digitos.</div>
-                        </div>
-    
-                        <!--Repetir Contraseña-->
-                        <div class="form-floating">
-                            <input class="form-control  conf_labels" type="password" id="rcontra" placeholder="Repetir Contraseña" name="pass1" required maxlength="30" minlength="8">
-                            <label class="form-label" for="rcontra">Repetir Contraseña</label>
-                        </div> 
-                    </div>
-                        <!--Boton-->
-                    <div class="row justify-content-center">
-                        <div class="col-6 row">
-                            <button class="btn  boton_cc" type="submit">
-                                <b>Crear Cuenta</b>
-                            </button>
-                        </div>
-                    </div>
-                    <!--Boton-->
-                </form>
-            </div>
-        </div>
+                    <div>
+                    <button type="submit" class="btn btn-primary" >Guardar</button>
+                </div>
     </div>
 </body>
 <script src="../../js/bootstrap.min.js"></script>

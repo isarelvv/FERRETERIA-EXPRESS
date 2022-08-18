@@ -28,13 +28,12 @@ class Login
                    {
                         $login=300;
                         header("Location: ../views/views_administrador/inicio.php");
+                        
                    }
                    else if ($renglon['SESION'] == 301)
                    {
-                        $login=301;
-                        session_start();
-                        $_SESSION['ID'] = $renglon['ID_LOGIN'];    
-                        header("Location: ../scripts/datosvendedor.php");
+                        $login=301;   
+                        header("Location: ../views_vendedor/vAjustes.html");
                    }
                    else if ($renglon['SESION']== 302)
                    {
@@ -44,11 +43,9 @@ class Login
                        header("Location: ../scripts/datosrepartidor.php");
                    }
                    else if ($renglon['SESION']== 303)
-                   {
-                        session_start();         
+                   {       
                         $login=303;
-                        $_SESSION['ID'] = $renglon['ID_LOGIN'];
-                        header("Location: ../scripts/datoscliente.php");
+                        header("Location: ../../index.php");
                    }
                 
                 }
@@ -58,6 +55,7 @@ class Login
                 session_start();
                 $_SESSION["usuario"] = $usuario;
                 $_SESSION["SESION"]=$login;
+                $_SESSION['ID']=$renglon['ID_LOGIN'];
         
             }
             else 

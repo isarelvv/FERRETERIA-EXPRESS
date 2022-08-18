@@ -1,3 +1,9 @@
+<<<<<<< Updated upstream
+=======
+<?php
+session_start();
+?>
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +31,26 @@
         
     }
     header("Location: ../views_repartidor/rInicio.php");
+
+    $datosrepartidor = new select();
+    $ID = $_SESSION['ID'];
+    $datos = "SELECT REPARTIDORES.ID_REPARTIDOR AS IDR, REPARTIDORES.NOMBRE as REPARTIDOR, REPARTIDORES.APELLIDOS, REPARTIDORES.TELEFONO AS TELEFONO
+    as AP, REPARTIDORES.CORREO as CORREO ,login.ID_LOGIN as ID_LOGIN 
+    FROM REPARTIDORES join login on login.ID_LOGIN = REPARTIDORES.LOGIN WHERE ID_LOGIN='$ID';";
+    $repartidor = $datosrepartidor->seleccionar($datos);
+    foreach($repartidor as $info)
+    {
+        $_SESSION['ID_LOGIN']=$info->ID_LOGIN;    
+        $_SESSION['IDR']=$info->IDR;        
+        $_SESSION['NOMBRE']=$info->REPARTIDOR;
+        $_SESSION['APELLIDOS']=$info->APELLIDOS;
+        $_SESSION['TELEFENO']=$info->TELEFONO;
+        $_SESSION['CORREO']=$info->CORREO;
+
+    } 
+    header("Location: ../../index.php");
+    
+
 
     ?>
 </body>

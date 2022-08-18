@@ -5,11 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
-<<<<<<< Updated upstream
     <link rel="stylesheet" href="../../css/mi_css/aAltas.css">
-=======
     <link rel="stylesheet" href="../../css/mi_css/aReportesV_R.css">
->>>>>>> Stashed changes
     <title>Altas Productos - Administrador</title>
 </head>
 <body>
@@ -28,27 +25,21 @@
         <!--Botones paginas-->
         <ul class="nav nav-pills row text-center justify-content-center">
           <li class="nav-item">
-            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aInicio.html">Inicio</a>
+            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aInicio.php">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link     items" aria-current="page" href="../../views/views_administrador/aReportesVendedores.html">Reportes</a>
+            <a class="nav-link     items" aria-current="page" href="../../views/views_administrador/aReportesVendedores.php">Reportes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active bg-danger   items" href="../../views/views_administrador/aAltasProductos.html">Altas</a>
+            <a class="nav-link active bg-danger   items" href="../../views/views_administrador/aAltasProductos.php">Altas</a>
           </li>
           <li class="nav-item">
-<<<<<<< Updated upstream
-            <a class="nav-link    items" href="../../views/views_administrador/aInventario.html">Inventarios</a>
+            <a class="nav-link    items" href="../../views/views_administrador/aInventario.php">Inventarios</a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/aVentas.html">Ventas</a>
-=======
-            <a class="nav-link    items" href="../../views/views_administrador/inentario.php">Inventarios</a>
+            <a class="nav-link    items" href="../../views/views_administrador/aVentas.php">Ventas</a>
           </li> 
-          <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/ventas">Ventas</a>
->>>>>>> Stashed changes
-          </li>
+ 
         </ul>
 
         <hr class="text-white">
@@ -61,11 +52,9 @@
             <ul class="dropdown-menu dropdown-menu-dark">
               <li style="margin-bottom: 10px;"><a class="dropdown-item" href="configuracion.php">Ajustes</a></li>
               <li><hr class="sep_hr"></li>
-<<<<<<< Updated upstream
+
               <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
-=======
               <li style="margin-top: 10px;"><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
->>>>>>> Stashed changes
             </ul>
           </div>
         </div>
@@ -80,70 +69,57 @@
           <ul class="nav nav-pills nav-fill justify-content-center">
             <!--Productos-->
             <li class="nav-item">
-<<<<<<< Updated upstream
-              <a class="nav-link active bg-danger border border-danger" aria-current="page" href="../../views/views_administrador/aAltasProductos.html">Productos</a>
-=======
-              <a class="nav-link active bg-danger border border-danger" aria-current="page" href="...">Productos</a>
->>>>>>> Stashed changes
+
+              <a class="nav-link active bg-danger border border-danger" aria-current="page" href="../../views/views_administrador/aAltasProductos.php">Productos</a>
+
             </li>
 
             <!--Proovedores-->
             <li class="nav-item ms-2 me-1">
-<<<<<<< Updated upstream
-              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aAltasProovedores.html">Proovedores</a>
-=======
-              <a class="nav-link border border-danger text-danger" href="...">Proovedores</a>
->>>>>>> Stashed changes
+
+              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aAltasProovedores.php">Proovedores</a
+
             </li>
 
             <!--Vendedores-->
             <li class="nav-item ms-1 me-2">
-<<<<<<< Updated upstream
-              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aAltasVendedores.html">Vendedores</a>
-=======
-              <a class="nav-link border border-danger text-danger" href="...">Vendedores</a>
->>>>>>> Stashed changes
+
+              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aAltasVendedores.php">Vendedores</a>
+
             </li>
 
             <!--Repartidores-->
             <li class="nav-item">
-<<<<<<< Updated upstream
-              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aAltasRepartidores.html">Repartidores</a>
-=======
-              <a class="nav-link border border-danger text-danger" href="...">Repartidores</a>
->>>>>>> Stashed changes
+
+              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aAltasRepartidores.php">Repartidores</a>
+
+
             </li>
           </ul>
         </div>
 
         <hr>
 
-<<<<<<< Updated upstream
         <!--Formulario-->
         <div>
-          <form action="">
+          <form action="../scripts/guardarProducto.php" method="POST">
             <!--Nombre-->
             <div class="secciones_form">
               <label class="form-label" for="nProduto"><b>Nombre del Producto</b></label>
-              <input class="form-control" type="text" id="nProduto">
+              <input class="form-control" type="text" id="nProduto" name="nombre">
             </div>
 
-            <!--ID-->
-            <div class="secciones_form">
-              <label class="form-label" for="idProducto"><b>ID del Producto</b></label>
-              <input class="form-control" type="text" id="idProducto">
-            </div>
 
             <!--Foto-->
             <div class="secciones_form">
               <label class="form-label" for="fProducto"><b>Foto del Producto</b></label>
-              <input class="form-control" type="file" accept="image/*" id="fProducto">
+              <input class="form-control" type="file" accept="image/*" id="fProducto" name="foto">
             </div>
 
             <!--Descripcion-->
             <div class="secciones_form">
               <label class="form-label" for="dProducto"><b>Descripcion</b></label>
-              <textarea class="form-control" name="" id="dProducto" rows="5"></textarea>
+              <textarea class="form-control" name="descripcion" id="dProducto" rows="5"></textarea>
             </div>
 
             <!--Linea 2-->
@@ -151,13 +127,14 @@
               <!--Cantidad Real-->
               <div class="col secciones_form">
                 <label class="form-label" for="crProducto"><b>Cantidad Real</b></label>
-                <input class="form-control" type="number" value="1" min="1" max="#10" id="crProducto">
+                <input class="form-control" type="number" value="1" min="1" max="#10" id="crProducto"
+                name="cantidad_real">
               </div>
   
               <!--Cantidad Ideal-->
               <div class="col secciones_form">
                 <label class="form-label" for="ciProducto"><b>Cantidad Ideal</b></label>
-                <input class="form-control" type="number" value="1" min="1" max="#10" id="ciProducto">
+                <input class="form-control" type="number" value="1" min="1" max="#10" id="ciProducto" name="cantidad_ideal">
               </div>
   
               <!--Precio Venta-->
@@ -165,7 +142,7 @@
                 <label class="form-label" for="pvProducto"><b>Precio Venta</b></label>
                 <div class="input-group">
                   <span class="input-group-text">$</span>
-                  <input class="form-control" type="text" id="pvProducto">
+                  <input class="form-control" type="text" id="pvProducto" name="precio_venta">
                 </div>
               </div>
   
@@ -174,7 +151,7 @@
                 <label class="form-label" for="pcProducto"><b>Precio Compra</b></label>
                 <div class="input-group">
                   <span class="input-group-text">$</span>
-                  <input class="form-control" type="text" id="pcProducto">
+                  <input class="form-control" type="text" id="pcProducto" name="precio_compra">
                 </div>
               </div>
             </div>
@@ -185,36 +162,54 @@
               <!--Medida-->
               <div class="col secciones_form">
                 <label class="form-label" for="mProducto"><b>Medida</b></label>
-                <select class="form-select" name="" id="mProducto">
-                  <option value="">Gramos (g)</option>
-                  <option value="">Piezas (pz)</option>
-                  <option value="">Metros (m)</option>
-                  <option value="">Metros Cuadrados (m³)</option>
+                <select class="form-select" name="medida" id="mProducto">
+                <option value="Pieza" >Pieza</option>
+                <option value="Litro">Litro</option>
+                <option value="Lata">Lata</option>
+                <option value="Metro">Metro</option>
+                <option value="Kg">Kg</option>
+                <option value="M3">M3</option>
+                <option value="Gramo">Gramo</option>
                 </select>
               </div>
               
+
               <!--Proovedor-->
+              <?php
+              use MyApp\Query\select;
+                require_once("../../vendor/autoload.php");
+
+                $query = new select();
+                $cadena="SELECT ID_PROVEEDOR, COMPAÑIA FROM PROVEEDORES";
+                $reg = $query->seleccionar($cadena);
+                ?>
+                
               <div class="col secciones_form">
                 <label class="form-label" for="provProducto"><b>Proovedor</b></label>
-                <select class="form-select" name="" id="provProducto">
-                  <option value="">#Distribuidor Herrera</option>
+                <select class="form-select" name="proveedor" id="provProducto">
+                  <?php
+                foreach ($reg as $value)
+                {
+                    echo "<option value='".$value->ID_PROVEEDOR."'>".$value->COMPAÑIA."</option>";
+                }
+                ?>
                 </select>
               </div>
   
               <!--Categoria-->
+              <?php
+               $cadena2="SELECT ID_CATEGORIA, NOMBRE FROM CATEGORIAS";
+               $reg1 = $query->seleccionar($cadena2);
+               ?>
               <div class="col secciones_form">
                 <label class="form-label" for="catProducto"><b>Categoria</b></label>
-                <select class="form-select" name="" id="catProducto">
-                  <option value="">Herramientas</option>
-                  <option value="">Union</option>
-                  <option value="">Medicion</option>
-                  <option value="">Construccion</option>
-                  <option value="">Tuberia</option>
-                  <option value="">Iluminacion</option>
-                  <option value="">Seguridad</option>
-                  <option value="">Limpieza</option>
-                  <option value="">Pintura</option>
-                  <option value="">Componentes Diversos</option>
+                <select class="form-select" name="categoria" id="catProducto">
+                  <?php
+                foreach ($reg1 as $value1)
+                {
+                    echo "<option value='".$value1->ID_CATEGORIA."'>".$value1->NOMBRE."</option>";
+                }
+                ?>
                 </select>
               </div>
   
@@ -222,9 +217,9 @@
               <!--Entrega a Domicilio-->
               <div class="col secciones_form">
                 <label class="form-label" for="eadProductos"><b>Entrega a Domicilio</b></label>
-                <select class="form-select" name="" id="eadProductos">
-                  <option value="">Si</option>
-                  <option value="">No</option>
+                <select class="form-select" name="entrega_domicilio" id="eadProductos">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
                 </select>
               </div>
             </div>
@@ -240,7 +235,7 @@
               </div>
             </div>
           </form>
-=======
+
         <div>
           <table class="table">
             <thead>
@@ -274,7 +269,6 @@
               </tr>
             </tbody>
           </table>
->>>>>>> Stashed changes
         </div>
       </div>
     </main>

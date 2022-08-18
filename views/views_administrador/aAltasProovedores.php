@@ -24,19 +24,19 @@
         <!--Botones paginas-->
         <ul class="nav nav-pills row text-center justify-content-center">
           <li class="nav-item">
-            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aInicio.html">Inicio</a>
+            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aInicio.php">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link     items" aria-current="page" href="../../views/views_administrador/aReportesVendedores.html">Reportes</a>
+            <a class="nav-link     items" aria-current="page" href="../../views/views_administrador/aReportesVendedores.php">Reportes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active bg-danger   items" href="../../views/views_administrador/aAltasProductos.html">Altas</a>
+            <a class="nav-link active bg-danger   items" href="../../views/views_administrador/aAltasProductos.php">Altas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/aInventario.html">Inventarios</a>
+            <a class="nav-link    items" href="../../views/views_administrador/aInventario.php">Inventarios</a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/aVentas.html">Ventas</a>
+            <a class="nav-link    items" href="../../views/views_administrador/aVentas.php">Ventas</a>
           </li>
         </ul>
 
@@ -65,22 +65,22 @@
           <ul class="nav nav-pills nav-fill justify-content-center">
             <!--Productos-->
             <li class="nav-item">
-              <a class="nav-link border border-danger text-danger" aria-current="page" href="../../views/views_administrador/aAltasProductos.html">Productos</a>
+              <a class="nav-link border border-danger text-danger" aria-current="page" href="../../views/views_administrador/aAltasProductos.php">Productos</a>
             </li>
 
             <!--Proovedores-->
             <li class="nav-item ms-2 me-1">
-              <a class="nav-link active bg-danger border border-danger" href="../../views/views_administrador/aAltasProovedores.html">Proovedores</a>
+              <a class="nav-link active bg-danger border border-danger" href="../../views/views_administrador/aAltasProovedores.php">Proovedores</a>
             </li>
 
             <!--Vendedores-->
             <li class="nav-item ms-1 me-2">
-              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aAltasVendedores.html">Vendedores</a>
+              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aAltasVendedores.php">Vendedores</a>
             </li>
 
             <!--Repartidores-->
             <li class="nav-item">
-              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aAltasRepartidores.html">Repartidores</a>
+              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aAltasRepartidores.php">Repartidores</a>
             </li>
           </ul>
         </div>
@@ -89,23 +89,23 @@
 
         <!--Formulario-->
         <div>
-          <form action="">
+          <form action="../scripts/guardarProveedores.php" method="POST">
             <!--Nombre-->
             <div class="secciones_form">
               <label class="form-label" for="nProovedor"><b>Nombre de la Compañia</b></label>
-              <input class="form-control" type="text" id="nProovedor">
+              <input class="form-control" type="text" id="nProovedor" name="nombre">
             </div>
 
             <!--Telefono-->
             <div class="secciones_form">
               <label class="form-label" for="telProovedor"><b>Numero de Telefono</b></label>
-              <input class="form-control" type="tel" id="telProovedor">
+              <input class="form-control" type="tel" id="telProovedor" name="telefono">
             </div>
 
             <!--Email-->
             <div class="secciones_form">
                 <label class="form-label" for="emailProovedor"><b>Correo Electronico</b></label>
-                <input class="form-control" type="email" id="emailProovedor">
+                <input class="form-control" type="email" id="emailProovedor" name="correo">
               </div>
 
             <!--Linea 2-->
@@ -113,13 +113,13 @@
               <!--Direccion-->
               <div class="col secciones_form">
                 <label class="form-label" for="dProovedor"><b>Direccion</b></label>
-                <input class="form-control" type="text" id="dProovedor">
+                <input class="form-control" type="text" id="dProovedor" name="direccion">
               </div>
   
               <!--Codigo Postal-->
               <div class="col-3 secciones_form">
                 <label class="form-label" for="cpProovedor"><b>Codigo Postal</b></label>
-                <input class="form-control" type="number" id="cpProovedor">
+                <input class="form-control" type="number" id="cpProovedor" name="cp">
               </div>
             </div>
 

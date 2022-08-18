@@ -15,7 +15,7 @@
         require_once("../../vendor/autoload.php");
 
         $query=new Select();
-        $cadena="SELECT * from vendedores";
+        $cadena="SELECT login.ID_LOGIN as LOGIN,login.CORREO as CORREO,vendedores.NOMBRE AS NOMBRE,vendedores.APELLIDOS AS APELLIDOS, vendedores.TELEFONO AS TELEFONO, vendedores.SEXO AS SEXO FROM login JOIN vendedores ON login.ID_LOGIN=vendedores.LOGIN;";
         $tabla =$query ->seleccionar($cadena);
 
         echo "<table class='table table-hover'>
@@ -36,7 +36,7 @@
             echo "<td> $registro->CORREO </td>";
             echo "<td> $registro->TELEFONO </td>";
             echo "<td> $registro->SEXO</td>";
-            echo "<td><a href='ActualizarVendedores.php?id=$registro->ID_VENDEDOR'>EDITAR</a></td>";
+            echo "<td><a href='ActualizarVendedores.php?id=$registro->LOGIN'>EDITAR</a></td>";
             echo "</tr>";
         }
 

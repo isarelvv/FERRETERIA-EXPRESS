@@ -32,7 +32,7 @@ if(isset($_SESSION['usuario']))
             header("Location: views/views_vendedor/vInicio.php");
             break;
         case 302:
-            header("Location: views/views_repartidor/rInicio.php");
+                header("Location: views/views_repartidor/rInicio.php");
             break;
     }
 }

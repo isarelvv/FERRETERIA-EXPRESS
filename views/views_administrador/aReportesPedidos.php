@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
-<<<<<<< Updated upstream
+
     <link rel="stylesheet" href="../../css/mi_css/aModal.css">
     <link rel="stylesheet" href="../../css/mi_css/aReportesPedidos.css">
     <title>Lista de Pedidos - Administrador</title>
-=======
+
     <link rel="stylesheet" href="../../css/mi_css/aReportesPedidos.css">
     <title>Reportes Pedidos - Administrador</title>
->>>>>>> Stashed changes
+
 </head>
 <body>
   <div class="row">
@@ -30,27 +30,21 @@
         <!--Botones paginas-->
         <ul class="nav nav-pills row text-center justify-content-center">
           <li class="nav-item">
-            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aInicio.html">Inicio</a>
+            <a class="nav-link    items" aria-current="page" href="../../views/views_administrador/aInicio.php">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active bg-danger    items" aria-current="page" href="../../views/views_administrador/aReportesVendedores.html">Reportes</a>
+            <a class="nav-link active bg-danger    items" aria-current="page" href="../../views/views_administrador/aReportesVendedores.php">Reportes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/aAltasProductos.html">Altas</a>
+            <a class="nav-link    items" href="../../views/views_administrador/aAltasProductos.php">Altas</a>
           </li>
           <li class="nav-item">
-<<<<<<< Updated upstream
-            <a class="nav-link    items" href="../../views/views_administrador/aInventario.html">Inventarios</a>
+
+            <a class="nav-link    items" href="../../views/views_administrador/aInventario.php">Inventarios</a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/aVentas.html">Ventas</a>
-=======
-            <a class="nav-link    items" href="../../views/views_administrador/inentario.php">Inventarios</a>
+            <a class="nav-link    items" href="../../views/views_administrador/aVentas.php">Ventas</a>
           </li> 
-          <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/ventas">Ventas</a>
->>>>>>> Stashed changes
-          </li>
         </ul>
 
         <hr class="text-white">
@@ -61,13 +55,13 @@
             <a class="nav-item dropdown-toggle link_drop" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configuracion</a>
           
             <ul class="dropdown-menu dropdown-menu-dark">
-<<<<<<< Updated upstream
+
               <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
-=======
+
               <li style="margin-bottom: 10px;"><a class="dropdown-item" href="configuracion.php">Ajustes</a></li>
               <li><hr class="sep_hr"></li>
               <li style="margin-top: 10px;"><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
->>>>>>> Stashed changes
+
             </ul>
           </div>
         </div>
@@ -82,26 +76,22 @@
           <ul class="nav nav-pills nav-fill justify-content-center">
             <!--Vendedores-->
             <li class="nav-item">
-              <a class="nav-link border border-danger text-danger" aria-current="page" href="../../views/views_administrador/aReportesVendedores.html">Lista de Vendedores</a>
+              <a class="nav-link border border-danger text-danger" aria-current="page" href="../../views/views_administrador/aReportesVendedores.php">Lista de Vendedores</a>
             </li>
 
             <!--Repartidores-->
             <li class="nav-item ms-3 me-3">
-              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aReportesRepartidores.html">Lista de Repartidores</a>
+              <a class="nav-link border border-danger text-danger" href="../../views/views_administrador/aReportesRepartidores.php">Lista de Repartidores</a>
             </li>
 
             <!--Productos-->
             <li class="nav-item">
-<<<<<<< Updated upstream
-              <a class="nav-link active bg-danger border border-danger" href="../../views/views_administrador/aReportesPedidos.html">Lista de Pedidos</a>
-=======
-              <a class="nav-link active bg-danger border border-danger" href="../../views/views_administrador/aReportesPedidos.html">Reportes de Pedidos</a>
->>>>>>> Stashed changes
+
+              <a class="nav-link active bg-danger border border-danger" href="../../views/views_administrador/aReportesPedidos.php">Lista de Pedidos</a>
             </li>
           </ul>
         </div>
 
-<<<<<<< Updated upstream
         <hr class="mb-2">
 
         <div>
@@ -172,7 +162,7 @@
                 <th scope="col">Status</th>
                 <th scope="col">Monto</th>
                 <th scope="col">Detalles</th>
-=======
+
         <hr>
 
         <div>
@@ -192,13 +182,13 @@
                 <th class="border-end" scope="col">Telefono</th>
                 <th scope="col">N° Licencia</th>
                 <th scope="col">N° Placas</th>
->>>>>>> Stashed changes
+
               </tr>
             </thead>
 
             <tbody>
               <tr>
-<<<<<<< Updated upstream
+
                 <td>#123-456</td>
                 <td>#Edeh Gerardo Meza Reyes</td>
                 <td>#Luis Angel Zapata Zuñiga</td>
@@ -265,7 +255,7 @@
                     </div>
                   </div>
                 </div>
-=======
+
                 <td>#Edeh Gerardo</td>
                 <td>#Meza</td>
                 <td>#Reyes</td>
@@ -274,7 +264,7 @@
                 <td class="border-end">#8717321111</td>
                 <td>#Ejemplo</td>
                 <td>#Ejemplo</td>
->>>>>>> Stashed changes
+
               </tr>
             </tbody>
           </table>
