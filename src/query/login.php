@@ -21,11 +21,12 @@ class Login
             TIPO,LOGIN.ID_LOGIN, LOGIN.CORREO AS CORREO, LOGIN.CONTRASEÑA AS CONTRASEÑA 
             FROM USUARIOS JOIN LOGIN ON USUARIOS.KEY=LOGIN.TIPO_USUARIO WHERE LOGIN.CORREO='$usuario';";
             $consulta = $objetoPDO->query($query);
-            while($renglon = $consulta->fetch(PDO::FETCH_ASSOC))
-            print_r($renglon);
+            #while($renglon = $consulta->fetch(PDO::FETCH_ASSOC))
+            foreach($consulta as $renglon)
+            {
+                print_r($renglon);
             echo $usuario;
             echo $password;
-            {
                 if (password_verify($password,$renglon['CONTRASEÑA']))
                 {   
                    if ($renglon['SESION'] == 300 )
