@@ -16,7 +16,7 @@ class Login
             #$cc=new database("SAVE","root","");
             $cc = new Database("SAVE", "doadmin", "AVNS_0irFMC1NWTaraDt_uR8");
             $objetoPDO = $cc->getPDO();
-            $query ="SELECT usuarios.KEY as SESION, usuarios.TIPO as TIPO,login.ID_LOGIN, login.correo as correo, login.contraseña as contraseña FROM usuarios join login on usuarios.KEY=login.TIPO_USUARIO where login.correo='$usuario'";
+            $query ="SELECT USUARIOS.KEY AS SESION, USUARIOS.TIPO AS TIPO,LOGIN.ID_LOGIN, LOGIN.CORREO AS CORREO, LOGIN.CONTRASEÑA AS CONTRASEÑA FROM USUARIOS JOIN LOGIN ON USUARIOS.KEY=LOGIN.TIPO_USUARIO WHERE LOGIN.CORREO='$usuario'";
             $consulta = $objetoPDO->query($query);
 
             while($renglon = $consulta->fetch(PDO::FETCH_ASSOC))
