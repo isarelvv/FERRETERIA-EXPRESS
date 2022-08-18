@@ -186,7 +186,7 @@ session_start();
             <div class="col   barras_mensaje"><hr></div>
         </div>
 
-        <!--Barrita filtros-->
+        <!--
         <div class="row border-bottom justify-content-between   barra_arriba_servicios">
             <div class="col-6   nom_info_serv">
                 <b>Informacion de los Servicios</b>
@@ -202,36 +202,657 @@ session_start();
                     </select>
                 </form>
             </div>
-        </div>
+        </div>-->
 
         <!--Servicios-->
         <div>
             <!--Info Servicios-->
-            <div class="border  servicios">
-                <div class="row">
-                    <div class="col-3">
-                        <!--Categoria-->
-                        <div class="titulo_servicios_cat"><b>Electricista</b></div>
-                        <!--Nombre-->
-                        <div>Juan Jose Perez Camacho</div>
+            <!--Electricistas-->
+            <div>
+                <!--1-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Electricista</b></div>
+                            <!--Nombre-->
+                            <div>Juan Jose Perez Camacho</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8712429088</div>
+                            </div>
+
+                            <div class="col-4">
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="col-9 row justify-content-end text-end">
-                        <div class="col-4">
-                            <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
-                            <div>8712429088</div>
-                        </div>
-
-                        <div class="col-4">
-                            <div class="titulo_servicios"><b>Correo Electronico</b></div>
-                            <div>-----</div>
-                        </div>
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Instalaciones residenciales, industriales, corto circuito, acometida de CFE, etc. Contamos con mas de 40 años de experiencia.</div>
                     </div>
                 </div>
 
-                <div class="descripcion">
-                    <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
-                    <div>Instalaciones residenciales, industriales, corto circuito, acometida de CFE, etc. Contamos con mas de 40 años de experiencia.</div>
+                <!--2-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Electricista</b></div>
+                            <!--Nombre-->
+                            <div>Electricidad Santana</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8721214065</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Electricistas, locales -  Dirección: Niños Héroes 111 - (35017) Gómez Palacio, Durango</div>
+                    </div>
+                </div>
+
+                <!--3-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Electricista</b></div>
+                            <!--Nombre-->
+                            <div>Eléctrica Narro</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8711085200</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Instalaciones de divisiones, servicio de electricistas, instalaciones eléctricas, instalación de plomería, equipos hidroneumáticos, servicios eléctricos, electricistas, electricidad.  - Dirección: Avenida Morelos #37 Colonia Montemayor - (27056) Torreón, Coahuila</div>
+                    </div>
+                </div>
+
+                <!--4-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Electricista</b></div>
+                            <!--Nombre-->
+                            <div>Lincoln Electric</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8718460864</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Electricistas - Dirección: Calle San Pedro - (27148) Torreón, Coahuila</div>
+                    </div>
+                </div>
+
+                <!--5-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Electricista</b></div>
+                            <!--Nombre-->
+                            <div>Servicios Eléctricos Gd</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8711534352</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Mantenimiento de subestaciones eléctricas, mantenimiento a instalaciones eléctricas, mantenimiento de subestaciones, instalación y mantenimiento, servicio de electricistas, instalación de minisplits, mantenimiento de aparatos, instalaciones eléctricas, subestaciones eléctricas - Dirección: Comarca Lagunera - (35010) Gómez Palacio, Durango</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Fontaneria-->
+            <div>
+                <!--1-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Fontaneria</b></div>
+                            <!--Nombre-->
+                            <div>Plomería en general travi</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8717517433</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Reparación de fugas hidraulicas,gas y residuales reparación de boilers, hidroneumaticos, lavabos, tarjas, etc. - Direccion: C. Hotel arriaga no. 1016 fracc. Mayran - (27105) Torreon, Coahuila.</div>
+                    </div>
+                </div>
+
+                <!--2-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Fontaneria</b></div>
+                            <!--Nombre-->
+                            <div>Plomeros briones</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8711992543</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Reparacion de instalaciones plomeria electricidad mantenimiento en general. - Direccion: Cepeda 220 nte - (27000) Torreon, Coahuila.</div>
+                    </div>
+                </div>
+
+                <!--3-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Fontaneria</b></div>
+                            <!--Nombre-->
+                            <div>Servicios integrales plomeria y electricidad</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8711992543</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Reparacion e instalaciones de electricidad plomeria ducteria y aires lavado. - Direccion: De torreon a lerdo 1871 rincon la merced - Torreon, Coahuila.</div>
+                    </div>
+                </div>
+
+                <!--4-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Fontaneria</b></div>
+                            <!--Nombre-->
+                            <div>Plomeros ávila</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8711383096</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Reparación, mantenimiento e instalación de plomeria en general. - Direccion: Cda. Librado Rivera. Colonia Alamedas - Torreon, Coahuila.</div>
+                    </div>
+                </div>
+
+                <!--5-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Fontaneria</b></div>
+                            <!--Nombre-->
+                            <div>Industrial RV</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8717310691</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Contratista de instalacion de tuberias, paileria, soldadura, instalacion de equipo - Direccion: Colombia 377, col aviacion - Torreon, Coahuila.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Construccion-->
+            <div>
+                <!--1-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Construccion</b></div>
+                            <!--Nombre-->
+                            <div>Construcciones Rivera</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8710464475</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Empresa dedicada a la construcción de casa habitación, Residencial, comercial, bodegas, albercas Quintas, remodelacion, ampliacion. Planos Renders y gestiones gubernamentales. - Direccion: Calle C. Juan de la Barrera 130.</div>
+                    </div>
+                </div>
+
+                <!--2-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Construccion</b></div>
+                            <!--Nombre-->
+                            <div>Pnc Ingenieria Civil Sa De Cv</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8712996023</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Nuestra empresa está dedicada a la construcción de pavimento de concreto hidráulico, concreto estampado, muros de contención, estructuras y obras de drenaje, cimentación mediante piloteo, muros de gavión, sistemas de agua potable, drenaje sanitario y drenaje pluvial, bacheo superficial y bacheo profundo entre otros. - Direccion: PASEO DE LAS GERBERAS 425.</div>
+                    </div>
+                </div>
+
+                <!--3-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Construccion</b></div>
+                            <!--Nombre-->
+                            <div>Jose Fco. Herrera Gilio</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8710017747</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Diseño y construcción de proyectos arquitectonicos comerciales, residenciales e industriales. - Direccion: P.º del Tornado 108.</div>
+                    </div>
+                </div>
+
+                <!--4-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Construccion</b></div>
+                            <!--Nombre-->
+                            <div>Roga Diseño, Planeación Y Construcción</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8712893070</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Somos una empresa que busca brindar a sus clientes la mejor calidad y eficacia requerida para proyectos en obra civiles, industriales y estructurales. En nuestros proyectos buscamos innovar, transformar, mejorar la calidad de vida y el confort del medio ambiente. - Direccion: Progreso 898.</div>
+                    </div>
+                </div>
+
+                <!--5-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Construccion</b></div>
+                            <!--Nombre-->
+                            <div>Construcciónes Raldaco Sa De Cv</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8712656305</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Somos una empresa de construcción de Torreón Coahuila, tenemos como prioridad dar un servicio de calidad a nuestros clientes para ganarnos su confianza. - Direccion: Santa Teresa 210 villas de San angel. </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Carpinteria-->
+            <div>
+                <!--1-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Carpinteria</b></div>
+                            <!--Nombre-->
+                            <div>Carpinteria 19</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8719985890</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Se fabrican todo tipo de muebles asi como reparaciones de estos. - Direccion: Cerro de las casitas 664 cd nazas - (27277) Torreon, Coahuila.</div>
+                    </div>
+                </div>
+
+                <!--2-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Carpinteria</b></div>
+                            <!--Nombre-->
+                            <div>Servicios Roman</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8711250751</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Empresa dedicada al rubro de la remodelacion de su hogar o su oficina. - Direccion: Lazaro cardenas del rio, 26, col. La merced I. - (27276) Torreon, Coahuila.</div>
+                    </div>
+                </div>
+
+                <!--3-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Carpinteria</b></div>
+                            <!--Nombre-->
+                            <div>Marcos Mueblerias</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8717779562</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Muebleria mayoreo y publico - Direccion: Avenida hidalgo ote. 676 Centro - Torreon, Coahuila.</div>
+                    </div>
+                </div>
+
+                <!--4-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Carpinteria</b></div>
+                            <!--Nombre-->
+                            <div>Closet y cocinas las etnias</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8714428709</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Carpinteria de calidad ,en el diseño y madera que usted elija. - Direccion: Av juan pablo II no. 648 col. Miguel de la madrid - (27057) Torreon, Coahuila.</div>
+                    </div>
+                </div>
+
+                <!--5-->
+                <div class="border  servicios">
+                    <div class="row">
+                        <div class="col-3">
+                            <!--Categoria-->
+                            <div class="titulo_servicios_cat"><b>Carpinteria</b></div>
+                            <!--Nombre-->
+                            <div>Logfreight, S.A. De C.V.</div>
+                        </div>
+
+                        <div class="col-9 row justify-content-end text-end">
+                            <div class="col-4">
+                                <!--Telefono-->
+                                <div class="titulo_servicios"><b>Telefono de Contacto</b></div>
+                                <div>8710839745</div>
+                            </div>
+
+                            <div class="col-4">
+                                <!--Correo-->
+                                <div class="titulo_servicios"><b>Correo Electronico</b></div>
+                                <div>-----</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Descripcion-->
+                    <div class="descripcion">
+                        <div class="titulo_servicios"><b>Descripcion del Servicio</b></div>
+                        <div>Carga internacional puerta a puerta, aereo, maritimo y terrestre, con amplia red de agentes en los 5 continentes. - Direccion: Carretera a San Agustin Km 1, San Agustin, Torreón, Coahuila, México, 27400 - (27400) Torreon, Coahuila.</div>
+                    </div>
                 </div>
             </div>
         </div>
