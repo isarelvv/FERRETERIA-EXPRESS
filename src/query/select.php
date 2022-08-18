@@ -11,7 +11,7 @@ class select
     {
         try
         {
-            
+           # $cc=new database("SAVE","root","");
             $cc = new Database("SAVE", "doadmin", "AVNS_0irFMC1NWTaraDt_uR8");
             $objetoPDO=$cc ->getPDO();
             $resultado = $objetoPDO->query($qry);

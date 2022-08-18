@@ -355,7 +355,7 @@ session_start();
                 {
                     foreach($resultado as $datos)
                 {
-                  echo "PUTO";
+          E
                     ?>
                     <div class="col  " style="max-width: 250px; height:475px ">
                     <form action="" method="POST">
