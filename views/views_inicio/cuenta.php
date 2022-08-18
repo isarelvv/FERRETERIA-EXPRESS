@@ -334,7 +334,7 @@ else
 
             <div class="col-lg-3 col-sm-4">
                 <h5>Redes Sociales</h5>
-                <a href="https://www.facebook.com/Ferretería-y-Materiales-Express-Torreón-1672126383002791/"><img src="../svg/facebook.svg" alt="facebook" class="icono_facebook"></a>
+                <a href="https://www.facebook.com/Ferretería-y-Materiales-Express-Torreón-1672126383002791/"><img src="../../svg/facebook.svg" alt="facebook" class="icono_facebook"></a>
             </div>
         </div>
 

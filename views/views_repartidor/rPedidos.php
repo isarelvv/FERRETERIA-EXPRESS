@@ -18,7 +18,7 @@ if(isset($_SESSION['usuario']))
             header("Location: ../views_administrador/inicio.php");
             break;   
         case 303: 
-            header("Location: ../../");
+            header("Location: ../../index.php");
             break;
         case 301:
                 header("Location: ../views_vendedor/vVentas.php");
@@ -27,9 +27,11 @@ if(isset($_SESSION['usuario']))
 }
 ?>
 <?php
+
     use MyApp\query\select;
     require_once ("../../vendor/autoload.php");
     session_start();
+
     ?>
     <div class="row">
         <!--Barra-->
@@ -64,7 +66,7 @@ if(isset($_SESSION['usuario']))
                         <a class="nav-item dropdown-toggle link_drop" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configuracion</a>
                         
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li style="margin-bottom: 10px;"><a class="dropdown-item" href="../views_repartidor/rAjustes.html">Ajustes</a></li>
+                            <li style="margin-bottom: 10px;"><a class="dropdown-item" href="rAjustes.php">Ajustes</a></li>
                             <li><hr class="sep_hr"></li>
                             <li style="margin-top: 10px;"><a class="dropdown-item" href="../scripts/cerrarSesion.php">Cerrar Sesion</a></li>
                         </ul>
@@ -90,10 +92,11 @@ if(isset($_SESSION['usuario']))
                     <!--Pedidos-hoy-->
                     <div class="row justify-content-evenly     cuadros_pedidos">
                         <?php
+                        $idrep = $_SESSION['IDREP'];
                         $repartidor=$_SESSION['ID'];
                         $consulta = new select ();
                         $fecha_de_hoy= date("y-m-d");
-                        $qry="call save.PEDIDOS_REPARTIDOR_PERIODO(601, 'Pendiente', '2022-08-01', '2022-08-20');";
+                        $qry="call save.PEDIDOS_REPARTIDOR_PERIODO('$idrep', 'Pendiente', '2022-08-01', '2022-08-20');";
                        #consulta para que aparezca los pedidos de la fecha de hoy
                         # $qry="call save.PEDIDOS_REPARTIDOR_PERIODO(602, 'Pendiente', '$fecha_de_hoy', '$fecha_de_hoy');";
                         $datos=$consulta->seleccionar($qry);
@@ -142,7 +145,7 @@ if(isset($_SESSION['usuario']))
 
                                             <?php
                                                         $consulta = new select();
-                                                        $qry="call DETALLE_PEDIDOS(601,".$no_venta.");";
+                                                        $qry="call DETALLE_PEDIDOS('$idrep',".$no_venta.");";
                                                         $datos=$consulta->seleccionar($qry);
                                                         
                                                         
@@ -230,7 +233,7 @@ if(isset($_SESSION['usuario']))
                         <?php
                         $repartidor=$_SESSION['ID'];
                         $consulta = new select ();
-                        $qry="call save.PEDIDOS_REPARTIDOR_PERIODO(601, 'Pendiente', '2022-08-01e', '2022-08-20');";
+                        $qry="call save.PEDIDOS_REPARTIDOR_PERIODO('$idrep', 'Pendiente', '2022-08-01', '2022-08-20');";
                         $datos=$consulta->seleccionar($qry);
                         foreach ($datos as $tabla) 
                         {
@@ -276,7 +279,7 @@ if(isset($_SESSION['usuario']))
 
                                             <?php
                                                         $consulta = new select();
-                                                        $qry="call DETALLE_PEDIDOS(601,".$no_venta.");";
+                                                        $qry="call DETALLE_PEDIDOS('$idrep',".$no_venta.");";
                                                         $datos=$consulta->seleccionar($qry);
                                                         
                                                         

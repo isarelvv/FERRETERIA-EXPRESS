@@ -1,10 +1,3 @@
-<?php
-session_start();
-?>
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +9,6 @@ session_start();
     <title>Ajustes - Repartidores</title>
 </head>
 <body>
-<<<<<<< Updated upstream
 <?php
 if(isset($_SESSION['usuario']))
 {
@@ -52,7 +44,7 @@ if(isset($_SESSION['usuario']))
        $no_licencia = $infovendedor->NUM_LICENCIA; 
        $foto = $infovendedor->FOTO; 
   ?>
-=======
+
   <?php
 
     if (!isset($_SESSION['ID']))
@@ -62,8 +54,6 @@ if(isset($_SESSION['usuario']))
 
     
   ?>
-  <h1 align="center">Repartidores</h1>
->>>>>>> Stashed changes
   
     <div class="row">
         <!--Barra-->
@@ -134,25 +124,15 @@ if(isset($_SESSION['usuario']))
                       <div class="label_form">
                           <label for="nombre" class="form-label   texto_label"><b>Nombre</b></label>
                           <fieldset disabled="disabled">
-<<<<<<< Updated upstream
+
                               <input type="text" id="nombre" class="form-control" placeholder="<?php echo $nombre_re ?>">
-=======
-                              <input type="text" id="nombre" class="form-control" value="<?php echo $_SESSION['NOMBRE'];?>">
->>>>>>> Stashed changes
                           </fieldset>
                       </div>
       
                       <div class="label_form">
-<<<<<<< Updated upstream
                           <label for="apellido_paterno" class="form-label     texto_label"><b>Apellido Paterno</b></label>
                           <fieldset disabled="disabled">
                               <input type="text" id="apellido_paterno" class="form-control" placeholder="<?php echo $apellidos_re ?>">
-=======
-                          <label for="apellido_materno" class="form-label     texto_label"><b>Apellido Materno</b></label>
-                          <fieldset disabled="disabled">
-                              <input type="text" id="apellido_materno" class="form-control" value="<?php echo $_SESSION['APELLIDOS']?>">
->>>>>>> Stashed changes
-                          </fieldset>
                       </div>
       
                       <hr>
@@ -160,12 +140,7 @@ if(isset($_SESSION['usuario']))
                       <div class="label_form">
                         <label for="email" class="form-label    texto_label"><b>Numero de Telefono</b></label>
                         <fieldset disabled="disabled">
-<<<<<<< Updated upstream
                             <input type="tel" id="email" class="form-control" placeholder="<?php echo $tel ?>">
-=======
-                            <input type="tel" id="email" class="form-control" VALUE="<?php
-                            $_SESSION['TELEFENO']?>">
->>>>>>> Stashed changes
                         </fieldset>
                     </div>
 
@@ -174,12 +149,7 @@ if(isset($_SESSION['usuario']))
                       <div class="label_form">
                           <label for="email" class="form-label    texto_label"><b>Correo Electronico</b></label>
                           <fieldset disabled="disabled">
-<<<<<<< Updated upstream
                               <input type="text" id="email" class="form-control" placeholder="<?php echo $mail ?>">
-=======
-                              <input type="text" id="email" class="form-control" value="<?php
-                            $_SESSION['TELEFENO']?>">
->>>>>>> Stashed changes
                           </fieldset>
                       </div>
                   </div>   
