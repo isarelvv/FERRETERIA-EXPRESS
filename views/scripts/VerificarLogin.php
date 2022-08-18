@@ -10,10 +10,9 @@
 <body>
     <div class="container">
         <?php
-
         use MyApp\Query\login;
         require("../../vendor/autoload.php");
-
+    echo "CHINGA TU MADRE";
         $usuarios =new login();
         extract($_POST);
         $usuarios->verificaLogin("$usuario","$contraseña");
