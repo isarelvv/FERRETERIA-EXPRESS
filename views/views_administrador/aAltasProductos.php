@@ -102,7 +102,7 @@
 
         <!--Formulario-->
         <div>
-          <form action="../scripts/guardarProducto.php" method="POST">
+          <form action="../scripts/guardarProducto.php" method="POST" enctype="multipart/form-data">
             <!--Nombre-->
             <div class="secciones_form">
               <label class="form-label" for="nProduto"><b>Nombre del Producto</b></label>

@@ -33,6 +33,12 @@ $resultado3=$seleccionar->seleccionar($cadena3);
 
 $cadena4=" CALL GANANCIA_VENTAS_PERIODO($fechahoy,$fechahoy)";
 $resultado4=$seleccionar->seleccionar($cadena4);
+
+$cadena5="CALL PRODUCTOS_FALTANTES()";
+$resultado5=$seleccionar->seleccionar($cadena5);
+
+$cadena6="CALL PRODUCTO_MAS_VENDIDO ()";
+$resultado6=$seleccionar->seleccionar($cadena6);
   ?>
 
   <div class="row">
@@ -63,13 +69,7 @@ $resultado4=$seleccionar->seleccionar($cadena4);
           </li> 
           <li class="nav-item">
             <a class="nav-link    items" href="../../views/views_administrador/aVentas.php">Ventas</a>
-
-            <a class="nav-link    items" href="../../views/views_administrador/inentario.php">Inventarios</a>
           </li> 
-          <li class="nav-item">
-            <a class="nav-link    items" href="../../views/views_administrador/ventas">Ventas</a>
-
-          </li>
         </ul>
 
         <hr class="text-white">
@@ -156,14 +156,17 @@ $resultado4=$seleccionar->seleccionar($cadena4);
             <div class="text-center mt-4">
               <span class="titulos_secciones"><b>Productos Faltantes</b></span>
               <hr class="mt-3 mb-1">
-
+              <?php
+              foreach($resultado5 as $datos)
+              {
+              ?>
               <!--Contenedor Productos-->
               <div class="container">
                 <!--Producto-->
                 <div class="row border mt-2">
                   <!--Imagen-->
                   <div class="col-1 p-0" style="min-width: 80px;">
-                      <img src="../../svg/facebook.svg" alt="" class="imagen_productos">
+                      <img src="<?php echo $datos->FOTO ?>" alt="" class="imagen_productos">
                   </div>
 
                   <!--Info Producto Carrito-->
@@ -174,12 +177,15 @@ $resultado4=$seleccionar->seleccionar($cadena4);
                       </div>
 
                       <div class="row justify-content-end">
-                        <div class="col-6 text-start pInfo">#Ejemplo</div>
-                        <div class="col-6 text-start pInfo">#Ejemplo</div>
+                        <div class="col-6 text-start pInfo"><?php echo $datos->NOMBRE ?></div>
+                        <div class="col-6 text-start pInfo"><?php echo $datos->COMPAÑIA ?></div>
                       </div>
                   </div>
                 </div>
               </div>
+              <?php
+              }
+              ?>
             </div>
           </div>
 
@@ -189,14 +195,17 @@ $resultado4=$seleccionar->seleccionar($cadena4);
             <div class="text-center mt-4">
               <span class="titulos_secciones"><b>Productos Mas Vendidos</b></span>
               <hr class="mt-3 mb-1">
-
+              <?php
+              foreach($resultado6 as $datos)
+              {
+              ?>
               <!--Contenedor Productos-->
               <div class="container">
                 <!--Producto-->
                 <div class="row border mt-2">
                   <!--Imagen-->
                   <div class="col-1 p-0" style="min-width: 80px;">
-                      <img src="../../svg/facebook.svg" alt="" class="imagen_productos">
+                      <img src="<?php echo $datos->FOTO ?>" alt="" class="imagen_productos">
                   </div>
 
                   <!--Info Producto Carrito-->
@@ -207,12 +216,15 @@ $resultado4=$seleccionar->seleccionar($cadena4);
                       </div>
 
                       <div class="row justify-content-end">
-                        <div class="col-6 text-start pInfo">#Ejemplo</div>
-                        <div class="col-6 text-start pInfo">#Ejemplo</div>
+                        <div class="col-6 text-start pInfo"><?php echo $datos->NOMBRE?></div>
+                        <div class="col-6 text-start pInfo"><?php echo $datos->CANTIDAD_VENDIDA ?> </div>
                       </div>
                   </div>
                 </div>
               </div> 
+              <?php
+              }
+              ?>
             </div>
           </div>
         </div>

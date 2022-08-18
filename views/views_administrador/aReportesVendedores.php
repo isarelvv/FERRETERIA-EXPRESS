@@ -18,7 +18,7 @@
         require_once("../../vendor/autoload.php");
 
         $query=new Select();
-        $cadena="SELECT login.ID_LOGIN as LOGIN,login.CORREO as CORREO,vendedores.NOMBRE AS NOMBRE,vendedores.APELLIDOS AS APELLIDOS, vendedores.TELEFONO AS TELEFONO, vendedores.SEXO AS SEXO FROM login JOIN vendedores ON login.ID_LOGIN=vendedores.LOGIN;";
+        $cadena="SELECT login.ID_LOGIN as LOGIN,login.CORREO as CORREO,vendedores.NOMBRE AS NOMBRE,vendedores.APELLIDOS AS APELLIDOS, vendedores.TELEFONO AS TELEFONO, vendedores.SEXO AS SEXO,vendedores.FOTO FROM login JOIN vendedores ON login.ID_LOGIN=vendedores.LOGIN;";
 
         $tabla =$query ->seleccionar($cadena);
         ?>
@@ -114,6 +114,7 @@
                 <th class="border-end" scope="col">Sexo</th>
                 <th scope="col">Correo Electronico</th>
                 <th scope="col">Telefono</th>
+                <th scope="col">Foto</th>
               </tr>
             </thead>
             <tbody>
@@ -127,6 +128,7 @@
                 <td class="border-end"><?php echo $registro->SEXO?></td>
                 <td><?php echo $registro->CORREO?></td>
                 <td><?php echo $registro->TELEFONO?></td>
+                <td><img src="<?php echo $registro->FOTO?>" alt=""></td>
               </tr>
             </tbody>
             <?php

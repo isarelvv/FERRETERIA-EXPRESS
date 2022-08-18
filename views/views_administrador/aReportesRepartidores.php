@@ -16,7 +16,7 @@
 
         $query=new Select();
 
-        $cadena="SELECT login.ID_LOGIN as LOGIN , repartidores.ID_REPARTIDOR as REPARTIDOR ,login.CORREO as CORREO,repartidores.NOMBRE AS NOMBRE,repartidores.APELLIDOS AS APELLIDOS, repartidores.TELEFONO as TELEFONO, repartidores.NUM_LICENCIA as LICENCIA,repartidores.PLACAS 
+        $cadena="SELECT login.ID_LOGIN as LOGIN , repartidores.ID_REPARTIDOR as REPARTIDOR ,login.CORREO as CORREO,repartidores.NOMBRE AS NOMBRE,repartidores.APELLIDOS AS APELLIDOS, repartidores.TELEFONO as TELEFONO, repartidores.NUM_LICENCIA as LICENCIA,repartidores.PLACAS, repartidores.FOTO
         FROM login JOIN repartidores ON login.ID_LOGIN=repartidores.LOGIN;";
 
         $tabla =$query ->seleccionar($cadena);
@@ -111,6 +111,7 @@
                 <th class="border-end" scope="col">Telefono</th>
                 <th scope="col">N° Licencia</th>
                 <th scope="col">N° Placas</th>
+                <th scope="col">Foto</th>
               </tr>
             </thead>
             <?php
@@ -125,6 +126,7 @@
                 <td class="border-end"><?php echo $registro->TELEFONO ?></td>
                 <td><?php echo $registro->LICENCIA ?></td>
                 <td><?php echo $registro->PLACAS ?></td>
+                <td><img src="<?php echo $registro->FOTO ?>" alt=""></td>
               </tr>
             </tbody>
             <?php

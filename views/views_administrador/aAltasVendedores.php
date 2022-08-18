@@ -89,7 +89,7 @@
 
         <!--Formulario-->
         <div>
-          <form action="../scripts/guardarVendedor.php" method="POST">
+          <form action="../scripts/guardarVendedor.php" method="POST" enctype="multipart/form-data">
             <!--Nombre-->
             <div class="secciones_form">
               <label class="form-label" for="nVendedor"><b>Nombre(s)</b></label>

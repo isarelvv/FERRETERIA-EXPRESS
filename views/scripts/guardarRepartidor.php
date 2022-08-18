@@ -27,11 +27,16 @@
     $insert2->ejecutar($cadena2);
     $llave="CALL SAVE.GUARDAR_REPARTIDOR('$correo')";
     $result = $searchlogin->seleccionar($llave);
+    $nombre_imagen = $_FILES['foto']['name'];
+    $temporal = $_FILES['foto']['tmp_name'];
+    $carpeta = '../../db_img';
+    $ruta = $carpeta.'/'.$nombre_imagen;
+    move_uploaded_file($temporal,$carpeta.'/'.$nombre_imagen);
     foreach ($result as $key)
     {
         $key->ID_LOGIN;
         $cadena = "INSERT INTO repartidores (NOMBRE,APELLIDOS,CORREO,TELEFONO,PLACAS,NUM_LICENCIA, LOGIN, FOTO) VALUES
-        ('$nombre','$apellidos','$correo','$telefono','$placas','$licencia','$key->ID_LOGIN', '$foto')";
+        ('$nombre','$apellidos','$correo','$telefono','$placas','$licencia','$key->ID_LOGIN', '$ruta')";
     
         $insert->ejecutar($cadena);
 

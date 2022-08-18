@@ -89,7 +89,7 @@
 
         <!--Formulario-->
         <div>
-          <form action="../scripts/guardarRepartidor.php" method="POST">
+          <form action="../scripts/guardarRepartidor.php" method="POST" enctype="multipart/form-data">
             <!--Nombre-->
             <div class="secciones_form">
               <label class="form-label" for="nReparitdor"><b>Nombre(s)</b></label>

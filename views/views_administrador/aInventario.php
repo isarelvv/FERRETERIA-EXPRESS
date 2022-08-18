@@ -209,21 +209,18 @@
                         <td class="text-center" style="padding: 0%;">
                           <img src='<?php echo $registro->FOTO?>'  style="max-width: 60px;">
                         </td>
-                        <td><?php echo $id=$registro->CODIGO?></td>
+                        <td><?php echo $registro->CODIGO?></td>
                         <td><?php echo $registro->NOMBRE?></td>
                         <td><?php echo $registro->CATEGORIA?></td>
                         <td class="text-center"><?php echo $registro->CANTIDAD_REAL?></td>
                         <td class="text-center">#20</td>
                         <td class="text-center">#$49</td>
-                        <td><a href="..." data-bs-toggle="modal" data-bs-target="#HOLA<?php echo$registro->CODIGO ?>">Editar Producto</a></td>
+                        <td><a href="" data-bs-toggle="modal" data-bs-target="<?php echo '#HOLA' .$registro->CODIGO?>">Editar Producto</a></td>
                 </tbody>
                 <?php 
                   }
                   
                   $query1=new Select();
-                  $cadena1="select CODIGO,NOMBRE, DESCRIPCION, CANTIDAD_REAL, CANTIDAD_IDEAL, PRECIO_VENTA, PRECIO_COMPRA,
-                  MEDIDA,PROVEEDOR, CATEGORIA,ENTREGA_DOMICILIO FROM productos WHERE CODIGO='$id'";
-                  $tabla1 =$query1 ->seleccionar($cadena1);
 
                   $cadena2="SELECT ID_PROVEEDOR, COMPAÑIA FROM PROVEEDORES";
                   $reg1 = $query1->seleccionar($cadena2);
@@ -238,7 +235,7 @@
                       {
                                  ?>
                         <!--Modal Editar Producto-->
-                        <div class="modal modal-lg fade" id="#HOLA <?php echo $registro->CODIGO ?>" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal modal-lg fade" id="<?php echo '#HOLA' .$registro->CODIGO?>" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <?php
                   ?>
                           <div class="modal-dialog">
