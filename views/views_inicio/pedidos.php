@@ -46,7 +46,7 @@ session_start();
         <!--Parte Arriba Header-->
         <div class="row justify-content-center border-bottom border-1 border-dark border-opacity-25     barra_arriba">
             <!--Logo Express-->
-            <div class="col-2 text-end">
+            <div class="col-2 col-sm-3 text-end">
                 <object data="../../svg/logo-r.svg" class="text-end border border-dark   logo"></object>
             </div>
             
@@ -132,45 +132,45 @@ session_start();
                 <!--Inicio-Productos-Servicios-->
                 <div class="col-8">
                     <ul class="nav justify-content-center">
-                        <li class="nav-item     boton-bb">
+                        <li class="nav-item     boton-bb col-sm-1">
                             <a class="btn   boton-a-bb" type="button" href="../../index.php">
                                 <div class="organizar">
                                     <img src="../../svg/casa-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Inicio</b></p>
+                                    <p class="texto-botones-bb  d-lg-block d-none"><b>Inicio</b></p>
                                 </div>
                             </a>
                         </li>
-                        <li class="nav-item     boton-bb">
+                        <li class="nav-item     boton-bb col-sm-1">
                             <a class="btn   boton-a-bb" href="productos.php">
                                 <div class="organizar">
                                     <img src="../../svg/caja-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Productos</b></p>
+                                    <p class="texto-botones-bb  d-lg-block d-none"><b>Productos</b></p>
                                 </div>
                             </a>
                         </li>
-                        <li class="nav-item     boton-bb">
+                        <li class="nav-item     boton-bb col-sm-1">
                             <a class="btn   boton-a-bb" href="servicios.php">
                                 <div class="organizar">
                                     <img src="../../svg/servicios-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Servicios</b></p>
+                                    <p class="texto-botones-bb  d-lg-block d-none"><b>Servicios</b></p>
                                 </div>
                             </a>
                         </li>
 
-                        <li class="nav-item     boton-bb">
+                        <li class="nav-item     boton-bb col-sm-1">
                             <a class="btn   boton-a-bb" href="carrito.php">
                                 <div class="organizar">
                                     <img src="../../svg/carrito-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Carrito</b></p>
+                                    <p class="texto-botones-bb  d-lg-block d-none"><b>Carrito</b></p>
                                 </div>
                             </a>
                         </li>
 
-                        <li class="nav-item     boton-bb">
+                        <li class="nav-item     boton-bb col-sm-1 col-lg-2">
                             <a class="btn   boton-a-bb" href="pedidos.php">
                                 <div class="organizar">
                                     <img src="../../svg/bolsa-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Mis Pedidos</b></p>
+                                    <p class="texto-botones-bb  d-lg-block d-none"><b>Mis Pedidos</b></p>
                                 </div>
                             </a>
                         </li>  
@@ -186,7 +186,7 @@ session_start();
         <div class="row text-center">
             <div class="col   barras_mensaje"><hr></div>
 
-            <div class="col-3   mensaje_arriba">
+            <div class="col-lg-3 col-sm-5   mensaje_arriba">
                 <p><b>Pedidos Activos</b></p>
             </div>
                 
@@ -206,7 +206,7 @@ session_start();
     <div class='border border-secondary  contenedor_pedidos_entregados'>
        
         <div class='row border border-dark  producto_carrito'>
-            <div class='col-1'>
+            <div class='col-lg-1 col-sm-1'>
                 <img src='".$datos->FOTO."' alt='' class='imagen_producto'>
             </div>
 
@@ -218,19 +218,19 @@ session_start();
                 <div class='row'>
                     
                     
-                    <div class='col-2'>
+                    <div class='col-lg-2 col-sm-6 mb-sm-3'>
                         <label for='total' class='l_p'><b>Total</b></label>
                         <input type='text' class='form-control  i_p' id='total' placeholder= '$".$datos->TOTAL."' disabled='disabled'>
                     </div>
-                    <div class='col-3'>
+                    <div class='col-lg-3 col-sm-6 mb-sm-3'>
                         <label for='f_p' class='l_p'><b>Fecha de Pedido</b></label>
                         <input type='text' class='form-control  i_p' id='f_p' placeholder='".$datos->FECHA_ORDEN."' disabled='disabled'>
                     </div>
-                    <div class='col-5'>
+                    <div class='col-lg-5 col-sm-6'>
                         <label for='d_e' class='l_p'><b>Direccion de Entrega</b></label>
                         <input type='text' class='form-control  i_p' id='d_e' placeholder='".$datos->DOMICILIO."' disabled='disabled'>
                     </div>
-                    <div class='col-2 text-end   d_p'>
+                    <div class='col-lg-2 col-sm-5 text-end   d_p'>
                         <a href='' data-bs-toggle='modal' data-bs-target='#modal_detalles_pedido".$datos->FOLIO."'>Detalles del Pedido</a>
                     </div>
                    
@@ -402,7 +402,7 @@ session_start();
         <div class="row text-center">
             <div class="col   barras_mensaje"><hr></div>
 
-            <div class="col-3   mensaje_arriba">
+            <div class="col-lg-3 col-sm-6    mensaje_arriba">
                 <p><b>Pedidos Entregados</b></p>
             </div>
 
@@ -520,7 +520,7 @@ session_start();
     <!--Footer-->
     <footer>
         <div class="row">
-            <div class="col-2">
+            <div class="col-lg-2 col-sm-4">
                 <h5>Contacto</h5>
                 <h6>Telefonos de Contacto</h6>
                 <li class="lista_cont">8717922116</li>
@@ -528,29 +528,29 @@ session_start();
                 <li class="lista_cont">8711930946</li>
             </div>
 
-            <div class="col-4">
+            <div class="col-lg-4 col-sm-4">
                 <div>
                     <h5>Direccion</h5>
                     <h6>Calz. Agustín Espinoza, Satelite 5053, 27059 Torreón, Coah.</h6>
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-lg-3 col-sm-4">
                 <h5>Redes Sociales</h5>
                 <a href="https://www.facebook.com/Ferretería-y-Materiales-Express-Torreón-1672126383002791/"><img src="../../svg/facebook.svg" alt="facebook" class="icono_facebook"></a>
             </div>
         </div>
 
         <div class="row     p_abajo">
-            <div class="col-2">
+            <div class="col-lg-2 col-sm-8">
                 <h6>Correos de Contacto</h6>
                 <li class="lista_cont">gerrymatrix@hotmail.com</li>
                 <li class="lista_cont">tilinlover17@gmail.com</li>
             </div>
-            <div class="col-4"></div>
-            <div class="col-6 text-end">
-                <img src="../../svg/utt.svg" alt="" class="f_express">
-                <img src="../../svg/express-r.svg" alt="" class="f_express">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-6 text-end">
+                <img src="../../svg/utt.svg" alt="" class="f_express col-sm-4">
+                <img src="../../svg/express-r.svg" alt="" class="f_express col-sm-3">
             </div>
         </div>
     </footer>

@@ -41,7 +41,7 @@ session_start();
         <!--Parte Arriba Header-->
         <div class="row justify-content-center border-bottom border-1 border-dark border-opacity-25     barra_arriba">
             <!--Logo Express-->
-            <div class="col-2 text-end">
+            <div class="col-2  col-sm-3 text-end">
                 <object data="../../svg/logo-r.svg" class="text-end border border-dark   logo"></object>
             </div>
             
@@ -127,45 +127,45 @@ session_start();
                 <!--Inicio-Productos-Servicios-->
                 <div class="col-8">
                     <ul class="nav justify-content-center">
-                        <li class="nav-item     boton-bb">
+                        <li class="nav-item     boton-bb col-sm-1">
                             <a class="btn   boton-a-bb" type="button" href="../../index.php">
                                 <div class="organizar">
                                     <img src="../../svg/casa-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Inicio</b></p>
+                                    <p class="texto-botones-bb d-lg-block d-none"><b>Inicio</b></p>
                                 </div>
                             </a>
                         </li>
-                        <li class="nav-item     boton-bb">
+                        <li class="nav-item     boton-bb col-sm-1">
                             <a class="btn   boton-a-bb" href="productos.php">
                                 <div class="organizar">
                                     <img src="../../svg/caja-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Productos</b></p>
+                                    <p class="texto-botones-bb d-lg-block d-none"><b>Productos</b></p>
                                 </div>
                             </a>
                         </li>
-                        <li class="nav-item     boton-bb">
+                        <li class="nav-item     boton-bb col-sm-1">
                             <a class="btn   boton-a-bb" href="servicios.php">
                                 <div class="organizar">
                                     <img src="../../svg/servicios-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Servicios</b></p>
+                                    <p class="texto-botones-bb d-lg-block d-none"><b>Servicios</b></p>
                                 </div>
                             </a>
                         </li>
 
-                        <li class="nav-item     boton-bb">
+                        <li class="nav-item     boton-bb col-sm-1">
                             <a class="btn   boton-a-bb" href="carrito.php">
                                 <div class="organizar">
                                     <img src="../../svg/carrito-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Carrito</b></p>
+                                    <p class="texto-botones-bb d-lg-block d-none"><b>Carrito</b></p>
                                 </div>
                             </a>
                         </li>
 
-                        <li class="nav-item     boton-bb">
+                        <li class="nav-item     boton-bb col-sm-1 col-lg-2">
                             <a class="btn   boton-a-bb" href="pedidos.php">
                                 <div class="organizar">
                                     <img src="../../svg/bolsa-b.svg" class="icono">
-                                    <p class="texto-botones-bb"><b>Mis Pedidos</b></p>
+                                    <p class="texto-botones-bb d-lg-block d-none"><b>Mis Pedidos</b></p>
                                 </div>
                             </a>
                         </li>  
@@ -180,7 +180,7 @@ session_start();
         <div class="row text-center">
             <div class="col   barras_mensaje"><hr></div>
 
-            <div class="col-3   mensaje_arriba">
+            <div class="col-lg-3 col-sm-7   mensaje_arriba">
                 <p><b>Conoce los Servicios</b></p>
             </div>
 
@@ -862,7 +862,7 @@ session_start();
     <!--Footer-->
     <footer>
         <div class="row">
-            <div class="col-2">
+            <div class="col-lg-2 col-sm-4">
                 <h5>Contacto</h5>
                 <h6>Telefonos de Contacto</h6>
                 <li class="lista_cont">8717922116</li>
@@ -870,29 +870,29 @@ session_start();
                 <li class="lista_cont">8711930946</li>
             </div>
 
-            <div class="col-4">
+            <div class="col-lg-4 col-sm-4">
                 <div>
                     <h5>Direccion</h5>
                     <h6>Calz. Agustín Espinoza, Satelite 5053, 27059 Torreón, Coah.</h6>
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-lg-3 col-sm-4">
                 <h5>Redes Sociales</h5>
                 <a href="https://www.facebook.com/Ferretería-y-Materiales-Express-Torreón-1672126383002791/"><img src="../svg/facebook.svg" alt="facebook" class="icono_facebook"></a>
             </div>
         </div>
 
         <div class="row     p_abajo">
-            <div class="col-2">
+            <div class="col-lg-2 col-sm-8">
                 <h6>Correos de Contacto</h6>
                 <li class="lista_cont">gerrymatrix@hotmail.com</li>
                 <li class="lista_cont">tilinlover17@gmail.com</li>
             </div>
-            <div class="col-4"></div>
-            <div class="col-6 text-end">
-                <img src="../../svg/utt.svg" alt="" class="f_express">
-                <img src="../../svg/express-r.svg" alt="" class="f_express">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-6 text-end">
+                <img src="../../svg/utt.svg" alt="" class="f_express col-sm-4">
+                <img src="../../svg/express-r.svg" alt="" class="f_express col-sm-3">
             </div>
         </div>
     </footer>

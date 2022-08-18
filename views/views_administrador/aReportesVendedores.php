@@ -18,7 +18,7 @@
         require_once("../../vendor/autoload.php");
 
         $query=new Select();
-        $cadena="SELECT login.ID_LOGIN as LOGIN,login.CORREO as CORREO,vendedores.NOMBRE AS NOMBRE,vendedores.APELLIDOS AS APELLIDOS, vendedores.TELEFONO AS TELEFONO, vendedores.SEXO AS SEXO FROM login JOIN vendedores ON login.ID_LOGIN=vendedores.LOGIN;";
+        $cadena="SELECT login.ID_LOGIN AS LOGIN,login.CORREO AS CORREO,vendedores.NOMBRE AS NOMBRE,vendedores.APELLIDOS AS APELLIDOS, vendedores.TELEFONO AS TELEFONO, vendedores.SEXO AS SEXO FROM login JOIN vendedores ON login.ID_LOGIN=vendedores.LOGIN;";
 
         $tabla =$query ->seleccionar($cadena);
         ?>

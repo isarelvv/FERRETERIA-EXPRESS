@@ -141,7 +141,7 @@ else
                   $consult = new select();
                   $qry="SELECT V1.FOTO, V1.FOLIO,SUM(V1.TOTAL) AS TOTAL,V1.FECHA_ORDEN, V1.DOMICILIO,V1.CLIENTE, V1.VENDEDOR,V1.VENDEDOR_APE
                   FROM (SELECT DISTINCT PRODUCTOS.FOTO, VENTAS.FOLIO , (DETALLE_VENTAS.CANTIDAD*PRODUCTOS.PRECIO_VENTA) AS TOTAL, 
-                  VENTAS.FECHA_ORDEN, ENTREGA_DOMICILIO.DOMICILIO,CLIENTES.NOMBRE AS CLIENTE, vendedores.nombre as VENDEDOR,vendedores.APELLIDOS as VENDEDOR_APE FROM ENTREGA_DOMICILIO
+                  VENTAS.FECHA_ORDEN, ENTREGA_DOMICILIO.DOMICILIO,CLIENTES.NOMBRE AS CLIENTE, vendedores.nombre AS VENDEDOR,vendedores.APELLIDOS AS VENDEDOR_APE FROM ENTREGA_DOMICILIO
                   JOIN DETALLE_VENTAS ON DETALLE_VENTAS.FOLIO_DETALLE = ENTREGA_DOMICILIO.DETALLE_VENTA
                   JOIN PRODUCTOS ON PRODUCTOS.CODIGO = DETALLE_VENTAS.PRODUCTO 
                   JOIN VENTAS ON VENTAS.FOLIO = DETALLE_VENTAS.VENTA
@@ -202,7 +202,7 @@ else
                                       LEFT JOIN VENTAS ON VENTAS.FOLIO = ENTREGA_DOMICILIO.VENTA
                                       LEFT JOIN CLIENTES ON CLIENTES.NO_CLIENTE = VENTAS.CLIENTE
                                         WHERE VENTAS.FOLIO= '$tabla->FOLIO'
-                                        Group by PRODUCTOS.nombre;
+                                        GROUP BY PRODUCTOS.nombre;
                                     ";
                                      
                                       $datos=$consulta->seleccionar($qry);

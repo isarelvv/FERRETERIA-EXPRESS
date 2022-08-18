@@ -16,7 +16,7 @@
 
         $query=new Select();
 
-        $cadena="SELECT login.ID_LOGIN as LOGIN , repartidores.ID_REPARTIDOR as REPARTIDOR ,login.CORREO as CORREO,repartidores.NOMBRE AS NOMBRE,repartidores.APELLIDOS AS APELLIDOS, repartidores.TELEFONO as TELEFONO, repartidores.NUM_LICENCIA as LICENCIA,repartidores.PLACAS 
+        $cadena="SELECT login.ID_LOGIN AS LOGIN, repartidores.ID_REPARTIDOR AS REPARTIDOR, login.CORREO AS CORREO, repartidores.NOMBRE AS NOMBRE, repartidores.APELLIDOS AS APELLIDOS, repartidores.TELEFONO AS TELEFONO, repartidores.NUM_LICENCIA AS LICENCIA,repartidores.PLACAS 
         FROM login JOIN repartidores ON login.ID_LOGIN=repartidores.LOGIN;";
 
         $tabla =$query ->seleccionar($cadena);
