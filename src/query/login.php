@@ -10,10 +10,7 @@ class Login
 {
     public function verificaLogin($usuario, $password)
     {
-        echo "<div class='alert alert-success'>";
-                echo "<h2 align='center'> usuario o password incorrecto <h2>";
-                echo "</div>";
-                header ("refresh:3; ../../index.php");
+        
         try 
         {
             $login = 0;
@@ -25,10 +22,10 @@ class Login
             FROM USUARIOS JOIN LOGIN ON USUARIOS.KEY=LOGIN.TIPO_USUARIO WHERE LOGIN.CORREO='$usuario';";
             $consulta = $objetoPDO->query($query);
             while($renglon = $consulta->fetch(PDO::FETCH_ASSOC))
+            print_r($renglon);
             {
                 if (password_verify($password,$renglon['CONTRASEÑA']))
                 {   
-                   $login=1;
                    if ($renglon['SESION'] == 300 )
                    {
                         $login=300;
