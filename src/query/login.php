@@ -13,7 +13,6 @@ class Login
         echo "<div class='alert alert-success'>";
                 echo "<h2 align='center'> usuario o password incorrecto <h2>";
                 echo "</div>";
-                header ("refresh:3; ../../index.php");
         
         try 
         {
@@ -21,11 +20,9 @@ class Login
             #$cc=new database("SAVE","root","");
             $cc = new Database("SAVE", "doadmin", "AVNS_0irFMC1NWTaraDt_uR8");
             $objetoPDO = $cc->getPDO();
-            $query ="SELECT USUARIOS.KEY AS SESION, USUARIOS.TIPO AS 
-            TIPO,LOGIN.ID_LOGIN, LOGIN.CORREO AS CORREO, LOGIN.CONTRASEÑA AS CONTRASEÑA 
-            FROM USUARIOS JOIN LOGIN ON USUARIOS.KEY=LOGIN.TIPO_USUARIO WHERE LOGIN.CORREO='$usuario';";
+            $query ="call SAVE.LOGUEAR('$usuario');";
             $consulta = $objetoPDO->query($query);
-            while($renglon = $consulta->fetchAll(PDO::FETCH_ASSOC))
+            while($renglon = $consulta->fetch(PDO::FETCH_ASSOC))
             #foreach($consulta as $renglon)
             {
                 print_r($renglon);
@@ -74,7 +71,7 @@ class Login
                 echo "<div class='alert alert-success'>";
                 echo "<h2 align='center'> usuario o password incorrecto <h2>";
                 echo "</div>";
-                header ("refresh:3; ../../index.php");
+     
             }
         }
         }
