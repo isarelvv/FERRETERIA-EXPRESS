@@ -150,7 +150,12 @@
 
           <hr class="mb-3">
 
-          <table class="table">
+          
+
+        <hr>
+
+        <div>
+        <table class="table">
             <thead>
               <tr class="table-dark">
                 <th scope="col">Clave Venta</th>
@@ -162,27 +167,6 @@
                 <th scope="col">Status</th>
                 <th scope="col">Monto</th>
                 <th scope="col">Detalles</th>
-
-        <hr>
-
-        <div>
-          <table class="table">
-            <thead>
-              <tr class="text-center">
-                <th scope="col" colspan="4" class="informacion">Informacion Personal</th>
-                <th scope="col" colspan="2" class="informacion">Informacion de Contacto</th>
-                <th scope="col" colspan="2" class="informacion">Informacion del Vehiculo</th>
-              </tr>
-              <tr class="bg-dark text-white">
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido Paterno</th>
-                <th scope="col">Apellido Materno</th>
-                <th class="border-end" scope="col">Sexo</th>
-                <th scope="col">Correo Electronico</th>
-                <th class="border-end" scope="col">Telefono</th>
-                <th scope="col">N° Licencia</th>
-                <th scope="col">N° Placas</th>
-
               </tr>
             </thead>
 
@@ -255,16 +239,6 @@
                     </div>
                   </div>
                 </div>
-
-                <td>#Edeh Gerardo</td>
-                <td>#Meza</td>
-                <td>#Reyes</td>
-                <td class="border-end">#M</td>
-                <td>#tilinlover17@gmail.com</td>
-                <td class="border-end">#8717321111</td>
-                <td>#Ejemplo</td>
-                <td>#Ejemplo</td>
-
               </tr>
             </tbody>
           </table>
