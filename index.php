@@ -216,7 +216,7 @@ if(isset($_SESSION['usuario']))
     </header>
 
     <!--Carrusel-->
-    <div class="carrusel">
+    <div class="carrusel h-auto">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -253,8 +253,8 @@ if(isset($_SESSION['usuario']))
             </div>
         </div>
         <div class="col-lg-6 col-sm-12   info_pre info_pre_2">
-            <div class="div_p2" style="height: 20px;">
-                <p>
+            <div class="div_p2 col-lg-10" style="height: 20px;">
+                <p class="pt-lg-2 ps-lg-5">
                     Somos una distribuidora de materiales y herramientas de la comarca lagunera con la mision de llevar a tu casa todos los productos que necesites para que tengas la comodidad en tu hogar por la que tanto trabajas dia con dia.
                 </p>
             </div>

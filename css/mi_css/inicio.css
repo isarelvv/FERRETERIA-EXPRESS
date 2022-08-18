@@ -13,8 +13,7 @@ body
 /*Quienes somos*/
 .presentacion
 {
-    
-    height: 142px;
+    min-height: 142px;
     max-height: 142px;
     background-color: #8B0006;
 }
