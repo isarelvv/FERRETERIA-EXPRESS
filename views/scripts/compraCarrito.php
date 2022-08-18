@@ -31,9 +31,9 @@ session_start();
         $fechahoy = date('Y-m-d');
         $fechaentrega = strtotime('+3 day',strtotime($fechahoy));
         $fechaentrega = date('Y-m-d',$fechaentrega);
-        $nuevaventa = "INSERT INTO VENTAS (cliente,fecha_orden)VALUES ('$ID','$fechahoy')";
+        $nuevaventa = "INSERT INTO VENTAS (cliente,fecha_orden) VALUES ('$ID','$fechahoy')";
         $insert->ejecutar($nuevaventa);
-        $ventarealizada = "SELECT MAX(VENTAS.FOLIO) AS UV FROM VENTAS WHERE VENTAS.CLIENTE = '$ID'";
+        $ventarealizada = "CALL SAVE.ULTIMA_VENTA('$ID')";
         $folio = $searchventa->seleccionar($ventarealizada);
          foreach($folio as $venta)
          {
@@ -43,12 +43,12 @@ session_start();
         {
             $prod = $datos[$i]['id'];
             $cant = $datos[$i]['cantidad'];
-            $ingresaprods = "INSERT INTO DETALLE_VENTAS(VENTA,PRODUCTO,CANTIDAD,TIPO_ENTREGA)VALUES('$ventacliente','$prod','$cant','$metodo_entrega')";
+            $ingresaprods = "INSERT INTO DETALLE_VENTAS(VENTA,PRODUCTO,CANTIDAD,TIPO_ENTREGA) VALUES('$ventacliente','$prod','$cant','$metodo_entrega')";
             $insert2->ejecutar($ingresaprods);
         }
             if($metodo_entrega == 'Domicilio')
             {
-            $consultardetalle = "SELECT DETALLE_VENTAS.FOLIO_DETALLE FROM DETALLE_VENTAS JOIN VENTAS ON DETALLE_VENTAS.VENTA = VENTAS.FOLIO JOIN (SELECT MAX(VENTAS.FOLIO) AS UV FROM VENTAS WHERE VENTAS.CLIENTE = $ID) AS VE ON DETALLE_VENTAS.VENTA = VE.UV WHERE DETALLE_VENTAS.VENTA = VE.UV";
+            $consultardetalle = "CALL SAVE.DETALLE_VENTAS_ENLINEA('$ID');";
             $resdetalles = $buscardetalle->seleccionar($consultardetalle);
             foreach($resdetalles as $foliodetalle)
             {
@@ -58,11 +58,7 @@ session_start();
                 $insert3->ejecutar($ed);
 
                 $buscared = new select();
-                $consultared = "SELECT ENTREGA_DOMICILIO.ID_VD FROM ENTREGA_DOMICILIO 
-                JOIN (SELECT VE.UV AS VENTA, DETALLE_VENTAS.FOLIO_DETALLE AS DETALLE FROM DETALLE_VENTAS 
-                JOIN VENTAS ON DETALLE_VENTAS.VENTA = VENTAS.FOLIO 
-                JOIN (SELECT MAX(VENTAS.FOLIO) AS UV FROM VENTAS WHERE CLIENTE = $ID) AS VE ON DETALLE_VENTAS.VENTA = VE.UV 
-                WHERE DETALLE_VENTAS.VENTA = VE.UV) AS DE ON ENTREGA_DOMICILIO.DETALLE_VENTA = DE.DETALLE";
+                $consultared = "CALL SAVE.ENTREGAS_DOMICILIO('$ID')";
                 $resed = $buscared->seleccionar($consultared);
                 foreach($resed as $idvd)
                 {
@@ -96,6 +92,7 @@ session_start();
          unset($_SESSION['carrito']);
          echo "<div class='alert alert-success'>";
          echo "<h2 align='center'>VENTA REALIZADA<h2>";
+         header("../views_inicio/pedidos.php");
          echo "</div>";
  
          

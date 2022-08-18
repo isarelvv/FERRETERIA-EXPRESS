@@ -14,6 +14,27 @@ session_start();
     <title>Ventas - Repartidor</title>
 </head>
 <body>
+<?php 
+if(isset($_SESSION['usuario']))
+{
+    switch ($_SESSION['SESION']) 
+    {
+        case 300:
+            header("Location: ../views_administrador/inicio.php");
+            break;   
+        case 303: 
+            header("Location: ../../index.php");
+            break;
+        case 302:
+                header("Location: ../views_repartidor/rInicio.php");
+            break;
+    }
+}
+else
+{
+    header("Location: ../../index.php");
+}
+?>
     <div class="row">
         <!--Barra-->
         <nav class="col-2">

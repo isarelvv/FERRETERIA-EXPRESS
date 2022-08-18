@@ -18,7 +18,7 @@ session_start();
     require_once ("../../vendor/autoload.php");
     $id = $_SESSION['ID'];
     $datos = new select();
-    $consulta = "SELECT ID_REPARTIDOR as ID, NOMBRE AS NOMBRE, APELLIDOS AS APELLIDOS, TELEFONO AS TELEFONO, PLACAS AS PLACAS, NUM_LICENCIA AS LICENCIA FROM REPARTIDORES WHERE REPARTIDORES.LOGIN= '$id'";
+    $consulta = "CALL SAVE.DATOS_REPARTIDOR('$id')";
     $repartidor = $datos->seleccionar($consulta);
     foreach($repartidor as $inforepartidor)
     {

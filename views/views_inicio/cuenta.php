@@ -215,7 +215,7 @@ else
 
                 <div class="label_form">
                     <label for="apellido_materno" class="form-label     texto_label"><b>Apellido Materno</b></label>
-                    <fieldset disabled="disabled">
+                    <fieldset >
                         <input type="text" id="apellido_materno" class="form-control" placeholder="Apellido Materno" value="<?php echo $_SESSION['AM'] ?>">
                     </fieldset>
                 </div>

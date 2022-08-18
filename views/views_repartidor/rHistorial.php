@@ -9,6 +9,23 @@
     <title>Pedidos - Repartidores</title>
 </head>
 <body>
+<?php
+if(isset($_SESSION['usuario']))
+{
+    switch ($_SESSION['SESION']) 
+    {
+        case 300:
+            header("Location: ../views_administrador/inicio.php");
+            break;   
+        case 303: 
+            header("Location: ../../");
+            break;
+        case 301:
+                header("Location: ../views_vendedor/vVentas.php");
+            break;
+    }
+}
+?>
     <?php
     use MyApp\query\select;
     require_once ("../../vendor/autoload.php");
