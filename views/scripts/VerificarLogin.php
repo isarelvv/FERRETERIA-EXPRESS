@@ -15,7 +15,7 @@
         echo "CHINGA TU MADRE";
         $usuarios =new login();
         extract($_POST);
-        echo $usuarios;
+        echo $usuario;
         echo $contraseña;
         $usuarios->verificaLogin("$usuario","$contraseña");
         ?>
