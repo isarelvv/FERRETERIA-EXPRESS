@@ -10,6 +10,10 @@ class Login
 {
     public function verificaLogin($usuario, $password)
     {
+        echo "<div class='alert alert-success'>";
+                echo "<h2 align='center'> usuario o password incorrecto <h2>";
+                echo "</div>";
+                header ("refresh:3; ../../index.php");
         
         try 
         {
