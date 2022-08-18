@@ -92,7 +92,7 @@ if(isset($_SESSION['usuario']))
               <!--Mensaje Bienvenida-->
               <div class="row   mensaje_bienvendia">
                 <div class="col   contenedor_imagen_bv">
-                  <img src="../../svg/facebook.svg" alt="" class="imagen_bienvenida">
+
                 </div>
                 <div class="col" style="margin-top: 5px;">
                   <b class="bv_mensaje">Bienvenido de Vuelta</b>
