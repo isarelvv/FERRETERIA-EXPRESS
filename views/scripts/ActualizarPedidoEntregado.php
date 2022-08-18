@@ -25,7 +25,7 @@ session_start();
         echo "<div class='alert alert-success'>";
          echo "<h2 align='center'>VENTA ACTIVADA<h2>";
          echo "</div>";     
-        header("refresh:2; ../views_repartidor/rInicio.php");
+        header("refresh:0; ../views_repartidor/rInicio.php");
         }
         ?>
 
