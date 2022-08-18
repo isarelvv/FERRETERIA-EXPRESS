@@ -21,8 +21,8 @@
 
     $id_vendedor=$_POST["id_vendedor"];
     $id_login=$_POST["id_login"];
-    $nombre=$_POST["nombre"];
     $apellidos=$_POST["apellidos"];
+    $nombre=$_POST["nombre"];
     $correo=$_POST["correo"];
     $telefono=$_POST["telefono"];
     $sexo=$_POST["sexo"];
