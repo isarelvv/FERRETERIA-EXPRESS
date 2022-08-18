@@ -13,7 +13,7 @@ class Login
         try 
         {
             $login = 0;
-            $cc = new Database("save","root","");
+            $cc = new Database("save","admin","administrador");
             $objetoPDO = $cc->getPDO();
             $query ="SELECT usuarios.KEY as SESION, usuarios.TIPO as TIPO,login.ID_LOGIN, login.correo as correo, login.contraseña as contraseña FROM usuarios join login on usuarios.KEY=login.TIPO_USUARIO where login.correo='$usuario'";
             $consulta = $objetoPDO->query($query);

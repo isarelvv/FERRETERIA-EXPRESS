@@ -23,7 +23,7 @@ class Database
     {
         try
         {
-            $host="mysql:host=localhost; dbname=$this->dbname";
+            $host="mysql:host=bdsave.ccganlooa8o7.us-west-1.rds.amazonaws.com; dbname=$this->dbname";
             $objetoPDO=new PDO($host,$this->user,$this->password);
             return $objetoPDO;
         }
