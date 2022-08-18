@@ -15,7 +15,7 @@ session_start();
     require_once ("../../vendor/autoload.php");
     $datoscliente = new select();
     $ID = $_SESSION['ID'];
-    $datos = "SELECT CLIENTES.NO_CLIENTE AS ID, CLIENTES.NOMBRE as CLIENTE, CLIENTES.ap_paterno as AP, CLIENTES.ap_materno as AM, CLIENTES.direccion as DIR, CLIENTES.cp as CP, CLIENTES.TELEFONO AS TEL  FROM CLIENTES join login on login.ID_LOGIN = CLIENTES.LOGIN WHERE ID_LOGIN='$ID'";
+    $datos = "call SAVE.DATOS_CLIENTE('$ID');";
     $cliente = $datoscliente->seleccionar($datos);
     foreach($cliente as $info)
     {
