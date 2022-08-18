@@ -10,10 +10,10 @@
 <body>
     <div class="container">
         <?php
-        use MyApp\query\login;
+        use MyApp\query\Login;
         require("../../vendor/autoload.php");
         echo "CHINGA TU MADRE";
-        $usuarios =new login();
+        $usuarios =new Login();
         extract($_POST);
         echo $usuario;
         echo "alv";
