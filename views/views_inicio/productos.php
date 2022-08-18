@@ -294,7 +294,7 @@ session_start();
             <div class="col-10 row" >
             
                 <?php
-                 $cadena= "CALL SAVE.PRODUCTOS();";
+                 $cadena= "CALL PRODUCTOS();";
                  if ($_POST) 
                  {
                     $filtros_de_busqueda ="";
@@ -350,12 +350,12 @@ session_start();
                  }
                 
                 $tabla=$seleccionar->seleccionar($cadena);
-                 
+
                 if(isset($_POST['buscar']))
                 {
                     foreach($resultado as $datos)
                 {
-          E
+                  
                     ?>
                     <div class="col  " style="max-width: 250px; height:475px ">
                     <form action="" method="POST">
