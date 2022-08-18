@@ -29,7 +29,7 @@ session_start();
         $insert2 = new ejecutar();
         $buscardetalle = new select(); 
         $fechahoy = date('Y-m-d');
-        $fechaentrega = strtotime('+3 day',strtotime($fechahoy));
+        $fechaentrega = strtotime('+1 day',strtotime($fechahoy));
         $fechaentrega = date('Y-m-d',$fechaentrega);
         $nuevaventa = "INSERT INTO VENTAS (cliente,fecha_orden)VALUES ('$ID','$fechahoy')";
         $insert->ejecutar($nuevaventa);
